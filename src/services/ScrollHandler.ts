@@ -7,6 +7,7 @@ export class ScrollHandler {
     private _ws = Workspaces.getInstance();
     private _settings = Settings.getInstance();
     private _disconnectBinding?: () => void;
+    private _lastScrollTime = 0;
 
     init(panelButton: any) {
         this._settings.scrollWheel.subscribe(
@@ -40,6 +41,18 @@ export class ScrollHandler {
         this._disconnectBinding = () => widget.disconnect(scrollBinding);
     }
 
+    private _debounce(): boolean {
+        let debounce_amount = this._settings.scrollWheelDebounceAmount.value;
+        if (debounce_amount <= 0)
+            return true;
+        const now = Date.now();
+        if (now >= this._lastScrollTime + debounce_amount) {
+            this._lastScrollTime = now;
+            return true;
+        }
+        return false;
+    }
+
     private _handle_scroll(actor: any, event: any): boolean {
         // Adapted from https://github.com/timbertson/gnome-shell-scroll-workspaces
         const source = event.get_source();
@@ -61,7 +74,7 @@ export class ScrollHandler {
             default:
                 return Clutter.EVENT_PROPAGATE;
         }
-        if (newIndex !== null) {
+        if (this._debounce() &&  newIndex !== null) {
             const workspace = global.workspace_manager.get_workspace_by_index(newIndex);
             if (workspace) {
                 workspace.activate(global.get_current_time());

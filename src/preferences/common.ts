@@ -80,6 +80,69 @@ export function addCombo({
     updateComboRowState();
 }
 
+export function addSpinButton({
+    group,
+    key,
+    lower,
+    upper,
+    increment,
+    title,
+    subtitle = null,
+    settings,
+    shortcutLabel,
+    changeSensitiveKey,
+    changeSensitiveFn,
+}: {
+    group: Adw.PreferencesGroup;
+    key: string;
+    lower: number,
+    upper: number,
+    increment: number,
+    title: string;
+    subtitle?: string | null;
+    settings: Gio.Settings;
+    shortcutLabel?: string | null;
+    changeSensitiveKey?: string | null;
+    changeSensitiveFn?: (settings: Gio.Settings) => boolean | null;
+}): void {
+    const row = new Adw.ActionRow({ title, subtitle });
+    group.add(row);
+
+    if (shortcutLabel) {
+        const gtkShortcutLabel = new Gtk.ShortcutLabel({
+            accelerator: shortcutLabel,
+            valign: Gtk.Align.CENTER,
+        });
+        row.add_prefix(gtkShortcutLabel);
+    }
+
+    const spinAdjustment = new Gtk.Adjustment({
+        value: settings.get_int(key),
+        lower,
+        upper,
+        step_increment: increment,
+        page_increment: increment * 5,
+        page_size: 0,
+    });
+    const spinButton = new Gtk.SpinButton({
+        adjustment: spinAdjustment,
+        climb_rate: 1,
+        digits: 0,
+        valign: Gtk.Align.CENTER,
+    });
+    settings.bind(key, spinButton, 'value', Gio.SettingsBindFlags.DEFAULT);
+
+    row.add_suffix(spinButton);
+    row.activatable_widget = spinButton;
+
+    if (changeSensitiveKey && changeSensitiveFn) {
+        row.sensitive = changeSensitiveFn(settings);
+        const changed = settings.connect(`changed::${changeSensitiveKey}`, () => {
+            row.sensitive = changeSensitiveFn(settings);
+        });
+    }
+}
+
 export function addKeyboardShortcut({
     window,
     group,

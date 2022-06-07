@@ -19,6 +19,9 @@
             <default>"panel"</default>
             <summary>Switch workspaces with scroll wheel</summary>
         </key>
+        <key name="scroll-wheel-debounce-amount" type="i">
+            <default>0</default>
+        </key>
         <key name="smart-workspace-names" type="b">
             <default>false</default>
         </key>

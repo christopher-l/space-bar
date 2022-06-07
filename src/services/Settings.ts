@@ -44,6 +44,10 @@ export class Settings {
         this.behaviorSettings,
         'scroll-wheel',
     );
+    readonly scrollWheelDebounceAmount = SettingsSubject.createIntegerSubject(
+        this.behaviorSettings,
+        'scroll-wheel-debounce-amount',
+    );
     readonly smartWorkspaceNames = SettingsSubject.createBooleanSubject(
         this.behaviorSettings,
         'smart-workspace-names',
@@ -74,6 +78,9 @@ class SettingsSubject<T> {
     private static _subjects: SettingsSubject<any>[] = [];
     static createBooleanSubject(settings: Gio.Settings, name: string): SettingsSubject<boolean> {
         return new SettingsSubject<boolean>(settings, name, 'boolean');
+    }
+    static createIntegerSubject(settings: Gio.Settings, name: string): SettingsSubject<number> {
+        return new SettingsSubject<number>(settings, name, 'integer');
     }
     static createStringSubject<T extends string = string>(
         settings: Gio.Settings,
@@ -118,7 +125,7 @@ class SettingsSubject<T> {
     private constructor(
         private readonly _settings: Gio.Settings,
         private readonly _name: string,
-        private readonly _type: 'boolean' | 'string' | 'string-array' | 'json-object',
+        private readonly _type: 'boolean' | 'integer' | 'string' | 'string-array' | 'json-object',
     ) {
         SettingsSubject._subjects.push(this);
     }
@@ -135,6 +142,8 @@ class SettingsSubject<T> {
             switch (this._type) {
                 case 'boolean':
                     return this._settings.get_boolean(this._name) as unknown as T;
+                case 'integer':
+                    return this._settings.get_int(this._name) as unknown as T;
                 case 'string':
                     return this._settings.get_string(this._name) as unknown as T;
                 case 'string-array':

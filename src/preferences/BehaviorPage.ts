@@ -1,7 +1,7 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 import { Adw } from 'imports/gi';
-import { addCombo, addToggle } from 'preferences/common';
+import { addCombo, addToggle, addSpinButton } from 'preferences/common';
 
 export const scrollWheelOptions = {
     panel: 'Over top panel',
@@ -20,6 +20,7 @@ export class BehaviorPage {
         this.page.set_title('Behavior');
         this.page.set_icon_name('preferences-system-symbolic');
         this._initGeneralGroup();
+        this._initWorkspaceScrollGroup();
         this._initSmartWorkspaceNamesGroup();
     }
 
@@ -32,6 +33,12 @@ export class BehaviorPage {
             key: 'show-empty-workspaces',
             title: 'Show empty workspaces',
         });
+        this.page.add(group);
+    }
+
+    private _initWorkspaceScrollGroup(): void {
+        const group = new Adw.PreferencesGroup();
+        group.set_title('Scroll Workspaces');
         addCombo({
             window: this.window,
             settings: this._settings,
@@ -39,6 +46,19 @@ export class BehaviorPage {
             key: 'scroll-wheel',
             title: 'Switch workspaces with scroll wheel',
             options: scrollWheelOptions,
+        });
+        addSpinButton({
+            settings: this._settings,
+            group,
+            key: 'scroll-wheel-debounce-amount',
+            title: 'Scroll wheel debounce amount (milliseconds)',
+            lower: 0,
+            upper: 2000,
+            increment: 100,
+            changeSensitiveKey: "scroll-wheel",
+            changeSensitiveFn: (settings) => {
+                return settings.get_string("scroll-wheel") != "disabled";
+            },
         });
         this.page.add(group);
     }
