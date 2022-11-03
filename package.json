@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "build": "./scripts/build.sh",
+    "install": "./scripts/build.sh -i",
+    "build:types": "ts-for-gir generate Gio-2.0 GObject-2.0 St-1.0 Shell-0.1 Meta-10 Adw-1 -g \"/usr/share/gir-1.0\" -g \"/usr/share/gnome-shell\" -g \"/usr/lib/mutter-10/\""
+  },
+  "devDependencies": {
+    "@ts-for-gir/cli": "^3.0.0-beta.6"
+  }
+}
