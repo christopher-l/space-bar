@@ -48,20 +48,11 @@ installing type information for used libraries. Generating types is optional and
 building the extension. (For that, we use a different configuration that stubs type information with
 dummy types.)
 
-In any directory, run:
+To generate types, run
 
 ```sh
-git clone https://github.com/sammydre/ts-for-gjs
-cd ts-for-gjs
 npm install
-npm run build
-npm link
-```
-
-Back in the project, run:
-
-```sh
-ts-for-gir generate Gio-2.0 GObject-2.0 St-1.0 Shell-0.1 Meta-10 Adw-1 -g "/usr/share/gir-1.0" -g "/usr/share/gnome-shell" -g "/usr/lib/mutter-10/"
+npm run build:types
 ```
 
 Choose "All" and "Yes" for everything.
