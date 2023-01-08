@@ -38,6 +38,46 @@ export function addToggle({
     return row;
 }
 
+export function addTextEntry({
+    group,
+    key,
+    title,
+    subtitle = null,
+    settings,
+    shortcutLabel,
+}: {
+    group: Adw.PreferencesGroup;
+    key: string;
+    title: string;
+    subtitle?: string | null;
+    settings: Gio.Settings;
+    shortcutLabel?: string | null;
+}): void {
+    const row = new Adw.ActionRow({ title, subtitle });
+    group.add(row);
+
+    if (shortcutLabel) {
+        const gtkShortcutLabel = new Gtk.ShortcutLabel({
+            accelerator: shortcutLabel,
+            valign: Gtk.Align.CENTER,
+        });
+        row.add_prefix(gtkShortcutLabel);
+    }
+
+    const entry = new Gtk.Entry({
+        text: settings.get_string(key),
+        valign: Gtk.Align.CENTER,
+    });
+    const focusController = new Gtk.EventControllerFocus();
+    focusController.connect('leave', () => {
+        settings.set_string(key, entry.get_buffer().text)
+    });
+    entry.add_controller(focusController);
+
+    row.add_suffix(entry);
+    row.activatable_widget = entry;
+}
+
 export function addCombo({
     group,
     key,

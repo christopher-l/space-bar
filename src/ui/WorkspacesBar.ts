@@ -6,6 +6,7 @@ import { Clutter, GObject, St } from 'imports/gi';
 import { Settings } from 'services/Settings';
 import { Workspaces, WorkspaceState } from 'services/Workspaces';
 import { WorkspacesBarMenu } from 'ui/WorkspacesBarMenu';
+import { Settings } from 'services/Settings';
 const PanelMenu = imports.ui.panelMenu;
 const DND = imports.ui.dnd;
 const { WindowPreview } = imports.ui.windowPreview;
@@ -50,6 +51,7 @@ export class WorkspacesBar {
     private _menu!: WorkspacesBarMenu;
     private _wsBar!: St.BoxLayout;
     private readonly _dragHandler = new WorkspacesBarDragHandler(() => this._updateWorkspaces());
+    private readonly _settings = Settings.getInstance();
 
     constructor() {}
 
@@ -172,6 +174,8 @@ export class WorkspacesBar {
         });
         if (workspace.index == this._ws.currentIndex) {
             label.style_class += ' active';
+            const color = this._settings.activeWorkspaceColor.value;
+            label.set_style(`background-color: ${color};`);
         } else {
             label.style_class += ' inactive';
         }

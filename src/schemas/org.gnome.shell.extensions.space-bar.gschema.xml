@@ -39,6 +39,12 @@
         </key>
     </schema>
 
+    <schema id="org.gnome.shell.extensions.space-bar.appearance" path="/org/gnome/shell/extensions/space-bar/appearance/">
+        <key name="active-workspace-color" type="s">
+            <default>'#ffffff4c'</default>
+        </key>
+    </schema>
+
     <schema id="org.gnome.shell.extensions.space-bar.shortcuts" path="/org/gnome/shell/extensions/space-bar/shortcuts/">
         <key name="enable-activate-workspace-shortcuts" type="b">
             <default>true</default>

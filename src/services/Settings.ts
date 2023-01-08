@@ -21,6 +21,9 @@ export class Settings {
     readonly behaviorSettings = ExtensionUtils.getSettings(
         `${Me.metadata['settings-schema']}.behavior`,
     );
+    readonly appearanceSettings = ExtensionUtils.getSettings(
+        `${Me.metadata['settings-schema']}.appearance`,
+    );
     readonly shortcutsSettings = ExtensionUtils.getSettings(
         `${Me.metadata['settings-schema']}.shortcuts`,
     );
@@ -67,6 +70,10 @@ export class Settings {
     readonly workspaceNames = SettingsSubject.createStringArraySubject(
         this.wmPreferencesSettings,
         'workspace-names',
+    );
+    readonly activeWorkspaceColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'active-workspace-color',
     );
 
     private init() {
