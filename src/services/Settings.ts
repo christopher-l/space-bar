@@ -2,6 +2,7 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 import { Gio } from 'imports/gi';
 import { positionOptions, scrollWheelOptions } from 'preferences/BehaviorPage';
+import { fontWeightOptions } from 'preferences/AppearancePage';
 
 export class Settings {
     private static _instance: Settings | null;
@@ -74,6 +75,10 @@ export class Settings {
     readonly activeWorkspaceColor = SettingsSubject.createStringSubject(
         this.appearanceSettings,
         'active-workspace-color',
+    );
+    readonly activeWorkspaceFontWeight = SettingsSubject.createStringSubject<keyof typeof fontWeightOptions>(
+        this.appearanceSettings,
+        'active-workspace-font-weight',
     );
 
     private init() {

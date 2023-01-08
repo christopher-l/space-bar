@@ -43,6 +43,16 @@
         <key name="active-workspace-color" type="s">
             <default>'#ffffff4c'</default>
         </key>
+        <key name="active-workspace-font-weight" type="s">
+            <choices>
+                <choice value="lighter"/>
+                <choice value="normal"/>
+                <choice value="bolder"/>
+                <choice value="bold"/>
+            </choices>
+            <default>"bold"</default>
+            <summary>Font weight used for the active workspace</summary>
+        </key>
     </schema>
 
     <schema id="org.gnome.shell.extensions.space-bar.shortcuts" path="/org/gnome/shell/extensions/space-bar/shortcuts/">

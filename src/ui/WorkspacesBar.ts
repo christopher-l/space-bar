@@ -175,7 +175,8 @@ export class WorkspacesBar {
         if (workspace.index == this._ws.currentIndex) {
             label.style_class += ' active';
             const color = this._settings.activeWorkspaceColor.value;
-            label.set_style(`background-color: ${color};`);
+            const fontWeight = this._settings.activeWorkspaceFontWeight.value;
+            label.set_style(`background-color: ${color}; font-weight: ${fontWeight};`);
         } else {
             label.style_class += ' inactive';
         }

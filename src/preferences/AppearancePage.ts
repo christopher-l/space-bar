@@ -1,7 +1,14 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 import { Adw } from 'imports/gi';
-import { addTextEntry } from 'preferences/common';
+import { addCombo, addTextEntry } from 'preferences/common';
+
+export const fontWeightOptions = {
+    lighter: 'Lighter',
+    normal: 'Normal',
+    bolder: 'Bolder',
+    bold: 'Bold',
+};
 
 export class AppearancePage {
     window!: Adw.PreferencesWindow;
@@ -24,6 +31,14 @@ export class AppearancePage {
             group,
             key: 'active-workspace-color',
             title: 'Active workspace color',
+        });
+        addCombo({
+            window: this.window,
+            settings: this._settings,
+            group,
+            key: 'active-workspace-font-weight',
+            title: 'Font weight of active workspace',
+            options: fontWeightOptions,
         });
         this.page.add(group);
     }
