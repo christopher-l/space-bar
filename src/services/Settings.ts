@@ -80,6 +80,10 @@ export class Settings {
         this.appearanceSettings,
         'active-workspace-font-weight',
     );
+    readonly activeWorkspaceRadius = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'active-workspace-radius',
+    );
 
     private init() {
         SettingsSubject.initAll();
@@ -162,6 +166,8 @@ class SettingsSubject<T> {
                     return this._settings.get_int(this._name) as unknown as T;
                 case 'string':
                     return this._settings.get_string(this._name) as unknown as T;
+                case 'number':
+                    return this._settings.get_int(this._name) as unknown as T;
                 case 'string-array':
                     return this._settings.get_strv(this._name) as unknown as T;
                 case 'json-object':
@@ -178,6 +184,8 @@ class SettingsSubject<T> {
                     return this._settings.set_int(this._name, value as unknown as number);
                 case 'string':
                     return this._settings.set_string(this._name, value as unknown as string);
+                case 'number':
+                    return this._settings.set_int(this._name, value as unknown as number);
                 case 'string-array':
                     return this._settings.set_strv(this._name, value as unknown as string[]);
                 case 'json-object':

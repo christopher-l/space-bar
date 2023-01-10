@@ -1,7 +1,7 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 import { Adw } from 'imports/gi';
-import { addCombo, addTextEntry } from 'preferences/common';
+import { addCombo, addTextEntry, addNumberEntry } from 'preferences/common';
 
 export const fontWeightOptions = {
     lighter: 'Lighter',
@@ -39,6 +39,12 @@ export class AppearancePage {
             key: 'active-workspace-font-weight',
             title: 'Font weight of active workspace',
             options: fontWeightOptions,
+        });
+        addNumberEntry({
+            settings: this._settings,
+            group,
+            key: 'active-workspace-radius',
+            title: 'Active workspace border radius',
         });
         this.page.add(group);
     }

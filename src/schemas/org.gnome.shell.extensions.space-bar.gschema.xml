@@ -53,6 +53,9 @@
             <default>"bold"</default>
             <summary>Font weight used for the active workspace</summary>
         </key>
+        <key name="active-workspace-radius" type="i">
+            <default>4</default>
+        </key>
     </schema>
 
     <schema id="org.gnome.shell.extensions.space-bar.shortcuts" path="/org/gnome/shell/extensions/space-bar/shortcuts/">

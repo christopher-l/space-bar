@@ -78,6 +78,54 @@ export function addTextEntry({
     row.activatable_widget = entry;
 }
 
+export function addNumberEntry({
+    group,
+    key,
+    title,
+    subtitle = null,
+    settings,
+    shortcutLabel,
+}: {
+    group: Adw.PreferencesGroup;
+    key: string;
+    title: string;
+    subtitle?: string | null;
+    settings: Gio.Settings;
+    shortcutLabel?: string | null;
+}): void {
+    const row = new Adw.ActionRow({ title, subtitle });
+    group.add(row);
+
+    if (shortcutLabel) {
+        const gtkShortcutLabel = new Gtk.ShortcutLabel({
+            accelerator: shortcutLabel,
+            valign: Gtk.Align.CENTER,
+        });
+        row.add_prefix(gtkShortcutLabel);
+    }
+
+    const valueHolder = new Gtk.Adjustment({
+      lower: -255,
+      upper: 255,
+      step_increment: 1
+    });
+
+    const entry = new Gtk.SpinButton({
+        adjustment: valueHolder,
+        digits: 0,
+        valign: Gtk.Align.CENTER,
+        value: settings.get_int(key),
+    });
+    const focusController = new Gtk.EventControllerFocus();
+    focusController.connect('leave', () => {
+        settings.set_int(key, valueHolder.value)
+    });
+    entry.add_controller(focusController);
+
+    row.add_suffix(entry);
+    row.activatable_widget = entry;
+}
+
 export function addCombo({
     group,
     key,
