@@ -175,6 +175,7 @@ export class WorkspacesBar {
             label.set_style(this._getActiveLabelStyle());
         } else {
             label.style_class += ' inactive';
+            label.set_style(this._getInactiveLabelStyle());
         }
         if (workspace.hasWindows) {
             label.style_class += ' nonempty';
@@ -191,6 +192,15 @@ export class WorkspacesBar {
         const borderRadius = this._settings.activeWorkspaceRadius.value;
         const paddingH = this._settings.activeWorkspacePaddingH.value;
         const paddingV = this._settings.activeWorkspacePaddingV.value;
+        return `background-color: ${color}; font-weight: ${fontWeight}; border-radius: ${borderRadius}px; padding: ${paddingV}px ${paddingH}px;`;
+    }
+
+    private _getInactiveLabelStyle(): string {
+        const color = this._settings.inactiveWorkspaceColor.value;
+        const fontWeight = this._settings.inactiveWorkspaceFontWeight.value;
+        const borderRadius = this._settings.inactiveWorkspaceRadius.value;
+        const paddingH = this._settings.inactiveWorkspacePaddingH.value;
+        const paddingV = this._settings.inactiveWorkspacePaddingV.value;
         return `background-color: ${color}; font-weight: ${fontWeight}; border-radius: ${borderRadius}px; padding: ${paddingV}px ${paddingH}px;`;
     }
 }

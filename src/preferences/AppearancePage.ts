@@ -21,6 +21,7 @@ export class AppearancePage {
         this.page.set_title('Appearance');
         this.page.set_icon_name('preferences-system-symbolic');
         this._initActiveWorkspaceGroup();
+        this._initInactiveWorkspaceGroup();
     }
 
     private _initActiveWorkspaceGroup(): void {
@@ -60,6 +61,42 @@ export class AppearancePage {
         });
         this.page.add(group);
     }
+
+    private _initInactiveWorkspaceGroup(): void {
+        const group = new Adw.PreferencesGroup();
+        group.set_title('Inactive Workspace');
+        addTextEntry({
+            settings: this._settings,
+            group,
+            key: 'inactive-workspace-color',
+            title: 'Inactive workspace color',
+        });
+        addCombo({
+            window: this.window,
+            settings: this._settings,
+            group,
+            key: 'inactive-workspace-font-weight',
+            title: 'Font weight of inactive workspace',
+            options: fontWeightOptions,
+        });
+        addNumberEntry({
+            settings: this._settings,
+            group,
+            key: 'inactive-workspace-radius',
+            title: 'Inactive workspace border radius',
+        });
+        addNumberEntry({
+            settings: this._settings,
+            group,
+            key: 'inactive-workspace-padding-h',
+            title: 'Inactive workspace horizontal padding',
+        });
+        addNumberEntry({
+            settings: this._settings,
+            group,
+            key: 'inactive-workspace-padding-v',
+            title: 'Inactive workspace vertical padding',
+        });
         this.page.add(group);
     }
 }

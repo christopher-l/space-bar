@@ -40,6 +40,7 @@
     </schema>
 
     <schema id="org.gnome.shell.extensions.space-bar.appearance" path="/org/gnome/shell/extensions/space-bar/appearance/">
+        <!-- Active Workspace Appearance Settings -->
         <key name="active-workspace-color" type="s">
             <default>'#ffffff4c'</default>
         </key>
@@ -60,6 +61,29 @@
             <default>8</default>
         </key>
         <key name="active-workspace-padding-v" type="i">
+            <default>3</default>
+        </key>
+        <!-- Inactive Workspace Appearance Settings -->
+        <key name="inactive-workspace-color" type="s">
+            <default>'#ffffff00'</default>
+        </key>
+        <key name="inactive-workspace-font-weight" type="s">
+            <choices>
+                <choice value="lighter"/>
+                <choice value="normal"/>
+                <choice value="bolder"/>
+                <choice value="bold"/>
+            </choices>
+            <default>"normal"</default>
+            <summary>Font weight used for the inactive workspace</summary>
+        </key>
+        <key name="inactive-workspace-radius" type="i">
+            <default>4</default>
+        </key>
+        <key name="inactive-workspace-padding-h" type="i">
+            <default>8</default>
+        </key>
+        <key name="inactive-workspace-padding-v" type="i">
             <default>3</default>
         </key>
     </schema>

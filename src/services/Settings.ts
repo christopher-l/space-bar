@@ -92,6 +92,26 @@ export class Settings {
         this.appearanceSettings,
         'active-workspace-padding-v',
     );
+    readonly inactiveWorkspaceColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'inactive-workspace-color',
+    );
+    readonly inactiveWorkspaceFontWeight = SettingsSubject.createStringSubject<keyof typeof fontWeightOptions>(
+        this.appearanceSettings,
+        'inactive-workspace-font-weight',
+    );
+    readonly inactiveWorkspaceRadius = SettingsSubject.createNumberSubject(
+        this.appearanceSettings,
+        'inactive-workspace-radius',
+    );
+    readonly inactiveWorkspacePaddingH = SettingsSubject.createNumberSubject(
+        this.appearanceSettings,
+        'inactive-workspace-padding-h',
+    );
+    readonly inactiveWorkspacePaddingV = SettingsSubject.createNumberSubject(
+        this.appearanceSettings,
+        'inactive-workspace-padding-v',
+    );
 
     private init() {
         SettingsSubject.initAll();
