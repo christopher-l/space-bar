@@ -46,6 +46,20 @@ export class AppearancePage {
             key: 'active-workspace-radius',
             title: 'Active workspace border radius',
         });
+        addNumberEntry({
+            settings: this._settings,
+            group,
+            key: 'active-workspace-padding-h',
+            title: 'Active workspace horizontal padding',
+        });
+        addNumberEntry({
+            settings: this._settings,
+            group,
+            key: 'active-workspace-padding-v',
+            title: 'Active workspace vertical padding',
+        });
+        this.page.add(group);
+    }
         this.page.add(group);
     }
 }

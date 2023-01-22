@@ -172,10 +172,7 @@ export class WorkspacesBar {
         });
         if (workspace.index == this._ws.currentIndex) {
             label.style_class += ' active';
-            const color = this._settings.activeWorkspaceColor.value;
-            const fontWeight = this._settings.activeWorkspaceFontWeight.value;
-            const borderRadius = this._settings.activeWorkspaceRadius.value;
-            label.set_style(`background-color: ${color}; font-weight: ${fontWeight}; border-radius: ${borderRadius}px;`);
+            label.set_style(this._getActiveLabelStyle());
         } else {
             label.style_class += ' inactive';
         }
@@ -186,6 +183,15 @@ export class WorkspacesBar {
         }
         label.set_text(this._ws.getDisplayName(workspace));
         return label;
+    }
+
+    private _getActiveLabelStyle(): string {
+        const color = this._settings.activeWorkspaceColor.value;
+        const fontWeight = this._settings.activeWorkspaceFontWeight.value;
+        const borderRadius = this._settings.activeWorkspaceRadius.value;
+        const paddingH = this._settings.activeWorkspacePaddingH.value;
+        const paddingV = this._settings.activeWorkspacePaddingV.value;
+        return `background-color: ${color}; font-weight: ${fontWeight}; border-radius: ${borderRadius}px; padding: ${paddingV}px ${paddingH}px;`;
     }
 }
 

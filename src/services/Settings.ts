@@ -84,6 +84,14 @@ export class Settings {
         this.appearanceSettings,
         'active-workspace-radius',
     );
+    readonly activeWorkspacePaddingH = SettingsSubject.createNumberSubject(
+        this.appearanceSettings,
+        'active-workspace-padding-h',
+    );
+    readonly activeWorkspacePaddingV = SettingsSubject.createNumberSubject(
+        this.appearanceSettings,
+        'active-workspace-padding-v',
+    );
 
     private init() {
         SettingsSubject.initAll();

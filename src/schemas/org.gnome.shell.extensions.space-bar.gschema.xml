@@ -56,6 +56,12 @@
         <key name="active-workspace-radius" type="i">
             <default>4</default>
         </key>
+        <key name="active-workspace-padding-h" type="i">
+            <default>8</default>
+        </key>
+        <key name="active-workspace-padding-v" type="i">
+            <default>3</default>
+        </key>
     </schema>
 
     <schema id="org.gnome.shell.extensions.space-bar.shortcuts" path="/org/gnome/shell/extensions/space-bar/shortcuts/">
