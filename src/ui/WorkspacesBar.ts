@@ -3,6 +3,7 @@ const Me = ExtensionUtils.getCurrentExtension();
 const Main = imports.ui.main;
 import type { Meta } from 'imports/gi';
 import { Clutter, GObject, St } from 'imports/gi';
+import { Settings } from 'services/Settings';
 import { Workspaces, WorkspaceState } from 'services/Workspaces';
 import { WorkspacesBarMenu } from 'ui/WorkspacesBarMenu';
 const PanelMenu = imports.ui.panelMenu;
@@ -43,6 +44,7 @@ const MAX_CLICK_TIME_DELTA = 300;
 
 export class WorkspacesBar {
     private readonly _name = `${Me.metadata.name}`;
+    private readonly _settings = Settings.getInstance();
     private readonly _ws = Workspaces.getInstance();
     readonly button = new (WorkspacesButton as any)(0.5, this._name);
     private _wsBar!: St.BoxLayout;
@@ -68,10 +70,11 @@ export class WorkspacesBar {
         this._ws.onUpdate(() => this._updateWorkspaces());
 
         // bar creation
+        let barPosition = this._settings.position.value;
         this._wsBar = new St.BoxLayout({});
         this._updateWorkspaces();
         this.button.add_child(this._wsBar);
-        Main.panel.addToStatusArea(this._name, this.button, 0, 'left');
+        Main.panel.addToStatusArea(this._name, this.button, 0, barPosition);
     }
 
     // update the workspaces bar
