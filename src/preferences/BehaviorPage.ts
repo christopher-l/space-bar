@@ -9,6 +9,12 @@ export const scrollWheelOptions = {
     disabled: 'Disabled',
 };
 
+export const positionOptions = {
+    left: 'Left',
+    center: 'Center',
+    right: 'Right',
+};
+
 export class BehaviorPage {
     window!: Adw.PreferencesWindow;
     readonly page = new Adw.PreferencesPage();
@@ -39,6 +45,14 @@ export class BehaviorPage {
             key: 'scroll-wheel',
             title: 'Switch workspaces with scroll wheel',
             options: scrollWheelOptions,
+        });
+        addCombo({
+            window: this.window,
+            settings: this._settings,
+            group,
+            key: 'position',
+            title: 'Position of the widget in the Top Bar',
+            options: positionOptions,
         });
         this.page.add(group);
     }
