@@ -22,6 +22,15 @@
         <key name="smart-workspace-names" type="b">
             <default>false</default>
         </key>
+        <key name="position" type="s">
+            <choices>
+                <choice value="left"/>
+                <choice value="center"/>
+                <choice value="right"/>
+            </choices>
+            <default>"left"</default>
+            <summary>Position of the widget in the Top Bar</summary>
+        </key>
     </schema>
 
     <schema id="org.gnome.shell.extensions.space-bar.shortcuts" path="/org/gnome/shell/extensions/space-bar/shortcuts/">

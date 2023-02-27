@@ -1,7 +1,7 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 import { Gio } from 'imports/gi';
-import { scrollWheelOptions } from 'preferences/BehaviorPage';
+import { scrollWheelOptions, positionOptions } from 'preferences/BehaviorPage';
 
 export class Settings {
     private static _instance: Settings | null;
@@ -47,6 +47,10 @@ export class Settings {
     readonly smartWorkspaceNames = SettingsSubject.createBooleanSubject(
         this.behaviorSettings,
         'smart-workspace-names',
+    );
+    readonly position = SettingsSubject.createStringSubject<keyof typeof positionOptions>(
+        this.behaviorSettings,
+        'position',
     );
     readonly enableActivateWorkspaceShortcuts = SettingsSubject.createBooleanSubject(
         this.shortcutsSettings,
