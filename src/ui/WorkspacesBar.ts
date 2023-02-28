@@ -46,7 +46,7 @@ export class WorkspacesBar {
     private readonly _name = `${Me.metadata.name}`;
     private readonly _settings = Settings.getInstance();
     private readonly _ws = Workspaces.getInstance();
-    readonly button = new (WorkspacesButton as any)(0.5, this._name);
+    private button: any;
     private _wsBar!: St.BoxLayout;
     private readonly _dragHandler = new WorkspacesBarDragHandler(() => this._updateWorkspaces());
 
@@ -55,6 +55,8 @@ export class WorkspacesBar {
     init(): void {
         this._initButton();
         new WorkspacesBarMenu(this.button.menu).init();
+        this._settings.position.subscribe(() => this._refreshTopBarConfiguration());
+        this._settings.threshold.subscribe(() => this._refreshTopBarConfiguration());
     }
 
     destroy(): void {
@@ -62,8 +64,19 @@ export class WorkspacesBar {
         this.button.destroy();
         this._dragHandler.destroy();
     }
+    
+    getWidget(): any {
+        return this.button;
+    }
+
+    private _refreshTopBarConfiguration(): void {
+        this.button.destroy();
+        this._initButton();
+        new WorkspacesBarMenu(this.button.menu).init();
+    }
 
     private _initButton(): void {
+        this.button = new (WorkspacesButton as any)(0.5, this._name);
         this.button._delegate = this._dragHandler;
         this.button.track_hover = false;
         this.button.style_class = 'panel-button space-bar';

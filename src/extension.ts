@@ -17,7 +17,7 @@ class Extension {
         this.workspacesBar = new WorkspacesBar();
         this.workspacesBar.init();
         this.scrollHandler = new ScrollHandler();
-        this.scrollHandler.init(this.workspacesBar.button);
+        this.scrollHandler.init(this.workspacesBar.getWidget());
     }
 
     disable() {
