@@ -52,6 +52,10 @@ export class Settings {
         this.behaviorSettings,
         'position',
     );
+    readonly threshold = SettingsSubject.createIntSubject(
+        this.behaviorSettings,
+        'threshold',
+    );
     readonly enableActivateWorkspaceShortcuts = SettingsSubject.createBooleanSubject(
         this.shortcutsSettings,
         'enable-activate-workspace-shortcuts',
@@ -78,6 +82,9 @@ class SettingsSubject<T> {
     private static _subjects: SettingsSubject<any>[] = [];
     static createBooleanSubject(settings: Gio.Settings, name: string): SettingsSubject<boolean> {
         return new SettingsSubject<boolean>(settings, name, 'boolean');
+    }
+    static createIntSubject(settings: Gio.Settings, name: string): SettingsSubject<number> {
+        return new SettingsSubject<number>(settings, name, 'int');
     }
     static createStringSubject<T extends string = string>(
         settings: Gio.Settings,
@@ -122,7 +129,7 @@ class SettingsSubject<T> {
     private constructor(
         private readonly _settings: Gio.Settings,
         private readonly _name: string,
-        private readonly _type: 'boolean' | 'string' | 'string-array' | 'json-object',
+        private readonly _type: 'boolean' | 'int' | 'string' | 'string-array' | 'json-object',
     ) {
         SettingsSubject._subjects.push(this);
     }
@@ -139,6 +146,8 @@ class SettingsSubject<T> {
             switch (this._type) {
                 case 'boolean':
                     return this._settings.get_boolean(this._name) as unknown as T;
+                case 'int':
+                    return this._settings.get_int(this._name) as unknown as T;
                 case 'string':
                     return this._settings.get_string(this._name) as unknown as T;
                 case 'string-array':
@@ -153,6 +162,8 @@ class SettingsSubject<T> {
             switch (this._type) {
                 case 'boolean':
                     return this._settings.set_boolean(this._name, value as unknown as boolean);
+                case 'int':
+                    return this._settings.set_int(this._name, value as unknown as number);
                 case 'string':
                     return this._settings.set_string(this._name, value as unknown as string);
                 case 'string-array':
