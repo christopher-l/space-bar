@@ -29,7 +29,13 @@
                 <choice value="right"/>
             </choices>
             <default>"left"</default>
-            <summary>Position of the widget in the Top Bar</summary>
+            <summary>Position of the workspace bar in the Top Bar</summary>
+        </key>
+        <key name="threshold" type="i">
+            <range min="0" max="100" />
+            <default>1</default>
+            <summary>Position threshold</summary>
+            <description>Controls the order of the workspace bar relative to other extensions icons.</description>
         </key>
     </schema>
 

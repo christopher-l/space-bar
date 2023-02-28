@@ -1,7 +1,7 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 import { Adw } from 'imports/gi';
-import { addCombo, addToggle } from 'preferences/common';
+import { addCombo, addToggle, addSpinButton } from 'preferences/common';
 
 export const scrollWheelOptions = {
     panel: 'Over top panel',
@@ -51,8 +51,17 @@ export class BehaviorPage {
             settings: this._settings,
             group,
             key: 'position',
-            title: 'Position of the widget in the Top Bar',
+            title: 'Position of the Workspace Bar in the Top Bar',
             options: positionOptions,
+        });
+        addSpinButton({
+            settings: this._settings,
+            group,
+            key: 'threshold',
+            title: 'Position threshold',
+            lower: 0,
+            upper: 100,
+            step: 1,
         });
         this.page.add(group);
     }

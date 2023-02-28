@@ -71,10 +71,11 @@ export class WorkspacesBar {
 
         // bar creation
         let barPosition = this._settings.position.value;
+        let threshold = this._settings.threshold.value;
         this._wsBar = new St.BoxLayout({});
         this._updateWorkspaces();
         this.button.add_child(this._wsBar);
-        Main.panel.addToStatusArea(this._name, this.button, 0, barPosition);
+        Main.panel.addToStatusArea(this._name, this.button, threshold, barPosition);
     }
 
     // update the workspaces bar
