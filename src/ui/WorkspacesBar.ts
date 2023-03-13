@@ -46,7 +46,7 @@ export class WorkspacesBar {
     private readonly _name = `${Me.metadata.name}`;
     private readonly _settings = Settings.getInstance();
     private readonly _ws = Workspaces.getInstance();
-    private button: any;
+    private _button: any;
     private _wsBar!: St.BoxLayout;
     private readonly _dragHandler = new WorkspacesBarDragHandler(() => this._updateWorkspaces());
 
@@ -54,41 +54,44 @@ export class WorkspacesBar {
 
     init(): void {
         this._initButton();
-        new WorkspacesBarMenu(this.button.menu).init();
+        new WorkspacesBarMenu(this._button.menu).init();
         this._settings.position.subscribe(() => this._refreshTopBarConfiguration());
-        this._settings.threshold.subscribe(() => this._refreshTopBarConfiguration());
+        this._settings.positionIndex.subscribe(() => this._refreshTopBarConfiguration());
     }
 
     destroy(): void {
         this._wsBar.destroy();
-        this.button.destroy();
+        this._button.destroy();
         this._dragHandler.destroy();
     }
-    
+
     getWidget(): any {
-        return this.button;
+        return this._button;
     }
 
     private _refreshTopBarConfiguration(): void {
-        this.button.destroy();
+        this._button.destroy();
         this._initButton();
-        new WorkspacesBarMenu(this.button.menu).init();
+        new WorkspacesBarMenu(this._button.menu).init();
     }
 
     private _initButton(): void {
-        this.button = new (WorkspacesButton as any)(0.5, this._name);
-        this.button._delegate = this._dragHandler;
-        this.button.track_hover = false;
-        this.button.style_class = 'panel-button space-bar';
+        this._button = new (WorkspacesButton as any)(0.5, this._name);
+        this._button._delegate = this._dragHandler;
+        this._button.track_hover = false;
+        this._button.style_class = 'panel-button space-bar';
         this._ws.onUpdate(() => this._updateWorkspaces());
 
         // bar creation
-        let barPosition = this._settings.position.value;
-        let threshold = this._settings.threshold.value;
         this._wsBar = new St.BoxLayout({});
         this._updateWorkspaces();
-        this.button.add_child(this._wsBar);
-        Main.panel.addToStatusArea(this._name, this.button, threshold, barPosition);
+        this._button.add_child(this._wsBar);
+        Main.panel.addToStatusArea(
+            this._name,
+            this._button,
+            this._settings.positionIndex.value,
+            this._settings.position.value,
+        );
     }
 
     // update the workspaces bar
@@ -128,7 +131,7 @@ export class WorkspacesBar {
                     this._ws.removeWorkspace(workspace.index);
                     break;
                 case 3:
-                    this.button.menu.toggle();
+                    this._button.menu.toggle();
                     break;
             }
             return Clutter.EVENT_PROPAGATE;

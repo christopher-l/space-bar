@@ -80,6 +80,45 @@ export function addCombo({
     updateComboRowState();
 }
 
+export function addSpinButton({
+    group,
+    key,
+    title,
+    subtitle = null,
+    settings,
+    lower,
+    upper,
+    step = 1,
+}: {
+    group: Adw.PreferencesGroup;
+    key: string;
+    title: string;
+    subtitle?: string | null;
+    settings: Gio.Settings;
+    lower: number;
+    upper: number;
+    step?: number | null;
+}): void {
+    const row = new Adw.ActionRow({ title, subtitle });
+    group.add(row);
+
+    const spinner = new Gtk.SpinButton({
+        adjustment: new Gtk.Adjustment({
+            step_increment: step ?? 1,
+            lower,
+            upper,
+        }),
+        value: settings.get_int(key),
+        valign: Gtk.Align.CENTER,
+        halign: Gtk.Align.CENTER,
+    });
+
+    settings.bind(key, spinner, 'value', Gio.SettingsBindFlags.DEFAULT);
+
+    row.add_suffix(spinner);
+    row.activatable_widget = spinner;
+}
+
 export function addKeyboardShortcut({
     window,
     group,
@@ -196,39 +235,4 @@ function findItemPositionInModel<T extends GObject.Object>(
         }
     }
     return undefined;
-}
-
-export function addSpinButton({
-    group,
-    key,
-    title,
-    subtitle = null,
-    settings,
-    lower,
-    upper,
-    step,
-}: {
-    group: Adw.PreferencesGroup;
-    key: string;
-    title: string;
-    subtitle?: string | null;
-    settings: Gio.Settings;
-    lower?: number | null;
-    upper?: number | null;
-    step?: number | null;
-}): void {
-    const row = new Adw.ActionRow({ title, subtitle });
-    group.add(row);
-
-    const spinner = new Gtk.SpinButton({
-        adjustment: new Gtk.Adjustment({ step_increment: step ?? 1, lower: lower ?? 0, upper: upper ?? 100 }),
-        value: settings.get_int(key),
-        valign: Gtk.Align.CENTER,
-        halign: Gtk.Align.CENTER,
-    });
-
-    settings.bind(key, spinner, 'value', Gio.SettingsBindFlags.DEFAULT);
-
-    row.add_suffix(spinner);
-    row.activatable_widget = spinner;
 }

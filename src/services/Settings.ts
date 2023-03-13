@@ -1,7 +1,7 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 import { Gio } from 'imports/gi';
-import { scrollWheelOptions, positionOptions } from 'preferences/BehaviorPage';
+import { positionOptions, scrollWheelOptions } from 'preferences/BehaviorPage';
 
 export class Settings {
     private static _instance: Settings | null;
@@ -52,9 +52,9 @@ export class Settings {
         this.behaviorSettings,
         'position',
     );
-    readonly threshold = SettingsSubject.createIntSubject(
+    readonly positionIndex = SettingsSubject.createIntSubject(
         this.behaviorSettings,
-        'threshold',
+        'position-index',
     );
     readonly enableActivateWorkspaceShortcuts = SettingsSubject.createBooleanSubject(
         this.shortcutsSettings,

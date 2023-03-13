@@ -1,7 +1,7 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 import { Adw } from 'imports/gi';
-import { addCombo, addToggle, addSpinButton } from 'preferences/common';
+import { addCombo, addSpinButton, addToggle } from 'preferences/common';
 
 export const scrollWheelOptions = {
     panel: 'Over top panel',
@@ -32,6 +32,24 @@ export class BehaviorPage {
     private _initGeneralGroup(): void {
         const group = new Adw.PreferencesGroup();
         group.set_title('General');
+        addCombo({
+            window: this.window,
+            settings: this._settings,
+            group,
+            key: 'position',
+            title: 'Position in top panel',
+            options: positionOptions,
+        });
+        addSpinButton({
+            settings: this._settings,
+            group,
+            key: 'position-index',
+            title: 'Position index',
+            subtitle: 'Order relative to other elements',
+            lower: 0,
+            upper: 100,
+        });
+        this.page.add(group);
         addToggle({
             settings: this._settings,
             group,
@@ -46,24 +64,6 @@ export class BehaviorPage {
             title: 'Switch workspaces with scroll wheel',
             options: scrollWheelOptions,
         });
-        addCombo({
-            window: this.window,
-            settings: this._settings,
-            group,
-            key: 'position',
-            title: 'Position of the Workspace Bar in the Top Bar',
-            options: positionOptions,
-        });
-        addSpinButton({
-            settings: this._settings,
-            group,
-            key: 'threshold',
-            title: 'Position threshold',
-            lower: 0,
-            upper: 100,
-            step: 1,
-        });
-        this.page.add(group);
     }
 
     private _initSmartWorkspaceNamesGroup(): void {

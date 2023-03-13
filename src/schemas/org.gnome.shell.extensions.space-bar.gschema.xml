@@ -7,6 +7,21 @@
     </schema>
 
     <schema id="org.gnome.shell.extensions.space-bar.behavior" path="/org/gnome/shell/extensions/space-bar/behavior/">
+        <key name="position" type="s">
+            <choices>
+                <choice value="left"/>
+                <choice value="center"/>
+                <choice value="right"/>
+            </choices>
+            <default>"left"</default>
+            <summary>Position in top panel</summary>
+        </key>
+        <key name="position-index" type="i">
+            <range min="0" max="100" />
+            <default>1</default>
+            <summary>Position index</summary>
+            <description>Order relative to other elements</description>
+        </key>
         <key name="show-empty-workspaces" type="b">
             <default>true</default>
         </key>
@@ -21,21 +36,6 @@
         </key>
         <key name="smart-workspace-names" type="b">
             <default>false</default>
-        </key>
-        <key name="position" type="s">
-            <choices>
-                <choice value="left"/>
-                <choice value="center"/>
-                <choice value="right"/>
-            </choices>
-            <default>"left"</default>
-            <summary>Position of the workspace bar in the Top Bar</summary>
-        </key>
-        <key name="threshold" type="i">
-            <range min="0" max="100" />
-            <default>1</default>
-            <summary>Position threshold</summary>
-            <description>Controls the order of the workspace bar relative to other extensions icons.</description>
         </key>
     </schema>
 
