@@ -56,3 +56,15 @@ npm run build:types
 ```
 
 Choose "All" and "Yes" for everything.
+
+## Debug
+
+Run a GNOME shell instance in a window:
+```sh
+dbus-run-session -- gnome-shell --nested --wayland
+```
+
+View relevant logs:
+```sh
+journalctl -f -o cat /usr/bin/gnome-shell
+```
