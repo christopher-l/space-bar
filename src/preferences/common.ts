@@ -15,7 +15,7 @@ export function addToggle({
     subtitle?: string | null;
     settings: Gio.Settings;
     shortcutLabel?: string | null;
-}): void {
+}): Adw.ActionRow {
     const row = new Adw.ActionRow({ title, subtitle });
     group.add(row);
 
@@ -35,6 +35,7 @@ export function addToggle({
 
     row.add_suffix(toggle);
     row.activatable_widget = toggle;
+    return row;
 }
 
 export function addCombo({
@@ -53,7 +54,7 @@ export function addCombo({
     options: { [key: string]: string };
     settings: Gio.Settings;
     window: Adw.PreferencesWindow;
-}): void {
+}): Adw.ComboRow {
     const model = Gio.ListStore.new(DropDownChoice);
     for (const id in options) {
         model.append(new DropDownChoice({ id, title: options[id] }));
@@ -78,6 +79,7 @@ export function addCombo({
     const changed = settings.connect(`changed::${key}`, () => updateComboRowState());
     window.connect('unmap', () => settings.disconnect(changed));
     updateComboRowState();
+    return row;
 }
 
 export function addSpinButton({
@@ -98,7 +100,7 @@ export function addSpinButton({
     lower: number;
     upper: number;
     step?: number | null;
-}): void {
+}): Adw.ActionRow {
     const row = new Adw.ActionRow({ title, subtitle });
     group.add(row);
 
@@ -117,6 +119,42 @@ export function addSpinButton({
 
     row.add_suffix(spinner);
     row.activatable_widget = spinner;
+    return row;
+}
+
+export function addSubDialog({
+    window,
+    row,
+    title,
+    populatePage,
+}: {
+    window: Adw.PreferencesWindow;
+    row: Adw.ActionRow;
+    title: string;
+    populatePage: (page: Adw.PreferencesPage) => void;
+}) {
+    function showDialog() {
+        const dialog = new Gtk.Dialog({
+            title,
+            modal: true,
+            use_header_bar: 1,
+            transient_for: window,
+            width_request: 350,
+            default_width: 500,
+        });
+        const page = new Adw.PreferencesPage();
+        populatePage(page);
+        dialog.set_child(page);
+        dialog.show();
+    }
+    const button = new Gtk.Button({
+        icon_name: 'applications-system-symbolic',
+        valign: Gtk.Align.CENTER,
+        has_frame: false,
+        margin_start: 10,
+    });
+    button.connect('clicked', () => showDialog());
+    row.add_suffix(button);
 }
 
 export function addKeyboardShortcut({

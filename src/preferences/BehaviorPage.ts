@@ -1,7 +1,7 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 import { Adw } from 'imports/gi';
-import { addCombo, addSpinButton, addToggle } from 'preferences/common';
+import { addCombo, addSpinButton, addSubDialog, addToggle } from 'preferences/common';
 
 export const scrollWheelOptions = {
     panel: 'Over top panel',
@@ -32,7 +32,7 @@ export class BehaviorPage {
     private _initGeneralGroup(): void {
         const group = new Adw.PreferencesGroup();
         group.set_title('General');
-        addCombo({
+        const positionRow = addCombo({
             window: this.window,
             settings: this._settings,
             group,
@@ -40,16 +40,24 @@ export class BehaviorPage {
             title: 'Position in top panel',
             options: positionOptions,
         });
-        addSpinButton({
-            settings: this._settings,
-            group,
-            key: 'position-index',
-            title: 'Position index',
-            subtitle: 'Order relative to other elements',
-            lower: 0,
-            upper: 100,
+        addSubDialog({
+            window: this.window,
+            row: positionRow,
+            title: 'Position in Top Panel',
+            populatePage: (page) => {
+                const positionSubDialogGroup = new Adw.PreferencesGroup();
+                page.add(positionSubDialogGroup);
+                addSpinButton({
+                    settings: this._settings,
+                    group: positionSubDialogGroup,
+                    key: 'position-index',
+                    title: 'Position index',
+                    subtitle: 'Order relative to other elements',
+                    lower: 0,
+                    upper: 100,
+                });
+            },
         });
-        this.page.add(group);
         addToggle({
             settings: this._settings,
             group,
@@ -64,6 +72,7 @@ export class BehaviorPage {
             title: 'Switch workspaces with scroll wheel',
             options: scrollWheelOptions,
         });
+        this.page.add(group);
     }
 
     private _initSmartWorkspaceNamesGroup(): void {
