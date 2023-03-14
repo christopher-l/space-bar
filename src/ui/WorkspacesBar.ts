@@ -47,6 +47,7 @@ export class WorkspacesBar {
     private readonly _settings = Settings.getInstance();
     private readonly _ws = Workspaces.getInstance();
     private _button: any;
+    private _menu!: WorkspacesBarMenu;
     private _wsBar!: St.BoxLayout;
     private readonly _dragHandler = new WorkspacesBarDragHandler(() => this._updateWorkspaces());
 
@@ -54,7 +55,7 @@ export class WorkspacesBar {
 
     init(): void {
         this._initButton();
-        new WorkspacesBarMenu(this._button.menu).init();
+        this._initMenu();
         this._settings.position.subscribe(() => this._refreshTopBarConfiguration());
         this._settings.positionIndex.subscribe(() => this._refreshTopBarConfiguration());
     }
@@ -62,6 +63,7 @@ export class WorkspacesBar {
     destroy(): void {
         this._wsBar.destroy();
         this._button.destroy();
+        this._menu.destroy();
         this._dragHandler.destroy();
     }
 
@@ -71,8 +73,9 @@ export class WorkspacesBar {
 
     private _refreshTopBarConfiguration(): void {
         this._button.destroy();
+        this._menu.destroy();
         this._initButton();
-        new WorkspacesBarMenu(this._button.menu).init();
+        this._initMenu();
     }
 
     private _initButton(): void {
@@ -92,6 +95,11 @@ export class WorkspacesBar {
             this._settings.positionIndex.value,
             this._settings.position.value,
         );
+    }
+
+    private _initMenu(): void {
+        this._menu = new WorkspacesBarMenu(this._button.menu);
+        this._menu.init();
     }
 
     // update the workspaces bar
