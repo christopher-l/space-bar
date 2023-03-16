@@ -1,7 +1,7 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 import { Adw } from 'imports/gi';
-import { addCombo, addTextEntry, addNumberEntry } from 'preferences/common';
+import { addCombo, addTextEntry, addSpinButton } from 'preferences/common';
 
 export const fontWeightOptions = {
     lighter: 'Lighter',
@@ -41,23 +41,29 @@ export class AppearancePage {
             title: 'Font weight of active workspace',
             options: fontWeightOptions,
         });
-        addNumberEntry({
+        addSpinButton({
             settings: this._settings,
             group,
             key: 'active-workspace-radius',
             title: 'Active workspace border radius',
+            lower: 0,
+            upper: 255
         });
-        addNumberEntry({
+        addSpinButton({
             settings: this._settings,
             group,
             key: 'active-workspace-padding-h',
             title: 'Active workspace horizontal padding',
+            lower: 0,
+            upper: 255
         });
-        addNumberEntry({
+        addSpinButton({
             settings: this._settings,
             group,
             key: 'active-workspace-padding-v',
             title: 'Active workspace vertical padding',
+            lower: 0,
+            upper: 255
         });
         this.page.add(group);
     }
@@ -79,23 +85,29 @@ export class AppearancePage {
             title: 'Font weight of inactive workspace',
             options: fontWeightOptions,
         });
-        addNumberEntry({
+        addSpinButton({
             settings: this._settings,
             group,
             key: 'inactive-workspace-radius',
             title: 'Inactive workspace border radius',
+            lower: 0,
+            upper: 255
         });
-        addNumberEntry({
+        addSpinButton({
             settings: this._settings,
             group,
             key: 'inactive-workspace-padding-h',
             title: 'Inactive workspace horizontal padding',
+            lower: 0,
+            upper: 255
         });
-        addNumberEntry({
+        addSpinButton({
             settings: this._settings,
             group,
             key: 'inactive-workspace-padding-v',
             title: 'Inactive workspace vertical padding',
+            lower: 0,
+            upper: 255
         });
         this.page.add(group);
     }
