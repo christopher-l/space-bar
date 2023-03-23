@@ -19,7 +19,7 @@ export class AppearancePage {
 
     init() {
         this.page.set_title('Appearance');
-        this.page.set_icon_name('preferences-system-symbolic');
+        this.page.set_icon_name('applications-graphics-symbolic');
         this._initActiveWorkspaceGroup();
         this._initInactiveWorkspaceGroup();
     }
@@ -47,7 +47,7 @@ export class AppearancePage {
             key: 'active-workspace-radius',
             title: 'Active workspace border radius',
             lower: 0,
-            upper: 255
+            upper: 255,
         });
         addSpinButton({
             settings: this._settings,
@@ -55,7 +55,7 @@ export class AppearancePage {
             key: 'active-workspace-padding-h',
             title: 'Active workspace horizontal padding',
             lower: 0,
-            upper: 255
+            upper: 255,
         });
         addSpinButton({
             settings: this._settings,
@@ -63,7 +63,7 @@ export class AppearancePage {
             key: 'active-workspace-padding-v',
             title: 'Active workspace vertical padding',
             lower: 0,
-            upper: 255
+            upper: 255,
         });
         this.page.add(group);
     }
@@ -91,7 +91,7 @@ export class AppearancePage {
             key: 'inactive-workspace-radius',
             title: 'Inactive workspace border radius',
             lower: 0,
-            upper: 255
+            upper: 255,
         });
         addSpinButton({
             settings: this._settings,
@@ -99,7 +99,7 @@ export class AppearancePage {
             key: 'inactive-workspace-padding-h',
             title: 'Inactive workspace horizontal padding',
             lower: 0,
-            upper: 255
+            upper: 255,
         });
         addSpinButton({
             settings: this._settings,
@@ -107,7 +107,7 @@ export class AppearancePage {
             key: 'inactive-workspace-padding-v',
             title: 'Inactive workspace vertical padding',
             lower: 0,
-            upper: 255
+            upper: 255,
         });
         this.page.add(group);
     }

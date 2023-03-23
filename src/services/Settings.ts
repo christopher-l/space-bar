@@ -1,8 +1,8 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 import { Gio } from 'imports/gi';
-import { positionOptions, scrollWheelOptions } from 'preferences/BehaviorPage';
 import { fontWeightOptions } from 'preferences/AppearancePage';
+import { positionOptions, scrollWheelOptions } from 'preferences/BehaviorPage';
 
 export class Settings {
     private static _instance: Settings | null;
@@ -76,10 +76,9 @@ export class Settings {
         this.appearanceSettings,
         'active-workspace-color',
     );
-    readonly activeWorkspaceFontWeight = SettingsSubject.createStringSubject<keyof typeof fontWeightOptions>(
-        this.appearanceSettings,
-        'active-workspace-font-weight',
-    );
+    readonly activeWorkspaceFontWeight = SettingsSubject.createStringSubject<
+        keyof typeof fontWeightOptions
+    >(this.appearanceSettings, 'active-workspace-font-weight');
     readonly activeWorkspaceRadius = SettingsSubject.createIntSubject(
         this.appearanceSettings,
         'active-workspace-radius',
@@ -96,10 +95,9 @@ export class Settings {
         this.appearanceSettings,
         'inactive-workspace-color',
     );
-    readonly inactiveWorkspaceFontWeight = SettingsSubject.createStringSubject<keyof typeof fontWeightOptions>(
-        this.appearanceSettings,
-        'inactive-workspace-font-weight',
-    );
+    readonly inactiveWorkspaceFontWeight = SettingsSubject.createStringSubject<
+        keyof typeof fontWeightOptions
+    >(this.appearanceSettings, 'inactive-workspace-font-weight');
     readonly inactiveWorkspaceRadius = SettingsSubject.createIntSubject(
         this.appearanceSettings,
         'inactive-workspace-radius',

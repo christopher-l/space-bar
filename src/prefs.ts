@@ -1,6 +1,6 @@
 import type { Adw } from 'imports/gi';
-import { BehaviorPage } from 'preferences/BehaviorPage';
 import { AppearancePage } from 'preferences/AppearancePage';
+import { BehaviorPage } from 'preferences/BehaviorPage';
 import { ShortcutsPage } from 'preferences/ShortcutsPage';
 
 function init() {}

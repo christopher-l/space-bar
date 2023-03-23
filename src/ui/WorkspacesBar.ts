@@ -192,7 +192,12 @@ export class WorkspacesBar {
         const borderRadius = this._settings.activeWorkspaceRadius.value;
         const paddingH = this._settings.activeWorkspacePaddingH.value;
         const paddingV = this._settings.activeWorkspacePaddingV.value;
-        return `background-color: ${color}; font-weight: ${fontWeight}; border-radius: ${borderRadius}px; padding: ${paddingV}px ${paddingH}px;`;
+        return (
+            `background-color: ${color};` +
+            `font-weight: ${fontWeight};` +
+            `border-radius: ${borderRadius}px;` +
+            `padding: ${paddingV}px ${paddingH}px;`
+        );
     }
 
     private _getInactiveLabelStyle(): string {
@@ -201,7 +206,12 @@ export class WorkspacesBar {
         const borderRadius = this._settings.inactiveWorkspaceRadius.value;
         const paddingH = this._settings.inactiveWorkspacePaddingH.value;
         const paddingV = this._settings.inactiveWorkspacePaddingV.value;
-        return `background-color: ${color}; font-weight: ${fontWeight}; border-radius: ${borderRadius}px; padding: ${paddingV}px ${paddingH}px;`;
+        return (
+            `background-color: ${color};` +
+            `font-weight: ${fontWeight};` +
+            `border-radius: ${borderRadius}px;` +
+            `padding: ${paddingV}px ${paddingH}px;`
+        );
     }
 }
 

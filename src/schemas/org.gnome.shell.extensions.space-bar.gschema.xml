@@ -74,7 +74,7 @@
                 <choice value="bolder"/>
                 <choice value="bold"/>
             </choices>
-            <default>"normal"</default>
+            <default>"bold"</default>
             <summary>Font weight used for the inactive workspace</summary>
         </key>
         <key name="inactive-workspace-radius" type="i">

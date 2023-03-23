@@ -52,7 +52,7 @@ export function addTextEntry({
     subtitle?: string | null;
     settings: Gio.Settings;
     shortcutLabel?: string | null;
-}): void {
+}): Adw.ActionRow {
     const row = new Adw.ActionRow({ title, subtitle });
     group.add(row);
 
@@ -70,12 +70,13 @@ export function addTextEntry({
     });
     const focusController = new Gtk.EventControllerFocus();
     focusController.connect('leave', () => {
-        settings.set_string(key, entry.get_buffer().text)
+        settings.set_string(key, entry.get_buffer().text);
     });
     entry.add_controller(focusController);
 
     row.add_suffix(entry);
     row.activatable_widget = entry;
+    return row;
 }
 
 export function addCombo({
