@@ -4,10 +4,15 @@ import { Adw } from 'imports/gi';
 import { addCombo, addSpinButton, addTextEntry } from 'preferences/common';
 
 export const fontWeightOptions = {
-    lighter: 'Lighter',
-    normal: 'Normal',
-    bolder: 'Bolder',
-    bold: 'Bold',
+    '100': 'Thin',
+    '200': 'Extra Light',
+    '300': 'Light',
+    '400': 'Normal',
+    '500': 'Medium',
+    '600': 'Semi Bold',
+    '700': 'Bold',
+    '800': 'Extra Bold',
+    '900': 'Black',
 };
 
 export class AppearancePage {

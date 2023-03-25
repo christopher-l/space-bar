@@ -46,12 +46,17 @@
         </key>
         <key name="active-workspace-font-weight" type="s">
             <choices>
-                <choice value="lighter"/>
-                <choice value="normal"/>
-                <choice value="bolder"/>
-                <choice value="bold"/>
+                <choice value="100" />
+                <choice value="200" />
+                <choice value="300" />
+                <choice value="400" />
+                <choice value="500" />
+                <choice value="600" />
+                <choice value="700" />
+                <choice value="800" />
+                <choice value="900" />
             </choices>
-            <default>"bold"</default>
+            <default>"700"</default>
             <summary>Font weight used for the active workspace</summary>
         </key>
         <key name="active-workspace-radius" type="i">
@@ -69,12 +74,17 @@
         </key>
         <key name="inactive-workspace-font-weight" type="s">
             <choices>
-                <choice value="lighter"/>
-                <choice value="normal"/>
-                <choice value="bolder"/>
-                <choice value="bold"/>
+                <choice value="100" />
+                <choice value="200" />
+                <choice value="300" />
+                <choice value="400" />
+                <choice value="500" />
+                <choice value="600" />
+                <choice value="700" />
+                <choice value="800" />
+                <choice value="900" />
             </choices>
-            <default>"bold"</default>
+            <default>"700"</default>
             <summary>Font weight used for the inactive workspace</summary>
         </key>
         <key name="inactive-workspace-font-weight-active" type="b">
