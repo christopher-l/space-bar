@@ -56,6 +56,7 @@ export class WorkspacesBar {
     init(): void {
         this._initButton();
         this._initMenu();
+        this._initSettings();
         this._settings.position.subscribe(() => this._refreshTopBarConfiguration());
         this._settings.positionIndex.subscribe(() => this._refreshTopBarConfiguration());
     }
@@ -100,6 +101,19 @@ export class WorkspacesBar {
     private _initMenu(): void {
         this._menu = new WorkspacesBarMenu(this._button.menu);
         this._menu.init();
+    }
+
+    private _initSettings(): void {
+        this._settings.activeWorkspaceColor.subscribe(() => this._updateWorkspaces());
+        this._settings.activeWorkspaceFontWeight.subscribe(() => this._updateWorkspaces());
+        this._settings.activeWorkspaceRadius.subscribe(() => this._updateWorkspaces());
+        this._settings.activeWorkspacePaddingH.subscribe(() => this._updateWorkspaces());
+        this._settings.activeWorkspacePaddingV.subscribe(() => this._updateWorkspaces());
+        this._settings.inactiveWorkspaceColor.subscribe(() => this._updateWorkspaces());
+        this._settings.inactiveWorkspaceFontWeight.subscribe(() => this._updateWorkspaces());
+        this._settings.inactiveWorkspaceRadius.subscribe(() => this._updateWorkspaces());
+        this._settings.inactiveWorkspacePaddingH.subscribe(() => this._updateWorkspaces());
+        this._settings.inactiveWorkspacePaddingV.subscribe(() => this._updateWorkspaces());
     }
 
     // update the workspaces bar

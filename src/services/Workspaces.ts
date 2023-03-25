@@ -79,7 +79,7 @@ export class Workspaces {
                 this._smartNamesNotifier.notify();
             },
         );
-        this._restacked = global.display.connect('restacked', this._update.bind(this));
+        this._restacked = global.display.connect('restacked', () => this._update());
         this._windows_changed = Shell.WindowTracker.get_default().connect(
             'tracked-windows-changed',
             () => {
