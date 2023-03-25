@@ -41,7 +41,7 @@
 
     <schema id="org.gnome.shell.extensions.space-bar.appearance" path="/org/gnome/shell/extensions/space-bar/appearance/">
         <!-- Active Workspace Appearance Settings -->
-        <key name="active-workspace-color" type="s">
+        <key name="active-workspace-background-color" type="s">
             <default>'#ffffff4c'</default>
         </key>
         <key name="active-workspace-font-weight" type="s">
@@ -59,7 +59,7 @@
             <default>"700"</default>
             <summary>Font weight used for the active workspace</summary>
         </key>
-        <key name="active-workspace-radius" type="i">
+        <key name="active-workspace-border-radius" type="i">
             <default>4</default>
         </key>
         <key name="active-workspace-padding-h" type="i">
@@ -69,7 +69,7 @@
             <default>3</default>
         </key>
         <!-- Inactive Workspace Appearance Settings -->
-        <key name="inactive-workspace-color" type="s">
+        <key name="inactive-workspace-background-color" type="s">
             <default>'#ffffff00'</default>
         </key>
         <key name="inactive-workspace-font-weight" type="s">
@@ -90,10 +90,10 @@
         <key name="inactive-workspace-font-weight-active" type="b">
             <default>false</default>
         </key>
-        <key name="inactive-workspace-radius" type="i">
+        <key name="inactive-workspace-border-radius" type="i">
             <default>4</default>
         </key>
-        <key name="inactive-workspace-radius-active" type="b">
+        <key name="inactive-workspace-border-radius-active" type="b">
             <default>false</default>
         </key>
         <key name="inactive-workspace-padding-h" type="i">

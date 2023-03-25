@@ -72,16 +72,16 @@ export class Settings {
         this.wmPreferencesSettings,
         'workspace-names',
     );
-    readonly activeWorkspaceColor = SettingsSubject.createStringSubject(
+    readonly activeWorkspaceBackgroundColor = SettingsSubject.createStringSubject(
         this.appearanceSettings,
-        'active-workspace-color',
+        'active-workspace-background-color',
     );
     readonly activeWorkspaceFontWeight = SettingsSubject.createStringSubject<
         keyof typeof fontWeightOptions
     >(this.appearanceSettings, 'active-workspace-font-weight');
-    readonly activeWorkspaceRadius = SettingsSubject.createIntSubject(
+    readonly activeWorkspaceBorderRadius = SettingsSubject.createIntSubject(
         this.appearanceSettings,
-        'active-workspace-radius',
+        'active-workspace-border-radius',
     );
     readonly activeWorkspacePaddingH = SettingsSubject.createIntSubject(
         this.appearanceSettings,
@@ -91,16 +91,16 @@ export class Settings {
         this.appearanceSettings,
         'active-workspace-padding-v',
     );
-    readonly inactiveWorkspaceColor = SettingsSubject.createStringSubject(
+    readonly inactiveWorkspaceBackgroundColor = SettingsSubject.createStringSubject(
         this.appearanceSettings,
-        'inactive-workspace-color',
+        'inactive-workspace-background-color',
     );
     readonly inactiveWorkspaceFontWeight = SettingsSubject.createStringSubject<
         keyof typeof fontWeightOptions
     >(this.appearanceSettings, 'inactive-workspace-font-weight');
-    readonly inactiveWorkspaceRadius = SettingsSubject.createIntSubject(
+    readonly inactiveWorkspaceBorderRadius = SettingsSubject.createIntSubject(
         this.appearanceSettings,
-        'inactive-workspace-radius',
+        'inactive-workspace-border-radius',
     );
     readonly inactiveWorkspacePaddingH = SettingsSubject.createIntSubject(
         this.appearanceSettings,

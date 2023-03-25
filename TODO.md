@@ -1,13 +1,14 @@
 # TODO
 
-- [ ] Appearance-tab icon
+- [x] Appearance-tab icon
 - [x] Reset option
 - [x] Link border radius, padding
     - Possibly while not set
-- [ ] Update UI on changes
+- [x] Update UI on changes
     - Now: Updates, but to old value
 - [ ] Style empty workspaces
-- [ ] Shorter Labels
+- [x] Shorter Labels
+- [ ] Remove CSS
 
 ## Optional
 

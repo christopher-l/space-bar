@@ -104,14 +104,14 @@ export class WorkspacesBar {
     }
 
     private _initSettings(): void {
-        this._settings.activeWorkspaceColor.subscribe(() => this._updateWorkspaces());
+        this._settings.activeWorkspaceBackgroundColor.subscribe(() => this._updateWorkspaces());
         this._settings.activeWorkspaceFontWeight.subscribe(() => this._updateWorkspaces());
-        this._settings.activeWorkspaceRadius.subscribe(() => this._updateWorkspaces());
+        this._settings.activeWorkspaceBorderRadius.subscribe(() => this._updateWorkspaces());
         this._settings.activeWorkspacePaddingH.subscribe(() => this._updateWorkspaces());
         this._settings.activeWorkspacePaddingV.subscribe(() => this._updateWorkspaces());
-        this._settings.inactiveWorkspaceColor.subscribe(() => this._updateWorkspaces());
+        this._settings.inactiveWorkspaceBackgroundColor.subscribe(() => this._updateWorkspaces());
         this._settings.inactiveWorkspaceFontWeight.subscribe(() => this._updateWorkspaces());
-        this._settings.inactiveWorkspaceRadius.subscribe(() => this._updateWorkspaces());
+        this._settings.inactiveWorkspaceBorderRadius.subscribe(() => this._updateWorkspaces());
         this._settings.inactiveWorkspacePaddingH.subscribe(() => this._updateWorkspaces());
         this._settings.inactiveWorkspacePaddingV.subscribe(() => this._updateWorkspaces());
     }
@@ -201,13 +201,13 @@ export class WorkspacesBar {
     }
 
     private _getActiveLabelStyle(): string {
-        const color = this._settings.activeWorkspaceColor.value;
+        const backgroundColor = this._settings.activeWorkspaceBackgroundColor.value;
         const fontWeight = this._settings.activeWorkspaceFontWeight.value;
-        const borderRadius = this._settings.activeWorkspaceRadius.value;
+        const borderRadius = this._settings.activeWorkspaceBorderRadius.value;
         const paddingH = this._settings.activeWorkspacePaddingH.value;
         const paddingV = this._settings.activeWorkspacePaddingV.value;
         return (
-            `background-color: ${color};` +
+            `background-color: ${backgroundColor};` +
             `font-weight: ${fontWeight};` +
             `border-radius: ${borderRadius}px;` +
             `padding: ${paddingV}px ${paddingH}px;`
@@ -215,13 +215,13 @@ export class WorkspacesBar {
     }
 
     private _getInactiveLabelStyle(): string {
-        const color = this._settings.inactiveWorkspaceColor.value;
+        const backgroundColor = this._settings.inactiveWorkspaceBackgroundColor.value;
         const fontWeight = this._settings.inactiveWorkspaceFontWeight.value;
-        const borderRadius = this._settings.inactiveWorkspaceRadius.value;
+        const borderRadius = this._settings.inactiveWorkspaceBorderRadius.value;
         const paddingH = this._settings.inactiveWorkspacePaddingH.value;
         const paddingV = this._settings.inactiveWorkspacePaddingV.value;
         return (
-            `background-color: ${color};` +
+            `background-color: ${backgroundColor};` +
             `font-weight: ${fontWeight};` +
             `border-radius: ${borderRadius}px;` +
             `padding: ${paddingV}px ${paddingH}px;`

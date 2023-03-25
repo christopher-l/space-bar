@@ -36,22 +36,22 @@ export class AppearancePage {
             window: this.window,
             settings: this._settings,
             group,
-            key: 'active-workspace-color',
-            title: 'Active workspace color',
+            key: 'active-workspace-background-color',
+            title: 'Background color',
         }).addResetButton({ window: this.window });
         addCombo({
             window: this.window,
             settings: this._settings,
             group,
             key: 'active-workspace-font-weight',
-            title: 'Font weight of active workspace',
+            title: 'Font weight',
             options: fontWeightOptions,
         }).addResetButton({ window: this.window });
         addSpinButton({
             settings: this._settings,
             group,
-            key: 'active-workspace-radius',
-            title: 'Active workspace border radius',
+            key: 'active-workspace-border-radius',
+            title: 'Border radius',
             lower: 0,
             upper: 255,
         }).addResetButton({ window: this.window });
@@ -59,7 +59,7 @@ export class AppearancePage {
             settings: this._settings,
             group,
             key: 'active-workspace-padding-h',
-            title: 'Active workspace horizontal padding',
+            title: 'Horizontal padding',
             lower: 0,
             upper: 255,
         }).addResetButton({ window: this.window });
@@ -67,7 +67,7 @@ export class AppearancePage {
             settings: this._settings,
             group,
             key: 'active-workspace-padding-v',
-            title: 'Active workspace vertical padding',
+            title: 'Vertical padding',
             lower: 0,
             upper: 255,
         }).addResetButton({ window: this.window });
@@ -81,15 +81,15 @@ export class AppearancePage {
             window: this.window,
             settings: this._settings,
             group,
-            key: 'inactive-workspace-color',
-            title: 'Inactive workspace color',
+            key: 'inactive-workspace-background-color',
+            title: 'Background color',
         }).addResetButton({ window: this.window });
         addCombo({
             window: this.window,
             settings: this._settings,
             group,
             key: 'inactive-workspace-font-weight',
-            title: 'Font weight of inactive workspace',
+            title: 'Font weight',
             options: fontWeightOptions,
         }).linkValue({
             window: this.window,
@@ -98,19 +98,19 @@ export class AppearancePage {
         addSpinButton({
             settings: this._settings,
             group,
-            key: 'inactive-workspace-radius',
-            title: 'Inactive workspace border radius',
+            key: 'inactive-workspace-border-radius',
+            title: 'Border radius',
             lower: 0,
             upper: 255,
         }).linkValue({
             window: this.window,
-            linkedKey: 'active-workspace-radius',
+            linkedKey: 'active-workspace-border-radius',
         });
         addSpinButton({
             settings: this._settings,
             group,
             key: 'inactive-workspace-padding-h',
-            title: 'Inactive workspace horizontal padding',
+            title: 'Horizontal padding',
             lower: 0,
             upper: 255,
         }).linkValue({
@@ -121,7 +121,7 @@ export class AppearancePage {
             settings: this._settings,
             group,
             key: 'inactive-workspace-padding-v',
-            title: 'Inactive workspace vertical padding',
+            title: 'Vertical padding',
             lower: 0,
             upper: 255,
         }).linkValue({
