@@ -77,14 +77,26 @@
             <default>"bold"</default>
             <summary>Font weight used for the inactive workspace</summary>
         </key>
+        <key name="inactive-workspace-font-weight-active" type="b">
+            <default>false</default>
+        </key>
         <key name="inactive-workspace-radius" type="i">
             <default>4</default>
+        </key>
+        <key name="inactive-workspace-radius-active" type="b">
+            <default>false</default>
         </key>
         <key name="inactive-workspace-padding-h" type="i">
             <default>8</default>
         </key>
+        <key name="inactive-workspace-padding-h-active" type="b">
+            <default>false</default>
+        </key>
         <key name="inactive-workspace-padding-v" type="i">
             <default>3</default>
+        </key>
+        <key name="inactive-workspace-padding-v-active" type="b">
+            <default>false</default>
         </key>
     </schema>
 

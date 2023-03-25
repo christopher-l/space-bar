@@ -1,6 +1,112 @@
 import { Adw, Gdk, Gio, GObject, Gtk } from 'imports/gi';
 import { DropDownChoice, DropDownChoiceClass } from 'preferences/DropDownChoice';
 
+class PreferencesRow {
+    constructor(
+        private readonly _settings: Gio.Settings,
+        private readonly _row: Adw.ActionRow,
+        private readonly _key: string,
+        private readonly _setEnabledInner?: (value: boolean) => void,
+    ) {}
+
+    addResetButton({ window }: { window: Adw.PreferencesWindow }): void {
+        const button = new Gtk.Button({
+            icon_name: 'edit-clear-symbolic',
+            valign: Gtk.Align.CENTER,
+            has_frame: false,
+            margin_start: 10,
+        });
+        button.connect('clicked', () => this._settings.reset(this._key));
+        const updateButton = () => {
+            const buttonEnabled = this._settings.get_user_value(this._key) !== null;
+            button.set_sensitive(buttonEnabled);
+        };
+        updateButton();
+        const changed = this._settings.connect(`changed::${this._key}`, updateButton);
+        window.connect('unmap', () => this._settings.disconnect(changed));
+        this._row.add_suffix(button);
+    }
+
+    linkValue({
+        linkedKey,
+        activeKey = this._key + '-active',
+        window,
+    }: {
+        linkedKey: string;
+        activeKey?: string;
+        window: Adw.PreferencesWindow;
+    }): void {
+        const toggleEdit = (active: boolean) => {
+            this._settings.set_boolean(activeKey, active);
+            updateRow();
+            updateLinkedValue();
+        };
+        const updateRow = () => {
+            const active = this._settings.get_boolean(activeKey);
+            this._setEnabled(active);
+        };
+        const updateLinkedValue = () => {
+            const active = this._settings.get_boolean(activeKey);
+            if (!active) {
+                const linkedValue = this._settings.get_user_value(linkedKey);
+                if (linkedValue) {
+                    this._settings.set_value(this._key, linkedValue);
+                } else {
+                    this._settings.reset(this._key);
+                }
+            }
+        };
+        const changed = this._settings.connect(`changed::${linkedKey}`, updateLinkedValue);
+        window.connect('unmap', () => this._settings.disconnect(changed));
+        updateRow();
+        const button = new Gtk.ToggleButton({
+            icon_name: 'document-edit-symbolic',
+            valign: Gtk.Align.CENTER,
+            has_frame: false,
+            margin_start: 10,
+        });
+        button.connect('toggled', (toggle: Gtk.ToggleButton) => toggleEdit(toggle.active));
+        this._row.add_suffix(button);
+    }
+
+    addSubDialog({
+        window,
+        title,
+        populatePage,
+    }: {
+        window: Adw.PreferencesWindow;
+        title: string;
+        populatePage: (page: Adw.PreferencesPage) => void;
+    }): void {
+        function showDialog() {
+            const dialog = new Gtk.Dialog({
+                title,
+                modal: true,
+                use_header_bar: 1,
+                transient_for: window,
+                width_request: 350,
+                default_width: 500,
+            });
+            const page = new Adw.PreferencesPage();
+            populatePage(page);
+            dialog.set_child(page);
+            dialog.show();
+        }
+        const button = new Gtk.Button({
+            icon_name: 'settings-symbolic',
+            valign: Gtk.Align.CENTER,
+            has_frame: false,
+            margin_start: 10,
+        });
+        button.connect('clicked', () => showDialog());
+        this._row.add_suffix(button);
+    }
+
+    private _setEnabled(value: boolean): void {
+        this._setEnabledInner?.(value);
+    }
+}
+
 export function addToggle({
     group,
     key,
@@ -15,7 +121,7 @@ export function addToggle({
     subtitle?: string | null;
     settings: Gio.Settings;
     shortcutLabel?: string | null;
-}): Adw.ActionRow {
+}): PreferencesRow {
     const row = new Adw.ActionRow({ title, subtitle });
     group.add(row);
 
@@ -35,7 +141,7 @@ export function addToggle({
 
     row.add_suffix(toggle);
     row.activatable_widget = toggle;
-    return row;
+    return new PreferencesRow(settings, row, key, (enabled) => toggle.set_sensitive(enabled));
 }
 
 export function addTextEntry({
@@ -44,6 +150,7 @@ export function addTextEntry({
     title,
     subtitle = null,
     settings,
+    window,
     shortcutLabel,
 }: {
     group: Adw.PreferencesGroup;
@@ -51,8 +158,9 @@ export function addTextEntry({
     title: string;
     subtitle?: string | null;
     settings: Gio.Settings;
+    window: Adw.PreferencesWindow;
     shortcutLabel?: string | null;
-}): Adw.ActionRow {
+}): PreferencesRow {
     const row = new Adw.ActionRow({ title, subtitle });
     group.add(row);
 
@@ -73,10 +181,14 @@ export function addTextEntry({
         settings.set_string(key, entry.get_buffer().text);
     });
     entry.add_controller(focusController);
+    const changed = settings.connect(`changed::${key}`, () => {
+        entry.set_text(settings.get_string(key));
+    });
+    window.connect('unmap', () => settings.disconnect(changed));
 
     row.add_suffix(entry);
     row.activatable_widget = entry;
-    return row;
+    return new PreferencesRow(settings, row, key, (enabled) => entry.set_sensitive(enabled));
 }
 
 export function addCombo({
@@ -95,7 +207,7 @@ export function addCombo({
     options: { [key: string]: string };
     settings: Gio.Settings;
     window: Adw.PreferencesWindow;
-}): Adw.ComboRow {
+}): PreferencesRow {
     const model = Gio.ListStore.new(DropDownChoice);
     for (const id in options) {
         model.append(new DropDownChoice({ id, title: options[id] }));
@@ -120,7 +232,14 @@ export function addCombo({
     const changed = settings.connect(`changed::${key}`, () => updateComboRowState());
     window.connect('unmap', () => settings.disconnect(changed));
     updateComboRowState();
-    return row;
+
+    const suffixes = row.get_first_child()?.get_last_child();
+    const comboBoxElements = [suffixes?.get_first_child(), suffixes?.get_last_child()];
+    return new PreferencesRow(settings, row, key, (enabled) => {
+        row.set_activatable(enabled);
+        const opacity = enabled ? 1 : 0.5;
+        comboBoxElements.forEach((el) => el?.set_opacity(opacity));
+    });
 }
 
 export function addSpinButton({
@@ -141,7 +260,7 @@ export function addSpinButton({
     lower: number;
     upper: number;
     step?: number | null;
-}): Adw.ActionRow {
+}): PreferencesRow {
     const row = new Adw.ActionRow({ title, subtitle });
     group.add(row);
 
@@ -160,42 +279,9 @@ export function addSpinButton({
 
     row.add_suffix(spinner);
     row.activatable_widget = spinner;
-    return row;
-}
-
-export function addSubDialog({
-    window,
-    row,
-    title,
-    populatePage,
-}: {
-    window: Adw.PreferencesWindow;
-    row: Adw.ActionRow;
-    title: string;
-    populatePage: (page: Adw.PreferencesPage) => void;
-}) {
-    function showDialog() {
-        const dialog = new Gtk.Dialog({
-            title,
-            modal: true,
-            use_header_bar: 1,
-            transient_for: window,
-            width_request: 350,
-            default_width: 500,
-        });
-        const page = new Adw.PreferencesPage();
-        populatePage(page);
-        dialog.set_child(page);
-        dialog.show();
-    }
-    const button = new Gtk.Button({
-        icon_name: 'applications-system-symbolic',
-        valign: Gtk.Align.CENTER,
-        has_frame: false,
-        margin_start: 10,
+    return new PreferencesRow(settings, row, key, (enabled) => {
+        spinner.set_sensitive(enabled);
     });
-    button.connect('clicked', () => showDialog());
-    row.add_suffix(button);
 }
 
 export function addKeyboardShortcut({

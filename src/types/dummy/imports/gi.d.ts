@@ -40,8 +40,9 @@ export namespace Meta {
 
 export namespace Gtk {
     type EventControllerKey = any;
-    type ShortcutManager = any;
     type ShortcutController = any;
+    type ShortcutManager = any;
+    type ToggleButton = any;
 }
 
 export namespace GObject {

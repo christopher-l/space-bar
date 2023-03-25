@@ -1,7 +1,7 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 import { Adw } from 'imports/gi';
-import { addCombo, addSpinButton, addSubDialog, addToggle } from 'preferences/common';
+import { addCombo, addSpinButton, addToggle } from 'preferences/common';
 
 export const scrollWheelOptions = {
     panel: 'Over top panel',
@@ -32,17 +32,15 @@ export class BehaviorPage {
     private _initGeneralGroup(): void {
         const group = new Adw.PreferencesGroup();
         group.set_title('General');
-        const positionRow = addCombo({
+        addCombo({
             window: this.window,
             settings: this._settings,
             group,
             key: 'position',
             title: 'Position in top panel',
             options: positionOptions,
-        });
-        addSubDialog({
+        }).addSubDialog({
             window: this.window,
-            row: positionRow,
             title: 'Position in Top Panel',
             populatePage: (page) => {
                 const positionSubDialogGroup = new Adw.PreferencesGroup();

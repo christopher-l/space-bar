@@ -1,7 +1,7 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 import { Adw } from 'imports/gi';
-import { addCombo, addTextEntry, addSpinButton } from 'preferences/common';
+import { addCombo, addSpinButton, addTextEntry } from 'preferences/common';
 
 export const fontWeightOptions = {
     lighter: 'Lighter',
@@ -28,11 +28,12 @@ export class AppearancePage {
         const group = new Adw.PreferencesGroup();
         group.set_title('Active Workspace');
         addTextEntry({
+            window: this.window,
             settings: this._settings,
             group,
             key: 'active-workspace-color',
             title: 'Active workspace color',
-        });
+        }).addResetButton({ window: this.window });
         addCombo({
             window: this.window,
             settings: this._settings,
@@ -40,7 +41,7 @@ export class AppearancePage {
             key: 'active-workspace-font-weight',
             title: 'Font weight of active workspace',
             options: fontWeightOptions,
-        });
+        }).addResetButton({ window: this.window });
         addSpinButton({
             settings: this._settings,
             group,
@@ -48,7 +49,7 @@ export class AppearancePage {
             title: 'Active workspace border radius',
             lower: 0,
             upper: 255,
-        });
+        }).addResetButton({ window: this.window });
         addSpinButton({
             settings: this._settings,
             group,
@@ -56,7 +57,7 @@ export class AppearancePage {
             title: 'Active workspace horizontal padding',
             lower: 0,
             upper: 255,
-        });
+        }).addResetButton({ window: this.window });
         addSpinButton({
             settings: this._settings,
             group,
@@ -64,7 +65,7 @@ export class AppearancePage {
             title: 'Active workspace vertical padding',
             lower: 0,
             upper: 255,
-        });
+        }).addResetButton({ window: this.window });
         this.page.add(group);
     }
 
@@ -72,11 +73,12 @@ export class AppearancePage {
         const group = new Adw.PreferencesGroup();
         group.set_title('Inactive Workspace');
         addTextEntry({
+            window: this.window,
             settings: this._settings,
             group,
             key: 'inactive-workspace-color',
             title: 'Inactive workspace color',
-        });
+        }).addResetButton({ window: this.window });
         addCombo({
             window: this.window,
             settings: this._settings,
@@ -84,6 +86,9 @@ export class AppearancePage {
             key: 'inactive-workspace-font-weight',
             title: 'Font weight of inactive workspace',
             options: fontWeightOptions,
+        }).linkValue({
+            window: this.window,
+            linkedKey: 'active-workspace-font-weight',
         });
         addSpinButton({
             settings: this._settings,
@@ -92,6 +97,9 @@ export class AppearancePage {
             title: 'Inactive workspace border radius',
             lower: 0,
             upper: 255,
+        }).linkValue({
+            window: this.window,
+            linkedKey: 'active-workspace-radius',
         });
         addSpinButton({
             settings: this._settings,
@@ -100,6 +108,9 @@ export class AppearancePage {
             title: 'Inactive workspace horizontal padding',
             lower: 0,
             upper: 255,
+        }).linkValue({
+            window: this.window,
+            linkedKey: 'active-workspace-padding-h',
         });
         addSpinButton({
             settings: this._settings,
@@ -108,6 +119,9 @@ export class AppearancePage {
             title: 'Inactive workspace vertical padding',
             lower: 0,
             upper: 255,
+        }).linkValue({
+            window: this.window,
+            linkedKey: 'active-workspace-padding-v',
         });
         this.page.add(group);
     }
