@@ -219,9 +219,14 @@ export function addCombo({
         expression: Gtk.PropertyExpression.new(DropDownChoice, null, 'title'),
     });
     group.add(row);
-    row.connect('notify::selected-item', () =>
-        settings.set_string(key, (row.selected_item as DropDownChoiceClass).id),
-    );
+    row.connect('notify::selected-item', () => {
+        // This may trigger without user interaction, so we only update the value when it differs
+        // from the the default value or a user value has been set before.
+        const value = (row.selected_item as DropDownChoiceClass).id;
+        if (settings.get_user_value(key) !== null || settings.get_string(key) !== value) {
+            settings.set_string(key, value);
+        }
+    });
     function updateComboRowState() {
         row.selected =
             findItemPositionInModel<DropDownChoiceClass>(
