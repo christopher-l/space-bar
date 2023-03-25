@@ -27,6 +27,7 @@ export class AppearancePage {
         this.page.set_icon_name('applications-graphics-symbolic');
         this._initActiveWorkspaceGroup();
         this._initInactiveWorkspaceGroup();
+        this._initEmptyWorkspaceGroup();
     }
 
     private _initActiveWorkspaceGroup(): void {
@@ -38,6 +39,13 @@ export class AppearancePage {
             group,
             key: 'active-workspace-background-color',
             title: 'Background color',
+        }).addResetButton({ window: this.window });
+        addTextEntry({
+            window: this.window,
+            settings: this._settings,
+            group,
+            key: 'active-workspace-text-color',
+            title: 'Text color',
         }).addResetButton({ window: this.window });
         addCombo({
             window: this.window,
@@ -84,6 +92,13 @@ export class AppearancePage {
             key: 'inactive-workspace-background-color',
             title: 'Background color',
         }).addResetButton({ window: this.window });
+        addTextEntry({
+            window: this.window,
+            settings: this._settings,
+            group,
+            key: 'inactive-workspace-text-color',
+            title: 'Text color',
+        }).addResetButton({ window: this.window });
         addCombo({
             window: this.window,
             settings: this._settings,
@@ -127,6 +142,70 @@ export class AppearancePage {
         }).linkValue({
             window: this.window,
             linkedKey: 'active-workspace-padding-v',
+        });
+        this.page.add(group);
+    }
+
+    private _initEmptyWorkspaceGroup(): void {
+        const group = new Adw.PreferencesGroup();
+        group.set_title('Empty (Inactive) Workspace');
+        addTextEntry({
+            window: this.window,
+            settings: this._settings,
+            group,
+            key: 'empty-workspace-background-color',
+            title: 'Background color',
+        }).addResetButton({ window: this.window });
+        addTextEntry({
+            window: this.window,
+            settings: this._settings,
+            group,
+            key: 'empty-workspace-text-color',
+            title: 'Text color',
+        }).addResetButton({ window: this.window });
+        addCombo({
+            window: this.window,
+            settings: this._settings,
+            group,
+            key: 'empty-workspace-font-weight',
+            title: 'Font weight',
+            options: fontWeightOptions,
+        }).linkValue({
+            window: this.window,
+            linkedKey: 'inactive-workspace-font-weight',
+        });
+        addSpinButton({
+            settings: this._settings,
+            group,
+            key: 'empty-workspace-border-radius',
+            title: 'Border radius',
+            lower: 0,
+            upper: 255,
+        }).linkValue({
+            window: this.window,
+            linkedKey: 'inactive-workspace-border-radius',
+        });
+        addSpinButton({
+            settings: this._settings,
+            group,
+            key: 'empty-workspace-padding-h',
+            title: 'Horizontal padding',
+            lower: 0,
+            upper: 255,
+        }).linkValue({
+            window: this.window,
+            linkedKey: 'inactive-workspace-padding-h',
+        });
+        addSpinButton({
+            settings: this._settings,
+            group,
+            key: 'empty-workspace-padding-v',
+            title: 'Vertical padding',
+            lower: 0,
+            upper: 255,
+        }).linkValue({
+            window: this.window,
+            linkedKey: 'inactive-workspace-padding-v',
         });
         this.page.add(group);
     }

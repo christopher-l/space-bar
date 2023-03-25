@@ -42,7 +42,10 @@
     <schema id="org.gnome.shell.extensions.space-bar.appearance" path="/org/gnome/shell/extensions/space-bar/appearance/">
         <!-- Active Workspace Appearance Settings -->
         <key name="active-workspace-background-color" type="s">
-            <default>'#ffffff4c'</default>
+            <default>'rgba(255, 255, 255, 0.3)'</default>
+        </key>
+        <key name="active-workspace-text-color" type="s">
+            <default>'unset'</default>
         </key>
         <key name="active-workspace-font-weight" type="s">
             <choices>
@@ -70,7 +73,13 @@
         </key>
         <!-- Inactive Workspace Appearance Settings -->
         <key name="inactive-workspace-background-color" type="s">
-            <default>'#ffffff00'</default>
+            <default>'none'</default>
+        </key>
+        <key name="inactive-workspace-text-color" type="s">
+            <default>'unset'</default>
+        </key>
+        <key name="inactive-workspace-text-color-active" type="b">
+            <default>false</default>
         </key>
         <key name="inactive-workspace-font-weight" type="s">
             <choices>
@@ -85,7 +94,7 @@
                 <choice value="900" />
             </choices>
             <default>"700"</default>
-            <summary>Font weight used for the inactive workspace</summary>
+            <summary>Font weight used for inactive workspaces</summary>
         </key>
         <key name="inactive-workspace-font-weight-active" type="b">
             <default>false</default>
@@ -106,6 +115,49 @@
             <default>3</default>
         </key>
         <key name="inactive-workspace-padding-v-active" type="b">
+            <default>false</default>
+        </key>
+         <!-- Empty And Inactive Workspace Appearance Settings -->
+        <key name="empty-workspace-background-color" type="s">
+            <default>'none'</default>
+        </key>
+        <key name="empty-workspace-text-color" type="s">
+            <default>'rgba(255, 255, 255, 0.5)'</default>
+        </key>
+        <key name="empty-workspace-font-weight" type="s">
+            <choices>
+                <choice value="100" />
+                <choice value="200" />
+                <choice value="300" />
+                <choice value="400" />
+                <choice value="500" />
+                <choice value="600" />
+                <choice value="700" />
+                <choice value="800" />
+                <choice value="900" />
+            </choices>
+            <default>"700"</default>
+            <summary>Font weight used for empty workspaces</summary>
+        </key>
+        <key name="empty-workspace-font-weight-active" type="b">
+            <default>false</default>
+        </key>
+        <key name="empty-workspace-border-radius" type="i">
+            <default>4</default>
+        </key>
+        <key name="empty-workspace-border-radius-active" type="b">
+            <default>false</default>
+        </key>
+        <key name="empty-workspace-padding-h" type="i">
+            <default>8</default>
+        </key>
+        <key name="empty-workspace-padding-h-active" type="b">
+            <default>false</default>
+        </key>
+        <key name="empty-workspace-padding-v" type="i">
+            <default>3</default>
+        </key>
+        <key name="empty-workspace-padding-v-active" type="b">
             <default>false</default>
         </key>
     </schema>

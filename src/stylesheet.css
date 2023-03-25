@@ -4,23 +4,11 @@
 
 .space-bar-workspace-label {
     margin: 0 4px;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-weight: bold;
-}
-
-.space-bar-workspace-label.active {
-    color: white;
-    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .workspace-box.dragging .space-bar-workspace-label.inactive {
     background-color: rgb(0, 0, 0);
     transition: margin-left 0.5s, margin-right 0.5s;
-}
-
-.space-bar-workspace-label.empty.inactive {
-    color: rgba(255, 255, 255, 0.5);
 }
 
 .space-bar-menu .space-bar-menu-heading {

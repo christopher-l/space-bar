@@ -6,9 +6,13 @@
     - Possibly while not set
 - [x] Update UI on changes
     - Now: Updates, but to old value
-- [ ] Style empty workspaces
+- [x] Style empty workspaces
 - [x] Shorter Labels
-- [ ] Remove CSS
+- [x] Remove CSS
+- [ ] Horizontal Margin
+- [ ] `-natural-hpadding`
+- [ ] Border width
+- [ ] Border color
 
 ## Optional
 

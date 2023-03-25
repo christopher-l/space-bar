@@ -76,6 +76,10 @@ export class Settings {
         this.appearanceSettings,
         'active-workspace-background-color',
     );
+    readonly activeWorkspaceTextColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'active-workspace-text-color',
+    );
     readonly activeWorkspaceFontWeight = SettingsSubject.createStringSubject<
         keyof typeof fontWeightOptions
     >(this.appearanceSettings, 'active-workspace-font-weight');
@@ -95,6 +99,10 @@ export class Settings {
         this.appearanceSettings,
         'inactive-workspace-background-color',
     );
+    readonly inactiveWorkspaceTextColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'inactive-workspace-text-color',
+    );
     readonly inactiveWorkspaceFontWeight = SettingsSubject.createStringSubject<
         keyof typeof fontWeightOptions
     >(this.appearanceSettings, 'inactive-workspace-font-weight');
@@ -109,6 +117,29 @@ export class Settings {
     readonly inactiveWorkspacePaddingV = SettingsSubject.createIntSubject(
         this.appearanceSettings,
         'inactive-workspace-padding-v',
+    );
+    readonly emptyWorkspaceBackgroundColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'empty-workspace-background-color',
+    );
+    readonly emptyWorkspaceTextColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'empty-workspace-text-color',
+    );
+    readonly emptyWorkspaceFontWeight = SettingsSubject.createStringSubject<
+        keyof typeof fontWeightOptions
+    >(this.appearanceSettings, 'empty-workspace-font-weight');
+    readonly emptyWorkspaceBorderRadius = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'empty-workspace-border-radius',
+    );
+    readonly emptyWorkspacePaddingH = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'empty-workspace-padding-h',
+    );
+    readonly emptyWorkspacePaddingV = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'empty-workspace-padding-v',
     );
 
     private init() {
