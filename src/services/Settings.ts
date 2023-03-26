@@ -80,12 +80,20 @@ export class Settings {
         this.appearanceSettings,
         'active-workspace-text-color',
     );
+    readonly activeWorkspaceBorderColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'active-workspace-border-color',
+    );
     readonly activeWorkspaceFontWeight = SettingsSubject.createStringSubject<
         keyof typeof fontWeightOptions
     >(this.appearanceSettings, 'active-workspace-font-weight');
     readonly activeWorkspaceBorderRadius = SettingsSubject.createIntSubject(
         this.appearanceSettings,
         'active-workspace-border-radius',
+    );
+    readonly activeWorkspaceBorderWidth = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'active-workspace-border-width',
     );
     readonly activeWorkspacePaddingH = SettingsSubject.createIntSubject(
         this.appearanceSettings,
@@ -103,12 +111,20 @@ export class Settings {
         this.appearanceSettings,
         'inactive-workspace-text-color',
     );
+    readonly inactiveWorkspaceBorderColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'inactive-workspace-border-color',
+    );
     readonly inactiveWorkspaceFontWeight = SettingsSubject.createStringSubject<
         keyof typeof fontWeightOptions
     >(this.appearanceSettings, 'inactive-workspace-font-weight');
     readonly inactiveWorkspaceBorderRadius = SettingsSubject.createIntSubject(
         this.appearanceSettings,
         'inactive-workspace-border-radius',
+    );
+    readonly inactiveWorkspaceBorderWidth = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'inactive-workspace-border-width',
     );
     readonly inactiveWorkspacePaddingH = SettingsSubject.createIntSubject(
         this.appearanceSettings,
@@ -126,12 +142,20 @@ export class Settings {
         this.appearanceSettings,
         'empty-workspace-text-color',
     );
+    readonly emptyWorkspaceBorderColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'empty-workspace-border-color',
+    );
     readonly emptyWorkspaceFontWeight = SettingsSubject.createStringSubject<
         keyof typeof fontWeightOptions
     >(this.appearanceSettings, 'empty-workspace-font-weight');
     readonly emptyWorkspaceBorderRadius = SettingsSubject.createIntSubject(
         this.appearanceSettings,
         'empty-workspace-border-radius',
+    );
+    readonly emptyWorkspaceBorderWidth = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'empty-workspace-border-width',
     );
     readonly emptyWorkspacePaddingH = SettingsSubject.createIntSubject(
         this.appearanceSettings,

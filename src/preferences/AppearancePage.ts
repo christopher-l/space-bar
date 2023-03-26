@@ -47,6 +47,13 @@ export class AppearancePage {
             key: 'active-workspace-text-color',
             title: 'Text color',
         }).addResetButton({ window: this.window });
+        addColorButton({
+            window: this.window,
+            settings: this._settings,
+            group,
+            key: 'active-workspace-border-color',
+            title: 'Border color',
+        }).addResetButton({ window: this.window });
         addCombo({
             window: this.window,
             settings: this._settings,
@@ -60,6 +67,14 @@ export class AppearancePage {
             group,
             key: 'active-workspace-border-radius',
             title: 'Border radius',
+            lower: 0,
+            upper: 255,
+        }).addResetButton({ window: this.window });
+        addSpinButton({
+            settings: this._settings,
+            group,
+            key: 'active-workspace-border-width',
+            title: 'Border width',
             lower: 0,
             upper: 255,
         }).addResetButton({ window: this.window });
@@ -99,6 +114,13 @@ export class AppearancePage {
             key: 'inactive-workspace-text-color',
             title: 'Text color',
         }).addResetButton({ window: this.window });
+        addColorButton({
+            window: this.window,
+            settings: this._settings,
+            group,
+            key: 'inactive-workspace-border-color',
+            title: 'Border color',
+        }).addResetButton({ window: this.window });
         addCombo({
             window: this.window,
             settings: this._settings,
@@ -120,6 +142,17 @@ export class AppearancePage {
         }).linkValue({
             window: this.window,
             linkedKey: 'active-workspace-border-radius',
+        });
+        addSpinButton({
+            settings: this._settings,
+            group,
+            key: 'inactive-workspace-border-width',
+            title: 'Border width',
+            lower: 0,
+            upper: 255,
+        }).linkValue({
+            window: this.window,
+            linkedKey: 'active-workspace-border-width',
         });
         addSpinButton({
             settings: this._settings,
@@ -163,6 +196,13 @@ export class AppearancePage {
             key: 'empty-workspace-text-color',
             title: 'Text color',
         }).addResetButton({ window: this.window });
+        addColorButton({
+            window: this.window,
+            settings: this._settings,
+            group,
+            key: 'empty-workspace-border-color',
+            title: 'Border color',
+        }).addResetButton({ window: this.window });
         addCombo({
             window: this.window,
             settings: this._settings,
@@ -184,6 +224,17 @@ export class AppearancePage {
         }).linkValue({
             window: this.window,
             linkedKey: 'inactive-workspace-border-radius',
+        });
+        addSpinButton({
+            settings: this._settings,
+            group,
+            key: 'empty-workspace-border-width',
+            title: 'Border width',
+            lower: 0,
+            upper: 255,
+        }).linkValue({
+            window: this.window,
+            linkedKey: 'inactive-workspace-border-width',
         });
         addSpinButton({
             settings: this._settings,

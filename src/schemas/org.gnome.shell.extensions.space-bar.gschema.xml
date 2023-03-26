@@ -47,6 +47,9 @@
         <key name="active-workspace-text-color" type="s">
             <default>'rgba(255, 255, 255, 1)'</default>
         </key>
+        <key name="active-workspace-border-color" type="s">
+            <default>'rgba(0,0,0,0)'</default>
+        </key>
         <key name="active-workspace-font-weight" type="s">
             <choices>
                 <choice value="100" />
@@ -65,6 +68,9 @@
         <key name="active-workspace-border-radius" type="i">
             <default>4</default>
         </key>
+        <key name="active-workspace-border-width" type="i">
+            <default>0</default>
+        </key>
         <key name="active-workspace-padding-h" type="i">
             <default>8</default>
         </key>
@@ -77,6 +83,9 @@
         </key>
         <key name="inactive-workspace-text-color" type="s">
             <default>'rgba(255, 255, 255, 1)'</default>
+        </key>
+        <key name="inactive-workspace-border-color" type="s">
+            <default>'rgba(0,0,0,0)'</default>
         </key>
         <key name="inactive-workspace-text-color-active" type="b">
             <default>false</default>
@@ -102,6 +111,12 @@
         <key name="inactive-workspace-border-radius" type="i">
             <default>4</default>
         </key>
+        <key name="inactive-workspace-border-width" type="i">
+            <default>0</default>
+        </key>
+        <key name="inactive-workspace-border-width-active" type="b">
+            <default>false</default>
+        </key>
         <key name="inactive-workspace-border-radius-active" type="b">
             <default>false</default>
         </key>
@@ -117,12 +132,15 @@
         <key name="inactive-workspace-padding-v-active" type="b">
             <default>false</default>
         </key>
-         <!-- Empty And Inactive Workspace Appearance Settings -->
+        <!-- Empty And Inactive Workspace Appearance Settings -->
         <key name="empty-workspace-background-color" type="s">
             <default>'rgba(0,0,0,0)'</default>
         </key>
         <key name="empty-workspace-text-color" type="s">
             <default>'rgba(255, 255, 255, 0.5)'</default>
+        </key>
+        <key name="empty-workspace-border-color" type="s">
+            <default>'rgba(0,0,0,0)'</default>
         </key>
         <key name="empty-workspace-font-weight" type="s">
             <choices>
@@ -144,6 +162,12 @@
         </key>
         <key name="empty-workspace-border-radius" type="i">
             <default>4</default>
+        </key>
+        <key name="empty-workspace-border-width" type="i">
+            <default>0</default>
+        </key>
+        <key name="empty-workspace-border-width-active" type="b">
+            <default>false</default>
         </key>
         <key name="empty-workspace-border-radius-active" type="b">
             <default>false</default>
