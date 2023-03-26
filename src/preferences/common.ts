@@ -289,6 +289,44 @@ export function addSpinButton({
     });
 }
 
+export function addColorButton({
+    group,
+    key,
+    title,
+    subtitle = null,
+    settings,
+    window,
+}: {
+    group: Adw.PreferencesGroup;
+    key: string;
+    title: string;
+    subtitle?: string | null;
+    settings: Gio.Settings;
+    window: Adw.PreferencesWindow;
+}): PreferencesRow {
+    const row = new Adw.ActionRow({ title, subtitle });
+    group.add(row);
+    const colorButton = new Gtk.ColorButton({
+        valign: Gtk.Align.CENTER,
+        use_alpha: true,
+    });
+    const updateColorButton = () => {
+        const color = new Gdk.RGBA();
+        color.parse(settings.get_string(key));
+        colorButton.set_rgba(color);
+    };
+    updateColorButton();
+    colorButton.connect('color-set', () => {
+        const color = colorButton.rgba.to_string();
+        settings.set_string(key, color);
+    });
+    const changed = settings.connect(`changed::${key}`, updateColorButton);
+    window.connect('unmap', () => settings.disconnect(changed));
+    row.add_suffix(colorButton);
+    row.activatable_widget = colorButton;
+    return new PreferencesRow(settings, row, key, (enabled) => colorButton.set_sensitive(enabled));
+}
+
 export function addKeyboardShortcut({
     window,
     group,

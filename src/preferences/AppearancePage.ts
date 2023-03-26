@@ -1,7 +1,7 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 import { Adw } from 'imports/gi';
-import { addCombo, addSpinButton, addTextEntry } from 'preferences/common';
+import { addColorButton, addCombo, addSpinButton } from 'preferences/common';
 
 export const fontWeightOptions = {
     '100': 'Thin',
@@ -33,14 +33,14 @@ export class AppearancePage {
     private _initActiveWorkspaceGroup(): void {
         const group = new Adw.PreferencesGroup();
         group.set_title('Active Workspace');
-        addTextEntry({
+        addColorButton({
             window: this.window,
             settings: this._settings,
             group,
             key: 'active-workspace-background-color',
             title: 'Background color',
         }).addResetButton({ window: this.window });
-        addTextEntry({
+        addColorButton({
             window: this.window,
             settings: this._settings,
             group,
@@ -85,14 +85,14 @@ export class AppearancePage {
     private _initInactiveWorkspaceGroup(): void {
         const group = new Adw.PreferencesGroup();
         group.set_title('Inactive Workspace');
-        addTextEntry({
+        addColorButton({
             window: this.window,
             settings: this._settings,
             group,
             key: 'inactive-workspace-background-color',
             title: 'Background color',
         }).addResetButton({ window: this.window });
-        addTextEntry({
+        addColorButton({
             window: this.window,
             settings: this._settings,
             group,
@@ -149,14 +149,14 @@ export class AppearancePage {
     private _initEmptyWorkspaceGroup(): void {
         const group = new Adw.PreferencesGroup();
         group.set_title('Empty Workspace');
-        addTextEntry({
+        addColorButton({
             window: this.window,
             settings: this._settings,
             group,
             key: 'empty-workspace-background-color',
             title: 'Background color',
         }).addResetButton({ window: this.window });
-        addTextEntry({
+        addColorButton({
             window: this.window,
             settings: this._settings,
             group,
