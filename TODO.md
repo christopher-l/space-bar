@@ -9,12 +9,12 @@
 - [x] Style empty workspaces
 - [x] Shorter Labels
 - [x] Remove CSS
-- [ ] Horizontal Margin
-- [ ] `-natural-hpadding`
-- [ ] Border width
-- [ ] Border color
+- [x] Horizontal Margin
+- [x] `-natural-hpadding`
+- [x] Border width
+- [x] Border color
 
 ## Optional
 
 - [ ] ~~Rename "text entry"~~
-- [ ] Color picker
+- [x] Color picker

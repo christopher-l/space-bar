@@ -25,9 +25,32 @@ export class AppearancePage {
     init() {
         this.page.set_title('Appearance');
         this.page.set_icon_name('applications-graphics-symbolic');
+        this._initGeneralGroup();
         this._initActiveWorkspaceGroup();
         this._initInactiveWorkspaceGroup();
         this._initEmptyWorkspaceGroup();
+    }
+
+    private _initGeneralGroup(): void {
+        const group = new Adw.PreferencesGroup();
+        group.set_title('General');
+        addSpinButton({
+            settings: this._settings,
+            group,
+            key: 'workspaces-bar-padding',
+            title: 'Workspaces-bar padding',
+            lower: 0,
+            upper: 255,
+        }).addResetButton({ window: this.window });
+        addSpinButton({
+            settings: this._settings,
+            group,
+            key: 'workspace-margin',
+            title: 'Workspace margin',
+            lower: 0,
+            upper: 255,
+        }).addResetButton({ window: this.window });
+        this.page.add(group);
     }
 
     private _initActiveWorkspaceGroup(): void {

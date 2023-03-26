@@ -72,6 +72,14 @@ export class Settings {
         this.wmPreferencesSettings,
         'workspace-names',
     );
+    readonly workspacesBarPadding = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'workspaces-bar-padding',
+    );
+    readonly workspaceMargin = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'workspace-margin',
+    );
     readonly activeWorkspaceBackgroundColor = SettingsSubject.createStringSubject(
         this.appearanceSettings,
         'active-workspace-background-color',

@@ -40,6 +40,13 @@
     </schema>
 
     <schema id="org.gnome.shell.extensions.space-bar.appearance" path="/org/gnome/shell/extensions/space-bar/appearance/">
+        <!-- General Appearance Settings -->
+        <key name="workspaces-bar-padding" type="i">
+            <default>12</default>
+        </key>
+        <key name="workspace-margin" type="i">
+            <default>4</default>
+        </key>
         <!-- Active Workspace Appearance Settings -->
         <key name="active-workspace-background-color" type="s">
             <default>'rgba(255,255,255,0.3)'</default>

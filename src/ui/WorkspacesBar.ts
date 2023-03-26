@@ -58,7 +58,8 @@ export class WorkspacesBar {
     init(): void {
         this._initButton();
         this._initMenu();
-        this._styles.onStylesChanged(() => this._updateWorkspaces());
+        this._styles.onWorkspacesBarChanged(() => this._refreshTopBarConfiguration());
+        this._styles.onWorkspaceLabelsChanged(() => this._updateWorkspaces());
         this._settings.position.subscribe(() => this._refreshTopBarConfiguration());
         this._settings.positionIndex.subscribe(() => this._refreshTopBarConfiguration());
     }
@@ -86,6 +87,7 @@ export class WorkspacesBar {
         this._button._delegate = this._dragHandler;
         this._button.track_hover = false;
         this._button.style_class = 'panel-button space-bar';
+        this._button.set_style(this._styles.getWorkspacesBarStyle());
         this._ws.onUpdate(() => this._updateWorkspaces());
 
         // bar creation
