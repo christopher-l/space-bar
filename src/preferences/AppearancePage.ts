@@ -148,7 +148,7 @@ export class AppearancePage {
 
     private _initEmptyWorkspaceGroup(): void {
         const group = new Adw.PreferencesGroup();
-        group.set_title('Empty (Inactive) Workspace');
+        group.set_title('Empty Workspace');
         addTextEntry({
             window: this.window,
             settings: this._settings,
