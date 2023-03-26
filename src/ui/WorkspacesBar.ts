@@ -4,6 +4,7 @@ const Main = imports.ui.main;
 import type { Meta } from 'imports/gi';
 import { Clutter, GObject, St } from 'imports/gi';
 import { Settings } from 'services/Settings';
+import { Styles } from 'services/Styles';
 import { Workspaces, WorkspaceState } from 'services/Workspaces';
 import { WorkspacesBarMenu } from 'ui/WorkspacesBarMenu';
 const PanelMenu = imports.ui.panelMenu;
@@ -45,6 +46,7 @@ const MAX_CLICK_TIME_DELTA = 300;
 export class WorkspacesBar {
     private readonly _name = `${Me.metadata.name}`;
     private readonly _settings = Settings.getInstance();
+    private readonly _styles = Styles.getInstance();
     private readonly _ws = Workspaces.getInstance();
     private _button: any;
     private _menu!: WorkspacesBarMenu;
@@ -56,7 +58,7 @@ export class WorkspacesBar {
     init(): void {
         this._initButton();
         this._initMenu();
-        this._initSettings();
+        this._styles.onStylesChanged(() => this._updateWorkspaces());
         this._settings.position.subscribe(() => this._refreshTopBarConfiguration());
         this._settings.positionIndex.subscribe(() => this._refreshTopBarConfiguration());
     }
@@ -101,27 +103,6 @@ export class WorkspacesBar {
     private _initMenu(): void {
         this._menu = new WorkspacesBarMenu(this._button.menu);
         this._menu.init();
-    }
-
-    private _initSettings(): void {
-        this._settings.activeWorkspaceBackgroundColor.subscribe(() => this._updateWorkspaces());
-        this._settings.activeWorkspaceTextColor.subscribe(() => this._updateWorkspaces());
-        this._settings.activeWorkspaceFontWeight.subscribe(() => this._updateWorkspaces());
-        this._settings.activeWorkspaceBorderRadius.subscribe(() => this._updateWorkspaces());
-        this._settings.activeWorkspacePaddingH.subscribe(() => this._updateWorkspaces());
-        this._settings.activeWorkspacePaddingV.subscribe(() => this._updateWorkspaces());
-        this._settings.inactiveWorkspaceBackgroundColor.subscribe(() => this._updateWorkspaces());
-        this._settings.inactiveWorkspaceTextColor.subscribe(() => this._updateWorkspaces());
-        this._settings.inactiveWorkspaceFontWeight.subscribe(() => this._updateWorkspaces());
-        this._settings.inactiveWorkspaceBorderRadius.subscribe(() => this._updateWorkspaces());
-        this._settings.inactiveWorkspacePaddingH.subscribe(() => this._updateWorkspaces());
-        this._settings.inactiveWorkspacePaddingV.subscribe(() => this._updateWorkspaces());
-        this._settings.emptyWorkspaceBackgroundColor.subscribe(() => this._updateWorkspaces());
-        this._settings.emptyWorkspaceTextColor.subscribe(() => this._updateWorkspaces());
-        this._settings.emptyWorkspaceFontWeight.subscribe(() => this._updateWorkspaces());
-        this._settings.emptyWorkspaceBorderRadius.subscribe(() => this._updateWorkspaces());
-        this._settings.emptyWorkspacePaddingH.subscribe(() => this._updateWorkspaces());
-        this._settings.emptyWorkspacePaddingV.subscribe(() => this._updateWorkspaces());
     }
 
     // update the workspaces bar
@@ -194,70 +175,22 @@ export class WorkspacesBar {
         });
         if (workspace.index == this._ws.currentIndex) {
             label.style_class += ' active';
-            label.set_style(this._getActiveLabelStyle());
+            label.set_style(this._styles.getActiveWorkspaceStyle());
         } else {
             label.style_class += ' inactive';
-            label.set_style(this._getInactiveLabelStyle());
+            if (workspace.hasWindows) {
+                label.set_style(this._styles.getInactiveWorkspaceStyle());
+            } else {
+                label.set_style(this._styles.getEmptyWorkspaceStyle());
+            }
         }
         if (workspace.hasWindows) {
             label.style_class += ' nonempty';
         } else {
             label.style_class += ' empty';
-            if (workspace.index != this._ws.currentIndex) {
-                label.set_style(this._getEmptyLabelStyle());
-            }
         }
         label.set_text(this._ws.getDisplayName(workspace));
         return label;
-    }
-
-    private _getActiveLabelStyle(): string {
-        const backgroundColor = this._settings.activeWorkspaceBackgroundColor.value;
-        const textColor = this._settings.activeWorkspaceTextColor.value;
-        const fontWeight = this._settings.activeWorkspaceFontWeight.value;
-        const borderRadius = this._settings.activeWorkspaceBorderRadius.value;
-        const paddingH = this._settings.activeWorkspacePaddingH.value;
-        const paddingV = this._settings.activeWorkspacePaddingV.value;
-        return (
-            `background-color: ${backgroundColor};` +
-            `color: ${textColor};` +
-            `font-weight: ${fontWeight};` +
-            `border-radius: ${borderRadius}px;` +
-            `padding: ${paddingV}px ${paddingH}px;`
-        );
-    }
-
-    private _getInactiveLabelStyle(): string {
-        const backgroundColor = this._settings.inactiveWorkspaceBackgroundColor.value;
-        const textColor = this._settings.inactiveWorkspaceTextColor.value;
-        const fontWeight = this._settings.inactiveWorkspaceFontWeight.value;
-        const borderRadius = this._settings.inactiveWorkspaceBorderRadius.value;
-        const paddingH = this._settings.inactiveWorkspacePaddingH.value;
-        const paddingV = this._settings.inactiveWorkspacePaddingV.value;
-        return (
-            `background-color: ${backgroundColor};` +
-            `color: ${textColor};` +
-            `font-weight: ${fontWeight};` +
-            `border-radius: ${borderRadius}px;` +
-            `padding: ${paddingV}px ${paddingH}px;`
-        );
-    }
-
-    /** Style for empty and inactive workspace labels. */
-    private _getEmptyLabelStyle(): string {
-        const backgroundColor = this._settings.emptyWorkspaceBackgroundColor.value;
-        const textColor = this._settings.emptyWorkspaceTextColor.value;
-        const fontWeight = this._settings.emptyWorkspaceFontWeight.value;
-        const borderRadius = this._settings.emptyWorkspaceBorderRadius.value;
-        const paddingH = this._settings.emptyWorkspacePaddingH.value;
-        const paddingV = this._settings.emptyWorkspacePaddingV.value;
-        return (
-            `background-color: ${backgroundColor};` +
-            `color: ${textColor};` +
-            `font-weight: ${fontWeight};` +
-            `border-radius: ${borderRadius}px;` +
-            `padding: ${paddingV}px ${paddingH}px;`
-        );
     }
 }
 

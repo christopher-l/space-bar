@@ -1,6 +1,7 @@
 import { KeyBindings } from 'services/KeyBindings';
 import { ScrollHandler } from 'services/ScrollHandler';
 import { Settings } from 'services/Settings';
+import { Styles } from 'services/Styles';
 import { TopBarAdjustments } from 'services/TopBarAdjustments';
 import { Workspaces } from 'services/Workspaces';
 import { WorkspacesBar } from 'ui/WorkspacesBar';
@@ -14,6 +15,7 @@ class Extension {
         TopBarAdjustments.init();
         Workspaces.init();
         KeyBindings.init();
+        Styles.init();
         this.workspacesBar = new WorkspacesBar();
         this.workspacesBar.init();
         this.scrollHandler = new ScrollHandler();
@@ -25,6 +27,7 @@ class Extension {
         TopBarAdjustments.destroy();
         Workspaces.destroy();
         KeyBindings.destroy();
+        Styles.destroy();
         this.scrollHandler?.destroy();
         this.scrollHandler = null;
         this.workspacesBar?.destroy();
