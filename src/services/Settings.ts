@@ -2,6 +2,7 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 import { Gio } from 'imports/gi';
 import { positionOptions, scrollWheelOptions } from 'preferences/BehaviorPage';
+import { fontWeightOptions } from 'preferences/AppearancePage';
 
 export class Settings {
     private static _instance: Settings | null;
@@ -20,6 +21,9 @@ export class Settings {
     readonly state = ExtensionUtils.getSettings(`${Me.metadata['settings-schema']}.state`);
     readonly behaviorSettings = ExtensionUtils.getSettings(
         `${Me.metadata['settings-schema']}.behavior`,
+    );
+    readonly appearanceSettings = ExtensionUtils.getSettings(
+        `${Me.metadata['settings-schema']}.appearance`,
     );
     readonly shortcutsSettings = ExtensionUtils.getSettings(
         `${Me.metadata['settings-schema']}.shortcuts`,
@@ -67,6 +71,46 @@ export class Settings {
     readonly workspaceNames = SettingsSubject.createStringArraySubject(
         this.wmPreferencesSettings,
         'workspace-names',
+    );
+    readonly activeWorkspaceColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'active-workspace-color',
+    );
+    readonly activeWorkspaceFontWeight = SettingsSubject.createStringSubject<keyof typeof fontWeightOptions>(
+        this.appearanceSettings,
+        'active-workspace-font-weight',
+    );
+    readonly activeWorkspaceRadius = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'active-workspace-radius',
+    );
+    readonly activeWorkspacePaddingH = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'active-workspace-padding-h',
+    );
+    readonly activeWorkspacePaddingV = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'active-workspace-padding-v',
+    );
+    readonly inactiveWorkspaceColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'inactive-workspace-color',
+    );
+    readonly inactiveWorkspaceFontWeight = SettingsSubject.createStringSubject<keyof typeof fontWeightOptions>(
+        this.appearanceSettings,
+        'inactive-workspace-font-weight',
+    );
+    readonly inactiveWorkspaceRadius = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'inactive-workspace-radius',
+    );
+    readonly inactiveWorkspacePaddingH = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'inactive-workspace-padding-h',
+    );
+    readonly inactiveWorkspacePaddingV = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'inactive-workspace-padding-v',
     );
 
     private init() {
