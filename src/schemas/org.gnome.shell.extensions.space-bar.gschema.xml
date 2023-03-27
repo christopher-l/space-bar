@@ -34,6 +34,12 @@
             <default>"panel"</default>
             <summary>Switch workspaces with scroll wheel</summary>
         </key>
+        <key name="scroll-wheel-debounce" type="b">
+            <default>false</default>
+        </key>
+        <key name="scroll-wheel-debounce-time" type="i">
+            <default>200</default>
+        </key>
         <key name="smart-workspace-names" type="b">
             <default>false</default>
         </key>

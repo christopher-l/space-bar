@@ -1,5 +1,11 @@
-import { Adw, Gdk, Gio, GObject, Gtk } from 'imports/gi';
+import { Adw, Gdk, Gio, GLib, GObject, Gtk } from 'imports/gi';
 import { DropDownChoice, DropDownChoiceClass } from 'preferences/DropDownChoice';
+
+interface EnableCondition {
+    key: string;
+    predicate: (value: GLib.Variant) => boolean;
+    page: Adw.PreferencesPage;
+}
 
 class PreferencesRow {
     constructor(
@@ -8,6 +14,16 @@ class PreferencesRow {
         private readonly _key: string,
         private readonly _setEnabledInner?: (value: boolean) => void,
     ) {}
+
+    enableIf({ key, predicate, page }: EnableCondition): void {
+        const updateEnabled = () => {
+            const value = this._settings.get_value(key);
+            this._row.set_sensitive(predicate(value));
+        };
+        updateEnabled();
+        const changed = this._settings.connect(`changed::${key}`, updateEnabled);
+        page.connect('unmap', () => this._settings.disconnect(changed));
+    }
 
     addResetButton({ window }: { window: Adw.PreferencesWindow }): void {
         const button = new Gtk.Button({
@@ -73,10 +89,12 @@ class PreferencesRow {
         window,
         title,
         populatePage,
+        enableIf,
     }: {
         window: Adw.PreferencesWindow;
         title: string;
         populatePage: (page: Adw.PreferencesPage) => void;
+        enableIf?: EnableCondition;
     }): void {
         function showDialog() {
             const dialog = new Gtk.Dialog({
@@ -107,6 +125,15 @@ class PreferencesRow {
             }),
         );
         this._row.add_suffix(button);
+        if (enableIf) {
+            const updateEnabled = () => {
+                const value = this._settings.get_value(enableIf.key);
+                button.set_sensitive(enableIf.predicate(value));
+            };
+            updateEnabled();
+            const changed = this._settings.connect(`changed::${enableIf.key}`, updateEnabled);
+            enableIf.page.connect('unmap', () => this._settings.disconnect(changed));
+        }
     }
 
     private _setEnabled(value: boolean): void {

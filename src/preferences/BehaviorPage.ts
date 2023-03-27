@@ -69,6 +69,37 @@ export class BehaviorPage {
             key: 'scroll-wheel',
             title: 'Switch workspaces with scroll wheel',
             options: scrollWheelOptions,
+        }).addSubDialog({
+            window: this.window,
+            title: 'Switch Workspaces With Scroll Wheel',
+            enableIf: {
+                key: 'scroll-wheel',
+                predicate: (value) => value.get_string()[0] !== 'disabled',
+                page: this.page,
+            },
+            populatePage: (page) => {
+                const group = new Adw.PreferencesGroup();
+                page.add(group);
+                addToggle({
+                    settings: this._settings,
+                    group,
+                    key: 'scroll-wheel-debounce',
+                    title: 'Debounce scroll events',
+                });
+                addSpinButton({
+                    settings: this._settings,
+                    group,
+                    key: 'scroll-wheel-debounce-time',
+                    title: 'Debounce time (ms)',
+                    lower: 0,
+                    upper: 2000,
+                    step: 50,
+                }).enableIf({
+                    key: 'scroll-wheel-debounce',
+                    predicate: (value) => value.get_boolean(),
+                    page,
+                });
+            },
         });
         this.page.add(group);
     }

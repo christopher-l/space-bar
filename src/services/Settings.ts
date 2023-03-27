@@ -48,6 +48,14 @@ export class Settings {
         this.behaviorSettings,
         'scroll-wheel',
     );
+    readonly scrollWheelDebounce = SettingsSubject.createBooleanSubject(
+        this.behaviorSettings,
+        'scroll-wheel-debounce',
+    );
+    readonly scrollWheelDebounceTime = SettingsSubject.createIntSubject(
+        this.behaviorSettings,
+        'scroll-wheel-debounce-time',
+    );
     readonly smartWorkspaceNames = SettingsSubject.createBooleanSubject(
         this.behaviorSettings,
         'smart-workspace-names',

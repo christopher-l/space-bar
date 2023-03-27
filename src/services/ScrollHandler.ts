@@ -7,6 +7,7 @@ export class ScrollHandler {
     private _ws = Workspaces.getInstance();
     private _settings = Settings.getInstance();
     private _disconnectBinding?: () => void;
+    private _lastScrollTime = 0;
 
     init(panelButton: any) {
         this._settings.scrollWheel.subscribe(
@@ -40,6 +41,28 @@ export class ScrollHandler {
         this._disconnectBinding = () => widget.disconnect(scrollBinding);
     }
 
+    /**
+     * Checks whether the debounce time since the last scroll event is exceeded, so a scroll event
+     * can be accepted.
+     *
+     * Calling this function resets the debounce timer if the return value is `true`.
+     *
+     * @returns `true` if the scroll event should be accepted
+     */
+    private _debounceTimeExceeded(): boolean {
+        if (!this._settings.scrollWheelDebounce.value) {
+            return true;
+        }
+        const debounceTime = this._settings.scrollWheelDebounceTime.value;
+        const now = Date.now();
+        if (now >= this._lastScrollTime + debounceTime) {
+            this._lastScrollTime = now;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     private _handle_scroll(actor: any, event: any): boolean {
         // Adapted from https://github.com/timbertson/gnome-shell-scroll-workspaces
         const source = event.get_source();
@@ -61,7 +84,7 @@ export class ScrollHandler {
             default:
                 return Clutter.EVENT_PROPAGATE;
         }
-        if (newIndex !== null) {
+        if (newIndex !== null && this._debounceTimeExceeded()) {
             const workspace = global.workspace_manager.get_workspace_by_index(newIndex);
             if (workspace) {
                 workspace.activate(global.get_current_time());
