@@ -96,9 +96,16 @@ class PreferencesRow {
             icon_name: 'settings-symbolic',
             valign: Gtk.Align.CENTER,
             has_frame: false,
-            margin_start: 10,
         });
         button.connect('clicked', () => showDialog());
+        this._row.add_suffix(
+            new Gtk.Separator({
+                margin_start: 12,
+                margin_end: 4,
+                margin_top: 12,
+                margin_bottom: 12,
+            }),
+        );
         this._row.add_suffix(button);
     }
 
