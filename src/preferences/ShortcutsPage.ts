@@ -11,7 +11,8 @@ export class ShortcutsPage {
     );
 
     init() {
-        this.page.set_title('Shortcuts');
+        this.page.set_title('_Shortcuts');
+        this.page.use_underline = true;
         this.page.set_icon_name('preferences-desktop-keyboard-shortcuts-symbolic');
         this._initGroup();
     }
