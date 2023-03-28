@@ -23,7 +23,8 @@ export class AppearancePage {
     );
 
     init() {
-        this.page.set_title('Appearance');
+        this.page.set_title('_Appearance');
+        this.page.use_underline = true;
         this.page.set_icon_name('applications-graphics-symbolic');
         this._initGeneralGroup();
         this._initActiveWorkspaceGroup();
