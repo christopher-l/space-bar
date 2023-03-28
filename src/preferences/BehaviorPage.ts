@@ -62,6 +62,12 @@ export class BehaviorPage {
             key: 'show-empty-workspaces',
             title: 'Show empty workspaces',
         });
+		addToggle({
+			settings: this._settings,
+			group,
+			key: 'overview-on-empty-workspaces',
+			title: 'Toggle overview upon switching to empty workspace',
+		});
         addCombo({
             window: this.window,
             settings: this._settings,
