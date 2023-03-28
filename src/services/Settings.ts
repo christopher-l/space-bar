@@ -44,6 +44,10 @@ export class Settings {
         this.behaviorSettings,
         'show-empty-workspaces',
     );
+    readonly overviewOnEmptyWorkspace = SettingsSubject.createBooleanSubject(
+        this.behaviorSettings,
+        'overview-on-empty-workspace',
+    );
     readonly scrollWheel = SettingsSubject.createStringSubject<keyof typeof scrollWheelOptions>(
         this.behaviorSettings,
         'scroll-wheel',
