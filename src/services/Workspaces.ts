@@ -90,6 +90,7 @@ export class Workspaces {
         this._settings.showEmptyWorkspaces.subscribe(() =>
             this._update('number-of-workspaces-changed'),
         );
+        this._settings.overviewOnEmptyWorkspaces.subscribe(() => this._update());
         this._update(null);
         this._settings.smartWorkspaceNames.subscribe(
             (value) => value && this._clearEmptyWorkspaceNames(),
@@ -138,7 +139,7 @@ export class Workspaces {
             if (workspace) {
                 workspace.activate(global.get_current_time());
                 this.focusMostRecentWindowOnWorkspace(workspace);
-                if (!Main.overview.visible && !this.workspaces[index].hasWindows) {
+                if (!Main.overview.visible && !this.workspaces[index].hasWindows && this._settings.overviewOnEmptyWorkspaces.value) {
                     Main.overview.show();
                 }
             }
