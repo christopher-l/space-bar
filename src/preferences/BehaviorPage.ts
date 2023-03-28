@@ -61,13 +61,30 @@ export class BehaviorPage {
             group,
             key: 'show-empty-workspaces',
             title: 'Show empty workspaces',
+        }).addSubDialog({
+            window: this.window,
+            title: 'Show Empty Workspaces',
+            // Disabling the sub dialog is not completely honest since the setting also applies to
+            // switching workspaces via keyboard shortcuts. However, it is hard to communicate which
+            // ones, since we don't handle system keyboard shortcuts and the setting doesn't apply
+            // to switching workspaces via scroll wheel. Everything considered, this might cause
+            // less confusion than a more accurate placement.
+            enableIf: {
+                key: 'show-empty-workspaces',
+                predicate: (value) => value.get_boolean(),
+                page: this.page,
+            },
+            populatePage: (page) => {
+                const group = new Adw.PreferencesGroup();
+                page.add(group);
+                addToggle({
+                    settings: this._settings,
+                    group,
+                    key: 'overview-on-empty-workspace',
+                    title: 'Open overview when clicking on an empty workspace',
+                });
+            },
         });
-		addToggle({
-			settings: this._settings,
-			group,
-			key: 'overview-on-empty-workspaces',
-			title: 'Toggle overview upon switching to empty workspace',
-		});
         addCombo({
             window: this.window,
             settings: this._settings,
