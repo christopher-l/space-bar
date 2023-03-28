@@ -1,5 +1,8 @@
 import { GLib } from 'imports/gi';
 
+/**
+ * A subscribe/notify mechanism that debounces multiple subsequent notify calls.
+ */
 export class DebouncingNotifier {
     private _subscribers: (() => void)[] = [];
     private _timeout: number | null = null;

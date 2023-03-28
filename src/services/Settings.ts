@@ -1,7 +1,8 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 import { Gio } from 'imports/gi';
-import { scrollWheelOptions } from 'preferences/BehaviorPage';
+import { fontWeightOptions } from 'preferences/AppearancePage';
+import { positionOptions, scrollWheelOptions } from 'preferences/BehaviorPage';
 
 export class Settings {
     private static _instance: Settings | null;
@@ -20,6 +21,9 @@ export class Settings {
     readonly state = ExtensionUtils.getSettings(`${Me.metadata['settings-schema']}.state`);
     readonly behaviorSettings = ExtensionUtils.getSettings(
         `${Me.metadata['settings-schema']}.behavior`,
+    );
+    readonly appearanceSettings = ExtensionUtils.getSettings(
+        `${Me.metadata['settings-schema']}.appearance`,
     );
     readonly shortcutsSettings = ExtensionUtils.getSettings(
         `${Me.metadata['settings-schema']}.shortcuts`,
@@ -44,9 +48,25 @@ export class Settings {
         this.behaviorSettings,
         'scroll-wheel',
     );
+    readonly scrollWheelDebounce = SettingsSubject.createBooleanSubject(
+        this.behaviorSettings,
+        'scroll-wheel-debounce',
+    );
+    readonly scrollWheelDebounceTime = SettingsSubject.createIntSubject(
+        this.behaviorSettings,
+        'scroll-wheel-debounce-time',
+    );
     readonly smartWorkspaceNames = SettingsSubject.createBooleanSubject(
         this.behaviorSettings,
         'smart-workspace-names',
+    );
+    readonly position = SettingsSubject.createStringSubject<keyof typeof positionOptions>(
+        this.behaviorSettings,
+        'position',
+    );
+    readonly positionIndex = SettingsSubject.createIntSubject(
+        this.behaviorSettings,
+        'position-index',
     );
     readonly enableActivateWorkspaceShortcuts = SettingsSubject.createBooleanSubject(
         this.shortcutsSettings,
@@ -59,6 +79,107 @@ export class Settings {
     readonly workspaceNames = SettingsSubject.createStringArraySubject(
         this.wmPreferencesSettings,
         'workspace-names',
+    );
+    readonly workspacesBarPadding = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'workspaces-bar-padding',
+    );
+    readonly workspaceMargin = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'workspace-margin',
+    );
+    readonly activeWorkspaceBackgroundColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'active-workspace-background-color',
+    );
+    readonly activeWorkspaceTextColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'active-workspace-text-color',
+    );
+    readonly activeWorkspaceBorderColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'active-workspace-border-color',
+    );
+    readonly activeWorkspaceFontWeight = SettingsSubject.createStringSubject<
+        keyof typeof fontWeightOptions
+    >(this.appearanceSettings, 'active-workspace-font-weight');
+    readonly activeWorkspaceBorderRadius = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'active-workspace-border-radius',
+    );
+    readonly activeWorkspaceBorderWidth = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'active-workspace-border-width',
+    );
+    readonly activeWorkspacePaddingH = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'active-workspace-padding-h',
+    );
+    readonly activeWorkspacePaddingV = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'active-workspace-padding-v',
+    );
+    readonly inactiveWorkspaceBackgroundColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'inactive-workspace-background-color',
+    );
+    readonly inactiveWorkspaceTextColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'inactive-workspace-text-color',
+    );
+    readonly inactiveWorkspaceBorderColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'inactive-workspace-border-color',
+    );
+    readonly inactiveWorkspaceFontWeight = SettingsSubject.createStringSubject<
+        keyof typeof fontWeightOptions
+    >(this.appearanceSettings, 'inactive-workspace-font-weight');
+    readonly inactiveWorkspaceBorderRadius = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'inactive-workspace-border-radius',
+    );
+    readonly inactiveWorkspaceBorderWidth = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'inactive-workspace-border-width',
+    );
+    readonly inactiveWorkspacePaddingH = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'inactive-workspace-padding-h',
+    );
+    readonly inactiveWorkspacePaddingV = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'inactive-workspace-padding-v',
+    );
+    readonly emptyWorkspaceBackgroundColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'empty-workspace-background-color',
+    );
+    readonly emptyWorkspaceTextColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'empty-workspace-text-color',
+    );
+    readonly emptyWorkspaceBorderColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'empty-workspace-border-color',
+    );
+    readonly emptyWorkspaceFontWeight = SettingsSubject.createStringSubject<
+        keyof typeof fontWeightOptions
+    >(this.appearanceSettings, 'empty-workspace-font-weight');
+    readonly emptyWorkspaceBorderRadius = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'empty-workspace-border-radius',
+    );
+    readonly emptyWorkspaceBorderWidth = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'empty-workspace-border-width',
+    );
+    readonly emptyWorkspacePaddingH = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'empty-workspace-padding-h',
+    );
+    readonly emptyWorkspacePaddingV = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'empty-workspace-padding-v',
     );
 
     private init() {
@@ -74,6 +195,9 @@ class SettingsSubject<T> {
     private static _subjects: SettingsSubject<any>[] = [];
     static createBooleanSubject(settings: Gio.Settings, name: string): SettingsSubject<boolean> {
         return new SettingsSubject<boolean>(settings, name, 'boolean');
+    }
+    static createIntSubject(settings: Gio.Settings, name: string): SettingsSubject<number> {
+        return new SettingsSubject<number>(settings, name, 'int');
     }
     static createStringSubject<T extends string = string>(
         settings: Gio.Settings,
@@ -118,7 +242,7 @@ class SettingsSubject<T> {
     private constructor(
         private readonly _settings: Gio.Settings,
         private readonly _name: string,
-        private readonly _type: 'boolean' | 'string' | 'string-array' | 'json-object',
+        private readonly _type: 'boolean' | 'int' | 'string' | 'string-array' | 'json-object',
     ) {
         SettingsSubject._subjects.push(this);
     }
@@ -135,6 +259,8 @@ class SettingsSubject<T> {
             switch (this._type) {
                 case 'boolean':
                     return this._settings.get_boolean(this._name) as unknown as T;
+                case 'int':
+                    return this._settings.get_int(this._name) as unknown as T;
                 case 'string':
                     return this._settings.get_string(this._name) as unknown as T;
                 case 'string-array':
@@ -149,6 +275,8 @@ class SettingsSubject<T> {
             switch (this._type) {
                 case 'boolean':
                     return this._settings.set_boolean(this._name, value as unknown as boolean);
+                case 'int':
+                    return this._settings.set_int(this._name, value as unknown as number);
                 case 'string':
                     return this._settings.set_string(this._name, value as unknown as string);
                 case 'string-array':

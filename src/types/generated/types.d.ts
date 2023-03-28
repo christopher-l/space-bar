@@ -14,6 +14,7 @@ declare global {
         mainloop: any;
     };
     const global: Global;
+    const log: (...args: any[]) => void;
 }
 
 interface Global {

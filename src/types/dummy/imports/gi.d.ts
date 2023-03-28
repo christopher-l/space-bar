@@ -10,8 +10,11 @@ export const Gdk: any;
 export const GLib: any;
 
 export namespace Adw {
-    type PreferencesWindow = any;
+    type ActionRow = any;
+    type ComboRow = any;
     type PreferencesGroup = any;
+    type PreferencesPage = any;
+    type PreferencesWindow = any;
 }
 
 export namespace Clutter {
@@ -37,11 +40,17 @@ export namespace Meta {
 
 export namespace Gtk {
     type EventControllerKey = any;
-    type ShortcutManager = any;
+    type Dialog = any;
     type ShortcutController = any;
+    type ShortcutManager = any;
+    type ToggleButton = any;
 }
 
 export namespace GObject {
     type Object = any;
     type GType = any;
+}
+
+export namespace GLib {
+    type Variant = any;
 }

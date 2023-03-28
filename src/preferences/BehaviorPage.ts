@@ -1,12 +1,18 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 import { Adw } from 'imports/gi';
-import { addCombo, addToggle } from 'preferences/common';
+import { addCombo, addSpinButton, addToggle } from 'preferences/common';
 
 export const scrollWheelOptions = {
     panel: 'Over top panel',
     'workspaces-bar': 'Over workspaces bar',
     disabled: 'Disabled',
+};
+
+export const positionOptions = {
+    left: 'Left',
+    center: 'Center',
+    right: 'Right',
 };
 
 export class BehaviorPage {
@@ -27,6 +33,30 @@ export class BehaviorPage {
     private _initGeneralGroup(): void {
         const group = new Adw.PreferencesGroup();
         group.set_title('General');
+        addCombo({
+            window: this.window,
+            settings: this._settings,
+            group,
+            key: 'position',
+            title: 'Position in top panel',
+            options: positionOptions,
+        }).addSubDialog({
+            window: this.window,
+            title: 'Position in Top Panel',
+            populatePage: (page) => {
+                const positionSubDialogGroup = new Adw.PreferencesGroup();
+                page.add(positionSubDialogGroup);
+                addSpinButton({
+                    settings: this._settings,
+                    group: positionSubDialogGroup,
+                    key: 'position-index',
+                    title: 'Position index',
+                    subtitle: 'Order relative to other elements',
+                    lower: 0,
+                    upper: 100,
+                });
+            },
+        });
         addToggle({
             settings: this._settings,
             group,
@@ -40,6 +70,37 @@ export class BehaviorPage {
             key: 'scroll-wheel',
             title: 'Switch workspaces with scroll wheel',
             options: scrollWheelOptions,
+        }).addSubDialog({
+            window: this.window,
+            title: 'Switch Workspaces With Scroll Wheel',
+            enableIf: {
+                key: 'scroll-wheel',
+                predicate: (value) => value.get_string()[0] !== 'disabled',
+                page: this.page,
+            },
+            populatePage: (page) => {
+                const group = new Adw.PreferencesGroup();
+                page.add(group);
+                addToggle({
+                    settings: this._settings,
+                    group,
+                    key: 'scroll-wheel-debounce',
+                    title: 'Debounce scroll events',
+                });
+                addSpinButton({
+                    settings: this._settings,
+                    group,
+                    key: 'scroll-wheel-debounce-time',
+                    title: 'Debounce time (ms)',
+                    lower: 0,
+                    upper: 2000,
+                    step: 50,
+                }).enableIf({
+                    key: 'scroll-wheel-debounce',
+                    predicate: (value) => value.get_boolean(),
+                    page,
+                });
+            },
         });
         this.page.add(group);
     }

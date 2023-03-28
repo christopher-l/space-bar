@@ -53,7 +53,7 @@ export class KeyBindings {
         this._addedKeyBindings.push(name);
     }
 
-    private _removeKeybinding(name: string) {
+    removeKeybinding(name: string) {
         if (this._addedKeyBindings.includes(name)) {
             Main.wm.removeKeybinding(name);
             this._addedKeyBindings.splice(this._addedKeyBindings.indexOf(name), 1);
@@ -75,7 +75,7 @@ export class KeyBindings {
                             this._ws.activate(i, { focusWindowIfCurrentWorkspace: true });
                         });
                     } else {
-                        this._removeKeybinding(name);
+                        this.removeKeybinding(name);
                     }
                 }
             },

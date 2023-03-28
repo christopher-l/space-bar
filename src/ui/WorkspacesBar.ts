@@ -3,6 +3,8 @@ const Me = ExtensionUtils.getCurrentExtension();
 const Main = imports.ui.main;
 import type { Meta } from 'imports/gi';
 import { Clutter, GObject, St } from 'imports/gi';
+import { Settings } from 'services/Settings';
+import { Styles } from 'services/Styles';
 import { Workspaces, WorkspaceState } from 'services/Workspaces';
 import { WorkspacesBarMenu } from 'ui/WorkspacesBarMenu';
 const PanelMenu = imports.ui.panelMenu;
@@ -43,8 +45,11 @@ const MAX_CLICK_TIME_DELTA = 300;
 
 export class WorkspacesBar {
     private readonly _name = `${Me.metadata.name}`;
+    private readonly _settings = Settings.getInstance();
+    private readonly _styles = Styles.getInstance();
     private readonly _ws = Workspaces.getInstance();
-    readonly button = new (WorkspacesButton as any)(0.5, this._name);
+    private _button: any;
+    private _menu!: WorkspacesBarMenu;
     private _wsBar!: St.BoxLayout;
     private readonly _dragHandler = new WorkspacesBarDragHandler(() => this._updateWorkspaces());
 
@@ -52,26 +57,54 @@ export class WorkspacesBar {
 
     init(): void {
         this._initButton();
-        new WorkspacesBarMenu(this.button.menu).init();
+        this._initMenu();
+        this._styles.onWorkspacesBarChanged(() => this._refreshTopBarConfiguration());
+        this._styles.onWorkspaceLabelsChanged(() => this._updateWorkspaces());
+        this._settings.position.subscribe(() => this._refreshTopBarConfiguration());
+        this._settings.positionIndex.subscribe(() => this._refreshTopBarConfiguration());
     }
 
     destroy(): void {
         this._wsBar.destroy();
-        this.button.destroy();
+        this._button.destroy();
+        this._menu.destroy();
         this._dragHandler.destroy();
     }
 
+    getWidget(): any {
+        return this._button;
+    }
+
+    private _refreshTopBarConfiguration(): void {
+        this._button.destroy();
+        this._menu.destroy();
+        this._initButton();
+        this._initMenu();
+    }
+
     private _initButton(): void {
-        this.button._delegate = this._dragHandler;
-        this.button.track_hover = false;
-        this.button.style_class = 'panel-button space-bar';
+        this._button = new (WorkspacesButton as any)(0.5, this._name);
+        this._button._delegate = this._dragHandler;
+        this._button.track_hover = false;
+        this._button.style_class = 'panel-button space-bar';
+        this._button.set_style(this._styles.getWorkspacesBarStyle());
         this._ws.onUpdate(() => this._updateWorkspaces());
 
         // bar creation
         this._wsBar = new St.BoxLayout({});
         this._updateWorkspaces();
-        this.button.add_child(this._wsBar);
-        Main.panel.addToStatusArea(this._name, this.button, 0, 'left');
+        this._button.add_child(this._wsBar);
+        Main.panel.addToStatusArea(
+            this._name,
+            this._button,
+            this._settings.positionIndex.value,
+            this._settings.position.value,
+        );
+    }
+
+    private _initMenu(): void {
+        this._menu = new WorkspacesBarMenu(this._button.menu);
+        this._menu.init();
     }
 
     // update the workspaces bar
@@ -111,7 +144,7 @@ export class WorkspacesBar {
                     this._ws.removeWorkspace(workspace.index);
                     break;
                 case 3:
-                    this.button.menu.toggle();
+                    this._button.menu.toggle();
                     break;
             }
             return Clutter.EVENT_PROPAGATE;
@@ -144,8 +177,14 @@ export class WorkspacesBar {
         });
         if (workspace.index == this._ws.currentIndex) {
             label.style_class += ' active';
+            label.set_style(this._styles.getActiveWorkspaceStyle());
         } else {
             label.style_class += ' inactive';
+            if (workspace.hasWindows) {
+                label.set_style(this._styles.getInactiveWorkspaceStyle());
+            } else {
+                label.set_style(this._styles.getEmptyWorkspaceStyle());
+            }
         }
         if (workspace.hasWindows) {
             label.style_class += ' nonempty';

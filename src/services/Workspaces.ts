@@ -49,7 +49,6 @@ export class Workspaces {
     private _ws_changed?: number;
     private _ws_removed?: number;
     private _ws_active_changed?: number;
-    private _restacked: any;
     private _windows_changed: any;
     private _settings = Settings.getInstance();
     private _wsNames?: WorkspaceNames | null;
@@ -79,7 +78,6 @@ export class Workspaces {
                 this._smartNamesNotifier.notify();
             },
         );
-        this._restacked = global.display.connect('restacked', this._update.bind(this));
         this._windows_changed = Shell.WindowTracker.get_default().connect(
             'tracked-windows-changed',
             () => {
@@ -112,9 +110,6 @@ export class Workspaces {
         }
         if (this._ws_active_changed) {
             global.workspace_manager.disconnect(this._ws_active_changed);
-        }
-        if (this._restacked) {
-            global.display.disconnect(this._restacked);
         }
         if (this._windows_changed) {
             Shell.WindowTracker.get_default().disconnect(this._windows_changed);

@@ -35,6 +35,10 @@ export class WorkspacesBarMenu {
         this._keyBindings.addKeyBinding('open-menu', () => this._menu.open());
     }
 
+    destroy(): void {
+        this._keyBindings.removeKeybinding('open-menu');
+    }
+
     private _refreshMenu() {
         this._refreshHiddenWorkspaces();
     }
