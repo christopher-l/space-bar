@@ -111,7 +111,7 @@ class PreferencesRow {
             dialog.show();
         }
         const button = new Gtk.Button({
-            icon_name: 'settings-symbolic',
+            icon_name: 'applications-system-symbolic',
             valign: Gtk.Align.CENTER,
             has_frame: false,
         });
