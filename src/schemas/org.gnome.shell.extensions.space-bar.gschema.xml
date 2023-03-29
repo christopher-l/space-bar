@@ -38,7 +38,7 @@
             <summary>Switch workspaces with scroll wheel</summary>
         </key>
         <key name="scroll-wheel-debounce" type="b">
-            <default>false</default>
+            <default>true</default>
         </key>
         <key name="scroll-wheel-debounce-time" type="i">
             <default>200</default>
