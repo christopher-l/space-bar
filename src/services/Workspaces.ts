@@ -1,4 +1,4 @@
-import { Meta } from 'imports/gi';
+import { Meta, Shell } from 'imports/gi';
 import { Settings } from 'services/Settings';
 import { WorkspaceNames } from 'services/WorkspaceNames';
 import { DebouncingNotifier } from 'utils/DebouncingNotifier';
@@ -49,6 +49,7 @@ export class Workspaces {
     private _ws_changed?: number;
     private _ws_removed?: number;
     private _ws_active_changed?: number;
+    private _windows_changed?: number;
     private _settings = Settings.getInstance();
     private _wsNames?: WorkspaceNames | null;
     private _updateNotifier = new DebouncingNotifier();
@@ -89,6 +90,15 @@ export class Workspaces {
                 this._smartNamesNotifier.notify();
             },
         );
+        // Additionally to tracking new windows on workspaces, we need to track windows that change
+        // their names after being opened.
+        this._windows_changed = Shell.WindowTracker.get_default().connect(
+            'tracked-windows-changed',
+            () => {
+                this._update('windows-changed', 'WindowTracker tracked-windows-changed');
+                this._smartNamesNotifier.notify();
+            },
+        );
         this._settings.dynamicWorkspaces.subscribe(() =>
             this._update('workspaces-changed', 'settings dynamicWorkspaces'),
         );
@@ -119,6 +129,9 @@ export class Workspaces {
         }
         if (this._ws_active_changed) {
             global.workspace_manager.disconnect(this._ws_active_changed);
+        }
+        if (this._windows_changed) {
+            Shell.WindowTracker.get_default().disconnect(this._windows_changed);
         }
         this._updateNotifier.destroy();
         this._smartNamesNotifier.destroy();
