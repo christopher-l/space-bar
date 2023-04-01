@@ -36,6 +36,7 @@ export namespace St {
 
 export namespace Meta {
     type Window = any;
+    type Workspace = any;
 }
 
 export namespace Gtk {

@@ -1,4 +1,4 @@
-import { Shell } from 'imports/gi';
+import { GLib, Meta, Shell } from 'imports/gi';
 import { Settings } from 'services/Settings';
 import { WorkspaceNames } from 'services/WorkspaceNames';
 import { DebouncingNotifier } from 'utils/DebouncingNotifier';
@@ -14,10 +14,10 @@ export interface WorkspaceState {
     hasWindows: boolean;
 }
 
-export type updateReason =
+export type UpdateReason =
+    | 'init'
     | 'active-workspace-changed'
-    | 'number-of-workspaces-changed'
-    | 'workspace-names-changed'
+    | 'workspaces-changed'
     | 'windows-changed';
 
 type Workspace = any;
@@ -49,24 +49,31 @@ export class Workspaces {
     private _ws_changed?: number;
     private _ws_removed?: number;
     private _ws_active_changed?: number;
-    private _windows_changed: any;
     private _settings = Settings.getInstance();
     private _wsNames?: WorkspaceNames | null;
     private _updateNotifier = new DebouncingNotifier();
     private _smartNamesNotifier = new DebouncingNotifier();
+    /**
+     * Listeners for windows being added to a workspace.
+     *
+     * The listeners are connected to a workspace and there is one listener per workspace that needs
+     * tracking.
+     */
+    private _windowAddedListeners: { workspace: Meta.Workspace; listener: number }[] = [];
 
     init() {
         this._wsNames = WorkspaceNames.init(this);
         let numberOfWorkspacesChangeHandled = false;
         this._ws_removed = global.workspace_manager.connect('workspace-removed', (_, index) => {
-            this._onWorkspaceRemoved(index);
+            this._update('workspaces-changed', 'workspace_manager workspace_removed');
+            this._wsNames!.remove(index);
             numberOfWorkspacesChangeHandled = true;
         });
         this._ws_changed = global.workspace_manager.connect('notify::n-workspaces', () => {
             if (numberOfWorkspacesChangeHandled) {
                 numberOfWorkspacesChangeHandled = false;
             } else {
-                this._update('number-of-workspaces-changed');
+                this._update('workspaces-changed', 'workspace_manager n-workspaces');
             }
         });
 
@@ -74,27 +81,29 @@ export class Workspaces {
             'active-workspace-changed',
             () => {
                 this._previousWorkspace = this.currentIndex;
-                this._update('active-workspace-changed');
+                this._update(
+                    'active-workspace-changed',
+                    'workspace_manager active-workspace-changed',
+                );
+                // We need to update names in case we moved away from the last dynamic workspace.
                 this._smartNamesNotifier.notify();
             },
         );
-        this._windows_changed = Shell.WindowTracker.get_default().connect(
-            'tracked-windows-changed',
-            () => {
-                this._update('windows-changed');
-                this._smartNamesNotifier.notify();
-            },
+        this._settings.dynamicWorkspaces.subscribe(() =>
+            this._update('workspaces-changed', 'settings dynamicWorkspaces'),
         );
-        this._settings.dynamicWorkspaces.subscribe(() => this._update());
-        this._settings.workspaceNames.subscribe(() => this._update('workspace-names-changed'));
+        this._settings.workspaceNames.subscribe(() =>
+            this._update('workspaces-changed', 'settings workspaceNames'),
+        );
         this._settings.showEmptyWorkspaces.subscribe(() =>
-            this._update('number-of-workspaces-changed'),
+            this._update('workspaces-changed', 'settings showEmptyWorkspaces'),
         );
-        this._update(null);
+        this._update('init', 'init');
         this._settings.smartWorkspaceNames.subscribe(
             (value) => value && this._clearEmptyWorkspaceNames(),
             { emitCurrentValue: true },
         );
+        this._settings.smartWorkspaceNames.subscribe(() => this._updateWindowAddedListeners());
         // Update smart workspaces after a small delay because workspaces can briefly get into
         // inconsistent states while empty dynamic workspaces are being removed.
         this._smartNamesNotifier.subscribe(() => this._updateSmartWorkspaceNames());
@@ -111,11 +120,9 @@ export class Workspaces {
         if (this._ws_active_changed) {
             global.workspace_manager.disconnect(this._ws_active_changed);
         }
-        if (this._windows_changed) {
-            Shell.WindowTracker.get_default().disconnect(this._windows_changed);
-        }
         this._updateNotifier.destroy();
         this._smartNamesNotifier.destroy();
+        this._windowAddedListeners.forEach((entry) => entry.workspace.disconnect(entry.listener));
     }
 
     onUpdate(callback: () => void) {
@@ -223,12 +230,14 @@ export class Workspaces {
         );
     }
 
-    private _onWorkspaceRemoved(index: number): void {
-        this._update(null);
-        this._wsNames!.remove(index);
-    }
-
-    private _update(reason?: updateReason | null): void {
+    /**
+     * Updates workspaces info managed by this class.
+     *
+     * @param reason The external cause that makes an update necessary
+     * @param source The unit that notified us of the change (used for debugging)
+     */
+    private _update(reason: UpdateReason, source: string): void {
+        // log('_update', reason, source);
         this.numberOfEnabledWorkspaces = global.workspace_manager.get_n_workspaces();
         this.currentIndex = global.workspace_manager.get_active_workspace_index();
         if (
@@ -248,6 +257,67 @@ export class Workspaces {
             this._getWorkspaceState(index),
         );
         this._updateNotifier.notify();
+        if (reason === 'workspaces-changed' || reason === 'init') {
+            this._updateWindowAddedListeners();
+        }
+    }
+
+    /**
+     * Updates the listeners for added windows on workspaces.
+     *
+     * Connects listeners to workspaces that newly need to be tracked and removes the ones from
+     * workspaces that don't need tracking anymore.
+     *
+     * Records and updates all connected listeners in `_windowAddedListeners`.
+     */
+    private _updateWindowAddedListeners() {
+        // Listeners are only added when smart workspace names are enabled and the workspace does
+        // not yet have a name. They are removed as soon as the setting is turned off or the
+        // workspace is assigned a name.
+
+        // Add missing listeners.
+        if (this._settings.smartWorkspaceNames.value) {
+            for (const workspace of this.workspaces) {
+                if (
+                    !workspace.name &&
+                    !this._windowAddedListeners.some(
+                        (entry) => entry.workspace.index() === workspace.index,
+                    )
+                ) {
+                    const metaWorkspace = global.workspace_manager.get_workspace_by_index(
+                        workspace.index,
+                    )!;
+                    const listener = metaWorkspace.connect('window-added', () => {
+                        this._update('windows-changed', 'Workspace window-added');
+                        this._updateSmartWorkspaceNames();
+                    });
+                    this._windowAddedListeners.push({
+                        workspace: metaWorkspace,
+                        listener,
+                    });
+                }
+            }
+        }
+        // Remove unneeded listeners.
+        let removedListener = false;
+        this._windowAddedListeners.forEach((entry, arrayIndex) => {
+            const workspace = this.workspaces[entry.workspace.index()];
+            if (
+                !this._settings.smartWorkspaceNames.value ||
+                !workspace ||
+                workspace.name ||
+                !workspace.isEnabled
+            ) {
+                entry.workspace.disconnect(entry.listener);
+                delete this._windowAddedListeners[arrayIndex];
+                removedListener = true;
+            }
+        });
+        if (removedListener) {
+            this._windowAddedListeners = this._windowAddedListeners.filter(
+                (entry) => entry != null,
+            );
+        }
     }
 
     private _updateSmartWorkspaceNames(): void {
