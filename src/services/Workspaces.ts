@@ -1,4 +1,4 @@
-import { GLib, Meta, Shell } from 'imports/gi';
+import { Meta } from 'imports/gi';
 import { Settings } from 'services/Settings';
 import { WorkspaceNames } from 'services/WorkspaceNames';
 import { DebouncingNotifier } from 'utils/DebouncingNotifier';
