@@ -1,9 +1,9 @@
-import type * as Clutter10 from '@imports/Clutter-10';
-import type * as Gio20 from '@imports/Gio-2.0';
-import type * as Meta from '@imports/Meta-10';
+import type * as Clutter from '@imports/Clutter-11';
+import type * as Gio from '@imports/Gio-2.0';
+import type * as Meta from '@imports/Meta-11';
 
-export { Clutter10 as Clutter };
-export { Gio20 as Gio };
+export { Clutter };
+export { Gio };
 
 declare global {
     const imports: {
