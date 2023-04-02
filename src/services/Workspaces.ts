@@ -287,6 +287,9 @@ export class Workspaces {
         // Listeners are only added when smart workspace names are enabled and the workspace does
         // not yet have a name. They are removed as soon as the setting is turned off or the
         // workspace is assigned a name.
+        //
+        // We need to track `window-added` signals in addition to `tracked-windows-changed` signals
+        // so we catch windows that have been moved from another monitor to the primary monitor.
 
         // Add missing listeners.
         if (this._settings.smartWorkspaceNames.value) {
