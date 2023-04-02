@@ -1,7 +1,7 @@
 {
   "uuid": "space-bar@luchrioh",
   "name": "Space Bar",
-  "description": "Replaces the 'Activities' button with an i3-like workspaces bar.\n\nOriginally a fork of the extension Workspaces Bar by fthx, this extension grew into a more comprehensive set of features to support a workspace-based workflow.\n\nFeatures:\n-   First class support for static and dynamic workspaces as well as multi-monitor setups\n-   Add, remove, and rename workspaces\n-   Rearrange workspaces via drag and drop\n-   Automatically updates workspace names to reflect changes of workspaces\n-   Automatically assign workspace names based on started applications\n-   Keyboard shortcuts extend and refine system shortcuts\n-   Scroll through workspaces by mouse wheel over the panel\n\nLimitations:\n-   Adding workspaces by dragging a window in overview between existing workspaces is not recognized and will confuse workspace names",
+  "description": "Replaces the 'Activities' button with an i3-like workspaces bar.\n\nOriginally a fork of the extension Workspaces Bar by fthx, this extension grew into a more comprehensive set of features to support a workspace-based workflow.\n\nFeatures:\n-   First class support for static and dynamic workspaces as well as multi-monitor setups\n-   Add, remove, and rename workspaces\n-   Rearrange workspaces via drag and drop\n-   Automatically assign workspace names based on started applications\n-   Keyboard shortcuts extend and refine system shortcuts\n-   Scroll through workspaces by mouse wheel over the panel\n-   Customize the appearance\n\nLimitations:\n-   Adding workspaces by dragging a window in overview between existing workspaces is not recognized and will confuse workspace names",
   "shell-version": [
     "42",
     "43",

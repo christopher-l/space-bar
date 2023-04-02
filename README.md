@@ -14,10 +14,10 @@ comprehensive set of features to support a workspace-based workflow.
 -   First class support for static and dynamic workspaces as well as multi-monitor setups
 -   Add, remove, and rename workspaces
 -   Rearrange workspaces via drag and drop
--   Automatically updates workspace names to reflect changes of workspaces
 -   Automatically assign workspace names based on started applications
 -   Keyboard shortcuts extend and refine system shortcuts
 -   Scroll through workspaces by mouse wheel over the panel
+-   Customize the appearance
 
 ## Limitations
 
