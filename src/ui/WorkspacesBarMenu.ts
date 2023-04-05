@@ -39,6 +39,7 @@ export class WorkspacesBarMenu {
 
     private _refreshMenu() {
         this._refreshHiddenWorkspaces();
+        this._refreshManageWorkspaceSection();
     }
 
     private _addSectionHeading(text: string, section?: any): void {
@@ -81,12 +82,9 @@ export class WorkspacesBarMenu {
     }
 
     private _initManageWorkspaceSection() {
-        this._refreshManageWorkspaceSection();
         const separator = new PopupMenu.PopupSeparatorMenuItem();
         this._menu.addMenuItem(separator);
         this._menu.addMenuItem(this._manageWorkspaceSection);
-        this._settings.showEmptyWorkspaces.subscribe(() => this._refreshManageWorkspaceSection());
-        this._settings.dynamicWorkspaces.subscribe(() => this._refreshManageWorkspaceSection());
     }
 
     private _initExtensionSettingsButton(): void {
