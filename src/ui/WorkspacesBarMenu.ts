@@ -13,7 +13,6 @@ export class WorkspacesBarMenu {
     private readonly _ws = Workspaces.getInstance();
     private readonly _wsNames = WorkspaceNames.getInstance();
 
-    private _recentWorkspacesSection = new PopupMenu.PopupMenuSection();
     private _hiddenWorkspacesSection = new PopupMenu.PopupMenuSection();
     private _manageWorkspaceSection = new PopupMenu.PopupMenuSection();
 
@@ -23,7 +22,6 @@ export class WorkspacesBarMenu {
         this._menu.box.add_style_class_name('space-bar-menu');
         this._addSectionHeading('Rename current workspace');
         this._initEntry();
-        this._menu.addMenuItem(this._recentWorkspacesSection);
         this._menu.addMenuItem(this._hiddenWorkspacesSection);
         this._initManageWorkspaceSection();
         this._initExtensionSettingsButton();
