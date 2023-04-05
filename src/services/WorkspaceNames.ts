@@ -28,11 +28,6 @@ export class WorkspaceNames {
         this._setNames(workspaceNames);
     }
 
-    insert(index: number, name: string): void {
-        const workspaceNames = this._getNames();
-        this._insert(workspaceNames, index, name);
-        this._setNames(workspaceNames);
-    }
 
     remove(index: number): void {
         const workspaceNames = this._getNames();
@@ -93,14 +88,6 @@ export class WorkspaceNames {
         let windows: Window[] = workspace!.list_windows();
         windows = windows.filter((window) => !window.is_on_all_workspaces());
         return windows.map((window) => window.get_wm_class());
-    }
-
-    private _insert(workspaceNames: string[], index: number, name: string): void {
-        if (workspaceNames.length > index) {
-            workspaceNames.splice(index, 0, name);
-        } else {
-            workspaceNames[index] = name;
-        }
     }
 
     private _getNames(): string[] {
