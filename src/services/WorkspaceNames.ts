@@ -23,10 +23,7 @@ export class WorkspaceNames {
         if (newIndex < workspaceNames.length) {
             workspaceNames.splice(newIndex, 0, element ?? '');
         } else {
-            while (workspaceNames.length < newIndex) {
-                workspaceNames.push('');
-            }
-            workspaceNames[newIndex] = element ?? '';
+            setArrayValue(workspaceNames, newIndex, element ?? '');
         }
         this._setNames(workspaceNames);
     }
@@ -46,7 +43,7 @@ export class WorkspaceNames {
     rename(index: number, newName: string): void {
         let workspaceNames = this._getNames();
         const oldName = workspaceNames[index];
-        workspaceNames[index] = newName;
+        setArrayValue(workspaceNames, index, newName);
         this._setNames(workspaceNames);
         if (this._settings.smartWorkspaceNames.value && newName) {
             this._saveSmartWorkspaceName(index, oldName, newName);
@@ -117,4 +114,15 @@ export class WorkspaceNames {
     private _getEnabledWorkspaceNames(): string[] {
         return this._getNames().filter((_, index) => index < this._ws.numberOfEnabledWorkspaces);
     }
+}
+
+/**
+ * Sets the array's value at the given index, padding any missing elements so all elements have
+ * valid values.
+ */
+function setArrayValue(array: string[], index: number, value: string): void {
+    while (array.length < index) {
+        array.push('');
+    }
+    array[index] = value;
 }
