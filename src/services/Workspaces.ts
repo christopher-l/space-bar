@@ -148,6 +148,7 @@ export class Workspaces {
         if (isCurrentWorkspace) {
             if (
                 focusWindowIfCurrentWorkspace &&
+                this.workspaces[index].hasWindows &&
                 global.display.get_focus_window().is_on_all_workspaces()
             ) {
                 this.focusMostRecentWindowOnWorkspace(workspace);
