@@ -1,0 +1,36 @@
+name: Release
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  Release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: sudo apt install -y libgnome-autoar-0-0
+      - run: apt download gnome-shell
+      - run: sudo dpkg --force-all -i gnome-shell*.deb
+      - run: npm install
+      - run: npm run build
+      - uses: actions/create-release@v1
+        id: create_release
+        with:
+          draft: false
+          prerelease: false
+          release_name: ${{ github.ref }}
+          tag_name: ${{ github.ref }}
+          body_path: CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./space-bar@luchrioh.shell-extension.zip
+          asset_name: space-bar@luchrioh.shell-extension.zip
+          asset_content_type: application/zip
