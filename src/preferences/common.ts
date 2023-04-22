@@ -432,6 +432,7 @@ export function addKeyboardShortcut({
         });
         dialog.add_controller(keyController);
         keyController.connect('key-pressed', (keyController, keyval, keycode, modifier) => {
+            modifier = fixModifiers(modifier);
             const accelerator = getAccelerator(keyval, modifier);
             if (accelerator) {
                 if (keyval === Gdk.KEY_Escape && !modifier) {
@@ -457,9 +458,9 @@ export function addKeyboardShortcut({
 }
 
 function getAccelerator(keyval: number, modifiers: number): string | null {
-    const acceleratorName = Gtk.accelerator_name(keyval, modifiers);
     const isValid = Gtk.accelerator_valid(keyval, modifiers);
     if (isValid) {
+        const acceleratorName = Gtk.accelerator_name(keyval, modifiers);
         return acceleratorName;
     } else {
         return null;
@@ -477,4 +478,17 @@ function findItemPositionInModel<T extends GObject.Object>(
         }
     }
     return undefined;
+}
+
+/**
+ * Removes invalid modifier bits.
+ */
+function fixModifiers(modifiers: number): number {
+    return (
+        modifiers &
+        // Set by Xorg when holding the Super key in addition to the valid Meta modifier.
+        ~64 &
+        // Set when num lock is enabled.
+        ~16
+    );
 }
