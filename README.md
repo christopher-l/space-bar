@@ -64,7 +64,12 @@ Run a GNOME shell instance in a window:
 dbus-run-session -- gnome-shell --nested --wayland
 ```
 
-View relevant logs:
+View logs:
 ```sh
 journalctl -f -o cat /usr/bin/gnome-shell
+```
+
+View logs of settings:
+```sh
+journalctl -f -o cat /usr/bin/gjs
 ```
