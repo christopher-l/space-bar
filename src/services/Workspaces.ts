@@ -306,15 +306,17 @@ export class Workspaces {
                 ) {
                     const metaWorkspace = global.workspace_manager.get_workspace_by_index(
                         workspace.index,
-                    )!;
-                    const listener = metaWorkspace.connect('window-added', () => {
-                        this._update('windows-changed', 'Workspace window-added');
-                        this._updateSmartWorkspaceNames();
-                    });
-                    this._windowAddedListeners.push({
-                        workspace: metaWorkspace,
-                        listener,
-                    });
+                    );
+                    if (metaWorkspace) {
+                        const listener = metaWorkspace.connect('window-added', () => {
+                            this._update('windows-changed', 'Workspace window-added');
+                            this._updateSmartWorkspaceNames();
+                        });
+                        this._windowAddedListeners.push({
+                            workspace: metaWorkspace,
+                            listener,
+                        });
+                    }
                 }
             }
         }
