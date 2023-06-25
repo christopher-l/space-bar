@@ -2,6 +2,7 @@ import { Meta, Shell } from 'imports/gi';
 import { Settings } from 'services/Settings';
 import { WorkspaceNames } from 'services/WorkspaceNames';
 import { DebouncingNotifier } from 'utils/DebouncingNotifier';
+import { Timeout } from 'utils/Timeout';
 const Main = imports.ui.main;
 const AltTab = imports.ui.altTab;
 
@@ -54,6 +55,7 @@ export class Workspaces {
     private _wsNames?: WorkspaceNames | null;
     private _updateNotifier = new DebouncingNotifier();
     private _smartNamesNotifier = new DebouncingNotifier();
+    private _timeout = new Timeout();
     /**
      * Listeners for windows being added to a workspace.
      *
@@ -135,6 +137,7 @@ export class Workspaces {
         }
         this._updateNotifier.destroy();
         this._smartNamesNotifier.destroy();
+        this._timeout.destroy();
         this._windowAddedListeners.forEach((entry) => entry.workspace.disconnect(entry.listener));
     }
 
@@ -153,7 +156,7 @@ export class Workspaces {
             ) {
                 this.focusMostRecentWindowOnWorkspace(workspace);
             } else {
-                Main.overview.toggle();
+                this._timeout.tick().then(() => Main.overview.toggle());
             }
         } else {
             if (workspace) {
@@ -164,7 +167,7 @@ export class Workspaces {
                     !this.workspaces[index].hasWindows &&
                     this._settings.overviewOnEmptyWorkspace.value
                 ) {
-                    Main.overview.show();
+                    this._timeout.tick().then(() => Main.overview.show());
                 }
             }
         }
@@ -195,7 +198,7 @@ export class Workspaces {
 
     _addStaticWorkspace() {
         global.workspace_manager.append_new_workspace(true, global.get_current_time());
-        Main.overview.show();
+        this._timeout.tick().then(() => Main.overview.show());
     }
 
     removeWorkspace(index: number) {
