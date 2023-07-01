@@ -19,11 +19,6 @@ comprehensive set of features to support a workspace-based workflow.
 -   Scroll through workspaces by mouse wheel over the panel
 -   Customize the appearance
 
-## Limitations
-
--   Adding workspaces by dragging a window in overview between existing workspaces is not recognized
-    and will confuse workspace names
-
 ## Build
 
 The source code of this extension is written in TypeScript. The following command will build the

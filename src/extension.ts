@@ -5,6 +5,7 @@ import { Styles } from 'services/Styles';
 import { TopBarAdjustments } from 'services/TopBarAdjustments';
 import { Workspaces } from 'services/Workspaces';
 import { WorkspacesBar } from 'ui/WorkspacesBar';
+import { destroyAllHooks } from 'utils/hook';
 
 class Extension {
     private workspacesBar: WorkspacesBar | null = null;
@@ -23,6 +24,7 @@ class Extension {
     }
 
     disable() {
+        destroyAllHooks();
         Settings.destroy();
         TopBarAdjustments.destroy();
         Workspaces.destroy();

@@ -28,6 +28,15 @@ export class WorkspaceNames {
         this._setNames(workspaceNames);
     }
 
+    insert(index: number): void {
+        const workspaceNames = this._getNames();
+        if (index < workspaceNames.length) {
+            workspaceNames.splice(index, 0, '');
+        } else {
+            setArrayValue(workspaceNames, index, '');
+        }
+        this._setNames(workspaceNames);
+    }
 
     remove(index: number): void {
         const workspaceNames = this._getNames();

@@ -3,8 +3,10 @@ import { Settings } from 'services/Settings';
 import { WorkspaceNames } from 'services/WorkspaceNames';
 import { DebouncingNotifier } from 'utils/DebouncingNotifier';
 import { Timeout } from 'utils/Timeout';
+import { hook } from 'utils/hook';
 const Main = imports.ui.main;
 const AltTab = imports.ui.altTab;
+const WindowManager = imports.ui.windowManager;
 
 export interface WorkspaceState {
     isEnabled: boolean;
@@ -110,6 +112,9 @@ export class Workspaces {
         this._settings.showEmptyWorkspaces.subscribe(() =>
             this._update('workspaces-changed', 'settings showEmptyWorkspaces'),
         );
+        hook(WindowManager.WindowManager, 'insertWorkspace', 'before', (_, pos: number) => {
+            this._wsNames?.insert(pos);
+        });
         this._update('init', 'init');
         this._settings.smartWorkspaceNames.subscribe(
             (value) => value && this._clearEmptyWorkspaceNames(),
