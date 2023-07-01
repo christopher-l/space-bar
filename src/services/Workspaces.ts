@@ -21,6 +21,7 @@ export type UpdateReason =
     | 'init'
     | 'active-workspace-changed'
     | 'workspaces-changed'
+    | 'workspace-names-changed'
     | 'windows-changed';
 
 type Workspace = any;
@@ -49,8 +50,9 @@ export class Workspaces {
     workspaces: WorkspaceState[] = [];
 
     private _previousWorkspace = 0;
+    private _metaWorkspaces: Meta.Workspace[] = [];
     private _ws_changed?: number;
-    private _ws_removed?: number;
+    private _ws_reordered?: number;
     private _ws_active_changed?: number;
     private _windows_changed?: number;
     private _settings = Settings.getInstance();
@@ -68,18 +70,11 @@ export class Workspaces {
 
     init() {
         this._wsNames = WorkspaceNames.init(this);
-        let numberOfWorkspacesChangeHandled = false;
-        this._ws_removed = global.workspace_manager.connect('workspace-removed', (_, index) => {
-            this._update('workspaces-changed', 'workspace_manager workspace_removed');
-            this._wsNames!.remove(index);
-            numberOfWorkspacesChangeHandled = true;
+        this._ws_reordered = global.workspace_manager.connect('workspaces-reordered', () => {
+            this._update('workspaces-changed', 'workspace_manager workspaces-reordered');
         });
         this._ws_changed = global.workspace_manager.connect('notify::n-workspaces', () => {
-            if (numberOfWorkspacesChangeHandled) {
-                numberOfWorkspacesChangeHandled = false;
-            } else {
-                this._update('workspaces-changed', 'workspace_manager n-workspaces');
-            }
+            this._update('workspaces-changed', 'workspace_manager n-workspaces');
         });
 
         this._ws_active_changed = global.workspace_manager.connect(
@@ -107,7 +102,7 @@ export class Workspaces {
             this._update('workspaces-changed', 'settings dynamicWorkspaces'),
         );
         this._settings.workspaceNames.subscribe(() =>
-            this._update('workspaces-changed', 'settings workspaceNames'),
+            this._update('workspace-names-changed', 'settings workspaceNames'),
         );
         this._settings.showEmptyWorkspaces.subscribe(() =>
             this._update('workspaces-changed', 'settings showEmptyWorkspaces'),
@@ -131,8 +126,8 @@ export class Workspaces {
         if (this._ws_changed) {
             global.workspace_manager.disconnect(this._ws_changed);
         }
-        if (this._ws_removed) {
-            global.workspace_manager.disconnect(this._ws_removed);
+        if (this._ws_reordered) {
+            global.workspace_manager.disconnect(this._ws_reordered);
         }
         if (this._ws_active_changed) {
             global.workspace_manager.disconnect(this._ws_active_changed);
@@ -218,8 +213,6 @@ export class Workspaces {
     reorderWorkspace(oldIndex: number, newIndex: number): void {
         const workspace = global.workspace_manager.get_workspace_by_index(oldIndex);
         if (workspace) {
-            // Update names first, so smart-workspace names don't get mixed up names when updating.
-            this._wsNames?.moveByIndex(oldIndex, newIndex);
             global.workspace_manager.reorder_workspace(workspace, newIndex);
         }
     }
@@ -281,9 +274,46 @@ export class Workspaces {
             this._getWorkspaceState(index),
         );
         this._updateNotifier.notify();
+
         if (reason === 'workspaces-changed' || reason === 'init') {
+            this._handleWorkspacesReordered();
+        }
+        if (
+            reason === 'workspaces-changed' ||
+            reason === 'workspace-names-changed' ||
+            reason === 'init'
+        ) {
             this._updateWindowAddedListeners();
         }
+    }
+
+    /**
+     * Matches known workspaces with current workspaces to identify reordered workspaces and adapt
+     * names accordingly.
+     *
+     * Also updates known workspaces.
+     */
+    private _handleWorkspacesReordered(): void {
+        const newMetaWorkspaces = this._getMetaWorkspaces();
+        const reorderMap: number[] = [];
+        let hasReordered = false;
+        for (const [index, metaWorkspace] of newMetaWorkspaces.entries()) {
+            const oldIndex = this._metaWorkspaces.indexOf(metaWorkspace);
+            reorderMap[index] = oldIndex;
+            if (oldIndex !== -1 && oldIndex !== index) {
+                hasReordered = true;
+            }
+        }
+        if (hasReordered) {
+            this._wsNames?.reorder(reorderMap);
+        }
+        this._metaWorkspaces = newMetaWorkspaces;
+    }
+
+    private _getMetaWorkspaces(): Meta.Workspace[] {
+        return Array.from({ length: this.numberOfEnabledWorkspaces }).map(
+            (_, i) => global.workspace_manager.get_workspace_by_index(i)!,
+        );
     }
 
     /**

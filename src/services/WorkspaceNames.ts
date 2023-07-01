@@ -17,17 +17,6 @@ export class WorkspaceNames {
 
     private constructor(private readonly _ws: Workspaces) {}
 
-    moveByIndex(oldIndex: number, newIndex: number): void {
-        const workspaceNames = this._getNames();
-        const [element] = workspaceNames.splice(oldIndex, 1);
-        if (newIndex < workspaceNames.length) {
-            workspaceNames.splice(newIndex, 0, element ?? '');
-        } else {
-            setArrayValue(workspaceNames, newIndex, element ?? '');
-        }
-        this._setNames(workspaceNames);
-    }
-
     insert(index: number): void {
         const workspaceNames = this._getNames();
         if (index < workspaceNames.length) {
@@ -36,6 +25,26 @@ export class WorkspaceNames {
             setArrayValue(workspaceNames, index, '');
         }
         this._setNames(workspaceNames);
+    }
+
+    /**
+     * Reorders workspace names according to the given map.
+     * 
+     * Has the possibility to insert and to remove workspaces.
+     * 
+     * @param reorderMap array where keys are new indexes and values are old indexes of workspaces
+     */
+    reorder(reorderMap: number[]): void {
+        const oldWorkspaceNames = this._getNames();
+        const newWorkspaceNames: string[] = [];
+        for (const [newIndex, oldIndex] of reorderMap.entries()) {
+            if (oldIndex >= 0) {
+                newWorkspaceNames[newIndex] = oldWorkspaceNames[oldIndex] ?? '';
+            } else {
+                newWorkspaceNames[newIndex] = '';
+            }
+        }
+        this._setNames(newWorkspaceNames);
     }
 
     remove(index: number): void {
@@ -104,6 +113,9 @@ export class WorkspaceNames {
     }
 
     private _setNames(names: string[]): void {
+        while (names[names.length - 1] === '') {
+            names.pop();
+        }
         this._settings.workspaceNames.value = names;
     }
 
