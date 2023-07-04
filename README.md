@@ -1,3 +1,10 @@
+This does a very simple change (comments out a line) so that Super+<0-9>do not
+toggle workspace overview when pressed and currently on workspace.
+
+I often accidentally hit Super+<Workspace I'm on> while switching, so the
+overview toggle can cause a slow down, because I will then need to escape the
+overview once I get to correct workspace.
+
 # Space Bar
 
 GNOME Shell extension that replaces the 'Activities' button with an i3-like workspaces bar.

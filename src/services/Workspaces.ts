@@ -156,7 +156,9 @@ export class Workspaces {
             ) {
                 this.focusMostRecentWindowOnWorkspace(workspace);
             } else {
-                this._timeout.tick().then(() => Main.overview.toggle());
+                //this._timeout.tick().then(() => Main.overview.toggle());
+                // Don't want to toggle overview
+                this._timeout.tick().then();
             }
         } else {
             if (workspace) {
