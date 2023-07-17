@@ -1,3 +1,11 @@
+## v18
+
+- Feature: New option "Toggle overview" replaces "Open overview when clicking on an empty workspace"
+- Feature: Handle inserting workspaces by dragging windows between workspace thumbnails in overview
+- Feature: Handle reordering workspaces with other extensions
+- Fix: Smart workspaces names take `null` as window class and restore wrong names when windows
+  aren't ready yet
+
 ## v17
 
 - Fix: Crash when the extension opens the overview in some situations
