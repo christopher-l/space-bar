@@ -156,8 +156,7 @@ export class Workspaces {
             ) {
                 this.focusMostRecentWindowOnWorkspace(workspace);
             } else {
-                // New setting to toggle overview on current workspace
-                if (this._settings.overviewOnCurrentWorkspace.value) {
+                if (this._settings.toggleOverview.value) {
                     this._timeout.tick().then(() => Main.overview.toggle());
                 }
             }
@@ -168,7 +167,7 @@ export class Workspaces {
                 if (
                     !Main.overview.visible &&
                     !this.workspaces[index].hasWindows &&
-                    this._settings.overviewOnEmptyWorkspace.value
+                    this._settings.toggleOverview.value
                 ) {
                     this._timeout.tick().then(() => Main.overview.show());
                 }

@@ -25,10 +25,7 @@
         <key name="show-empty-workspaces" type="b">
             <default>true</default>
         </key>
-        <key name="overview-on-empty-workspace" type="b">
-            <default>true</default>
-        </key>
-        <key name="overview-on-current-workspace" type="b">
+        <key name="toggle-overview" type="b">
             <default>true</default>
         </key>
         <key name="scroll-wheel" type="s">
