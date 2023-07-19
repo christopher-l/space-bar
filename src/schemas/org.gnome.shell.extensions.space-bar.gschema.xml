@@ -28,6 +28,9 @@
         <key name="overview-on-empty-workspace" type="b">
             <default>true</default>
         </key>
+        <key name="overview-on-current-workspace" type="b">
+            <default>true</default>
+        </key>
         <key name="scroll-wheel" type="s">
             <choices>
                 <choice value="panel"/>

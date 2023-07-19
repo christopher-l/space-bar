@@ -86,6 +86,12 @@ export class BehaviorPage {
                 });
             },
         });
+        addToggle({
+            settings: this._settings,
+            group,
+            key: 'overview-on-current-workspace',
+            title: 'Open overview when clicking on an current workspace',
+        });
         addCombo({
             window: this.window,
             settings: this._settings,
