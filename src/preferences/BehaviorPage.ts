@@ -107,7 +107,7 @@ export class BehaviorPage {
             group,
             key: 'toggle-overview',
             title: 'Toggle overview',
-            subtitle: 'When clicking on an active or empty workspace',
+            subtitle: 'When clicking on the active or an empty workspace',
         });
         this.page.add(group);
     }
