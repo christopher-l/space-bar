@@ -156,7 +156,9 @@ export class Workspaces {
             ) {
                 this.focusMostRecentWindowOnWorkspace(workspace);
             } else {
-                this._timeout.tick().then(() => Main.overview.toggle());
+                if (this._settings.toggleOverview.value) {
+                    this._timeout.tick().then(() => Main.overview.toggle());
+                }
             }
         } else {
             if (workspace) {
@@ -165,7 +167,7 @@ export class Workspaces {
                 if (
                     !Main.overview.visible &&
                     !this.workspaces[index].hasWindows &&
-                    this._settings.overviewOnEmptyWorkspace.value
+                    this._settings.toggleOverview.value
                 ) {
                     this._timeout.tick().then(() => Main.overview.show());
                 }
