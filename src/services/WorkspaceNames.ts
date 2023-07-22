@@ -29,9 +29,9 @@ export class WorkspaceNames {
 
     /**
      * Reorders workspace names according to the given map.
-     * 
+     *
      * Has the possibility to insert and to remove workspaces.
-     * 
+     *
      * @param reorderMap array where keys are new indexes and values are old indexes of workspaces
      */
     reorder(reorderMap: number[]): void {
@@ -55,11 +55,10 @@ export class WorkspaceNames {
 
     rename(index: number, newName: string): void {
         let workspaceNames = this._getNames();
-        const oldName = workspaceNames[index];
         setArrayValue(workspaceNames, index, newName);
         this._setNames(workspaceNames);
         if (this._settings.smartWorkspaceNames.value && newName) {
-            this._saveSmartWorkspaceName(index, oldName, newName);
+            this._saveSmartWorkspaceName(index, newName);
         }
     }
 
@@ -84,17 +83,21 @@ export class WorkspaceNames {
         }
     }
 
-    private _saveSmartWorkspaceName(index: number, oldName: string, newName: string) {
+    /**
+     * Associates windows on a workspace with a new workspace name.
+     */
+    private _saveSmartWorkspaceName(index: number, newName: string) {
         const windowNames = this._getWindowNames(index);
         const workspacesNamesMap = this._settings.workspaceNamesMap.value;
         for (const windowName of windowNames) {
             workspacesNamesMap[windowName] = [
-                ...(workspacesNamesMap[windowName] ?? [])
-                    // Clear our unused names.
-                    .filter(
-                        (name) =>
-                            name !== newName && this._getEnabledWorkspaceNames().includes(name),
-                    ),
+                ...(workspacesNamesMap[windowName] ?? []).filter(
+                    (name) =>
+                        // We add `newName` at the end
+                        name !== newName &&
+                        // Keep associations with other currently enabled workspaces and drop others
+                        this._getEnabledWorkspaceNames().includes(name),
+                ),
                 newName,
             ];
         }
