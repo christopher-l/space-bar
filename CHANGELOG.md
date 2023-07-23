@@ -1,3 +1,8 @@
+## v19
+
+- Feature: Scroll-wheel wrap around
+- Fix: Scroll wheel over workspaces bar doesn't work
+
 ## v18
 
 - Feature: New option "Toggle overview" replaces "Open overview when clicking on an empty workspace"
