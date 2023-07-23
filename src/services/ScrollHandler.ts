@@ -104,10 +104,21 @@ export class ScrollHandler {
     }
 
     private _findVisibleWorkspace(index: number, step: number): number | null {
+        const startingIndex = index;
         while (true) {
             index += step;
             if (index < 0 || index >= this._ws.numberOfEnabledWorkspaces) {
-                break;
+                if (this._settings.scrollWheelWrapAround.value) {
+                    // Prevent infinite loop when there is no other workspace to go to.
+                    if (index === startingIndex) {
+                        return null;
+                    }
+                    index =
+                        (index + this._ws.numberOfEnabledWorkspaces) %
+                        this._ws.numberOfEnabledWorkspaces;
+                } else {
+                    break;
+                }
             }
             if (this._ws.workspaces[index].isVisible) {
                 return index;

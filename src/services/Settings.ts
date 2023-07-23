@@ -60,6 +60,10 @@ export class Settings {
         this.behaviorSettings,
         'scroll-wheel-debounce-time',
     );
+    readonly scrollWheelWrapAround = SettingsSubject.createBooleanSubject(
+        this.behaviorSettings,
+        'scroll-wheel-wrap-around',
+    );
     readonly smartWorkspaceNames = SettingsSubject.createBooleanSubject(
         this.behaviorSettings,
         'smart-workspace-names',

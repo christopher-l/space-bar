@@ -94,6 +94,12 @@ export class BehaviorPage {
                     predicate: (value) => value.get_boolean(),
                     page,
                 });
+                addToggle({
+                    settings: this._settings,
+                    group,
+                    key: 'scroll-wheel-wrap-around',
+                    title: 'Wrap around',
+                });
             },
         });
         addToggle({
