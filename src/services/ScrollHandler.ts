@@ -1,6 +1,7 @@
 import { Clutter } from 'imports/gi';
 import { Settings } from 'services/Settings';
 import { Workspaces } from 'services/Workspaces';
+import { Subject } from 'utils/Subject';
 const Main = imports.ui.main;
 
 export class ScrollHandler {
@@ -8,17 +9,21 @@ export class ScrollHandler {
     private _settings = Settings.getInstance();
     private _disconnectBinding?: () => void;
     private _lastScrollTime = 0;
+    private _panelButton: any = null;
 
-    init(panelButton: any) {
+    init(panelButtonSubject: Subject<any>) {
+        panelButtonSubject.subscribe((panelButton) => (this._panelButton = panelButton));
+        const panelButtonCallback = (panelButton: any) => this._registerScroll(panelButton);
         this._settings.scrollWheel.subscribe(
             (value) => {
+                panelButtonSubject.unsubscribe(panelButtonCallback);
                 this._disconnectBinding?.();
                 switch (value) {
                     case 'panel':
                         this._registerScroll(Main.panel);
                         break;
                     case 'workspaces-bar':
-                        this._registerScroll(panelButton);
+                        panelButtonSubject.subscribe(panelButtonCallback);
                         break;
                     case 'disabled':
                         this._disconnectBinding = undefined;
@@ -67,8 +72,12 @@ export class ScrollHandler {
         // Adapted from https://github.com/timbertson/gnome-shell-scroll-workspaces
         const source = event.get_source();
         if (source !== actor) {
-            // Actors in the status area often have their own scroll events,
-            if (Main.panel._rightBox?.contains?.(source)) {
+            // Actors in the status area often have their own scroll events, so we ignore events in
+            // that area that are not directly on our panel button.
+            if (
+                Main.panel._rightBox?.contains?.(source) &&
+                !this._panelButton?.contains?.(source)
+            ) {
                 return Clutter.EVENT_PROPAGATE;
             }
         }

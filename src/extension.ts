@@ -20,7 +20,7 @@ class Extension {
         this.workspacesBar = new WorkspacesBar();
         this.workspacesBar.init();
         this.scrollHandler = new ScrollHandler();
-        this.scrollHandler.init(this.workspacesBar.getWidget());
+        this.scrollHandler.init(this.workspacesBar.observeWidget());
     }
 
     disable() {

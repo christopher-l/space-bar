@@ -5,8 +5,9 @@ import type { Meta } from 'imports/gi';
 import { Clutter, GObject, St } from 'imports/gi';
 import { Settings } from 'services/Settings';
 import { Styles } from 'services/Styles';
-import { Workspaces, WorkspaceState } from 'services/Workspaces';
+import { WorkspaceState, Workspaces } from 'services/Workspaces';
 import { WorkspacesBarMenu } from 'ui/WorkspacesBarMenu';
+import { Subject } from 'utils/Subject';
 const PanelMenu = imports.ui.panelMenu;
 const DND = imports.ui.dnd;
 const { WindowPreview } = imports.ui.windowPreview;
@@ -49,10 +50,11 @@ export class WorkspacesBar {
     private readonly _styles = Styles.getInstance();
     private readonly _ws = Workspaces.getInstance();
     private _button: any;
+    private _buttonSubject = new Subject<any>(null);
     private _menu!: WorkspacesBarMenu;
     private _wsBar!: St.BoxLayout;
     private readonly _dragHandler = new WorkspacesBarDragHandler(() => this._updateWorkspaces());
-
+    
     constructor() {}
 
     init(): void {
@@ -69,10 +71,11 @@ export class WorkspacesBar {
         this._button.destroy();
         this._menu.destroy();
         this._dragHandler.destroy();
+        this._buttonSubject.complete();
     }
 
-    getWidget(): any {
-        return this._button;
+    observeWidget(): Subject<any> {
+        return this._buttonSubject;
     }
 
     private _refreshTopBarConfiguration(): void {
@@ -84,6 +87,7 @@ export class WorkspacesBar {
 
     private _initButton(): void {
         this._button = new (WorkspacesButton as any)(0.5, this._name);
+        this._buttonSubject.next(this._button);
         this._button._delegate = this._dragHandler;
         this._button.track_hover = false;
         this._button.style_class = 'panel-button space-bar';
