@@ -1,6 +1,7 @@
 ## v20
 
 - Feature: Scroll-wheel direction options
+- Feature: Adjustable font size
 - Removed feature: Remove workspace with middle click
 
 ## v19
