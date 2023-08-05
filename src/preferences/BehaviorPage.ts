@@ -9,6 +9,12 @@ export const scrollWheelOptions = {
     disabled: 'Disabled',
 };
 
+export const scrollWheelDirectionOptions = {
+    normal: 'Normal',
+    inverted: 'Inverted',
+    disabled: 'Disabled',
+};
+
 export const positionOptions = {
     left: 'Left',
     center: 'Center',
@@ -93,6 +99,22 @@ export class BehaviorPage {
                     key: 'scroll-wheel-debounce',
                     predicate: (value) => value.get_boolean(),
                     page,
+                });
+                addCombo({
+                    window: this.window,
+                    settings: this._settings,
+                    group,
+                    key: 'scroll-wheel-vertical',
+                    title: 'Vertical scrolling',
+                    options: scrollWheelDirectionOptions,
+                });
+                addCombo({
+                    window: this.window,
+                    settings: this._settings,
+                    group,
+                    key: 'scroll-wheel-horizontal',
+                    title: 'Horizontal scrolling',
+                    options: scrollWheelDirectionOptions,
                 });
                 addToggle({
                     settings: this._settings,

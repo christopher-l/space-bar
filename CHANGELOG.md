@@ -1,3 +1,7 @@
+## v20
+
+- Feature: Scroll-wheel direction options
+
 ## v19
 
 - Feature: Scroll-wheel wrap around

@@ -2,7 +2,11 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 import { Gio } from 'imports/gi';
 import { fontWeightOptions } from 'preferences/AppearancePage';
-import { positionOptions, scrollWheelOptions } from 'preferences/BehaviorPage';
+import {
+    positionOptions,
+    scrollWheelDirectionOptions,
+    scrollWheelOptions,
+} from 'preferences/BehaviorPage';
 
 export class Settings {
     private static _instance: Settings | null;
@@ -60,6 +64,12 @@ export class Settings {
         this.behaviorSettings,
         'scroll-wheel-debounce-time',
     );
+    readonly scrollWheelVertical = SettingsSubject.createStringSubject<
+        keyof typeof scrollWheelDirectionOptions
+    >(this.behaviorSettings, 'scroll-wheel-vertical');
+    readonly scrollWheelHorizontal = SettingsSubject.createStringSubject<
+        keyof typeof scrollWheelDirectionOptions
+    >(this.behaviorSettings, 'scroll-wheel-horizontal');
     readonly scrollWheelWrapAround = SettingsSubject.createBooleanSubject(
         this.behaviorSettings,
         'scroll-wheel-wrap-around',

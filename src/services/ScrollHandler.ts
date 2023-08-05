@@ -2,6 +2,7 @@ import { Clutter } from 'imports/gi';
 import { Settings } from 'services/Settings';
 import { Workspaces } from 'services/Workspaces';
 import { Subject } from 'utils/Subject';
+import { scrollWheelDirectionOptions } from '../preferences/BehaviorPage';
 const Main = imports.ui.main;
 
 export class ScrollHandler {
@@ -82,16 +83,32 @@ export class ScrollHandler {
             }
         }
         const currentIndex = global.workspace_manager.get_active_workspace_index();
-        let newIndex;
+        let direction = 0;
+        let directionSetting: keyof typeof scrollWheelDirectionOptions | null = null;
         switch (event.get_scroll_direction()) {
             case Clutter.ScrollDirection.UP:
-                newIndex = this._findVisibleWorkspace(currentIndex, -1);
+                direction = -1;
+                directionSetting = this._settings.scrollWheelVertical.value;
                 break;
             case Clutter.ScrollDirection.DOWN:
-                newIndex = this._findVisibleWorkspace(currentIndex, 1);
+                direction = 1;
+                directionSetting = this._settings.scrollWheelVertical.value;
                 break;
-            default:
-                return Clutter.EVENT_PROPAGATE;
+            case Clutter.ScrollDirection.LEFT:
+                direction = -1;
+                directionSetting = this._settings.scrollWheelHorizontal.value;
+                break;
+            case Clutter.ScrollDirection.RIGHT:
+                direction = 1;
+                directionSetting = this._settings.scrollWheelHorizontal.value;
+                break;
+        }
+        let newIndex;
+        if (directionSetting && directionSetting !== 'disabled') {
+            const invertFactor = directionSetting === 'inverted' ? -1 : 1;
+            newIndex = this._findVisibleWorkspace(currentIndex, direction * invertFactor);
+        } else {
+            return Clutter.EVENT_PROPAGATE;
         }
         if (newIndex !== null && this._debounceTimeExceeded()) {
             const workspace = global.workspace_manager.get_workspace_by_index(newIndex);
