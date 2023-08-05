@@ -139,11 +139,13 @@ export class Styles {
             `background-color: ${backgroundColor};` +
             `color: ${textColor};` +
             `border-color: ${borderColor};` +
-            `font-size: ${fontSize}pt;` +
             `font-weight: ${fontWeight};` +
             `border-radius: ${borderRadius}px;` +
             `border-width: ${borderWidth}px;` +
             `padding: ${paddingV}px ${paddingH}px;`;
+        if (fontSize >= 0) {
+            this._activeWorkspaceStyle += `font-size: ${fontSize}pt;`;
+        }
         this._workspaceUpdateNotifier.notify();
     }
 
@@ -163,11 +165,13 @@ export class Styles {
             `background-color: ${backgroundColor};` +
             `color: ${textColor};` +
             `border-color: ${borderColor};` +
-            `font-size: ${fontSize}pt;` +
             `font-weight: ${fontWeight};` +
             `border-radius: ${borderRadius}px;` +
             `border-width: ${borderWidth}px;` +
             `padding: ${paddingV}px ${paddingH}px;`;
+        if (fontSize >= 0) {
+            this._inactiveWorkspaceStyle += `font-size: ${fontSize}pt;`;
+        }
         this._workspaceUpdateNotifier.notify();
     }
 
@@ -187,11 +191,13 @@ export class Styles {
             `background-color: ${backgroundColor};` +
             `color: ${textColor};` +
             `border-color: ${borderColor};` +
-            `font-size: ${fontSize}pt;` +
             `font-weight: ${fontWeight};` +
             `border-radius: ${borderRadius}px;` +
             `border-width: ${borderWidth}px;` +
             `padding: ${paddingV}px ${paddingH}px;`;
+        if (fontSize >= 0) {
+            this._emptyWorkspaceStyle += `font-size: ${fontSize}pt;`;
+        }
         this._workspaceUpdateNotifier.notify();
     }
 }

@@ -43,6 +43,55 @@ class PreferencesRow {
         this._row.add_suffix(button);
     }
 
+    /**
+     * Adds a toggle button to the row that enables / disables the setting.
+     *
+     * When disabled, the setting is reset to its default value.
+     *
+     * When enabled, the setting is set to the value of <key>-user. The value <key>-user is updated
+     * to the current value as long as the setting is enabled.
+     */
+    addToggleButton({ window }: { window: Adw.PreferencesWindow }): void {
+        const activeKey = this._key + '-active';
+        const userKey = this._key + '-user';
+        const toggleEdit = (active: boolean) => {
+            this._settings.set_boolean(activeKey, active);
+            updateRow();
+            updateValue();
+        };
+        const updateRow = () => {
+            const active = this._settings.get_boolean(activeKey);
+            this._setEnabled(active);
+        };
+        const updateValue = () => {
+            const active = this._settings.get_boolean(activeKey);
+            if (active) {
+                const userValue = this._settings.get_value(userKey);
+                this._settings.set_value(this._key, userValue);
+            } else {
+                this._settings.reset(this._key);
+            }
+        };
+        const updateUserValue = () => {
+            const active = this._settings.get_boolean(activeKey);
+            if (active) {
+                const value = this._settings.get_value(this._key);
+                this._settings.set_value(userKey, value);
+            }
+        };
+        const changed = this._settings.connect(`changed::${this._key}`, updateUserValue);
+        window.connect('unmap', () => this._settings.disconnect(changed));
+        updateRow();
+        const button = new Gtk.ToggleButton({
+            icon_name: 'document-edit-symbolic',
+            valign: Gtk.Align.CENTER,
+            has_frame: false,
+            margin_start: 10,
+        });
+        button.connect('toggled', (toggle: Gtk.ToggleButton) => toggleEdit(toggle.active));
+        this._row.add_suffix(button);
+    }
+
     linkValue({
         linkedKey,
         activeKey = this._key + '-active',

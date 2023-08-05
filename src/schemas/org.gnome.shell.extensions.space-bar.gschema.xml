@@ -86,7 +86,13 @@
             <default>'rgba(0,0,0,0)'</default>
         </key>
         <key name="active-workspace-font-size" type="i">
+            <default>-1</default>
+        </key>
+        <key name="active-workspace-font-size-user" type="i">
             <default>11</default>
+        </key>
+        <key name="active-workspace-font-size-active" type="b">
+            <default>false</default>
         </key>
         <key name="active-workspace-font-weight" type="s">
             <choices>
@@ -129,7 +135,7 @@
             <default>false</default>
         </key>
         <key name="inactive-workspace-font-size" type="i">
-            <default>11</default>
+            <default>-1</default>
         </key>
         <key name="inactive-workspace-font-size-active" type="b">
             <default>false</default>
@@ -187,7 +193,7 @@
             <default>'rgba(0,0,0,0)'</default>
         </key>
         <key name="empty-workspace-font-size" type="i">
-            <default>11</default>
+            <default>-1</default>
         </key>
         <key name="empty-workspace-font-size-active" type="b">
             <default>false</default>

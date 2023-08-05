@@ -85,7 +85,7 @@ export class AppearancePage {
             title: 'Font size',
             lower: 0,
             upper: 255,
-        }).addResetButton({ window: this.window });
+        }).addToggleButton({ window: this.window });
         addCombo({
             window: this.window,
             settings: this._settings,
