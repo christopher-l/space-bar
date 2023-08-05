@@ -144,9 +144,6 @@ export class WorkspacesBar {
                 case 1:
                     lastButton1PressEvent = event;
                     break;
-                case 2:
-                    this._ws.removeWorkspace(workspace.index);
-                    break;
                 case 3:
                     this._button.menu.toggle();
                     break;
