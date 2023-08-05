@@ -78,6 +78,14 @@ export class AppearancePage {
             key: 'active-workspace-border-color',
             title: 'Border color',
         }).addResetButton({ window: this.window });
+        addSpinButton({
+            settings: this._settings,
+            group,
+            key: 'active-workspace-font-size',
+            title: 'Font size',
+            lower: 0,
+            upper: 255,
+        }).addResetButton({ window: this.window });
         addCombo({
             window: this.window,
             settings: this._settings,
@@ -145,6 +153,17 @@ export class AppearancePage {
             key: 'inactive-workspace-border-color',
             title: 'Border color',
         }).addResetButton({ window: this.window });
+        addSpinButton({
+            settings: this._settings,
+            group,
+            key: 'inactive-workspace-font-size',
+            title: 'Font size',
+            lower: 0,
+            upper: 255,
+        }).linkValue({
+            window: this.window,
+            linkedKey: 'active-workspace-font-size',
+        });
         addCombo({
             window: this.window,
             settings: this._settings,
@@ -227,6 +246,17 @@ export class AppearancePage {
             key: 'empty-workspace-border-color',
             title: 'Border color',
         }).addResetButton({ window: this.window });
+        addSpinButton({
+            settings: this._settings,
+            group,
+            key: 'empty-workspace-font-size',
+            title: 'Font size',
+            lower: 0,
+            upper: 255,
+        }).linkValue({
+            window: this.window,
+            linkedKey: 'inactive-workspace-font-size',
+        });
         addCombo({
             window: this.window,
             settings: this._settings,

@@ -84,6 +84,7 @@ export class Styles {
             this._settings.activeWorkspaceBackgroundColor,
             this._settings.activeWorkspaceTextColor,
             this._settings.activeWorkspaceBorderColor,
+            this._settings.activeWorkspaceFontSize,
             this._settings.activeWorkspaceFontWeight,
             this._settings.activeWorkspaceBorderRadius,
             this._settings.activeWorkspaceBorderWidth,
@@ -95,6 +96,7 @@ export class Styles {
             this._settings.inactiveWorkspaceBackgroundColor,
             this._settings.inactiveWorkspaceTextColor,
             this._settings.inactiveWorkspaceBorderColor,
+            this._settings.inactiveWorkspaceFontSize,
             this._settings.inactiveWorkspaceFontWeight,
             this._settings.inactiveWorkspaceBorderRadius,
             this._settings.inactiveWorkspaceBorderWidth,
@@ -106,6 +108,7 @@ export class Styles {
             this._settings.emptyWorkspaceBackgroundColor,
             this._settings.emptyWorkspaceTextColor,
             this._settings.emptyWorkspaceBorderColor,
+            this._settings.emptyWorkspaceFontSize,
             this._settings.emptyWorkspaceFontWeight,
             this._settings.emptyWorkspaceBorderRadius,
             this._settings.emptyWorkspaceBorderWidth,
@@ -125,6 +128,7 @@ export class Styles {
         const backgroundColor = this._settings.activeWorkspaceBackgroundColor.value;
         const textColor = this._settings.activeWorkspaceTextColor.value;
         const borderColor = this._settings.activeWorkspaceBorderColor.value;
+        const fontSize = this._settings.activeWorkspaceFontSize.value;
         const fontWeight = this._settings.activeWorkspaceFontWeight.value;
         const borderRadius = this._settings.activeWorkspaceBorderRadius.value;
         const borderWidth = this._settings.activeWorkspaceBorderWidth.value;
@@ -135,6 +139,7 @@ export class Styles {
             `background-color: ${backgroundColor};` +
             `color: ${textColor};` +
             `border-color: ${borderColor};` +
+            `font-size: ${fontSize}pt;` +
             `font-weight: ${fontWeight};` +
             `border-radius: ${borderRadius}px;` +
             `border-width: ${borderWidth}px;` +
@@ -147,6 +152,7 @@ export class Styles {
         const backgroundColor = this._settings.inactiveWorkspaceBackgroundColor.value;
         const textColor = this._settings.inactiveWorkspaceTextColor.value;
         const borderColor = this._settings.inactiveWorkspaceBorderColor.value;
+        const fontSize = this._settings.inactiveWorkspaceFontSize.value;
         const fontWeight = this._settings.inactiveWorkspaceFontWeight.value;
         const borderRadius = this._settings.inactiveWorkspaceBorderRadius.value;
         const borderWidth = this._settings.inactiveWorkspaceBorderWidth.value;
@@ -157,6 +163,7 @@ export class Styles {
             `background-color: ${backgroundColor};` +
             `color: ${textColor};` +
             `border-color: ${borderColor};` +
+            `font-size: ${fontSize}pt;` +
             `font-weight: ${fontWeight};` +
             `border-radius: ${borderRadius}px;` +
             `border-width: ${borderWidth}px;` +
@@ -169,6 +176,7 @@ export class Styles {
         const backgroundColor = this._settings.emptyWorkspaceBackgroundColor.value;
         const textColor = this._settings.emptyWorkspaceTextColor.value;
         const borderColor = this._settings.emptyWorkspaceBorderColor.value;
+        const fontSize = this._settings.emptyWorkspaceFontSize.value;
         const fontWeight = this._settings.emptyWorkspaceFontWeight.value;
         const borderRadius = this._settings.emptyWorkspaceBorderRadius.value;
         const borderWidth = this._settings.emptyWorkspaceBorderWidth.value;
@@ -179,6 +187,7 @@ export class Styles {
             `background-color: ${backgroundColor};` +
             `color: ${textColor};` +
             `border-color: ${borderColor};` +
+            `font-size: ${fontSize}pt;` +
             `font-weight: ${fontWeight};` +
             `border-radius: ${borderRadius}px;` +
             `border-width: ${borderWidth}px;` +

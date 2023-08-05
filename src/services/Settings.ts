@@ -118,6 +118,10 @@ export class Settings {
         this.appearanceSettings,
         'active-workspace-border-color',
     );
+    readonly activeWorkspaceFontSize = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'active-workspace-font-size',
+    );
     readonly activeWorkspaceFontWeight = SettingsSubject.createStringSubject<
         keyof typeof fontWeightOptions
     >(this.appearanceSettings, 'active-workspace-font-weight');
@@ -149,6 +153,10 @@ export class Settings {
         this.appearanceSettings,
         'inactive-workspace-border-color',
     );
+    readonly inactiveWorkspaceFontSize = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'inactive-workspace-font-size',
+    );
     readonly inactiveWorkspaceFontWeight = SettingsSubject.createStringSubject<
         keyof typeof fontWeightOptions
     >(this.appearanceSettings, 'inactive-workspace-font-weight');
@@ -179,6 +187,10 @@ export class Settings {
     readonly emptyWorkspaceBorderColor = SettingsSubject.createStringSubject(
         this.appearanceSettings,
         'empty-workspace-border-color',
+    );
+    readonly emptyWorkspaceFontSize = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'empty-workspace-font-size',
     );
     readonly emptyWorkspaceFontWeight = SettingsSubject.createStringSubject<
         keyof typeof fontWeightOptions
