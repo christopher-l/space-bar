@@ -61,6 +61,8 @@ export class KeyBindings {
     }
 
     private _addExtensionKeyBindings() {
+        this.addKeyBinding('move-workspace-left', () => this._ws.moveCurrentWorkspace(-1));
+        this.addKeyBinding('move-workspace-right', () => this._ws.moveCurrentWorkspace(1));
         this.addKeyBinding('activate-previous-key', () => this._ws.activatePrevious());
         this.addKeyBinding('activate-empty-key', () => this._ws.activateEmptyOrAdd());
     }

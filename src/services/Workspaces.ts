@@ -217,6 +217,13 @@ export class Workspaces {
         }
     }
 
+    moveCurrentWorkspace(direction: -1 | 1): void {
+        const newIndex = this.findVisibleWorkspace(direction);
+        if (newIndex !== null) {
+            this.reorderWorkspace(this.currentIndex, newIndex);
+        }
+    }
+
     getDisplayName(workspace: WorkspaceState): string {
         if (this._isExtraDynamicWorkspace(workspace)) {
             return '+';
@@ -231,6 +238,38 @@ export class Workspaces {
         if (mostRecentWindowOnWorkspace) {
             workspace.activate_with_focus(mostRecentWindowOnWorkspace, global.get_current_time());
         }
+    }
+
+    /**
+     * Looks for a workspace that is visible in the workspaces bar relative to the current
+     * workspace.
+     *
+     * @param step indicates the direction in which to look
+     * @returns the index of the found workspace or `null` if there is no visible workspace in the
+     * given direction
+     */
+    findVisibleWorkspace(step: -1 | 1, { wraparound = false } = {}): number | null {
+        let index = this.currentIndex;
+        const startingIndex = index;
+        while (true) {
+            index += step;
+            if (index < 0 || index >= this.numberOfEnabledWorkspaces) {
+                if (wraparound) {
+                    // Prevent infinite loop when there is no other workspace to go to.
+                    if (index === startingIndex) {
+                        return null;
+                    }
+                    index =
+                        (index + this.numberOfEnabledWorkspaces) % this.numberOfEnabledWorkspaces;
+                } else {
+                    break;
+                }
+            }
+            if (this.workspaces[index].isVisible) {
+                return index;
+            }
+        }
+        return null;
     }
 
     /**

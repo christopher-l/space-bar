@@ -1,3 +1,7 @@
+## v21
+
+- Feature: Shortcuts to rearrange workspaces
+
 ## v20
 
 - Feature: Scroll-wheel direction options

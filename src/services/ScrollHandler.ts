@@ -82,8 +82,7 @@ export class ScrollHandler {
                 return Clutter.EVENT_PROPAGATE;
             }
         }
-        const currentIndex = global.workspace_manager.get_active_workspace_index();
-        let direction = 0;
+        let direction: -1 | 1;
         let directionSetting: keyof typeof scrollWheelDirectionOptions | null = null;
         switch (event.get_scroll_direction()) {
             case Clutter.ScrollDirection.UP:
@@ -106,7 +105,9 @@ export class ScrollHandler {
         let newIndex;
         if (directionSetting && directionSetting !== 'disabled') {
             const invertFactor = directionSetting === 'inverted' ? -1 : 1;
-            newIndex = this._findVisibleWorkspace(currentIndex, direction * invertFactor);
+            newIndex = this._ws.findVisibleWorkspace((direction! * invertFactor) as -1 | 1, {
+                wraparound: this._settings.scrollWheelWrapAround.value,
+            });
         } else {
             return Clutter.EVENT_PROPAGATE;
         }
@@ -118,29 +119,5 @@ export class ScrollHandler {
             }
         }
         return Clutter.EVENT_STOP;
-    }
-
-    private _findVisibleWorkspace(index: number, step: number): number | null {
-        const startingIndex = index;
-        while (true) {
-            index += step;
-            if (index < 0 || index >= this._ws.numberOfEnabledWorkspaces) {
-                if (this._settings.scrollWheelWrapAround.value) {
-                    // Prevent infinite loop when there is no other workspace to go to.
-                    if (index === startingIndex) {
-                        return null;
-                    }
-                    index =
-                        (index + this._ws.numberOfEnabledWorkspaces) %
-                        this._ws.numberOfEnabledWorkspaces;
-                } else {
-                    break;
-                }
-            }
-            if (this._ws.workspaces[index].isVisible) {
-                return index;
-            }
-        }
-        return null;
     }
 }

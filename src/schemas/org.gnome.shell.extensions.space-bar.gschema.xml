@@ -250,6 +250,12 @@
             <default>false</default>
         </key>
 
+        <key name="move-workspace-left" type="as">
+            <default><![CDATA[['<Control><Alt><Super>Left']]]></default>
+        </key>
+        <key name="move-workspace-right" type="as">
+            <default><![CDATA[['<Control><Alt><Super>Right']]]></default>
+        </key>
         <key name="activate-previous-key" type="as">
             <default><![CDATA[['<Super>grave']]]></default>
             <!-- <default><![CDATA[['<Super>Above_Tab']]]></default> -->
