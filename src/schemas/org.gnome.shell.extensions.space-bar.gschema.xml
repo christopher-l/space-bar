@@ -22,6 +22,9 @@
             <summary>Position index</summary>
             <description>Order relative to other elements</description>
         </key>
+        <key name="always-show-numbers" type="b">
+            <default>false</default>
+        </key>
         <key name="show-empty-workspaces" type="b">
             <default>true</default>
         </key>

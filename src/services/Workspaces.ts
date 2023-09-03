@@ -228,7 +228,15 @@ export class Workspaces {
         if (this._isExtraDynamicWorkspace(workspace)) {
             return '+';
         }
-        return workspace.name || (workspace.index + 1).toString();
+        if (workspace.name) {
+            if (this._settings.alwaysShowNumbers.value) {
+                return `${workspace.index + 1}: ${workspace.name}`
+            } else {
+                return workspace.name
+            }
+        } else {
+            return (workspace.index + 1).toString();
+        }
     }
 
     focusMostRecentWindowOnWorkspace(workspace: Workspace) {

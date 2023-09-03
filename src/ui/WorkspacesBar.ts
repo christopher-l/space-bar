@@ -62,6 +62,7 @@ export class WorkspacesBar {
         this._initMenu();
         this._styles.onWorkspacesBarChanged(() => this._refreshTopBarConfiguration());
         this._styles.onWorkspaceLabelsChanged(() => this._updateWorkspaces());
+        this._settings.alwaysShowNumbers.subscribe(() => this._updateWorkspaces())
         this._settings.position.subscribe(() => this._refreshTopBarConfiguration());
         this._settings.positionIndex.subscribe(() => this._refreshTopBarConfiguration());
     }

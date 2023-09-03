@@ -1,3 +1,7 @@
+## v22
+
+- Feature: Always show workspace numbers
+
 ## v21
 
 - Feature: Shortcuts to rearrange workspaces

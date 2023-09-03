@@ -44,6 +44,10 @@ export class Settings {
         this.mutterSettings,
         'dynamic-workspaces',
     );
+    readonly alwaysShowNumbers = SettingsSubject.createBooleanSubject(
+        this.behaviorSettings,
+        'always-show-numbers',
+    );
     readonly showEmptyWorkspaces = SettingsSubject.createBooleanSubject(
         this.behaviorSettings,
         'show-empty-workspaces',

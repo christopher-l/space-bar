@@ -127,6 +127,12 @@ export class BehaviorPage {
         addToggle({
             settings: this._settings,
             group,
+            key: 'always-show-numbers',
+            title: 'Always show workspace numbers',
+        });
+        addToggle({
+            settings: this._settings,
+            group,
             key: 'show-empty-workspaces',
             title: 'Show empty workspaces',
         });
