@@ -1,6 +1,8 @@
 ## v22
 
 - Feature: Always show workspace numbers
+- Feature: Indicator style "Current workspace"
+- Fix: Include empty workspaces for rearrange shortcuts
 
 ## v21
 
