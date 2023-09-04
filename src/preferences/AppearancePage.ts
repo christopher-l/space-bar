@@ -26,10 +26,35 @@ export class AppearancePage {
         this.page.set_title('_Appearance');
         this.page.use_underline = true;
         this.page.set_icon_name('applications-graphics-symbolic');
+        this._connectEnabledConditions();
         this._initGeneralGroup();
         this._initActiveWorkspaceGroup();
         this._initInactiveWorkspaceGroup();
         this._initEmptyWorkspaceGroup();
+    }
+
+    private _connectEnabledConditions() {
+        const behaviorSettings = ExtensionUtils.getSettings(
+            `${Me.metadata['settings-schema']}.behavior`,
+        );
+        const disabledNoticeGroup = new Adw.PreferencesGroup({
+            description:
+                'Appearance preferences currently support the indicator style "Workspaces bar" only.',
+        });
+        this.page.add(disabledNoticeGroup);
+        const updateEnabled = () => {
+            const indicatorStyle = behaviorSettings.get_string(`indicator-style`);
+            if (indicatorStyle === 'workspaces-bar') {
+                this.page.set_sensitive(true);
+                disabledNoticeGroup.set_visible(false);
+            } else {
+                this.page.set_sensitive(false);
+                disabledNoticeGroup.set_visible(true);
+            }
+        };
+        updateEnabled();
+        behaviorSettings.connect(`changed::indicator-style`, updateEnabled);
+        this.page.connect('unmap', () => behaviorSettings.disconnect(updateEnabled));
     }
 
     private _initGeneralGroup(): void {

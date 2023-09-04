@@ -1,4 +1,5 @@
 import { GLib } from 'imports/gi';
+import { Subject } from 'utils/Subject';
 
 /**
  * A subscribe/notify mechanism that debounces multiple subsequent notify calls.
@@ -20,8 +21,11 @@ export class DebouncingNotifier {
         });
     }
 
-    subscribe(callback: () => void): void {
+    subscribe(callback: () => void, until?: Subject<void>): void {
         this._subscribers.push(callback);
+        until?.subscribe(
+            () => (this._subscribers = this._subscribers.filter((s) => s !== callback)),
+        );
     }
 
     destroy(): void {

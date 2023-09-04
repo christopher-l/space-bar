@@ -69,7 +69,7 @@ export class ShortcutsPage {
             group,
             key: 'activate-empty-key',
             title: 'Switch to empty workspace',
-            subtitle: 'Adds new workspace if needed'
+            subtitle: 'Adds new workspace if needed',
         });
 
         addKeyboardShortcut({

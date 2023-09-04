@@ -7,6 +7,14 @@
     </schema>
 
     <schema id="org.gnome.shell.extensions.space-bar.behavior" path="/org/gnome/shell/extensions/space-bar/behavior/">
+        <key name="indicator-style" type="s">
+            <choices>
+                <choice value="current-workspace-name"/>
+                <choice value="workspaces-bar"/>
+            </choices>
+            <default>"workspaces-bar"</default>
+            <summary>Indicator style</summary>
+        </key>
         <key name="position" type="s">
             <choices>
                 <choice value="left"/>

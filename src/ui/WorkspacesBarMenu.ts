@@ -4,7 +4,7 @@ import { Clutter, GObject, St } from 'imports/gi';
 import { KeyBindings } from 'services/KeyBindings';
 import { Settings } from 'services/Settings';
 import { WorkspaceNames } from 'services/WorkspaceNames';
-import { Workspaces } from 'services/Workspaces';
+import { WorkspaceState, Workspaces } from 'services/Workspaces';
 const PopupMenu = imports.ui.popupMenu;
 
 export class WorkspacesBarMenu {
@@ -101,17 +101,33 @@ export class WorkspacesBarMenu {
     private _refreshHiddenWorkspaces(): void {
         this._hiddenWorkspacesSection.box.destroy_all_children();
 
-        if (this._settings.showEmptyWorkspaces.value || this._settings.dynamicWorkspaces.value) {
-            return;
+        let hiddenWorkspaces: WorkspaceState[];
+        switch (this._settings.indicatorStyle.value) {
+            case 'current-workspace-name':
+                hiddenWorkspaces = this._ws.workspaces.filter(
+                    (workspace) =>
+                        workspace.isEnabled &&
+                        workspace.index !== this._ws.currentIndex &&
+                        !this._ws.isExtraDynamicWorkspace(workspace),
+                );
+                break;
+            case 'workspaces-bar':
+                if (
+                    this._settings.showEmptyWorkspaces.value ||
+                    this._settings.dynamicWorkspaces.value
+                ) {
+                    return;
+                }
+                hiddenWorkspaces = this._ws.workspaces.filter(
+                    (workspace) =>
+                        workspace.isEnabled &&
+                        !workspace.hasWindows &&
+                        workspace.index !== this._ws.currentIndex,
+                );
+                break;
         }
-        const hiddenWorkspaces = this._ws.workspaces.filter(
-            (workspace) =>
-                workspace.isEnabled &&
-                !workspace.hasWindows &&
-                workspace.index !== this._ws.currentIndex,
-        );
         if (hiddenWorkspaces.length > 0) {
-            this._addSectionHeading('Hidden workspaces', this._hiddenWorkspacesSection);
+            this._addSectionHeading('Other workspaces', this._hiddenWorkspacesSection);
             hiddenWorkspaces.forEach((workspace) => {
                 const button = new PopupMenu.PopupMenuItem(this._ws.getDisplayName(workspace));
                 button.connect('activate', () => {
@@ -126,7 +142,11 @@ export class WorkspacesBarMenu {
     private _refreshManageWorkspaceSection() {
         this._manageWorkspaceSection.box.destroy_all_children();
 
-        if (!this._settings.dynamicWorkspaces.value || !this._settings.showEmptyWorkspaces.value) {
+        if (
+            !this._settings.dynamicWorkspaces.value ||
+            !this._settings.showEmptyWorkspaces.value ||
+            this._settings.indicatorStyle.value === 'current-workspace-name'
+        ) {
             const newWorkspaceButton = new PopupMenu.PopupMenuItem('Add new workspace');
             newWorkspaceButton.connect('activate', () => {
                 this._menu.close();

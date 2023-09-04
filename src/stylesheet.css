@@ -1,3 +1,8 @@
+/* Copy the appearance of the "Activities" button for indicator style "Current workspace name". */
+.space-bar.workspace-label {
+    -natural-hpadding: 18px;
+}
+
 .workspace-box.dragging .space-bar-workspace-label.inactive {
     background-color: rgb(0, 0, 0);
     transition: margin-left 0.5s, margin-right 0.5s;

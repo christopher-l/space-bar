@@ -4,6 +4,7 @@ import { WorkspaceNames } from 'services/WorkspaceNames';
 import { DebouncingNotifier } from 'utils/DebouncingNotifier';
 import { Timeout } from 'utils/Timeout';
 import { hook } from 'utils/hook';
+import { Subject } from '../utils/Subject';
 const Main = imports.ui.main;
 const AltTab = imports.ui.altTab;
 const WindowManager = imports.ui.windowManager;
@@ -141,8 +142,8 @@ export class Workspaces {
         this._windowAddedListeners.forEach((entry) => entry.workspace.disconnect(entry.listener));
     }
 
-    onUpdate(callback: () => void) {
-        this._updateNotifier.subscribe(callback);
+    onUpdate(callback: () => void, until?: Subject<void>) {
+        this._updateNotifier.subscribe(callback, until);
     }
 
     activate(index: number, { focusWindowIfCurrentWorkspace = false } = {}) {
@@ -225,14 +226,14 @@ export class Workspaces {
     }
 
     getDisplayName(workspace: WorkspaceState): string {
-        if (this._isExtraDynamicWorkspace(workspace)) {
+        if (this.isExtraDynamicWorkspace(workspace)) {
             return '+';
         }
         if (workspace.name) {
             if (this._settings.alwaysShowNumbers.value) {
-                return `${workspace.index + 1}: ${workspace.name}`
+                return `${workspace.index + 1}: ${workspace.name}`;
             } else {
-                return workspace.name
+                return workspace.name;
             }
         } else {
             return (workspace.index + 1).toString();
@@ -284,7 +285,7 @@ export class Workspaces {
      * When using dynamic workspaces, whether `workspace` is the extra last workspace, that is
      * currently neither used nor focused.
      */
-    private _isExtraDynamicWorkspace(workspace: WorkspaceState): boolean {
+    isExtraDynamicWorkspace(workspace: WorkspaceState): boolean {
         return (
             this._settings.dynamicWorkspaces.value &&
             workspace.index > 0 &&
@@ -432,7 +433,7 @@ export class Workspaces {
                 if (workspace.hasWindows && !workspace.name) {
                     this._wsNames!.restoreSmartWorkspaceName(workspace.index);
                 }
-                if (this._isExtraDynamicWorkspace(workspace)) {
+                if (this.isExtraDynamicWorkspace(workspace)) {
                     this._wsNames!.remove(workspace.index);
                 }
             }
@@ -442,7 +443,7 @@ export class Workspaces {
     private _clearEmptyWorkspaceNames(): void {
         for (const workspace of this.workspaces) {
             if (
-                (!workspace.isEnabled || this._isExtraDynamicWorkspace(workspace)) &&
+                (!workspace.isEnabled || this.isExtraDynamicWorkspace(workspace)) &&
                 typeof workspace.name === 'string'
             ) {
                 // Completely remove disabled workspaces from the names array.

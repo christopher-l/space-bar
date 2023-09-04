@@ -3,6 +3,7 @@ const Me = ExtensionUtils.getCurrentExtension();
 import { Gio } from 'imports/gi';
 import { fontWeightOptions } from 'preferences/AppearancePage';
 import {
+    indicatorStyleOptions,
     positionOptions,
     scrollWheelDirectionOptions,
     scrollWheelOptions,
@@ -44,17 +45,16 @@ export class Settings {
         this.mutterSettings,
         'dynamic-workspaces',
     );
-    readonly alwaysShowNumbers = SettingsSubject.createBooleanSubject(
+    readonly indicatorStyle = SettingsSubject.createStringSubject<
+        keyof typeof indicatorStyleOptions
+    >(this.behaviorSettings, 'indicator-style');
+    readonly position = SettingsSubject.createStringSubject<keyof typeof positionOptions>(
         this.behaviorSettings,
-        'always-show-numbers',
+        'position',
     );
-    readonly showEmptyWorkspaces = SettingsSubject.createBooleanSubject(
+    readonly positionIndex = SettingsSubject.createIntSubject(
         this.behaviorSettings,
-        'show-empty-workspaces',
-    );
-    readonly toggleOverview = SettingsSubject.createBooleanSubject(
-        this.behaviorSettings,
-        'toggle-overview',
+        'position-index',
     );
     readonly scrollWheel = SettingsSubject.createStringSubject<keyof typeof scrollWheelOptions>(
         this.behaviorSettings,
@@ -78,17 +78,22 @@ export class Settings {
         this.behaviorSettings,
         'scroll-wheel-wrap-around',
     );
+    readonly alwaysShowNumbers = SettingsSubject.createBooleanSubject(
+        this.behaviorSettings,
+        'always-show-numbers',
+    );
+    readonly showEmptyWorkspaces = SettingsSubject.createBooleanSubject(
+        this.behaviorSettings,
+        'show-empty-workspaces',
+    );
+    readonly toggleOverview = SettingsSubject.createBooleanSubject(
+        this.behaviorSettings,
+        'toggle-overview',
+    );
+
     readonly smartWorkspaceNames = SettingsSubject.createBooleanSubject(
         this.behaviorSettings,
         'smart-workspace-names',
-    );
-    readonly position = SettingsSubject.createStringSubject<keyof typeof positionOptions>(
-        this.behaviorSettings,
-        'position',
-    );
-    readonly positionIndex = SettingsSubject.createIntSubject(
-        this.behaviorSettings,
-        'position-index',
     );
     readonly enableActivateWorkspaceShortcuts = SettingsSubject.createBooleanSubject(
         this.shortcutsSettings,

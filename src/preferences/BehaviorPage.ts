@@ -3,9 +3,14 @@ const Me = ExtensionUtils.getCurrentExtension();
 import { Adw } from 'imports/gi';
 import { addCombo, addSpinButton, addToggle } from 'preferences/common';
 
+export const indicatorStyleOptions = {
+    'current-workspace-name': 'Current workspace name',
+    'workspaces-bar': 'Workspaces bar',
+};
+
 export const scrollWheelOptions = {
     panel: 'Over top panel',
-    'workspaces-bar': 'Over workspaces bar',
+    'workspaces-bar': 'Over indicator',
     disabled: 'Disabled',
 };
 
@@ -39,6 +44,14 @@ export class BehaviorPage {
     private _initGeneralGroup(): void {
         const group = new Adw.PreferencesGroup();
         group.set_title('General');
+        addCombo({
+            window: this.window,
+            settings: this._settings,
+            group,
+            key: 'indicator-style',
+            title: 'Indicator style',
+            options: indicatorStyleOptions,
+        });
         addCombo({
             window: this.window,
             settings: this._settings,
@@ -135,6 +148,7 @@ export class BehaviorPage {
             group,
             key: 'show-empty-workspaces',
             title: 'Show empty workspaces',
+            subtitle: 'Also affects switching with scroll wheel'
         });
         addToggle({
             settings: this._settings,

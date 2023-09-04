@@ -52,23 +52,27 @@ export class WorkspacesBar {
     private _button: any;
     private _buttonSubject = new Subject<any>(null);
     private _menu!: WorkspacesBarMenu;
-    private _wsBar!: St.BoxLayout;
+    /** The child of `_button` when `indicator-style` is `current-workspace-name`. */
+    private _wsLabel?: St.Label;
+    /** The child of `_button` when `indicator-style` is `workspaces-bar`. */
+    private _wsBar?: St.BoxLayout;
     private readonly _dragHandler = new WorkspacesBarDragHandler(() => this._updateWorkspaces());
-    
+
     constructor() {}
 
     init(): void {
         this._initButton();
         this._initMenu();
+        this._ws.onUpdate(() => this._updateWorkspaces());
         this._styles.onWorkspacesBarChanged(() => this._refreshTopBarConfiguration());
         this._styles.onWorkspaceLabelsChanged(() => this._updateWorkspaces());
-        this._settings.alwaysShowNumbers.subscribe(() => this._updateWorkspaces())
+        this._settings.alwaysShowNumbers.subscribe(() => this._updateWorkspaces());
+        this._settings.indicatorStyle.subscribe(() => this._refreshTopBarConfiguration());
         this._settings.position.subscribe(() => this._refreshTopBarConfiguration());
         this._settings.positionIndex.subscribe(() => this._refreshTopBarConfiguration());
     }
 
     destroy(): void {
-        this._wsBar.destroy();
         this._button.destroy();
         this._menu.destroy();
         this._dragHandler.destroy();
@@ -89,22 +93,22 @@ export class WorkspacesBar {
     private _initButton(): void {
         this._button = new (WorkspacesButton as any)(0.5, this._name);
         this._buttonSubject.next(this._button);
-        this._button._delegate = this._dragHandler;
-        this._button.track_hover = false;
         this._button.style_class = 'panel-button space-bar';
-        this._button.set_style(this._styles.getWorkspacesBarStyle());
-        this._ws.onUpdate(() => this._updateWorkspaces());
-
-        // bar creation
-        this._wsBar = new St.BoxLayout({});
-        this._updateWorkspaces();
-        this._button.add_child(this._wsBar);
+        switch (this._settings.indicatorStyle.value) {
+            case 'current-workspace-name':
+                this._initWorkspaceLabel();
+                break;
+            case 'workspaces-bar':
+                this._initWorkspacesBar();
+                break;
+        }
         Main.panel.addToStatusArea(
             this._name,
             this._button,
             this._settings.positionIndex.value,
             this._settings.position.value,
         );
+        this._updateWorkspaces();
     }
 
     private _initMenu(): void {
@@ -112,17 +116,63 @@ export class WorkspacesBar {
         this._menu.init();
     }
 
-    // update the workspaces bar
+    private _initWorkspaceLabel() {
+        this._button.style_class += ' workspace-label';
+        this._wsLabel = new St.Label({
+            y_align: Clutter.ActorAlign.CENTER,
+        });
+        this._button.add_child(this._wsLabel);
+        this._button.connect('button-press-event', (actor: any, event: Clutter.Event) => {
+            switch (event.get_button()) {
+                case 1:
+                    if (this._settings.toggleOverview.value) {
+                        Main.overview.toggle();
+                    } else {
+                        this._button.menu.toggle();
+                    }
+                    return Clutter.EVENT_STOP;
+                case 3:
+                    this._button.menu.toggle();
+                    return Clutter.EVENT_STOP;
+            }
+            return Clutter.EVENT_PROPAGATE;
+        });
+    }
+
+    private _initWorkspacesBar() {
+        this._button._delegate = this._dragHandler;
+        this._button.track_hover = false;
+        this._button.set_style(this._styles.getWorkspacesBarStyle());
+        this._wsBar = new St.BoxLayout({});
+        this._button.add_child(this._wsBar);
+    }
+
     private _updateWorkspaces() {
+        switch (this._settings.indicatorStyle.value) {
+            case 'current-workspace-name':
+                this._updateWorkspaceLabel();
+                break;
+            case 'workspaces-bar':
+                this._updateWorkspacesBar();
+                break;
+        }
+    }
+
+    private _updateWorkspaceLabel() {
+        const workspace = this._ws.workspaces[this._ws.currentIndex];
+        this._wsLabel!.set_text(this._ws.getDisplayName(workspace));
+    }
+
+    private _updateWorkspacesBar() {
         // destroy old workspaces bar buttons
-        this._wsBar.destroy_all_children();
+        this._wsBar!.destroy_all_children();
         this._dragHandler.wsBoxes = [];
         // display all current workspaces buttons
         for (let ws_index = 0; ws_index < this._ws.numberOfEnabledWorkspaces; ++ws_index) {
             const workspace = this._ws.workspaces[ws_index];
             if (workspace.isVisible) {
                 const wsBox = this._createWsBox(workspace);
-                this._wsBar.add_child(wsBox);
+                this._wsBar!.add_child(wsBox);
                 this._dragHandler.wsBoxes.push({ workspace, wsBox });
             }
         }
