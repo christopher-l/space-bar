@@ -219,8 +219,8 @@ export class Workspaces {
     }
 
     moveCurrentWorkspace(direction: -1 | 1): void {
-        const newIndex = this.findVisibleWorkspace(direction);
-        if (newIndex !== null) {
+        const newIndex = this.currentIndex + direction;
+        if (newIndex >= 0 && newIndex < this.numberOfEnabledWorkspaces) {
             this.reorderWorkspace(this.currentIndex, newIndex);
         }
     }
