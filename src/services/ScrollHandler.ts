@@ -71,17 +71,6 @@ export class ScrollHandler {
 
     private _handle_scroll(actor: any, event: any): boolean {
         // Adapted from https://github.com/timbertson/gnome-shell-scroll-workspaces
-        const source = event.get_source();
-        if (source !== actor) {
-            // Actors in the status area often have their own scroll events, so we ignore events in
-            // that area that are not directly on our panel button.
-            if (
-                Main.panel._rightBox?.contains?.(source) &&
-                !this._panelButton?.contains?.(source)
-            ) {
-                return Clutter.EVENT_PROPAGATE;
-            }
-        }
         let direction: -1 | 1;
         let directionSetting: keyof typeof scrollWheelDirectionOptions | null = null;
         switch (event.get_scroll_direction()) {
