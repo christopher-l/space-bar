@@ -1,6 +1,5 @@
 import Meta from 'gi://Meta';
 import Shell from 'gi://Shell';
-import * as AltTab from 'resource:///org/gnome/shell/ui/altTab.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import { WindowManager } from 'resource:///org/gnome/shell/ui/windowManager.js';
 import { Settings } from '../services/Settings';
@@ -9,6 +8,14 @@ import { DebouncingNotifier } from '../utils/DebouncingNotifier';
 import { Subject } from '../utils/Subject';
 import { Timeout } from '../utils/Timeout';
 import { hook } from '../utils/hook';
+
+// Adapted from https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/45.0/js/ui/altTab.js?ref_type=tags#L53
+function getWindows(workspace: Meta.Workspace): Meta.Window[] {
+    const windows = global.display.get_tab_list(Meta.TabList.NORMAL_ALL, workspace);
+    return windows
+        .map((w) => (w.is_attached_dialog() ? w.get_transient_for()! : w))
+        .filter((w, i, a) => !w.skip_taskbar && a.indexOf(w) === i);
+}
 
 export interface WorkspaceState {
     isEnabled: boolean;
@@ -242,7 +249,7 @@ export class Workspaces {
     }
 
     focusMostRecentWindowOnWorkspace(workspace: Workspace) {
-        const mostRecentWindowOnWorkspace = AltTab.getWindows(workspace).find(
+        const mostRecentWindowOnWorkspace = getWindows(workspace).find(
             (window: Window) => !window.is_on_all_workspaces(),
         );
         if (mostRecentWindowOnWorkspace) {
