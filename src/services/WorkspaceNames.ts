@@ -108,7 +108,9 @@ export class WorkspaceNames {
         const workspace = global.workspace_manager.get_workspace_by_index(workspaceIndex);
         let windows: Window[] = workspace!.list_windows();
         windows = windows.filter((window) => !window.is_on_all_workspaces());
-        return windows.map((window) => window.get_wm_class()).filter((wmClass) => wmClass !== null);
+        return windows
+            .map((window) => window.get_wm_class())
+            .filter((wmClass): wmClass is string => wmClass !== null);
     }
 
     private _getNames(): string[] {
