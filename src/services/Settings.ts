@@ -305,7 +305,7 @@ class SettingsSubject<T> {
                 case 'string-array':
                     return this._settings.get_strv(this._name) as unknown as T;
                 case 'json-object':
-                    return JSON.parse(this._settings.get_string(this._name)) as unknown as T;
+                    return JSON.parse(this._settings.get_string(this._name)!) as unknown as T;
                 default:
                     throw new Error('unknown type ' + this._type);
             }
