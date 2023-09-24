@@ -2,8 +2,8 @@ import Gio from 'gi://Gio';
 import Meta from 'gi://Meta';
 import Shell from 'gi://Shell';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
-import { Settings } from '../services/Settings';
-import { Workspaces } from '../services/Workspaces';
+import { Settings } from './Settings';
+import { Workspaces } from './Workspaces';
 
 export class KeyBindings {
     private static _instance: KeyBindings | null;

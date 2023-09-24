@@ -9,8 +9,8 @@ import { WindowPreview } from 'resource:///org/gnome/shell/ui/windowPreview.js';
 import { Settings } from '../services/Settings';
 import { Styles } from '../services/Styles';
 import { WorkspaceState, Workspaces } from '../services/Workspaces';
-import { WorkspacesBarMenu } from '../ui/WorkspacesBarMenu';
 import { Subject } from '../utils/Subject';
+import { WorkspacesBarMenu } from './WorkspacesBarMenu';
 
 interface DragEvent {
     x: number;

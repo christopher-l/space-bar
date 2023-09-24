@@ -1,5 +1,5 @@
-import { Settings } from '../services/Settings';
 import { DebouncingNotifier } from '../utils/DebouncingNotifier';
+import { Settings } from './Settings';
 
 /**
  * Tracks and provides the styles for the workspaces bar.

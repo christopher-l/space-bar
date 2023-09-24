@@ -2,12 +2,12 @@ import Meta from 'gi://Meta';
 import Shell from 'gi://Shell';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import { WindowManager } from 'resource:///org/gnome/shell/ui/windowManager.js';
-import { Settings } from '../services/Settings';
-import { WorkspaceNames } from '../services/WorkspaceNames';
 import { DebouncingNotifier } from '../utils/DebouncingNotifier';
 import { Subject } from '../utils/Subject';
 import { Timeout } from '../utils/Timeout';
 import { hook } from '../utils/hook';
+import { Settings } from './Settings';
+import { WorkspaceNames } from './WorkspaceNames';
 
 // Adapted from https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/45.0/js/ui/altTab.js?ref_type=tags#L53
 function getWindows(workspace: Meta.Workspace): Meta.Window[] {
