@@ -1,3 +1,7 @@
+## v23
+
+- Chore: Migrate to GNOME 45
+
 ## v22
 
 - Feature: Always show workspace numbers
