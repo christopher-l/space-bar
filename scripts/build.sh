@@ -16,32 +16,14 @@ function compile() (
 
 function fixupJavaScript() (
 	for file in $(find target -name '*.js'); do
-		sed -i \
-			-e 's#export function#function#g' \
-			-e 's#export var#var#g' \
-			-e 's#export const#var#g' \
-			-e 's#Object.defineProperty(exports, "__esModule", { value: true });#var exports = {};#g' \
-			"${file}"
-		sed -i -E 's/export class (\w+)/var \1 = class \1/g' "${file}"
-		sed -i -E "s/import \* as (\w+) from '(.+)'/const \1 = Me.imports.\2/g" "${file}"
-		# Replace import statements of the style "import { Foo } from 'foo';".
-		sed -i -E "s/^import \{(.*)\} from 'imports\/(.*)';$/const {\1} = imports.\2;/g" "${file}"
-		sed -i -E "s/^import \{(.*)\} from '(.*)';$/const {\1} = Me.imports.\2;/g" "${file}"
-		# Replace slashes with dots in lines containing "Me.imports.".
-		sed -i -E "/^const .* = Me\.imports\..*;/ s/(\w)\/(\w)/\1.\2/g" "${file}"
-		# Prepend import for `Me` if not already there.
-		if ! grep -qe "^const Me =" ${file}; then
-			echo -e "const Me = imports.misc.extensionUtils.getCurrentExtension();\n$(cat ${file})" >${file}
-		fi
+		# Add .js suffix for relative imports.
+		sed -i -E "s/^import (.*) from '(\.+.*)';$/import \1 from '\2.js';/g" "${file}"
 	done
 )
 
-function compileSchemas() (
-	cp -r src/schemas target/schemas
-	glib-compile-schemas src/schemas --targetdir target/schemas
-)
-
 function copyAdditionalFiles() (
+	cp -r src/schemas target/schemas
+
 	for file in metadata.json README.md; do
 		cp "$file" "target/$file"
 	done
@@ -72,7 +54,6 @@ function main() (
 	clear
 	compile
 	fixupJavaScript
-	compileSchemas
 	copyAdditionalFiles
 	pack
 	while getopts i flag; do

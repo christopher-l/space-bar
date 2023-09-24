@@ -1,9 +1,9 @@
-import { Clutter } from 'imports/gi';
-import { Settings } from 'services/Settings';
-import { Workspaces } from 'services/Workspaces';
-import { Subject } from 'utils/Subject';
+import Clutter from 'gi://Clutter';
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import { scrollWheelDirectionOptions } from '../preferences/BehaviorPage';
-const Main = imports.ui.main;
+import { Settings } from '../services/Settings';
+import { Workspaces } from '../services/Workspaces';
+import { Subject } from '../utils/Subject';
 
 export class ScrollHandler {
     private _ws = Workspaces.getInstance();

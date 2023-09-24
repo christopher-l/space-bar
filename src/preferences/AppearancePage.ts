@@ -1,7 +1,5 @@
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
-import { Adw } from 'imports/gi';
-import { addColorButton, addCombo, addSpinButton } from 'preferences/common';
+import Adw from 'gi://Adw';
+import { addColorButton, addCombo, addSpinButton } from './common';
 
 export const fontWeightOptions = {
     '100': 'Thin',
@@ -18,9 +16,13 @@ export const fontWeightOptions = {
 export class AppearancePage {
     window!: Adw.PreferencesWindow;
     readonly page = new Adw.PreferencesPage();
-    private readonly _settings = ExtensionUtils.getSettings(
-        `${Me.metadata['settings-schema']}.appearance`,
-    );
+    private readonly _settings;
+
+    constructor(private _extensionPreferences: any) {
+        this._settings = _extensionPreferences.getSettings(
+            `org.gnome.shell.extensions.space-bar.appearance`,
+        );
+    }
 
     init() {
         this.page.set_title('_Appearance');
@@ -34,8 +36,8 @@ export class AppearancePage {
     }
 
     private _connectEnabledConditions() {
-        const behaviorSettings = ExtensionUtils.getSettings(
-            `${Me.metadata['settings-schema']}.behavior`,
+        const behaviorSettings = this._extensionPreferences.getSettings(
+            `org.gnome.shell.extensions.space-bar.behavior`,
         );
         const disabledNoticeGroup = new Adw.PreferencesGroup({
             description:

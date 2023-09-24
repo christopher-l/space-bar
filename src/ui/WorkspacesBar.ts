@@ -1,16 +1,16 @@
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
-const Main = imports.ui.main;
-import type { Meta } from 'imports/gi';
-import { Clutter, GObject, St } from 'imports/gi';
-import { Settings } from 'services/Settings';
-import { Styles } from 'services/Styles';
-import { WorkspaceState, Workspaces } from 'services/Workspaces';
-import { WorkspacesBarMenu } from 'ui/WorkspacesBarMenu';
-import { Subject } from 'utils/Subject';
-const PanelMenu = imports.ui.panelMenu;
-const DND = imports.ui.dnd;
-const { WindowPreview } = imports.ui.windowPreview;
+import Clutter from 'gi://Clutter';
+import GObject from 'gi://GObject';
+import type Meta from 'gi://Meta';
+import St from 'gi://St';
+import * as DND from 'resource:///org/gnome/shell/ui/dnd.js';
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
+import { WindowPreview } from 'resource:///org/gnome/shell/ui/windowPreview.js';
+import { Settings } from '../services/Settings';
+import { Styles } from '../services/Styles';
+import { WorkspaceState, Workspaces } from '../services/Workspaces';
+import { WorkspacesBarMenu } from '../ui/WorkspacesBarMenu';
+import { Subject } from '../utils/Subject';
 
 interface DragEvent {
     x: number;
@@ -45,7 +45,7 @@ interface WsBoxPosition {
 const MAX_CLICK_TIME_DELTA = 300;
 
 export class WorkspacesBar {
-    private readonly _name = `${Me.metadata.name}`;
+    private readonly _name = `${this._extension.metadata.name}`;
     private readonly _settings = Settings.getInstance();
     private readonly _styles = Styles.getInstance();
     private readonly _ws = Workspaces.getInstance();
@@ -58,7 +58,7 @@ export class WorkspacesBar {
     private _wsBar?: St.BoxLayout;
     private readonly _dragHandler = new WorkspacesBarDragHandler(() => this._updateWorkspaces());
 
-    constructor() {}
+    constructor(private _extension: any) {}
 
     init(): void {
         this._initButton();
@@ -112,7 +112,7 @@ export class WorkspacesBar {
     }
 
     private _initMenu(): void {
-        this._menu = new WorkspacesBarMenu(this._button.menu);
+        this._menu = new WorkspacesBarMenu(this._extension, this._button.menu);
         this._menu.init();
     }
 

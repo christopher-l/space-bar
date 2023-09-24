@@ -2,9 +2,9 @@
   "scripts": {
     "build": "./scripts/build.sh",
     "install": "./scripts/build.sh -i",
-    "build:types": "ts-for-gir generate Gio-2.0 GObject-2.0 St-1.0 Shell-0.1 Meta-11 Adw-1 -g \"/usr/share/gir-1.0\" -g \"/usr/share/gnome-shell\" -g \"/usr/lib/mutter-11/\""
+    "build:types": "ts-for-gir generate Gio-2.0 GObject-2.0 St-13 Shell-13 Meta-13 Adw-1 Clutter-13 -g \"/usr/share/gir-1.0\" -g \"/usr/share/gnome-shell\" -g \"/usr/lib/mutter-13/\""
   },
   "devDependencies": {
-    "@ts-for-gir/cli": "^3.0.0-beta.6"
+    "@ts-for-gir/cli": "^3.2.2"
   }
 }

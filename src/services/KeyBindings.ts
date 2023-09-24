@@ -1,7 +1,9 @@
-import { Gio, Meta, Shell } from 'imports/gi';
-import { Settings } from 'services/Settings';
-import { Workspaces } from 'services/Workspaces';
-const Main = imports.ui.main;
+import Gio from 'gi://Gio';
+import Meta from 'gi://Meta';
+import Shell from 'gi://Shell';
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import { Settings } from '../services/Settings';
+import { Workspaces } from '../services/Workspaces';
 
 export class KeyBindings {
     private static _instance: KeyBindings | null;

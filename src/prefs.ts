@@ -1,14 +1,15 @@
-import type { Adw } from 'imports/gi';
-import { AppearancePage } from 'preferences/AppearancePage';
-import { BehaviorPage } from 'preferences/BehaviorPage';
-import { ShortcutsPage } from 'preferences/ShortcutsPage';
+import type Adw from 'gi://Adw';
+import { ExtensionPreferences } from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
+import { AppearancePage } from './preferences/AppearancePage';
+import { BehaviorPage } from './preferences/BehaviorPage';
+import { ShortcutsPage } from './preferences/ShortcutsPage';
 
-function init() {}
-
-function fillPreferencesWindow(window: Adw.PreferencesWindow) {
-    [new BehaviorPage(), new AppearancePage(), new ShortcutsPage()].forEach((pageObject) => {
-        pageObject.window = window;
-        pageObject.init();
-        window.add(pageObject.page);
-    });
+export default class SpaceBarExtensionPreferences extends ExtensionPreferences {
+    fillPreferencesWindow(window: Adw.PreferencesWindow) {
+        [new BehaviorPage(this), new AppearancePage(this), new ShortcutsPage(this)].forEach((pageObject) => {
+            pageObject.window = window;
+            pageObject.init();
+            window.add(pageObject.page);
+        });
+    }
 }

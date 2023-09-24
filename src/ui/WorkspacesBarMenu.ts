@@ -1,11 +1,11 @@
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
-import { Clutter, GObject, St } from 'imports/gi';
-import { KeyBindings } from 'services/KeyBindings';
-import { Settings } from 'services/Settings';
-import { WorkspaceNames } from 'services/WorkspaceNames';
-import { WorkspaceState, Workspaces } from 'services/Workspaces';
-const PopupMenu = imports.ui.popupMenu;
+import Clutter from 'gi://Clutter';
+import GObject from 'gi://GObject';
+import St from 'gi://St';
+import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
+import { KeyBindings } from '../services/KeyBindings';
+import { Settings } from '../services/Settings';
+import { WorkspaceNames } from '../services/WorkspaceNames';
+import { WorkspaceState, Workspaces } from '../services/Workspaces';
 
 export class WorkspacesBarMenu {
     private readonly _keyBindings = KeyBindings.getInstance();
@@ -16,7 +16,7 @@ export class WorkspacesBarMenu {
     private _hiddenWorkspacesSection = new PopupMenu.PopupMenuSection();
     private _manageWorkspaceSection = new PopupMenu.PopupMenuSection();
 
-    constructor(private readonly _menu: any) {}
+    constructor(private readonly _extension: any, private readonly _menu: any) {}
 
     init(): void {
         this._menu.box.add_style_class_name('space-bar-menu');
@@ -90,10 +90,10 @@ export class WorkspacesBarMenu {
     private _initExtensionSettingsButton(): void {
         const separator = new PopupMenu.PopupSeparatorMenuItem();
         this._menu.addMenuItem(separator);
-        const button = new PopupMenu.PopupMenuItem(`${Me.metadata.name} settings`);
+        const button = new PopupMenu.PopupMenuItem(`${this._extension.metadata.name} settings`);
         button.connect('activate', () => {
             this._menu.close();
-            ExtensionUtils.openPrefs();
+            this._extension.openPreferences();
         });
         this._menu.addMenuItem(button);
     }

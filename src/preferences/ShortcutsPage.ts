@@ -1,14 +1,16 @@
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
-import { Adw } from 'imports/gi';
-import { addKeyboardShortcut, addToggle } from 'preferences/common';
+import Adw from 'gi://Adw';
+import { addKeyboardShortcut, addToggle } from './common';
 
 export class ShortcutsPage {
     window!: Adw.PreferencesWindow;
     readonly page = new Adw.PreferencesPage();
-    private readonly _settings = ExtensionUtils.getSettings(
-        `${Me.metadata['settings-schema']}.shortcuts`,
-    );
+    private readonly _settings;
+
+    constructor(extensionPreferences: any) {
+        this._settings = extensionPreferences.getSettings(
+            `org.gnome.shell.extensions.space-bar.shortcuts`,
+        );
+    }
 
     init() {
         this.page.set_title('_Shortcuts');

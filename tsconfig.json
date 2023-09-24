@@ -5,9 +5,10 @@
         "outDir": "./target",
         "lib": ["ES2021"],
         "paths": {
-            "@imports/*": ["./@types/Gjs/*"],
-            "types": ["./src/types/generated/types.d"],
-            "imports/*": ["./src/types/generated/imports/*"]
+            "@imports/*": ["./@types/*"],
+            "gi://*": ["./src/types/generated/gi/*"],
+            "resource:///org/gnome/shell/*": ["./src/types/dummy/shell/*"],
+            "resource:///org/gnome/Shell/Extensions/js/*": ["./src/types/dummy/shell/*"]
         }
     },
     "include": ["src/**/*.ts"],

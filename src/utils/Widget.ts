@@ -1,5 +1,5 @@
-import { St } from 'imports/gi';
-import { Subject } from 'utils/Subject';
+import St from 'gi://St';
+import { Subject } from './Subject';
 
 export function onDestroyed(widget: St.Widget): Subject<void> {
     const subject = new Subject<void>(void 0);

@@ -3,7 +3,7 @@
 
 // FIXME: There is probably some standard object we could use for this.
 
-import { GObject } from 'imports/gi';
+import GObject from 'gi://GObject';
 
 export declare class DropDownChoiceClass extends GObject.Object {
     id: string;

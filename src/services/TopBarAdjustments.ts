@@ -1,5 +1,5 @@
-import { Settings } from 'services/Settings';
-const Main = imports.ui.main;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import { Settings } from '../services/Settings';
 
 export class TopBarAdjustments {
     private static _instance: TopBarAdjustments | null;

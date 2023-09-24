@@ -1,5 +1,4 @@
-const Mainloop = imports.mainloop;
-import { GLib } from 'imports/gi';
+import GLib from 'gi://GLib';
 
 export class Timeout {
     private _timeoutId: number | null = null;
@@ -11,9 +10,10 @@ export class Timeout {
     tick() {
         return new Promise<void>((resolve) => {
             this._clearTimeout();
-            this._timeoutId = Mainloop.timeout_add(0, () => {
+            this._timeoutId = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 0, () => {
                 this._timeoutId = null;
                 resolve();
+                return GLib.SOURCE_REMOVE;
             });
         });
     }

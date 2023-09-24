@@ -4,8 +4,9 @@
     "compilerOptions": {
         "noImplicitAny": false,
         "paths": {
-            "types": ["./src/types/dummy/types.d"],
-            "imports/*": ["./src/types/dummy/imports/*"]
+            "gi://*": ["./src/types/dummy/gi/*"],
+            "resource:///org/gnome/shell/*": ["./src/types/dummy/shell/*"],
+            "resource:///org/gnome/Shell/Extensions/js/*": ["./src/types/dummy/shell/*"]
         }
     },
     "exclude": ["src/types/generated/*"]

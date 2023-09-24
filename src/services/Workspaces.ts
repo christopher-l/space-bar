@@ -1,13 +1,14 @@
-import { Meta, Shell } from 'imports/gi';
-import { Settings } from 'services/Settings';
-import { WorkspaceNames } from 'services/WorkspaceNames';
-import { DebouncingNotifier } from 'utils/DebouncingNotifier';
-import { Timeout } from 'utils/Timeout';
-import { hook } from 'utils/hook';
+import Meta from 'gi://Meta';
+import Shell from 'gi://Shell';
+import * as AltTab from 'resource:///org/gnome/shell/ui/altTab.js';
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import { WindowManager } from 'resource:///org/gnome/shell/ui/windowManager.js';
+import { Settings } from '../services/Settings';
+import { WorkspaceNames } from '../services/WorkspaceNames';
+import { DebouncingNotifier } from '../utils/DebouncingNotifier';
 import { Subject } from '../utils/Subject';
-const Main = imports.ui.main;
-const AltTab = imports.ui.altTab;
-const WindowManager = imports.ui.windowManager;
+import { Timeout } from '../utils/Timeout';
+import { hook } from '../utils/hook';
 
 export interface WorkspaceState {
     isEnabled: boolean;
@@ -108,7 +109,7 @@ export class Workspaces {
         this._settings.showEmptyWorkspaces.subscribe(() =>
             this._update('workspaces-changed', 'settings showEmptyWorkspaces'),
         );
-        hook(WindowManager.WindowManager, 'insertWorkspace', 'before', (_, pos: number) => {
+        hook(WindowManager, 'insertWorkspace', 'before', (_, pos: number) => {
             this._wsNames?.insert(pos);
         });
         this._update('init', 'init');

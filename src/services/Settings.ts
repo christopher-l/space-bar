@@ -1,18 +1,16 @@
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
-import { Gio } from 'imports/gi';
-import { fontWeightOptions } from 'preferences/AppearancePage';
+import Gio from 'gi://Gio';
+import { fontWeightOptions } from '../preferences/AppearancePage';
 import {
     indicatorStyleOptions,
     positionOptions,
     scrollWheelDirectionOptions,
     scrollWheelOptions,
-} from 'preferences/BehaviorPage';
+} from '../preferences/BehaviorPage';
 
 export class Settings {
     private static _instance: Settings | null;
-    static init() {
-        Settings._instance = new Settings();
+    static init(extension: any) {
+        Settings._instance = new Settings(extension);
         Settings._instance.init();
     }
     static destroy() {
@@ -23,15 +21,19 @@ export class Settings {
         return Settings._instance as Settings;
     }
 
-    readonly state = ExtensionUtils.getSettings(`${Me.metadata['settings-schema']}.state`);
-    readonly behaviorSettings = ExtensionUtils.getSettings(
-        `${Me.metadata['settings-schema']}.behavior`,
+    constructor(private _extension: any) {}
+
+    readonly state = this._extension.getSettings(
+        `${this._extension.metadata['settings-schema']}.state`,
     );
-    readonly appearanceSettings = ExtensionUtils.getSettings(
-        `${Me.metadata['settings-schema']}.appearance`,
+    readonly behaviorSettings = this._extension.getSettings(
+        `${this._extension.metadata['settings-schema']}.behavior`,
     );
-    readonly shortcutsSettings = ExtensionUtils.getSettings(
-        `${Me.metadata['settings-schema']}.shortcuts`,
+    readonly appearanceSettings = this._extension.getSettings(
+        `${this._extension.metadata['settings-schema']}.appearance`,
+    );
+    readonly shortcutsSettings = this._extension.getSettings(
+        `${this._extension.metadata['settings-schema']}.shortcuts`,
     );
     readonly mutterSettings = new Gio.Settings({ schema: 'org.gnome.mutter' });
     readonly wmPreferencesSettings = new Gio.Settings({

@@ -1,7 +1,5 @@
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
-import { Adw } from 'imports/gi';
-import { addCombo, addSpinButton, addToggle } from 'preferences/common';
+import Adw from 'gi://Adw';
+import { addCombo, addSpinButton, addToggle } from './common';
 
 export const indicatorStyleOptions = {
     'current-workspace-name': 'Current workspace name',
@@ -29,9 +27,13 @@ export const positionOptions = {
 export class BehaviorPage {
     window!: Adw.PreferencesWindow;
     readonly page = new Adw.PreferencesPage();
-    private readonly _settings = ExtensionUtils.getSettings(
-        `${Me.metadata['settings-schema']}.behavior`,
-    );
+    private readonly _settings;
+
+    constructor(extensionPreferences: any) {
+        this._settings = extensionPreferences.getSettings(
+            `org.gnome.shell.extensions.space-bar.behavior`,
+        );
+    }
 
     init() {
         this.page.set_title('_Behavior');
@@ -148,7 +150,7 @@ export class BehaviorPage {
             group,
             key: 'show-empty-workspaces',
             title: 'Show empty workspaces',
-            subtitle: 'Also affects switching with scroll wheel'
+            subtitle: 'Also affects switching with scroll wheel',
         });
         addToggle({
             settings: this._settings,
