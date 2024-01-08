@@ -1,3 +1,7 @@
+## v24
+
+- Feature: Option to keep system workspace indicator
+
 ## v23
 
 - Chore: Migrate to GNOME 45

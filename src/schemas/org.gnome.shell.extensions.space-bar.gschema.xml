@@ -24,6 +24,9 @@
             <default>"left"</default>
             <summary>Position in top panel</summary>
         </key>
+        <key name="system-workspace-indicator" type="b">
+            <default>false</default>
+        </key>
         <key name="position-index" type="i">
             <range min="0" max="100" />
             <default>1</default>

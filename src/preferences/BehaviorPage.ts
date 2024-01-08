@@ -67,6 +67,12 @@ export class BehaviorPage {
             populatePage: (page) => {
                 const positionSubDialogGroup = new Adw.PreferencesGroup();
                 page.add(positionSubDialogGroup);
+                addToggle({
+                    settings: this._settings,
+                    group: positionSubDialogGroup,
+                    key: 'system-workspace-indicator',
+                    title: 'Keep system workspace indicator',
+                });
                 addSpinButton({
                     settings: this._settings,
                     group: positionSubDialogGroup,

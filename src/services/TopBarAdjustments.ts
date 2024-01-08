@@ -18,12 +18,12 @@ export class TopBarAdjustments {
     private _didHideActivitiesButton = false;
 
     init(): void {
-        this._settings.position.subscribe(
-            (value) => {
-                if (value === 'left') {
-                    this._hideActivitiesButton();
+        this._settings.systemWorkspaceIndicator.subscribe(
+            (systemWorkspaceIndicator) => {
+                if (systemWorkspaceIndicator) {
+                    this._restoreSystemWorkspaceIndicator();
                 } else {
-                    this._restoreActivitiesButton();
+                    this._hideSystemWorkspaceIndicator();
                 }
             },
             { emitCurrentValue: true },
@@ -31,10 +31,10 @@ export class TopBarAdjustments {
     }
 
     destroy(): void {
-        this._restoreActivitiesButton();
+        this._restoreSystemWorkspaceIndicator();
     }
 
-    private _hideActivitiesButton(): void {
+    private _hideSystemWorkspaceIndicator(): void {
         const activitiesButton = Main.panel.statusArea['activities'];
         if (activitiesButton && !Main.sessionMode.isLocked && activitiesButton.is_visible()) {
             activitiesButton.hide();
@@ -42,7 +42,7 @@ export class TopBarAdjustments {
         }
     }
 
-    private _restoreActivitiesButton(): void {
+    private _restoreSystemWorkspaceIndicator(): void {
         const activitiesButton = Main.panel.statusArea['activities'];
         if (activitiesButton && this._didHideActivitiesButton) {
             activitiesButton.show();

@@ -54,6 +54,10 @@ export class Settings {
         this.behaviorSettings,
         'position',
     );
+    readonly systemWorkspaceIndicator = SettingsSubject.createBooleanSubject(
+        this.behaviorSettings,
+        'system-workspace-indicator',
+    );
     readonly positionIndex = SettingsSubject.createIntSubject(
         this.behaviorSettings,
         'position-index',
