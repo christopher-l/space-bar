@@ -1,6 +1,6 @@
 # Space Bar
 
-GNOME Shell extension that replaces the 'Activities' button with an i3-like workspaces bar.
+GNOME Shell extension that replaces the top-panel workspace indicator with an i3-like workspaces bar.
 
 On GNOME Extensions: https://extensions.gnome.org/extension/5090/space-bar/
 
