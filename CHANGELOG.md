@@ -1,6 +1,7 @@
 ## v25
 
 -   Chore: Migrate to GNOME 46
+-   Feature: Support touch input
 -   Fix: Delay when opening the overview
 
 ## v24

@@ -10,6 +10,7 @@ import { Settings } from '../services/Settings';
 import { Styles } from '../services/Styles';
 import { WorkspaceState, Workspaces } from '../services/Workspaces';
 import { Subject } from '../utils/Subject';
+import { Timeout } from '../utils/Timeout';
 import { WorkspacesBarMenu } from './WorkspacesBarMenu';
 
 interface DragEvent {
@@ -43,6 +44,10 @@ interface WsBoxPosition {
  * Maximum number of milliseconds between button press and button release to be recognized as click.
  */
 const MAX_CLICK_TIME_DELTA = 300;
+/**
+ * Time in milliseconds until a touch event is recognized as long press.
+ */
+const LONG_PRESS_DURATION = 500;
 
 export class WorkspacesBar {
     private readonly _name = `${this._extension.metadata.name}`;
@@ -57,6 +62,7 @@ export class WorkspacesBar {
     /** The child of `_button` when `indicator-style` is `workspaces-bar`. */
     private _wsBar?: St.BoxLayout;
     private readonly _dragHandler = new WorkspacesBarDragHandler(() => this._updateWorkspaces());
+    private readonly _touchTimeout = new Timeout();
 
     constructor(private _extension: any) {}
 
@@ -77,6 +83,7 @@ export class WorkspacesBar {
         this._menu.destroy();
         this._dragHandler.destroy();
         this._buttonSubject.complete();
+        this._touchTimeout.destroy();
     }
 
     observeWidget(): Subject<any> {
@@ -218,7 +225,34 @@ export class WorkspacesBar {
             }
             return Clutter.EVENT_PROPAGATE;
         });
-        this._dragHandler.setupDnd(wsBox, workspace);
+        let lastTouchBeginEvent: Clutter.Event | null;
+        wsBox.connect('touch-event', (actor, event: Clutter.Event) => {
+            switch (event.type()) {
+                case Clutter.EventType.TOUCH_BEGIN:
+                    lastTouchBeginEvent = event;
+                    this._touchTimeout
+                        .once(LONG_PRESS_DURATION)
+                        .then(() => this._button.menu.toggle());
+                    break;
+                case Clutter.EventType.TOUCH_END:
+                    if (lastTouchBeginEvent) {
+                        const timeDelta = event.get_time() - lastTouchBeginEvent.get_time();
+                        if (timeDelta <= MAX_CLICK_TIME_DELTA) {
+                            this._ws.activate(workspace.index);
+                        }
+                        lastTouchBeginEvent = null;
+                    }
+                    this._touchTimeout.clearTimeout();
+                    break;
+                case Clutter.EventType.TOUCH_CANCEL:
+                    this._touchTimeout.clearTimeout();
+                    break;
+            }
+            return Clutter.EVENT_PROPAGATE;
+        });
+        this._dragHandler.setupDnd(wsBox, workspace, {
+            onDragStart: () => this._touchTimeout.clearTimeout(),
+        });
         return wsBox;
     }
 
@@ -276,10 +310,11 @@ class WorkspacesBarDragHandler {
         this._setDragMonitor(false);
     }
 
-    setupDnd(wsBox: St.Bin, workspace: WorkspaceState): void {
+    setupDnd(wsBox: St.Bin, workspace: WorkspaceState, hooks: { onDragStart: () => void }): void {
         const draggable = DND.makeDraggable(wsBox, {});
         draggable.connect('drag-begin', () => {
             this._onDragStart(wsBox, workspace);
+            hooks.onDragStart();
         });
         draggable.connect('drag-cancelled', () => {
             this._updateDragPlaceholder(this._initialDropPosition!);
