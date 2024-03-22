@@ -1,8 +1,9 @@
 import Adw from 'gi://Adw';
+import Gio from 'gi://Gio';
 import { addCombo, addSpinButton, addToggle } from './common';
 
 export const indicatorStyleOptions = {
-    'current-workspace-name': 'Current workspace name',
+    'current-workspace': 'Current workspace',
     'workspaces-bar': 'Workspaces bar',
 };
 
@@ -27,7 +28,7 @@ export const positionOptions = {
 export class BehaviorPage {
     window!: Adw.PreferencesWindow;
     readonly page = new Adw.PreferencesPage();
-    private readonly _settings;
+    private readonly _settings: Gio.Settings;
 
     constructor(extensionPreferences: any) {
         this._settings = extensionPreferences.getSettings(
@@ -150,6 +151,24 @@ export class BehaviorPage {
             group,
             key: 'always-show-numbers',
             title: 'Always show workspace numbers',
+        }).addSubDialog({
+            window: this.window,
+            title: 'Workspace Numbers',
+            enableIf: {
+                key: 'always-show-numbers',
+                predicate: (value) => value.get_boolean(),
+                page: this.page,
+            },
+            populatePage: (page) => {
+                const indicatorSubDialogGroup = new Adw.PreferencesGroup();
+                page.add(indicatorSubDialogGroup);
+                addToggle({
+                    settings: this._settings,
+                    group: indicatorSubDialogGroup,
+                    key: 'show-total-number',
+                    title: 'Show total number of workspaces',
+                });
+            },
         });
         addToggle({
             settings: this._settings,

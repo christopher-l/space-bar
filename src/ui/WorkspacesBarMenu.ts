@@ -103,7 +103,7 @@ export class WorkspacesBarMenu {
 
         let hiddenWorkspaces: WorkspaceState[];
         switch (this._settings.indicatorStyle.value) {
-            case 'current-workspace-name':
+            case 'current-workspace':
                 hiddenWorkspaces = this._ws.workspaces.filter(
                     (workspace) =>
                         workspace.isEnabled &&
@@ -145,7 +145,7 @@ export class WorkspacesBarMenu {
         if (
             !this._settings.dynamicWorkspaces.value ||
             !this._settings.showEmptyWorkspaces.value ||
-            this._settings.indicatorStyle.value === 'current-workspace-name'
+            this._settings.indicatorStyle.value === 'current-workspace'
         ) {
             const newWorkspaceButton = new PopupMenu.PopupMenuItem('Add new workspace');
             newWorkspaceButton.connect('activate', () => {

@@ -240,14 +240,17 @@ export class Workspaces {
         if (this.isExtraDynamicWorkspace(workspace)) {
             return '+';
         }
+        if (workspace.name && !this._settings.alwaysShowNumbers.value) {
+            return workspace.name;
+        }
+        let numberString = `${workspace.index + 1}`;
+        if (this._settings.alwaysShowNumbers.value && this._settings.showTotalNumber.value) {
+            numberString += ` / ${this.numberOfEnabledWorkspaces}`;
+        }
         if (workspace.name) {
-            if (this._settings.alwaysShowNumbers.value) {
-                return `${workspace.index + 1}: ${workspace.name}`;
-            } else {
-                return workspace.name;
-            }
+            return `${numberString}: ${workspace.name}`;
         } else {
-            return (workspace.index + 1).toString();
+            return numberString;
         }
     }
 

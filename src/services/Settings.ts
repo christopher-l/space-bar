@@ -40,6 +40,7 @@ export class Settings {
         schema: 'org.gnome.desktop.wm.preferences',
     });
 
+    private readonly _version = SettingsSubject.createIntSubject(this.state, 'version');
     readonly workspaceNamesMap = SettingsSubject.createJsonObjectSubject<{
         [windowName: string]: string[];
     }>(this.state, 'workspace-names-map');
@@ -88,6 +89,10 @@ export class Settings {
         this.behaviorSettings,
         'always-show-numbers',
     );
+    readonly showTotalNumber = SettingsSubject.createBooleanSubject(
+        this.behaviorSettings,
+        'show-total-number',
+    );
     readonly showEmptyWorkspaces = SettingsSubject.createBooleanSubject(
         this.behaviorSettings,
         'show-empty-workspaces',
@@ -96,7 +101,6 @@ export class Settings {
         this.behaviorSettings,
         'toggle-overview',
     );
-
     readonly smartWorkspaceNames = SettingsSubject.createBooleanSubject(
         this.behaviorSettings,
         'smart-workspace-names',
@@ -229,10 +233,23 @@ export class Settings {
 
     private init() {
         SettingsSubject.initAll();
+        this.runMigrations();
     }
 
     private destroy() {
         SettingsSubject.destroyAll();
+    }
+
+    /**
+     * Migrates preferences from previous space-bar versions.
+     */
+    private runMigrations(): void {
+        if (this._version.value < 26) {
+            if ((this.indicatorStyle.value as string) === 'current-workspace-name') {
+                this.indicatorStyle.value = 'current-workspace';
+            }
+        }
+        this._version.value = this._extension.metadata['version'];
     }
 }
 

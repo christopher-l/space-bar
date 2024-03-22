@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
     <schema id="org.gnome.shell.extensions.space-bar.state" path="/org/gnome/shell/extensions/space-bar/state/">
+        <key name="version" type="i">
+            <default>0</default>
+        </key>
         <key name="workspace-names-map" type="s">
             <default><![CDATA['{}']]></default>
         </key>
     </schema>
-
     <schema id="org.gnome.shell.extensions.space-bar.behavior" path="/org/gnome/shell/extensions/space-bar/behavior/">
         <key name="indicator-style" type="s">
             <choices>
+                <!-- Not valid anymore, included for migration. -->
                 <choice value="current-workspace-name"/>
+                <choice value="current-workspace"/>
                 <choice value="workspaces-bar"/>
             </choices>
             <default>"workspaces-bar"</default>
@@ -34,6 +38,9 @@
             <description>Order relative to other elements</description>
         </key>
         <key name="always-show-numbers" type="b">
+            <default>false</default>
+        </key>
+        <key name="show-total-number" type="b">
             <default>false</default>
         </key>
         <key name="show-empty-workspaces" type="b">

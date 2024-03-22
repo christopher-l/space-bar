@@ -1,3 +1,7 @@
+## v26
+
+-   Feature: Option to show total workspaces number
+
 ## v25
 
 -   Chore: Migrate to GNOME 46
