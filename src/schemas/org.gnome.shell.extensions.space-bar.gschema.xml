@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
     <schema id="org.gnome.shell.extensions.space-bar.state" path="/org/gnome/shell/extensions/space-bar/state/">
+        <key name="version" type="i">
+            <default>0</default>
+        </key>
         <key name="workspace-names-map" type="s">
             <default><![CDATA['{}']]></default>
         </key>
     </schema>
-
     <schema id="org.gnome.shell.extensions.space-bar.behavior" path="/org/gnome/shell/extensions/space-bar/behavior/">
         <key name="indicator-style" type="s">
             <choices>
+                <!-- Not valid anymore, included for migration. -->
                 <choice value="current-workspace-name"/>
+                <choice value="current-workspace"/>
                 <choice value="workspaces-bar"/>
             </choices>
             <default>"workspaces-bar"</default>
             <summary>Indicator style</summary>
+        </key>
+        <key name="enable-custom-label" type="b">
+            <default>false</default>
+        </key>
+        <key name="enable-custom-label-in-menu" type="b">
+            <default>false</default>
+        </key>
+        <key name="custom-label-named" type="s">
+            <default>'{{name}}'</default>
+        </key>
+        <key name="custom-label-unnamed" type="s">
+            <default>'Workspace {{number}}'</default>
         </key>
         <key name="position" type="s">
             <choices>

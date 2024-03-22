@@ -103,7 +103,7 @@ export class WorkspacesBarMenu {
 
         let hiddenWorkspaces: WorkspaceState[];
         switch (this._settings.indicatorStyle.value) {
-            case 'current-workspace-name':
+            case 'current-workspace':
                 hiddenWorkspaces = this._ws.workspaces.filter(
                     (workspace) =>
                         workspace.isEnabled &&
@@ -129,7 +129,13 @@ export class WorkspacesBarMenu {
         if (hiddenWorkspaces.length > 0) {
             this._addSectionHeading('Other workspaces', this._hiddenWorkspacesSection);
             hiddenWorkspaces.forEach((workspace) => {
-                const button = new PopupMenu.PopupMenuItem(this._ws.getDisplayName(workspace));
+                let label: string;
+                if (this._settings.enableCustomLabelInMenus.value) {
+                    label = this._ws.getDisplayName(workspace);
+                } else {
+                    label = this._ws.getDefaultDisplayName(workspace);
+                }
+                const button = new PopupMenu.PopupMenuItem(label);
                 button.connect('activate', () => {
                     this._menu.close();
                     this._ws.activate(workspace.index);
@@ -145,7 +151,7 @@ export class WorkspacesBarMenu {
         if (
             !this._settings.dynamicWorkspaces.value ||
             !this._settings.showEmptyWorkspaces.value ||
-            this._settings.indicatorStyle.value === 'current-workspace-name'
+            this._settings.indicatorStyle.value === 'current-workspace'
         ) {
             const newWorkspaceButton = new PopupMenu.PopupMenuItem('Add new workspace');
             newWorkspaceButton.connect('activate', () => {

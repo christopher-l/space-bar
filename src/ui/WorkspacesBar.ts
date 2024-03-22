@@ -73,6 +73,9 @@ export class WorkspacesBar {
         this._styles.onWorkspacesBarChanged(() => this._refreshTopBarConfiguration());
         this._styles.onWorkspaceLabelsChanged(() => this._updateWorkspaces());
         this._settings.alwaysShowNumbers.subscribe(() => this._updateWorkspaces());
+        this._settings.enableCustomLabel.subscribe(() => this._updateWorkspaces());
+        this._settings.customLabelNamed.subscribe(() => this._updateWorkspaces());
+        this._settings.customLabelUnnamed.subscribe(() => this._updateWorkspaces());
         this._settings.indicatorStyle.subscribe(() => this._refreshTopBarConfiguration());
         this._settings.position.subscribe(() => this._refreshTopBarConfiguration());
         this._settings.positionIndex.subscribe(() => this._refreshTopBarConfiguration());
@@ -102,7 +105,7 @@ export class WorkspacesBar {
         this._buttonSubject.next(this._button);
         this._button.styleClass = 'panel-button space-bar';
         switch (this._settings.indicatorStyle.value) {
-            case 'current-workspace-name':
+            case 'current-workspace':
                 this._initWorkspaceLabel();
                 break;
             case 'workspaces-bar':
@@ -156,7 +159,7 @@ export class WorkspacesBar {
 
     private _updateWorkspaces() {
         switch (this._settings.indicatorStyle.value) {
-            case 'current-workspace-name':
+            case 'current-workspace':
                 this._updateWorkspaceLabel();
                 break;
             case 'workspaces-bar':

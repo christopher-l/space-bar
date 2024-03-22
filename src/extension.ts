@@ -8,7 +8,7 @@ import { WorkspacesBar } from './ui/WorkspacesBar';
 import { destroyAllHooks } from './utils/hook';
 import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 
-export default class SpaceBarExtension extends Extension{
+export default class SpaceBarExtension extends Extension {
     private workspacesBar: WorkspacesBar | null = null;
     private scrollHandler: ScrollHandler | null = null;
 

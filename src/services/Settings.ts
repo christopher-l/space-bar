@@ -40,6 +40,7 @@ export class Settings {
         schema: 'org.gnome.desktop.wm.preferences',
     });
 
+    private readonly _version = SettingsSubject.createIntSubject(this.state, 'version');
     readonly workspaceNamesMap = SettingsSubject.createJsonObjectSubject<{
         [windowName: string]: string[];
     }>(this.state, 'workspace-names-map');
@@ -50,6 +51,22 @@ export class Settings {
     readonly indicatorStyle = SettingsSubject.createStringSubject<
         keyof typeof indicatorStyleOptions
     >(this.behaviorSettings, 'indicator-style');
+    readonly enableCustomLabel = SettingsSubject.createBooleanSubject(
+        this.behaviorSettings,
+        'enable-custom-label',
+    );
+    readonly enableCustomLabelInMenus = SettingsSubject.createBooleanSubject(
+        this.behaviorSettings,
+        'enable-custom-label-in-menu',
+    );
+    readonly customLabelNamed = SettingsSubject.createStringSubject(
+        this.behaviorSettings,
+        'custom-label-named',
+    );
+    readonly customLabelUnnamed = SettingsSubject.createStringSubject(
+        this.behaviorSettings,
+        'custom-label-unnamed',
+    );
     readonly position = SettingsSubject.createStringSubject<keyof typeof positionOptions>(
         this.behaviorSettings,
         'position',
@@ -96,7 +113,6 @@ export class Settings {
         this.behaviorSettings,
         'toggle-overview',
     );
-
     readonly smartWorkspaceNames = SettingsSubject.createBooleanSubject(
         this.behaviorSettings,
         'smart-workspace-names',
@@ -233,10 +249,23 @@ export class Settings {
 
     private init() {
         SettingsSubject.initAll();
+        this.runMigrations();
     }
 
     private destroy() {
         SettingsSubject.destroyAll();
+    }
+
+    /**
+     * Migrates preferences from previous space-bar versions.
+     */
+    private runMigrations(): void {
+        if (this._version.value < 26) {
+            if ((this.indicatorStyle.value as string) === 'current-workspace-name') {
+                this.indicatorStyle.value = 'current-workspace';
+            }
+        }
+        this._version.value = this._extension.metadata['version'];
     }
 }
 

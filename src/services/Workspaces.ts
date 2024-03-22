@@ -243,14 +243,48 @@ export class Workspaces {
         if (this.isExtraDynamicWorkspace(workspace)) {
             return '+';
         }
-        if (workspace.name) {
-            if (this._settings.alwaysShowNumbers.value) {
-                return `${workspace.index + 1}: ${workspace.name}`;
-            } else {
-                return workspace.name;
-            }
+        if (this._settings.enableCustomLabel.value) {
+            return this.getCustomDisplayName(workspace);
         } else {
-            return (workspace.index + 1).toString();
+            return this.getDefaultDisplayName(workspace);
+        }
+    }
+
+    getDefaultDisplayName(workspace: WorkspaceState): string {
+        if (workspace.name && !this._settings.alwaysShowNumbers.value) {
+            return workspace.name;
+        }
+        let numberString = `${workspace.index + 1}`;
+        if (workspace.name) {
+            return `${numberString}: ${workspace.name}`;
+        } else {
+            return numberString;
+        }
+    }
+
+    getCustomDisplayName(workspace: WorkspaceState): string {
+        let template: string;
+        if (workspace.name) {
+            template = this._settings.customLabelNamed.value;
+        } else {
+            template = this._settings.customLabelUnnamed.value;
+        }
+        let total = this.numberOfEnabledWorkspaces;
+        if (
+            this._settings.dynamicWorkspaces.value &&
+            this.currentIndex !== this.numberOfEnabledWorkspaces - 1
+        ) {
+            total = this.numberOfEnabledWorkspaces - 1;
+        }
+        let displayName = template
+            .replaceAll('{{name}}', workspace.name ?? '')
+            .replaceAll('{{number}}', `${workspace.index + 1}`)
+            .replaceAll('{{total}}', `${total}`)
+            .replaceAll('{{Total}}', `${this.numberOfEnabledWorkspaces}`);
+        if (this._settings.alwaysShowNumbers.value && !template.includes('{{number}}')) {
+            return `${workspace.index + 1}: ${displayName}`;
+        } else {
+            return displayName;
         }
     }
 

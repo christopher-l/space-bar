@@ -1,3 +1,7 @@
+## v27
+
+-   Feature: Option customize workspace labels
+
 ## v26
 
 -   Experimental feature: Re-evaluate smart workspace names
