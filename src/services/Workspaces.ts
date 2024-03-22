@@ -4,7 +4,6 @@ import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import { WindowManager } from 'resource:///org/gnome/shell/ui/windowManager.js';
 import { DebouncingNotifier } from '../utils/DebouncingNotifier';
 import { Subject } from '../utils/Subject';
-import { Timeout } from '../utils/Timeout';
 import { hook } from '../utils/hook';
 import { Settings } from './Settings';
 import { WorkspaceNames } from './WorkspaceNames';
@@ -68,7 +67,6 @@ export class Workspaces {
     private _wsNames?: WorkspaceNames | null;
     private _updateNotifier = new DebouncingNotifier();
     private _smartNamesNotifier = new DebouncingNotifier();
-    private _timeout = new Timeout();
     /**
      * Listeners for windows being added to a workspace.
      *
@@ -146,7 +144,6 @@ export class Workspaces {
         }
         this._updateNotifier.destroy();
         this._smartNamesNotifier.destroy();
-        this._timeout.destroy();
         this._windowAddedListeners.forEach((entry) => entry.workspace.disconnect(entry.listener));
     }
 
@@ -166,7 +163,7 @@ export class Workspaces {
                 this.focusMostRecentWindowOnWorkspace(workspace);
             } else {
                 if (this._settings.toggleOverview.value) {
-                    this._timeout.tick().then(() => Main.overview.toggle());
+                    Main.overview.toggle();
                 }
             }
         } else {
@@ -178,7 +175,7 @@ export class Workspaces {
                     !this.workspaces[index].hasWindows &&
                     this._settings.toggleOverview.value
                 ) {
-                    this._timeout.tick().then(() => Main.overview.show());
+                    Main.overview.show();
                 }
             }
         }
@@ -209,7 +206,13 @@ export class Workspaces {
 
     _addStaticWorkspace() {
         global.workspace_manager.append_new_workspace(true, global.get_current_time());
-        this._timeout.tick().then(() => Main.overview.show());
+        // We want to show the overview here when the corresponding setting is
+        // enabled, however, this doesn't play well together with activating the
+        // newly created workspace.
+        //
+        // if (!Main.overview.visible && this._settings.toggleOverview.value) {
+        //     Main.overview.show();
+        // }
     }
 
     removeWorkspace(index: number) {
