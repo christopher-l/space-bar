@@ -37,7 +37,7 @@ export class BehaviorPage {
 
     init() {
         this.page.set_title('_Behavior');
-        this.page.use_underline = true;
+        this.page.useUnderline = true;
         this.page.set_icon_name('preferences-system-symbolic');
         this._initGeneralGroup();
         this._initSmartWorkspaceNamesGroup();

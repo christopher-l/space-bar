@@ -13,7 +13,7 @@ function getWindows(workspace: Meta.Workspace): Meta.Window[] {
     const windows = global.display.get_tab_list(Meta.TabList.NORMAL_ALL, workspace);
     return windows
         .map((w) => (w.is_attached_dialog() ? w.get_transient_for()! : w))
-        .filter((w, i, a) => !w.skip_taskbar && a.indexOf(w) === i);
+        .filter((w, i, a) => !w.skipTaskbar && a.indexOf(w) === i);
 }
 
 export interface WorkspaceState {

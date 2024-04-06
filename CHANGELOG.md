@@ -1,5 +1,6 @@
 ## v25
 
+-   Chore: Migrate to GNOME 46
 -   Fix: Delay when opening the overview
 
 ## v24

@@ -1,2 +1,2 @@
-import { Meta } from '@imports/meta-13';
+import { Meta } from '@imports/meta-14';
 export default Meta;

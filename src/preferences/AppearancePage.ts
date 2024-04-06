@@ -26,7 +26,7 @@ export class AppearancePage {
 
     init() {
         this.page.set_title('_Appearance');
-        this.page.use_underline = true;
+        this.page.useUnderline = true;
         this.page.set_icon_name('applications-graphics-symbolic');
         this._connectEnabledConditions();
         this._initGeneralGroup();
