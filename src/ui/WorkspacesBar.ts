@@ -73,7 +73,9 @@ export class WorkspacesBar {
         this._styles.onWorkspacesBarChanged(() => this._refreshTopBarConfiguration());
         this._styles.onWorkspaceLabelsChanged(() => this._updateWorkspaces());
         this._settings.alwaysShowNumbers.subscribe(() => this._updateWorkspaces());
-        this._settings.showTotalNumber.subscribe(() => this._updateWorkspaces());
+        this._settings.enableCustomLabel.subscribe(() => this._updateWorkspaces());
+        this._settings.customLabelNamed.subscribe(() => this._updateWorkspaces());
+        this._settings.customLabelUnnamed.subscribe(() => this._updateWorkspaces());
         this._settings.indicatorStyle.subscribe(() => this._refreshTopBarConfiguration());
         this._settings.position.subscribe(() => this._refreshTopBarConfiguration());
         this._settings.positionIndex.subscribe(() => this._refreshTopBarConfiguration());

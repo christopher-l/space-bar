@@ -129,7 +129,13 @@ export class WorkspacesBarMenu {
         if (hiddenWorkspaces.length > 0) {
             this._addSectionHeading('Other workspaces', this._hiddenWorkspacesSection);
             hiddenWorkspaces.forEach((workspace) => {
-                const button = new PopupMenu.PopupMenuItem(this._ws.getDisplayName(workspace));
+                let label: string;
+                if (this._settings.enableCustomLabelInMenus.value) {
+                    label = this._ws.getDisplayName(workspace);
+                } else {
+                    label = this._ws.getDefaultDisplayName(workspace);
+                }
+                const button = new PopupMenu.PopupMenuItem(label);
                 button.connect('activate', () => {
                     this._menu.close();
                     this._ws.activate(workspace.index);

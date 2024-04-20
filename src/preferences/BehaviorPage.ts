@@ -1,6 +1,6 @@
 import Adw from 'gi://Adw';
 import Gio from 'gi://Gio';
-import { addCombo, addSpinButton, addToggle } from './common';
+import { addCombo, addSpinButton, addTextEntry, addToggle } from './common';
 
 export const indicatorStyleOptions = {
     'current-workspace': 'Current workspace',
@@ -54,6 +54,59 @@ export class BehaviorPage {
             key: 'indicator-style',
             title: 'Indicator style',
             options: indicatorStyleOptions,
+        }).addSubDialog({
+            window: this.window,
+            title: 'Indicator style',
+            populatePage: (page) => {
+                const group = new Adw.PreferencesGroup();
+                group.set_title('Custom label text');
+                group.set_description(
+                    'Custom labels to use for workspace names in the top panel. The following placeholders will be replaced with their respective value:\n\n' +
+                        '{{name}}: The current workspace name\n' +
+                        '{{number}}: The current workspace number\n' +
+                        '{{total}}: The number of total workspaces\n' +
+                        '{{Total}}: The number of total workspaces, also counting the spare dynamic workspace',
+                );
+                page.add(group);
+                addToggle({
+                    settings: this._settings,
+                    group,
+                    key: 'enable-custom-label',
+                    title: 'Use custom label text',
+                });
+                addToggle({
+                    settings: this._settings,
+                    group,
+                    key: 'enable-custom-label-in-menu',
+                    title: 'Also use custom label text in menu',
+                }).enableIf({
+                    key: 'enable-custom-label',
+                    predicate: (value) => value.get_boolean(),
+                    page,
+                });
+                addTextEntry({
+                    settings: this._settings,
+                    group,
+                    key: 'custom-label-named',
+                    title: 'Custom label for named workspaces',
+                    window: this.window,
+                }).enableIf({
+                    key: 'enable-custom-label',
+                    predicate: (value) => value.get_boolean(),
+                    page,
+                });
+                addTextEntry({
+                    settings: this._settings,
+                    group,
+                    key: 'custom-label-unnamed',
+                    title: 'Custom label for unnamed workspaces',
+                    window: this.window,
+                }).enableIf({
+                    key: 'enable-custom-label',
+                    predicate: (value) => value.get_boolean(),
+                    page,
+                });
+            },
         });
         addCombo({
             window: this.window,
@@ -151,24 +204,6 @@ export class BehaviorPage {
             group,
             key: 'always-show-numbers',
             title: 'Always show workspace numbers',
-        }).addSubDialog({
-            window: this.window,
-            title: 'Workspace Numbers',
-            enableIf: {
-                key: 'always-show-numbers',
-                predicate: (value) => value.get_boolean(),
-                page: this.page,
-            },
-            populatePage: (page) => {
-                const indicatorSubDialogGroup = new Adw.PreferencesGroup();
-                page.add(indicatorSubDialogGroup);
-                addToggle({
-                    settings: this._settings,
-                    group: indicatorSubDialogGroup,
-                    key: 'show-total-number',
-                    title: 'Show total number of workspaces',
-                });
-            },
         });
         addToggle({
             settings: this._settings,

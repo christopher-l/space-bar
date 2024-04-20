@@ -1,6 +1,6 @@
 ## v26
 
--   Feature: Option to show total workspaces number
+-   Feature: Option customize workspace labels
 
 ## v25
 

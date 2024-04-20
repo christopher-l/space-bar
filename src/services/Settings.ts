@@ -51,6 +51,22 @@ export class Settings {
     readonly indicatorStyle = SettingsSubject.createStringSubject<
         keyof typeof indicatorStyleOptions
     >(this.behaviorSettings, 'indicator-style');
+    readonly enableCustomLabel = SettingsSubject.createBooleanSubject(
+        this.behaviorSettings,
+        'enable-custom-label',
+    );
+    readonly enableCustomLabelInMenus = SettingsSubject.createBooleanSubject(
+        this.behaviorSettings,
+        'enable-custom-label-in-menu',
+    );
+    readonly customLabelNamed = SettingsSubject.createStringSubject(
+        this.behaviorSettings,
+        'custom-label-named',
+    );
+    readonly customLabelUnnamed = SettingsSubject.createStringSubject(
+        this.behaviorSettings,
+        'custom-label-unnamed',
+    );
     readonly position = SettingsSubject.createStringSubject<keyof typeof positionOptions>(
         this.behaviorSettings,
         'position',
@@ -88,10 +104,6 @@ export class Settings {
     readonly alwaysShowNumbers = SettingsSubject.createBooleanSubject(
         this.behaviorSettings,
         'always-show-numbers',
-    );
-    readonly showTotalNumber = SettingsSubject.createBooleanSubject(
-        this.behaviorSettings,
-        'show-total-number',
     );
     readonly showEmptyWorkspaces = SettingsSubject.createBooleanSubject(
         this.behaviorSettings,
