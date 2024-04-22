@@ -79,6 +79,9 @@
         <key name="smart-workspace-names" type="b">
             <default>false</default>
         </key>
+        <key name="reevaluate-smart-workspace-names" type="b">
+            <default>true</default>
+        </key>
     </schema>
 
     <schema id="org.gnome.shell.extensions.space-bar.appearance" path="/org/gnome/shell/extensions/space-bar/appearance/">

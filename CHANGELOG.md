@@ -1,3 +1,7 @@
+## v26
+
+-   Experimental feature: Re-evaluate smart workspace names
+
 ## v25
 
 -   Chore: Migrate to GNOME 46

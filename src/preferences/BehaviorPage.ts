@@ -1,5 +1,5 @@
 import Adw from 'gi://Adw';
-import { addCombo, addSpinButton, addToggle } from './common';
+import { addCombo, addLinkButton, addSpinButton, addToggle } from './common';
 
 export const indicatorStyleOptions = {
     'current-workspace-name': 'Current workspace name',
@@ -179,6 +179,35 @@ export class BehaviorPage {
             group,
             key: 'smart-workspace-names',
             title: 'Enable smart workspace names',
+        }).addSubDialog({
+            window: this.window,
+            title: 'Smart Workspace Names',
+            enableIf: {
+                key: 'smart-workspace-names',
+                predicate: (value) => value.get_boolean(),
+                page: this.page,
+            },
+            iconName: 'applications-science-symbolic',
+            populatePage: (page) => {
+                const group = new Adw.PreferencesGroup();
+                page.add(group);
+                group.set_title('Re-evaluate names');
+                group.set_description(
+                    'Removes workspace names when windows by which the name was assigned move away or close.\n\n' +
+                        'Please leave feedback how you like the feature using the button below.',
+                );
+                addToggle({
+                    settings: this._settings,
+                    group,
+                    key: 'reevaluate-smart-workspace-names',
+                    title: 'Re-evaluate smart workspace names',
+                });
+                addLinkButton({
+                    title: 'Leave feedback',
+                    uri: 'https://github.com/christopher-l/space-bar/issues/37',
+                    group,
+                });
+            },
         });
         this.page.add(group);
     }

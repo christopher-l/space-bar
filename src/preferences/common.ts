@@ -144,11 +144,13 @@ class PreferencesRow {
         title,
         populatePage,
         enableIf,
+        iconName = 'applications-system-symbolic',
     }: {
         window: Adw.PreferencesWindow;
         title: string;
         populatePage: (page: Adw.PreferencesPage) => void;
         enableIf?: EnableCondition;
+        iconName?: string;
     }): void {
         function showDialog() {
             const dialog = new Gtk.Dialog({
@@ -165,7 +167,7 @@ class PreferencesRow {
             dialog.show();
         }
         const button = new Gtk.Button({
-            iconName: 'applications-system-symbolic',
+            iconName,
             valign: Gtk.Align.CENTER,
             hasFrame: false,
         });
@@ -230,6 +232,25 @@ export function addToggle({
     row.add_suffix(toggle);
     row.activatableWidget = toggle;
     return new PreferencesRow(settings, row, key, (enabled) => toggle.set_sensitive(enabled));
+}
+
+export function addLinkButton({
+    group,
+    title,
+    subtitle = null,
+    uri,
+}: {
+    group: Adw.PreferencesGroup;
+    title: string;
+    subtitle?: string | null;
+    uri: string;
+}): void {
+    const row = new Adw.ActionRow({ title, subtitle });
+    group.add(row);
+    const icon = new Gtk.Image({ iconName: 'go-next-symbolic' });
+    row.set_activatable(true);
+    row.connect('activated', () => Gtk.show_uri(null, uri, Gdk.CURRENT_TIME));
+    row.add_suffix(icon);
 }
 
 export function addTextEntry({

@@ -101,6 +101,10 @@ export class Settings {
         this.behaviorSettings,
         'smart-workspace-names',
     );
+    readonly reevaluateSmartWorkspaceNames = SettingsSubject.createBooleanSubject(
+        this.behaviorSettings,
+        'reevaluate-smart-workspace-names',
+    );
     readonly enableActivateWorkspaceShortcuts = SettingsSubject.createBooleanSubject(
         this.shortcutsSettings,
         'enable-activate-workspace-shortcuts',

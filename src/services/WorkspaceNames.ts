@@ -1,6 +1,6 @@
 import type Meta from 'gi://Meta';
 import { Settings } from './Settings';
-import type { Workspaces } from './Workspaces';
+import type { WorkspaceState, Workspaces } from './Workspaces';
 type Window = Meta.Window;
 
 export class WorkspaceNames {
@@ -65,7 +65,9 @@ export class WorkspaceNames {
     restoreSmartWorkspaceName(index: number) {
         const windowNames = this._getWindowNames(index);
         const workspacesNamesMap = this._settings.workspaceNamesMap.value;
+        // Loop through windows on the workspace.
         for (const windowName of windowNames) {
+            // Find the first associated name that is not already in use.
             if (workspacesNamesMap[windowName]?.length > 0) {
                 const newName = workspacesNamesMap[windowName].find(
                     (name) => !this._getEnabledWorkspaceNames().includes(name),
@@ -81,6 +83,17 @@ export class WorkspaceNames {
                 }
             }
         }
+    }
+
+    workspaceNameIsSupportedByWindows(workspace: WorkspaceState): boolean {
+        const windowNames = this._getWindowNames(workspace.index);
+        const workspacesNamesMap = this._settings.workspaceNamesMap.value;
+        for (const windowName of windowNames) {
+            if (workspacesNamesMap[windowName]?.some((name) => name === workspace.name)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

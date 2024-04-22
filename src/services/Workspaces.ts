@@ -73,7 +73,7 @@ export class Workspaces {
      * The listeners are connected to a workspace and there is one listener per workspace that needs
      * tracking.
      */
-    private _windowAddedListeners: { workspace: Meta.Workspace; listener: number }[] = [];
+    private _windowChangedListeners: { workspace: Meta.Workspace; listener: number }[] = [];
 
     init() {
         this._wsNames = WorkspaceNames.init(this);
@@ -123,6 +123,9 @@ export class Workspaces {
             { emitCurrentValue: true },
         );
         this._settings.smartWorkspaceNames.subscribe(() => this._updateWindowAddedListeners());
+        this._settings.reevaluateSmartWorkspaceNames.subscribe(() =>
+            this._updateWindowAddedListeners(),
+        );
         // Update smart workspaces after a small delay because workspaces can briefly get into
         // inconsistent states while empty dynamic workspaces are being removed.
         this._smartNamesNotifier.subscribe(() => this._updateSmartWorkspaceNames());
@@ -144,7 +147,7 @@ export class Workspaces {
         }
         this._updateNotifier.destroy();
         this._smartNamesNotifier.destroy();
-        this._windowAddedListeners.forEach((entry) => entry.workspace.disconnect(entry.listener));
+        this._windowChangedListeners.forEach((entry) => entry.workspace.disconnect(entry.listener));
     }
 
     onUpdate(callback: () => void, until?: Subject<void>) {
@@ -376,7 +379,7 @@ export class Workspaces {
     }
 
     /**
-     * Updates the listeners for added windows on workspaces.
+     * Updates the listeners for added and removed windows on workspaces.
      *
      * Connects listeners to workspaces that newly need to be tracked and removes the ones from
      * workspaces that don't need tracking anymore.
@@ -395,8 +398,7 @@ export class Workspaces {
         if (this._settings.smartWorkspaceNames.value) {
             for (const workspace of this.workspaces) {
                 if (
-                    !workspace.name &&
-                    !this._windowAddedListeners.some(
+                    !this._windowChangedListeners.some(
                         (entry) => entry.workspace.index() === workspace.index,
                     )
                 ) {
@@ -404,35 +406,45 @@ export class Workspaces {
                         workspace.index,
                     );
                     if (metaWorkspace) {
-                        const listener = metaWorkspace.connect('window-added', () => {
+                        const listenerAdded = metaWorkspace.connect('window-added', () => {
                             this._update('windows-changed', 'Workspace window-added');
                             this._updateSmartWorkspaceNames();
                         });
-                        this._windowAddedListeners.push({
+                        this._windowChangedListeners.push({
                             workspace: metaWorkspace,
-                            listener,
+                            listener: listenerAdded,
                         });
+                        if (this._settings.reevaluateSmartWorkspaceNames.value) {
+                            const listenerRemoved = metaWorkspace.connect('window-removed', () => {
+                                this._update('windows-changed', 'Workspace window-removed');
+                                this._updateSmartWorkspaceNames();
+                            });
+                            this._windowChangedListeners.push({
+                                workspace: metaWorkspace,
+                                listener: listenerRemoved,
+                            });
+                        }
                     }
                 }
             }
         }
         // Remove unneeded listeners.
         let removedListener = false;
-        this._windowAddedListeners.forEach((entry, arrayIndex) => {
+        this._windowChangedListeners.forEach((entry, arrayIndex) => {
             const workspace = this.workspaces[entry.workspace.index()];
             if (
                 !this._settings.smartWorkspaceNames.value ||
                 !workspace ||
-                workspace.name ||
+                (workspace.name && !this._settings.reevaluateSmartWorkspaceNames.value) ||
                 !workspace.isEnabled
             ) {
                 entry.workspace.disconnect(entry.listener);
-                delete this._windowAddedListeners[arrayIndex];
+                delete this._windowChangedListeners[arrayIndex];
                 removedListener = true;
             }
         });
         if (removedListener) {
-            this._windowAddedListeners = this._windowAddedListeners.filter(
+            this._windowChangedListeners = this._windowChangedListeners.filter(
                 (entry) => entry != null,
             );
         }
@@ -441,6 +453,14 @@ export class Workspaces {
     private _updateSmartWorkspaceNames(): void {
         if (this._settings.smartWorkspaceNames.value) {
             for (const workspace of this.workspaces) {
+                if (
+                    this._settings.reevaluateSmartWorkspaceNames.value &&
+                    workspace.name &&
+                    !this._wsNames!.workspaceNameIsSupportedByWindows(workspace)
+                ) {
+                    this._wsNames!.rename(workspace.index, '');
+                    workspace.name = '';
+                }
                 if (workspace.hasWindows && !workspace.name) {
                     this._wsNames!.restoreSmartWorkspaceName(workspace.index);
                 }
