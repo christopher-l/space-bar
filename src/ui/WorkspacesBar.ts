@@ -103,7 +103,7 @@ export class WorkspacesBar {
     private _initButton(): void {
         this._button = new (WorkspacesButton as any)(0.5, this._name);
         this._buttonSubject.next(this._button);
-        this._button.styleClass = 'panel-button space-bar';
+        this._button.style_class = 'panel-button space-bar';
         switch (this._settings.indicatorStyle.value) {
             case 'current-workspace':
                 this._initWorkspaceLabel();
@@ -127,9 +127,9 @@ export class WorkspacesBar {
     }
 
     private _initWorkspaceLabel() {
-        this._button.styleClass += ' workspace-label';
+        this._button.style_class += ' workspace-label';
         this._wsLabel = new St.Label({
-            yAlign: Clutter.ActorAlign.CENTER,
+            y_align: Clutter.ActorAlign.CENTER,
         });
         this._button.add_child(this._wsLabel);
         this._button.connect('button-press-event', (actor: any, event: Clutter.Event) => {
@@ -151,7 +151,7 @@ export class WorkspacesBar {
 
     private _initWorkspacesBar() {
         this._button._delegate = this._dragHandler;
-        this._button.trackHover = false;
+        this._button.track_hover = false;
         this._button.set_style(this._styles.getWorkspacesBarStyle());
         this._wsBar = new St.BoxLayout({});
         this._button.add_child(this._wsBar);
@@ -192,9 +192,9 @@ export class WorkspacesBar {
         const wsBox = new St.Bin({
             visible: true,
             reactive: true,
-            canFocus: true,
-            trackHover: true,
-            styleClass: 'workspace-box',
+            can_focus: true,
+            track_hover: true,
+            style_class: 'workspace-box',
         });
         (wsBox as any)._delegate = new WorkspaceBoxDragHandler(workspace);
         const label = this._createLabel(workspace);
@@ -261,14 +261,14 @@ export class WorkspacesBar {
 
     private _createLabel(workspace: WorkspaceState): St.Label {
         const label = new St.Label({
-            yAlign: Clutter.ActorAlign.CENTER,
-            styleClass: 'space-bar-workspace-label',
+            y_align: Clutter.ActorAlign.CENTER,
+            style_class: 'space-bar-workspace-label',
         });
         if (workspace.index == this._ws.currentIndex) {
-            label.styleClass += ' active';
+            label.style_class += ' active';
             label.set_style(this._styles.getActiveWorkspaceStyle());
         } else {
-            label.styleClass += ' inactive';
+            label.style_class += ' inactive';
             if (workspace.hasWindows) {
                 label.set_style(this._styles.getInactiveWorkspaceStyle());
             } else {
@@ -276,9 +276,9 @@ export class WorkspacesBar {
             }
         }
         if (workspace.hasWindows) {
-            label.styleClass += ' nonempty';
+            label.style_class += ' nonempty';
         } else {
-            label.styleClass += ' empty';
+            label.style_class += ' empty';
         }
         label.set_text(this._ws.getDisplayName(workspace));
         return label;
