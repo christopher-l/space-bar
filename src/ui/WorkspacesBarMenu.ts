@@ -173,7 +173,7 @@ const PopupMenuItemEntry = GObject.registerClass(
         _init(params: any) {
             super._init(params);
             this.entry = new St.Entry({
-                xExpand: true,
+                x_expand: true,
             });
             this.entry.connect('button-press-event', () => {
                 return Clutter.EVENT_STOP;
