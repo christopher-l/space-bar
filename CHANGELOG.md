@@ -1,3 +1,7 @@
+## v28
+
+-   Chore: Backport to GNOME 45
+
 ## v27
 
 -   Feature: Option customize workspace labels
