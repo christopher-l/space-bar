@@ -45,11 +45,24 @@ export class Styles {
     private _updateStyleSheet(): void {
         this._unloadStyleSheet();
         const themeContext = St.ThemeContext.get_for_stage(global.stage);
-        const content = this._generateStyleSheetContent();
+        let styles = this._generateStyleSheetContent();
+        this._settings.applicationStyles.value = styles;
+        if (this._settings.customStylesEnabled.value) {
+            this._settings.customStylesFailed.value = false;
+            styles = styles + '\n' + this._settings.customStyles.value;
+        }
         const [file, stream] = Gio.File.new_tmp(null);
         const outputStream = Gio.DataOutputStream.new(stream.outputStream);
-        outputStream.put_string(content, null);
-        themeContext.get_theme().load_stylesheet(file);
+        outputStream.put_string(styles, null);
+        try {
+            themeContext.get_theme().load_stylesheet(file);
+        } catch (e) {
+            console.error('Failed to load stylesheet');
+            if (this._settings.customStylesEnabled.value) {
+                this._settings.customStylesEnabled.value = false;
+                this._settings.customStylesFailed.value = true;
+            }
+        }
         outputStream.close(null);
         stream.close(null);
         file.delete(null);
@@ -65,9 +78,9 @@ export class Styles {
     }
 
     private _generateStyleSheetContent(): string {
-        let content = `.space-bar {\n${this._getWorkspacesBarStyle()}}`;
-        content += `.space-bar-workspace-label.active {\n${this._getActiveWorkspaceStyle()}}`;
-        content += `.space-bar-workspace-label.inactive {\n${this._getInactiveWorkspaceStyle()}}`;
+        let content = `.space-bar {\n${this._getWorkspacesBarStyle()}}\n\n`;
+        content += `.space-bar-workspace-label.active {\n${this._getActiveWorkspaceStyle()}}\n\n`;
+        content += `.space-bar-workspace-label.inactive {\n${this._getInactiveWorkspaceStyle()}}\n\n`;
         content += `.space-bar-workspace-label.inactive.empty {\n${this._getEmptyWorkspaceStyle()}}`;
         return content;
     }
@@ -86,6 +99,7 @@ export class Styles {
     private _registerSettingChanges(): void {
         [this._settings.workspacesBarPadding].forEach((setting) =>
             setting.subscribe(() => {
+                this._updateStyleSheet();
                 this._workspacesBarUpdateNotifier.notify();
             }),
         );
@@ -140,6 +154,16 @@ export class Styles {
                 this._workspaceUpdateNotifier.notify();
             }),
         );
+        this._settings.customStylesEnabled.subscribe(() => {
+            this._updateStyleSheet();
+            this._workspacesBarUpdateNotifier.notify();
+        });
+        this._settings.customStyles.subscribe(() => {
+            if (this._settings.customStylesEnabled.value) {
+                this._updateStyleSheet();
+                this._workspacesBarUpdateNotifier.notify();
+            }
+        });
     }
 
     /** Updated style the workspaces-bar panel button. */
@@ -169,7 +193,7 @@ export class Styles {
             `  font-weight: ${fontWeight};\n` +
             `  border-radius: ${borderRadius}px;\n` +
             `  border-width: ${borderWidth}px;\n` +
-            `  padding: ${paddingV}px ${paddingH}px\n;`;
+            `  padding: ${paddingV}px ${paddingH}px;\n`;
         if (fontSize >= 0) {
             activeWorkspaceStyle += `  font-size: ${fontSize}pt;\n`;
         }
@@ -196,7 +220,7 @@ export class Styles {
             `  font-weight: ${fontWeight};\n` +
             `  border-radius: ${borderRadius}px;\n` +
             `  border-width: ${borderWidth}px;\n` +
-            `  padding: ${paddingV}px ${paddingH}px\n;`;
+            `  padding: ${paddingV}px ${paddingH}px;\n`;
         if (fontSize >= 0) {
             inactiveWorkspaceStyle += `  font-size: ${fontSize}pt;\n`;
         }
@@ -223,7 +247,7 @@ export class Styles {
             `  font-weight: ${fontWeight};\n` +
             `  border-radius: ${borderRadius}px;\n` +
             `  border-width: ${borderWidth}px;\n` +
-            `  padding: ${paddingV}px ${paddingH}px\n;`;
+            `  padding: ${paddingV}px ${paddingH}px;\n`;
         if (fontSize >= 0) {
             emptyWorkspaceStyle += `  font-size: ${fontSize}pt;\n`;
         }

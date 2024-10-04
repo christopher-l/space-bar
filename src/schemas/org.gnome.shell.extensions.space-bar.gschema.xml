@@ -273,6 +273,18 @@
         <key name="empty-workspace-padding-v-active" type="b">
             <default>false</default>
         </key>
+        <key name="application-styles" type="s">
+            <default>''</default>
+        </key>
+        <key name="custom-styles-enabled" type="b">
+            <default>false</default>
+        </key>
+        <key name="custom-styles-failed" type="b">
+            <default>false</default>
+        </key>
+        <key name="custom-styles" type="s">
+            <default>''</default>
+        </key>
     </schema>
 
     <schema id="org.gnome.shell.extensions.space-bar.shortcuts" path="/org/gnome/shell/extensions/space-bar/shortcuts/">

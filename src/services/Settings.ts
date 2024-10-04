@@ -246,6 +246,22 @@ export class Settings {
         this.appearanceSettings,
         'empty-workspace-padding-v',
     );
+    readonly applicationStyles = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'application-styles',
+    );
+    readonly customStylesEnabled = SettingsSubject.createBooleanSubject(
+        this.appearanceSettings,
+        'custom-styles-enabled',
+    );
+    readonly customStylesFailed = SettingsSubject.createBooleanSubject(
+        this.appearanceSettings,
+        'custom-styles-failed',
+    );
+    readonly customStyles = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'custom-styles',
+    );
 
     private init() {
         SettingsSubject.initAll();

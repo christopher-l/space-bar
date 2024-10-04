@@ -1,3 +1,7 @@
+## v29
+
+-   Feature: Custom styles
+
 ## v28
 
 -   Chore: Add support for GNOME 47

@@ -247,7 +247,7 @@ export function addLinkButton({
 }): void {
     const row = new Adw.ActionRow({ title, subtitle });
     group.add(row);
-    const icon = new Gtk.Image({ iconName: 'go-next-symbolic' });
+    const icon = new Gtk.Image({ iconName: 'adw-external-link-symbolic' });
     row.set_activatable(true);
     row.connect('activated', () => Gtk.show_uri(null, uri, Gdk.CURRENT_TIME));
     row.add_suffix(icon);

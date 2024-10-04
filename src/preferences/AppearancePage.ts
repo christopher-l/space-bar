@@ -1,5 +1,7 @@
 import Adw from 'gi://Adw';
+import Gio from 'gi://Gio';
 import { addColorButton, addCombo, addSpinButton } from './common';
+import { addCustomCssDialogButton } from './custom-styles';
 
 export const fontWeightOptions = {
     '100': 'Thin',
@@ -16,7 +18,7 @@ export const fontWeightOptions = {
 export class AppearancePage {
     window!: Adw.PreferencesWindow;
     readonly page = new Adw.PreferencesPage();
-    private readonly _settings;
+    private readonly _settings: Gio.Settings;
 
     constructor(private _extensionPreferences: any) {
         this._settings = _extensionPreferences.getSettings(
@@ -33,6 +35,7 @@ export class AppearancePage {
         this._initActiveWorkspaceGroup();
         this._initInactiveWorkspaceGroup();
         this._initEmptyWorkspaceGroup();
+        this._initCustomStylesGroup();
     }
 
     private _connectEnabledConditions() {
@@ -55,8 +58,8 @@ export class AppearancePage {
             }
         };
         updateEnabled();
-        behaviorSettings.connect(`changed::indicator-style`, updateEnabled);
-        this.page.connect('unmap', () => behaviorSettings.disconnect(updateEnabled));
+        const changed = behaviorSettings.connect(`changed::indicator-style`, updateEnabled);
+        this.page.connect('unmap', () => behaviorSettings.disconnect(changed));
     }
 
     private _initGeneralGroup(): void {
@@ -338,6 +341,17 @@ export class AppearancePage {
         }).linkValue({
             window: this.window,
             linkedKey: 'inactive-workspace-padding-v',
+        });
+        this.page.add(group);
+    }
+
+    private _initCustomStylesGroup(): void {
+        const group = new Adw.PreferencesGroup();
+        group.set_title('Custom Styles');
+        addCustomCssDialogButton({
+            window: this.window,
+            group,
+            settings: this._settings,
         });
         this.page.add(group);
     }
