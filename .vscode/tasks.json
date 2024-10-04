@@ -1,4 +1,3 @@
-
 {
     "version": "2.0.0",
     "tasks": [
@@ -7,13 +6,14 @@
             "command": "./scripts/build.sh -i",
             "type": "shell",
             "args": [],
-            "problemMatcher": [
-                "$tsc"
-            ],
+            "problemMatcher": ["$tsc"],
             "presentation": {
                 "reveal": "always"
             },
-            "group": "build"
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }

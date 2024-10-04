@@ -7,5 +7,6 @@ declare global {
 interface Global {
     display: Meta.Display;
     workspace_manager: Meta.WorkspaceManager;
+    stage: Meta.Stage;
     get_current_time: () => number;
 }
