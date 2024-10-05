@@ -1,3 +1,7 @@
+## v28
+
+-   Chore: Add support for GNOME 47
+
 ## v27
 
 -   Feature: Option customize workspace labels
