@@ -1,3 +1,7 @@
+## Next
+
+-   Fix: Workspace names are moved around on static workspaces
+
 ## v28
 
 -   Chore: Add support for GNOME 47
