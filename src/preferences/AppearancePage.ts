@@ -1,6 +1,7 @@
 import Adw from 'gi://Adw';
 import Gio from 'gi://Gio';
 import { addColorButton, addCombo, addSpinButton } from './common';
+import { addCustomCssDialogButton } from './custom-styles';
 
 export const fontWeightOptions = {
     '100': 'Thin',
@@ -34,6 +35,7 @@ export class AppearancePage {
         this._initActiveWorkspaceGroup();
         this._initInactiveWorkspaceGroup();
         this._initEmptyWorkspaceGroup();
+        this._initCustomStylesGroup();
     }
 
     private _connectEnabledConditions() {
@@ -339,6 +341,17 @@ export class AppearancePage {
         }).linkValue({
             window: this.window,
             linkedKey: 'inactive-workspace-padding-v',
+        });
+        this.page.add(group);
+    }
+
+    private _initCustomStylesGroup(): void {
+        const group = new Adw.PreferencesGroup();
+        group.set_title('Custom Styles');
+        addCustomCssDialogButton({
+            window: this.window,
+            group,
+            settings: this._settings,
         });
         this.page.add(group);
     }
