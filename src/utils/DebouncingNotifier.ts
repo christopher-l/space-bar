@@ -4,24 +4,33 @@ import { Subject } from './Subject';
 /**
  * A subscribe/notify mechanism that debounces multiple subsequent notify calls.
  */
-export class DebouncingNotifier {
-    private _subscribers: (() => void)[] = [];
+export class DebouncingNotifier<T = void> {
+    private _subscribers: ((value: T) => void)[] = [];
     private _timeout: number | null = null;
+    private _delayMs: number;
+    private _renew: boolean;
 
-    constructor(private _delayMs: number = 0) {}
+    constructor({ delayMs = 0, renew = false } = {}) {
+        this._delayMs = delayMs;
+        this._renew = renew;
+    }
 
-    notify(): void {
+    notify(value: T): void {
         if (this._timeout) {
-            return;
+            if (this._renew) {
+                GLib.Source.remove(this._timeout);
+            } else {
+                return;
+            }
         }
         this._timeout = GLib.timeout_add(GLib.PRIORITY_DEFAULT, this._delayMs, () => {
-            this._notify();
+            this._notify(value);
             this._timeout = null;
             return GLib.SOURCE_REMOVE;
         });
     }
 
-    subscribe(callback: () => void, until?: Subject<void>): void {
+    subscribe(callback: (value: T) => void, until?: Subject<void>): void {
         this._subscribers.push(callback);
         until?.subscribe(
             () => (this._subscribers = this._subscribers.filter((s) => s !== callback)),
@@ -36,9 +45,9 @@ export class DebouncingNotifier {
         this._subscribers = [];
     }
 
-    private _notify(): void {
+    private _notify(value: T): void {
         for (const subscriber of this._subscribers) {
-            subscriber();
+            subscriber(value);
         }
     }
 }

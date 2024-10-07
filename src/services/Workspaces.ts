@@ -57,7 +57,20 @@ export class Workspaces {
     currentIndex = 0;
     workspaces: WorkspaceState[] = [];
 
+    private _debouncedWorkspaceNotifier = new DebouncingNotifier<number>({
+        delayMs: 1000,
+        renew: true,
+    });
+    /**
+     * The previously active workspace to return to with the activate-previous
+     * shortcut.
+     */
     private _previousWorkspace = 0;
+    /**
+     * A debounced version of the currently active workspace used as candidate
+     * for the next "previous workspace".
+     */
+    private _debouncedCurrentWorkspace = 0;
     private _metaWorkspaces: Meta.Workspace[] = [];
     private _ws_changed?: number;
     private _ws_reordered?: number;
@@ -83,15 +96,26 @@ export class Workspaces {
         this._ws_changed = global.workspace_manager.connect('notify::n-workspaces', () => {
             this._update('workspaces-changed', 'workspace_manager n-workspaces');
         });
-
+        this._debouncedWorkspaceNotifier.subscribe((index) => {
+            this._debouncedCurrentWorkspace = index;
+        });
         this._ws_active_changed = global.workspace_manager.connect(
             'active-workspace-changed',
             () => {
-                this._previousWorkspace = this.currentIndex;
+                const previous = this.currentIndex;
                 this._update(
                     'active-workspace-changed',
                     'workspace_manager active-workspace-changed',
                 );
+                this._debouncedWorkspaceNotifier.notify(this.currentIndex);
+                // Use _debouncedCurrentWorkspace as the next "previous workspace"...
+                if (this._debouncedCurrentWorkspace !== this.currentIndex) {
+                    this._previousWorkspace = this._debouncedCurrentWorkspace;
+                } else {
+                    // ...unless we came back to it. Then use the previously
+                    // active workspace, even if it was active only briefly.
+                    this._previousWorkspace = previous;
+                }
                 // We need to update names in case we moved away from the last dynamic workspace.
                 this._smartNamesNotifier.notify();
             },
@@ -136,6 +160,7 @@ export class Workspaces {
     }
 
     destroy() {
+        this._debouncedWorkspaceNotifier.destroy();
         this._wsNames = null;
         if (this._ws_changed) {
             global.workspace_manager.disconnect(this._ws_changed);
@@ -188,8 +213,20 @@ export class Workspaces {
         }
     }
 
+    /**
+     * Activates the previously active workspace.
+     *
+     * The previous workspace is determined by a debounced variable for the
+     * active workspace, so only briefly activated workspaces are not
+     * considered.
+     *
+     * When calling this function, the workspace activated by it will become the
+     * next "previous workspace" even if active only briefly.
+     */
     activatePrevious() {
-        this.activate(this._previousWorkspace);
+        const previous = this._previousWorkspace;
+        this._debouncedCurrentWorkspace = previous;
+        this.activate(previous);
     }
 
     addWorkspace() {
