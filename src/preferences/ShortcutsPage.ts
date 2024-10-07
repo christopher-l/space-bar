@@ -1,10 +1,11 @@
 import Adw from 'gi://Adw';
+import Gio from 'gi://Gio';
 import { addKeyboardShortcut, addToggle } from './common';
 
 export class ShortcutsPage {
     window!: Adw.PreferencesWindow;
     readonly page = new Adw.PreferencesPage();
-    private readonly _settings;
+    private readonly _settings: Gio.Settings;
 
     constructor(extensionPreferences: any) {
         this._settings = extensionPreferences.getSettings(

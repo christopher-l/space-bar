@@ -1,4 +1,5 @@
 import Adw from 'gi://Adw';
+import Gio from 'gi://Gio';
 import { addColorButton, addCombo, addSpinButton } from './common';
 
 export const fontWeightOptions = {
@@ -16,7 +17,7 @@ export const fontWeightOptions = {
 export class AppearancePage {
     window!: Adw.PreferencesWindow;
     readonly page = new Adw.PreferencesPage();
-    private readonly _settings;
+    private readonly _settings: Gio.Settings;
 
     constructor(private _extensionPreferences: any) {
         this._settings = _extensionPreferences.getSettings(
@@ -55,8 +56,8 @@ export class AppearancePage {
             }
         };
         updateEnabled();
-        behaviorSettings.connect(`changed::indicator-style`, updateEnabled);
-        this.page.connect('unmap', () => behaviorSettings.disconnect(updateEnabled));
+        const changed = behaviorSettings.connect(`changed::indicator-style`, updateEnabled);
+        this.page.connect('unmap', () => behaviorSettings.disconnect(changed));
     }
 
     private _initGeneralGroup(): void {
