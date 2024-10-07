@@ -1,7 +1,7 @@
-## Next
+## v29
 
--   Fix: Workspace names are moved around on static workspaces
 -   Feature: Custom styles
+-   Fix: Workspace names are moved around on static workspaces
 
 ## v28
 
