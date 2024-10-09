@@ -70,7 +70,6 @@ export class Styles {
         }
         outputStream.close(null);
         stream.close(null);
-        file.delete(null);
         this._dynamicStyleSheet = file;
     }
 
@@ -78,6 +77,7 @@ export class Styles {
         if (this._dynamicStyleSheet) {
             const themeContext = St.ThemeContext.get_for_stage(global.stage);
             themeContext.get_theme().unload_stylesheet(this._dynamicStyleSheet);
+            this._dynamicStyleSheet.delete(null);
             this._dynamicStyleSheet = undefined;
         }
     }

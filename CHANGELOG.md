@@ -1,3 +1,7 @@
+## v30
+
+-   Fix: Error when loading styles
+
 ## v29
 
 -   Feature: Custom styles
