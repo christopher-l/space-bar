@@ -193,7 +193,7 @@ export class WorkspacesBar {
             reactive: true,
             canFocus: true,
             trackHover: true,
-            styleClass: 'workspace-box',
+            styleClass: `workspace-box workspace-box-${workspace.index + 1}`,
         });
         (wsBox as any)._delegate = new WorkspaceBoxDragHandler(workspace);
         const label = this._createLabel(workspace);

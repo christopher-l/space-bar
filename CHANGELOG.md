@@ -1,3 +1,7 @@
+## v31
+
+-   Feature: Add class `.workspace-box-<n>`
+
 ## v30
 
 -   Fix: Error when loading styles
