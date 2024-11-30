@@ -291,6 +291,9 @@
         <key name="enable-activate-workspace-shortcuts" type="b">
             <default>true</default>
         </key>
+        <key name="back-and-forth" type="b">
+            <default>false</default>
+        </key>
         <key name="enable-move-to-workspace-shortcuts" type="b">
             <default>false</default>
         </key>

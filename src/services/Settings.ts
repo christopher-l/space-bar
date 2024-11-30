@@ -125,6 +125,10 @@ export class Settings {
         this.shortcutsSettings,
         'enable-activate-workspace-shortcuts',
     );
+    readonly backAndForth = SettingsSubject.createBooleanSubject(
+        this.shortcutsSettings,
+        'back-and-forth',
+    );
     readonly enableMoveToWorkspaceShortcuts = SettingsSubject.createBooleanSubject(
         this.shortcutsSettings,
         'enable-move-to-workspace-shortcuts',

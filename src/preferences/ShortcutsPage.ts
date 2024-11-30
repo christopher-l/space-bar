@@ -31,6 +31,24 @@ export class ShortcutsPage {
             key: 'enable-activate-workspace-shortcuts',
             title: 'Switch to workspace',
             shortcutLabel: '<Super>1...0',
+        }).addSubDialog({
+            window: this.window,
+            title: 'Switch To Workspace',
+            populatePage: (page) => {
+                const group = new Adw.PreferencesGroup();
+                page.add(group);
+                group.set_title('Back and forth');
+                group.set_description(
+                    'Switch to the previous workspace by activating the shortcut for the current workspace again.\n\n' +
+                        'Switch off "Toggle overview" in behavior settings to also enable this behavior when clicking the workspace using the mouse.',
+                );
+                addToggle({
+                    settings: this._settings,
+                    group,
+                    key: 'back-and-forth',
+                    title: 'Back and forth',
+                });
+            },
         });
 
         addToggle({

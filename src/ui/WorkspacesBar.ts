@@ -219,7 +219,7 @@ export class WorkspacesBar {
                     if (lastButton1PressEvent) {
                         const timeDelta = event.get_time() - lastButton1PressEvent.get_time();
                         if (timeDelta <= MAX_CLICK_TIME_DELTA) {
-                            this._ws.activate(workspace.index);
+                            this._ws.switchTo(workspace.index, 'click-on-label');
                         }
                         lastButton1PressEvent = null;
                     }
@@ -240,7 +240,7 @@ export class WorkspacesBar {
                     if (lastTouchBeginEvent) {
                         const timeDelta = event.get_time() - lastTouchBeginEvent.get_time();
                         if (timeDelta <= MAX_CLICK_TIME_DELTA) {
-                            this._ws.activate(workspace.index);
+                            this._ws.switchTo(workspace.index, 'click-on-label');
                         }
                         lastTouchBeginEvent = null;
                     }

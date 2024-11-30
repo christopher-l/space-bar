@@ -1,3 +1,7 @@
+## v32
+
+-   Feature: Back-and-forth
+
 ## v31
 
 -   Feature: Add class `.workspace-box-<n>`
