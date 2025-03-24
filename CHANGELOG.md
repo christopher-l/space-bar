@@ -1,3 +1,7 @@
+## v33
+
+-   Chore: Add support for GNOME 48
+
 ## v32
 
 -   Feature: Back-and-forth
