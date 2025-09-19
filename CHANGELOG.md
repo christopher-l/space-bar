@@ -1,3 +1,8 @@
+## v34
+
+-   Chore: Add support for GNOME 49
+-   Chore: Switch to pre-built gjs types
+
 ## v33
 
 -   Chore: Add support for GNOME 48
