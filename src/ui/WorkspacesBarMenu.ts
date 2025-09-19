@@ -49,7 +49,7 @@ export class WorkspacesBarMenu {
     }
 
     private _initEntry(): void {
-        const entryItem = new PopupMenuItemEntry();
+        const entryItem = new PopupMenuItemEntry({});
         entryItem.entry.connect('key-focus-in', () => {
             const text = entryItem.entry.get_text();
             if (text.length > 0) {

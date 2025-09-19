@@ -1,3 +1,6 @@
+import '@girs/shell-16';
+
+import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 import { KeyBindings } from './services/KeyBindings';
 import { ScrollHandler } from './services/ScrollHandler';
 import { Settings } from './services/Settings';
@@ -6,7 +9,6 @@ import { TopBarAdjustments } from './services/TopBarAdjustments';
 import { Workspaces } from './services/Workspaces';
 import { WorkspacesBar } from './ui/WorkspacesBar';
 import { destroyAllHooks } from './utils/hook';
-import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 
 export default class SpaceBarExtension extends Extension {
     private workspacesBar: WorkspacesBar | null = null;

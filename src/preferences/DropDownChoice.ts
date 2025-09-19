@@ -32,4 +32,4 @@ export const DropDownChoice = GObject.registerClass(
         },
     },
     class DropDownChoice extends GObject.Object {},
-) as typeof DropDownChoiceClass & GObject.GType & GObject.Object;
+) as unknown as typeof DropDownChoiceClass & GObject.GType & GObject.Object;

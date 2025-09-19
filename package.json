@@ -1,10 +1,13 @@
 {
-    "scripts": {
-        "build": "./scripts/build.sh",
-        "install": "./scripts/build.sh -i",
-        "build:types": "ts-for-gir generate Gio-2.0 GObject-2.0 St-14 Shell-14 Meta-14 Adw-1 Clutter-14 -g \"/usr/share/gir-1.0\" -g \"/usr/share/gnome-shell\" -g \"/usr/lib/mutter-14/\""
-    },
     "devDependencies": {
-        "@ts-for-gir/cli": "^3.2.2"
+        "@girs/adw-1": "1.8.0-4.0.0-beta.36",
+        "@girs/clutter-16": "16.0.0-4.0.0-beta.36",
+        "@girs/gio-2.0": "2.84.4-4.0.0-beta.36",
+        "@girs/gjs": "4.0.0-beta.36",
+        "@girs/gobject-2.0": "2.84.4-4.0.0-beta.36",
+        "@girs/gtk-4.0": "4.19.1-4.0.0-beta.36",
+        "@girs/meta-16": "16.0.0-4.0.0-beta.36",
+        "@girs/shell-16": "16.0.0-4.0.0-beta.36",
+        "@girs/st-16": "16.0.0-4.0.0-beta.36"
     }
 }

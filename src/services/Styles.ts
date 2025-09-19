@@ -1,7 +1,7 @@
 import Gio from 'gi://Gio';
+import St from 'gi://St';
 import { DebouncingNotifier } from '../utils/DebouncingNotifier';
 import { Settings } from './Settings';
-import St from 'gi://St';
 
 /**
  * Tracks and provides the styles for the workspaces bar.

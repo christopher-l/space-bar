@@ -1,4 +1,4 @@
-import type Meta from './gi/Meta';
+import type Meta from 'gi://Meta';
 
 declare global {
     const global: Global;

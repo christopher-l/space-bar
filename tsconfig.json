@@ -3,14 +3,13 @@
         "target": "ES2021",
         "strict": true,
         "outDir": "./target",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
         "lib": ["ES2021", "DOM"],
         "paths": {
-            "@imports/*": ["./@types/*"],
-            "gi://*": ["./src/types/generated/gi/*"],
             "resource:///org/gnome/shell/*": ["./src/types/dummy/shell/*"],
             "resource:///org/gnome/Shell/Extensions/js/*": ["./src/types/dummy/shell/*"]
         }
     },
-    "include": ["src/**/*.ts"],
-    "exclude": ["src/types/dummy/*"]
+    "include": ["src/**/*.ts"]
 }

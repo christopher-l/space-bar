@@ -11,13 +11,15 @@ function clear() (
 )
 
 function compile() (
-	tsc --project tsconfig.build.json
+	tsc
 )
 
 function fixupJavaScript() (
 	for file in $(find target -name '*.js'); do
 		# Add .js suffix for relative imports.
 		sed -i -E "s/^import (.*) from '(\.+.*)';$/import \1 from '\2.js';/g" "${file}"
+		# Remove @girs imports.
+		sed -i "/^import '@girs\/.*';$/d" "${file}"
 	done
 )
 
