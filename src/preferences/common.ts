@@ -212,7 +212,7 @@ export function addToggle({
     settings: Gio.Settings;
     shortcutLabel?: string | null;
 }): PreferencesRow {
-    const row = new Adw.ActionRow({ title, subtitle });
+    const row = new Adw.ActionRow({ title, subtitle: subtitle as string | undefined });
     group.add(row);
 
     if (shortcutLabel) {
@@ -245,7 +245,7 @@ export function addLinkButton({
     subtitle?: string | null;
     uri: string;
 }): void {
-    const row = new Adw.ActionRow({ title, subtitle });
+    const row = new Adw.ActionRow({ title, subtitle: subtitle as string | undefined });
     group.add(row);
     const icon = new Gtk.Image({ iconName: 'adw-external-link-symbolic' });
     row.set_activatable(true);
@@ -270,7 +270,7 @@ export function addTextEntry({
     window: Adw.PreferencesWindow;
     shortcutLabel?: string | null;
 }): PreferencesRow {
-    const row = new Adw.ActionRow({ title, subtitle });
+    const row = new Adw.ActionRow({ title, subtitle: subtitle as string | undefined });
     group.add(row);
 
     if (shortcutLabel) {
@@ -323,7 +323,7 @@ export function addCombo({
     }
     const row = new Adw.ComboRow({
         title,
-        subtitle,
+        subtitle: subtitle as string | undefined,
         model,
         expression: Gtk.PropertyExpression.new(DropDownChoice, null, 'title'),
     });
@@ -375,7 +375,7 @@ export function addSpinButton({
     upper: number;
     step?: number | null;
 }): PreferencesRow {
-    const row = new Adw.ActionRow({ title, subtitle });
+    const row = new Adw.ActionRow({ title, subtitle: subtitle as string | undefined });
     group.add(row);
 
     const spinner = new Gtk.SpinButton({
@@ -413,7 +413,7 @@ export function addColorButton({
     settings: Gio.Settings;
     window: Adw.PreferencesWindow;
 }): PreferencesRow {
-    const row = new Adw.ActionRow({ title, subtitle });
+    const row = new Adw.ActionRow({ title, subtitle: subtitle as string | undefined });
     group.add(row);
     const colorButton = new Gtk.ColorButton({
         valign: Gtk.Align.CENTER,
@@ -453,7 +453,7 @@ export function addKeyboardShortcut({
 }): void {
     const row = new Adw.ActionRow({
         title,
-        subtitle,
+        subtitle: subtitle as string | undefined,
         activatable: true,
     });
     group.add(row);
