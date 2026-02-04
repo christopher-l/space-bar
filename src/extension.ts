@@ -7,12 +7,14 @@ import { Settings } from './services/Settings';
 import { Styles } from './services/Styles';
 import { TopBarAdjustments } from './services/TopBarAdjustments';
 import { Workspaces } from './services/Workspaces';
+import { OverlayWidget } from './ui/OverlayWidget';
 import { WorkspacesBar } from './ui/WorkspacesBar';
 import { destroyAllHooks } from './utils/hook';
 
 export default class SpaceBarExtension extends Extension {
     private workspacesBar: WorkspacesBar | null = null;
     private scrollHandler: ScrollHandler | null = null;
+    private overlayWidget: OverlayWidget | null = null;
 
     enable() {
         Settings.init(this);
@@ -24,6 +26,8 @@ export default class SpaceBarExtension extends Extension {
         this.workspacesBar.init();
         this.scrollHandler = new ScrollHandler();
         this.scrollHandler.init(this.workspacesBar.observeWidget());
+        this.overlayWidget = new OverlayWidget();
+        this.overlayWidget.init();
     }
 
     disable() {
@@ -35,6 +39,8 @@ export default class SpaceBarExtension extends Extension {
         Styles.destroy();
         this.scrollHandler?.destroy();
         this.scrollHandler = null;
+        this.overlayWidget?.destroy();
+        this.overlayWidget = null;
         this.workspacesBar?.destroy();
         this.workspacesBar = null;
     }

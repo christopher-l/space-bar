@@ -121,6 +121,26 @@ export class Settings {
         this.behaviorSettings,
         'reevaluate-smart-workspace-names',
     );
+    readonly overlayEnabled = SettingsSubject.createBooleanSubject(
+        this.behaviorSettings,
+        'overlay-enabled',
+    );
+    readonly overlayDisplayTime = SettingsSubject.createIntSubject(
+        this.behaviorSettings,
+        'overlay-display-time',
+    );
+    readonly overlayShowWorkspaceName = SettingsSubject.createBooleanSubject(
+        this.behaviorSettings,
+        'overlay-show-workspace-name',
+    );
+    readonly overlayScreen = SettingsSubject.createStringSubject<'primary' | 'all'>(
+        this.behaviorSettings,
+        'overlay-screen',
+    );
+    readonly overlayStylePreset = SettingsSubject.createStringSubject(
+        this.behaviorSettings,
+        'overlay-style-preset',
+    );
     readonly enableActivateWorkspaceShortcuts = SettingsSubject.createBooleanSubject(
         this.shortcutsSettings,
         'enable-activate-workspace-shortcuts',
@@ -249,6 +269,34 @@ export class Settings {
     readonly emptyWorkspacePaddingV = SettingsSubject.createIntSubject(
         this.appearanceSettings,
         'empty-workspace-padding-v',
+    );
+    readonly overlayBackgroundColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'overlay-background-color',
+    );
+    readonly overlayTextColor = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'overlay-text-color',
+    );
+    readonly overlayFontSize = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'overlay-font-size',
+    );
+    readonly overlayFontWeight = SettingsSubject.createStringSubject(
+        this.appearanceSettings,
+        'overlay-font-weight',
+    );
+    readonly overlayBorderRadius = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'overlay-border-radius',
+    );
+    readonly overlayPaddingV = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'overlay-padding-v',
+    );
+    readonly overlayPaddingH = SettingsSubject.createIntSubject(
+        this.appearanceSettings,
+        'overlay-padding-h',
     );
     readonly applicationStyles = SettingsSubject.createStringSubject(
         this.appearanceSettings,

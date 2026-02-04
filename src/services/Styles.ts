@@ -86,7 +86,9 @@ export class Styles {
         let content = `.space-bar {\n${this._getWorkspacesBarStyle()}}\n\n`;
         content += `.space-bar-workspace-label.active {\n${this._getActiveWorkspaceStyle()}}\n\n`;
         content += `.space-bar-workspace-label.inactive {\n${this._getInactiveWorkspaceStyle()}}\n\n`;
-        content += `.space-bar-workspace-label.inactive.empty {\n${this._getEmptyWorkspaceStyle()}}`;
+        content += `.space-bar-workspace-label.inactive.empty {\n${this._getEmptyWorkspaceStyle()}}\n\n`;
+        content += `.workspace-name-overlay {\n${this._getOverlayStyle()}}\n\n`;
+        content += `.workspace-name-overlay .workspace-name-label {\n${this._getOverlayLabelStyle()}}`;
         return content;
     }
 
@@ -157,6 +159,19 @@ export class Styles {
             setting.subscribe(() => {
                 this._updateStyleSheet();
                 this._workspaceUpdateNotifier.notify();
+            }),
+        );
+        [
+            this._settings.overlayBackgroundColor,
+            this._settings.overlayTextColor,
+            this._settings.overlayFontSize,
+            this._settings.overlayFontWeight,
+            this._settings.overlayBorderRadius,
+            this._settings.overlayPaddingV,
+            this._settings.overlayPaddingH,
+        ].forEach((setting) =>
+            setting.subscribe(() => {
+                this._updateStyleSheet();
             }),
         );
         this._settings.customStylesEnabled.subscribe(() => {
@@ -230,6 +245,31 @@ export class Styles {
             inactiveWorkspaceStyle += `  font-size: ${fontSize}pt;\n`;
         }
         return inactiveWorkspaceStyle;
+    }
+
+    /** Style for the workspace overlay container. */
+    private _getOverlayStyle(): string {
+        const backgroundColor = this._settings.overlayBackgroundColor.value;
+        const borderRadius = this._settings.overlayBorderRadius.value;
+        const paddingV = this._settings.overlayPaddingV.value;
+        const paddingH = this._settings.overlayPaddingH.value;
+        return (
+            `  background-color: ${backgroundColor};\n` +
+            `  border-radius: ${borderRadius}px;\n` +
+            `  padding: ${paddingV}px ${paddingH}px;\n`
+        );
+    }
+
+    /** Style for the workspace overlay label. */
+    private _getOverlayLabelStyle(): string {
+        const fontSize = this._settings.overlayFontSize.value;
+        const fontWeight = this._settings.overlayFontWeight.value;
+        const textColor = this._settings.overlayTextColor.value;
+        return (
+            `  font-size: ${fontSize}px;\n` +
+            `  font-weight: ${fontWeight};\n` +
+            `  color: ${textColor};\n`
+        );
     }
 
     /** Updated style for empty and inactive workspaces labels. */

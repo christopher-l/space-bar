@@ -11,7 +11,7 @@ function clear() (
 )
 
 function compile() (
-	tsc
+	npx tsc
 )
 
 function fixupJavaScript() (

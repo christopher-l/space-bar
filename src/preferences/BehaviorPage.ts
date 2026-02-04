@@ -1,5 +1,6 @@
 import Adw from 'gi://Adw';
 import Gio from 'gi://Gio';
+import Gtk from 'gi://Gtk';
 import { addCombo, addLinkButton, addSpinButton, addTextEntry, addToggle } from './common';
 
 export const indicatorStyleOptions = {
@@ -25,14 +26,90 @@ export const positionOptions = {
     right: 'Right',
 };
 
+export const overlayScreenOptions = {
+    primary: 'Primary screen',
+    all: 'All screens',
+};
+
+export const overlayStylePresetOptions = {
+    default: 'Default',
+    minimal: 'Minimal',
+    large: 'Large',
+    glass: 'Glass',
+    accent: 'Accent',
+    custom: 'Custom',
+};
+
+export interface OverlayPresetValues {
+    'overlay-background-color': string;
+    'overlay-text-color': string;
+    'overlay-font-size': number;
+    'overlay-font-weight': string;
+    'overlay-border-radius': number;
+    'overlay-padding-v': number;
+    'overlay-padding-h': number;
+}
+
+export const overlayPresets: Record<string, OverlayPresetValues> = {
+    default: {
+        'overlay-background-color': 'rgba(0, 0, 0, 0.75)',
+        'overlay-text-color': 'rgba(255, 255, 255, 1)',
+        'overlay-font-size': 48,
+        'overlay-font-weight': '700',
+        'overlay-border-radius': 16,
+        'overlay-padding-v': 24,
+        'overlay-padding-h': 48,
+    },
+    minimal: {
+        'overlay-background-color': 'rgba(0, 0, 0, 0.6)',
+        'overlay-text-color': 'rgba(255, 255, 255, 0.9)',
+        'overlay-font-size': 32,
+        'overlay-font-weight': '400',
+        'overlay-border-radius': 8,
+        'overlay-padding-v': 12,
+        'overlay-padding-h': 24,
+    },
+    large: {
+        'overlay-background-color': 'rgba(0, 0, 0, 0.85)',
+        'overlay-text-color': 'rgba(255, 255, 255, 1)',
+        'overlay-font-size': 72,
+        'overlay-font-weight': '700',
+        'overlay-border-radius': 24,
+        'overlay-padding-v': 36,
+        'overlay-padding-h': 72,
+    },
+    glass: {
+        'overlay-background-color': 'rgba(255, 255, 255, 0.15)',
+        'overlay-text-color': 'rgba(255, 255, 255, 1)',
+        'overlay-font-size': 48,
+        'overlay-font-weight': '300',
+        'overlay-border-radius': 20,
+        'overlay-padding-v': 24,
+        'overlay-padding-h': 48,
+    },
+    accent: {
+        'overlay-background-color': 'rgba(53, 132, 228, 0.85)',
+        'overlay-text-color': 'rgba(255, 255, 255, 1)',
+        'overlay-font-size': 48,
+        'overlay-font-weight': '700',
+        'overlay-border-radius': 16,
+        'overlay-padding-v': 24,
+        'overlay-padding-h': 48,
+    },
+};
+
 export class BehaviorPage {
     window!: Adw.PreferencesWindow;
     readonly page = new Adw.PreferencesPage();
     private readonly _settings: Gio.Settings;
+    private readonly _appearanceSettings: Gio.Settings;
 
     constructor(extensionPreferences: any) {
         this._settings = extensionPreferences.getSettings(
             `org.gnome.shell.extensions.space-bar.behavior`,
+        );
+        this._appearanceSettings = extensionPreferences.getSettings(
+            `org.gnome.shell.extensions.space-bar.appearance`,
         );
     }
 
@@ -41,6 +118,7 @@ export class BehaviorPage {
         this.page.useUnderline = true;
         this.page.set_icon_name('preferences-system-symbolic');
         this._initGeneralGroup();
+        this._initOverlayGroup();
         this._initSmartWorkspaceNamesGroup();
     }
 
@@ -222,6 +300,83 @@ export class BehaviorPage {
         this.page.add(group);
     }
 
+    private _initOverlayGroup(): void {
+        const group = new Adw.PreferencesGroup();
+        group.set_title('Workspace Overlay');
+        group.set_description(
+            'Show a centered overlay when switching workspaces.',
+        );
+        addToggle({
+            settings: this._settings,
+            group,
+            key: 'overlay-enabled',
+            title: 'Enable workspace overlay',
+        }).addSubDialog({
+            window: this.window,
+            title: 'Workspace Overlay',
+            enableIf: {
+                key: 'overlay-enabled',
+                predicate: (value) => value.get_boolean(),
+                page: this.page,
+            },
+            populatePage: (page) => {
+                const group = new Adw.PreferencesGroup();
+                page.add(group);
+                addSpinButton({
+                    settings: this._settings,
+                    group,
+                    key: 'overlay-display-time',
+                    title: 'Display time (ms)',
+                    subtitle: 'How long the overlay is shown',
+                    lower: 100,
+                    upper: 5000,
+                    step: 100,
+                });
+                addToggle({
+                    settings: this._settings,
+                    group,
+                    key: 'overlay-show-workspace-name',
+                    title: 'Show workspace name',
+                    subtitle: 'Use workspace display name instead of just the number',
+                });
+                addCombo({
+                    window: this.window,
+                    settings: this._settings,
+                    group,
+                    key: 'overlay-screen',
+                    title: 'Show on',
+                    options: overlayScreenOptions,
+                });
+                addCombo({
+                    window: this.window,
+                    settings: this._settings,
+                    group,
+                    key: 'overlay-style-preset',
+                    title: 'Style',
+                    options: overlayStylePresetOptions,
+                });
+                const hintGroup = new Adw.PreferencesGroup();
+                page.add(hintGroup);
+                const hintRow = new Adw.ActionRow({
+                    title: 'Customize overlay appearance',
+                    subtitle: 'Adjust colors, font, padding, and more',
+                    activatable: true,
+                });
+                hintRow.add_suffix(new Gtk.Image({
+                    iconName: 'go-next-symbolic',
+                }));
+                hintRow.connect('activated', () => {
+                    const dialog = hintRow.get_root() as Gtk.Window;
+                    dialog.close();
+                    this.window.set_visible_page_name('appearance');
+                });
+                hintGroup.add(hintRow);
+                this._connectPresetLogic(page);
+            },
+        });
+        this.page.add(group);
+    }
+
     private _initSmartWorkspaceNamesGroup(): void {
         const group = new Adw.PreferencesGroup();
         group.set_title('Smart Workspace Names');
@@ -264,5 +419,78 @@ export class BehaviorPage {
             },
         });
         this.page.add(group);
+    }
+
+    private _connectPresetLogic(page: Adw.PreferencesPage): void {
+        const appearanceKeys = [
+            'overlay-background-color',
+            'overlay-text-color',
+            'overlay-font-size',
+            'overlay-font-weight',
+            'overlay-border-radius',
+            'overlay-padding-v',
+            'overlay-padding-h',
+        ] as const;
+
+        let applyingPreset = false;
+
+        // When preset changes, apply preset values to appearance settings
+        const applyPreset = () => {
+            const preset = this._settings.get_string('overlay-style-preset');
+            if (!preset || preset === 'custom' || !(preset in overlayPresets)) return;
+            const values = overlayPresets[preset];
+            applyingPreset = true;
+            for (const key of appearanceKeys) {
+                const value = values[key];
+                if (typeof value === 'string') {
+                    this._appearanceSettings.set_string(key, value);
+                } else {
+                    this._appearanceSettings.set_int(key, value);
+                }
+            }
+            applyingPreset = false;
+        };
+
+        const presetChanged = this._settings.connect(
+            'changed::overlay-style-preset',
+            applyPreset,
+        );
+        page.connect('unmap', () => this._settings.disconnect(presetChanged));
+
+        // When any appearance setting changes, detect if it still matches a preset
+        const detectCustom = () => {
+            if (applyingPreset) return;
+            const currentPreset = this._settings.get_string('overlay-style-preset');
+            if (currentPreset === 'custom') return;
+            if (currentPreset && currentPreset in overlayPresets) {
+                const values = overlayPresets[currentPreset];
+                for (const key of appearanceKeys) {
+                    const expected = values[key];
+                    if (typeof expected === 'string') {
+                        if (this._appearanceSettings.get_string(key) !== expected) {
+                            this._settings.set_string('overlay-style-preset', 'custom');
+                            return;
+                        }
+                    } else {
+                        if (this._appearanceSettings.get_int(key) !== expected) {
+                            this._settings.set_string('overlay-style-preset', 'custom');
+                            return;
+                        }
+                    }
+                }
+            }
+        };
+
+        const changedIds: number[] = [];
+        for (const key of appearanceKeys) {
+            changedIds.push(
+                this._appearanceSettings.connect(`changed::${key}`, detectCustom),
+            );
+        }
+        page.connect('unmap', () => {
+            for (const id of changedIds) {
+                this._appearanceSettings.disconnect(id);
+            }
+        });
     }
 }

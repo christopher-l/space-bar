@@ -98,6 +98,27 @@
         <key name="reevaluate-smart-workspace-names" type="b">
             <default>true</default>
         </key>
+        <key name="overlay-enabled" type="b">
+            <default>true</default>
+            <summary>Enable workspace overlay</summary>
+        </key>
+        <key name="overlay-display-time" type="i">
+            <range min="100" max="5000" />
+            <default>600</default>
+            <summary>Overlay display time (ms)</summary>
+        </key>
+        <key name="overlay-show-workspace-name" type="b">
+            <default>true</default>
+            <summary>Show workspace name in overlay</summary>
+        </key>
+        <key name="overlay-screen" type="s">
+            <default>'primary'</default>
+            <summary>Which screens to show the overlay on</summary>
+        </key>
+        <key name="overlay-style-preset" type="s">
+            <default>'default'</default>
+            <summary>Overlay style preset</summary>
+        </key>
     </schema>
 
     <schema id="org.gnome.shell.extensions.space-bar.appearance" path="/org/gnome/shell/extensions/space-bar/appearance/">
@@ -272,6 +293,28 @@
         </key>
         <key name="empty-workspace-padding-v-active" type="b">
             <default>false</default>
+        </key>
+        <!-- Overlay Appearance Settings -->
+        <key name="overlay-background-color" type="s">
+            <default>'rgba(0, 0, 0, 0.75)'</default>
+        </key>
+        <key name="overlay-text-color" type="s">
+            <default>'rgba(255, 255, 255, 1)'</default>
+        </key>
+        <key name="overlay-font-size" type="i">
+            <default>48</default>
+        </key>
+        <key name="overlay-font-weight" type="s">
+            <default>'700'</default>
+        </key>
+        <key name="overlay-border-radius" type="i">
+            <default>16</default>
+        </key>
+        <key name="overlay-padding-v" type="i">
+            <default>24</default>
+        </key>
+        <key name="overlay-padding-h" type="i">
+            <default>48</default>
         </key>
         <key name="application-styles" type="s">
             <default>''</default>
