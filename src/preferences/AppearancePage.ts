@@ -2,7 +2,10 @@ import Adw from 'gi://Adw';
 import Gio from 'gi://Gio';
 import { addColorButton, addCombo, addSpinButton } from './common';
 import { addCustomCssDialogButton } from './custom-styles';
-import { overlayStylePresetOptions, overlayPresets } from './BehaviorPage';
+import {
+    overlayStylePresetOptions,
+    connectOverlayPresetLogic,
+} from './overlayPresets';
 
 export const fontWeightOptions = {
     '100': 'Thin',
@@ -418,79 +421,12 @@ export class AppearancePage {
             lower: 0,
             upper: 100,
         }).addResetButton({ window: this.window });
-        this._connectOverlayPresetLogic(group);
-        this.page.add(group);
-    }
-
-    private _connectOverlayPresetLogic(group: Adw.PreferencesGroup): void {
-        const appearanceKeys = [
-            'overlay-background-color',
-            'overlay-text-color',
-            'overlay-font-size',
-            'overlay-font-weight',
-            'overlay-border-radius',
-            'overlay-padding-v',
-            'overlay-padding-h',
-        ] as const;
-
-        let applyingPreset = false;
-
-        // When preset changes, apply preset values
-        const applyPreset = () => {
-            const preset = this._behaviorSettings.get_string('overlay-style-preset');
-            if (!preset || preset === 'custom' || !(preset in overlayPresets)) return;
-            const values = overlayPresets[preset];
-            applyingPreset = true;
-            for (const key of appearanceKeys) {
-                const value = values[key];
-                if (typeof value === 'string') {
-                    this._settings.set_string(key, value);
-                } else {
-                    this._settings.set_int(key, value);
-                }
-            }
-            applyingPreset = false;
-        };
-
-        const presetChanged = this._behaviorSettings.connect(
-            'changed::overlay-style-preset',
-            applyPreset,
-        );
-        this.page.connect('unmap', () => this._behaviorSettings.disconnect(presetChanged));
-
-        // When any appearance setting changes, detect custom
-        const detectCustom = () => {
-            if (applyingPreset) return;
-            const currentPreset = this._behaviorSettings.get_string('overlay-style-preset');
-            if (currentPreset === 'custom') return;
-            if (currentPreset && currentPreset in overlayPresets) {
-                const values = overlayPresets[currentPreset];
-                for (const key of appearanceKeys) {
-                    const expected = values[key];
-                    if (typeof expected === 'string') {
-                        if (this._settings.get_string(key) !== expected) {
-                            this._behaviorSettings.set_string('overlay-style-preset', 'custom');
-                            return;
-                        }
-                    } else {
-                        if (this._settings.get_int(key) !== expected) {
-                            this._behaviorSettings.set_string('overlay-style-preset', 'custom');
-                            return;
-                        }
-                    }
-                }
-            }
-        };
-
-        const changedIds: number[] = [];
-        for (const key of appearanceKeys) {
-            changedIds.push(this._settings.connect(`changed::${key}`, detectCustom));
-        }
-        this.page.connect('unmap', () => {
-            for (const id of changedIds) {
-                this._settings.disconnect(id);
-            }
+        connectOverlayPresetLogic({
+            behaviorSettings: this._behaviorSettings,
+            appearanceSettings: this._settings,
+            disconnectOn: this.page,
         });
+        this.page.add(group);
     }
 
     private _initCustomStylesGroup(): void {

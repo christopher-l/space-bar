@@ -17,6 +17,8 @@ export class OverlayWidget {
     private _overlays: OverlayActor[] = [];
     private _hideTimeoutId: number | null = null;
     private _lastWorkspaceIndex: number = -1;
+    private _monitorFingerprint: string = '';
+    private _destroyed = false;
 
     init(): void {
         this._lastWorkspaceIndex = this._ws.currentIndex;
@@ -24,6 +26,7 @@ export class OverlayWidget {
     }
 
     destroy(): void {
+        this._destroyed = true;
         this._clearHideTimeout();
         this._destroyOverlays();
     }
@@ -47,11 +50,20 @@ export class OverlayWidget {
         return { bin, label };
     }
 
+    private _getMonitorFingerprint(monitors: any[]): string {
+        return monitors.map((m) => `${m.x},${m.y},${m.width},${m.height}`).join('|');
+    }
+
     private _ensureOverlays(monitors: any[]): void {
+        const fingerprint = this._getMonitorFingerprint(monitors);
+        if (fingerprint === this._monitorFingerprint && this._overlays.length === monitors.length) {
+            return;
+        }
         this._destroyOverlays();
         for (let i = 0; i < monitors.length; i++) {
             this._overlays.push(this._createOverlay());
         }
+        this._monitorFingerprint = fingerprint;
     }
 
     private _destroyOverlays(): void {
@@ -59,10 +71,11 @@ export class OverlayWidget {
             overlay.bin.destroy();
         }
         this._overlays = [];
+        this._monitorFingerprint = '';
     }
 
     private _onWorkspaceUpdate(): void {
-        if (!this._settings.overlayEnabled.value) {
+        if (this._destroyed) {
             return;
         }
 
@@ -70,8 +83,11 @@ export class OverlayWidget {
         if (currentIndex === this._lastWorkspaceIndex) {
             return;
         }
-
         this._lastWorkspaceIndex = currentIndex;
+
+        if (!this._settings.overlayEnabled.value) {
+            return;
+        }
         this._showOverlay();
     }
 

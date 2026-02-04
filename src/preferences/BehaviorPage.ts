@@ -2,6 +2,10 @@ import Adw from 'gi://Adw';
 import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk';
 import { addCombo, addLinkButton, addSpinButton, addTextEntry, addToggle } from './common';
+import {
+    overlayStylePresetOptions,
+    connectOverlayPresetLogic,
+} from './overlayPresets';
 
 export const indicatorStyleOptions = {
     'current-workspace': 'Current workspace',
@@ -29,73 +33,6 @@ export const positionOptions = {
 export const overlayScreenOptions = {
     primary: 'Primary screen',
     all: 'All screens',
-};
-
-export const overlayStylePresetOptions = {
-    default: 'Default',
-    minimal: 'Minimal',
-    large: 'Large',
-    glass: 'Glass',
-    accent: 'Accent',
-    custom: 'Custom',
-};
-
-export interface OverlayPresetValues {
-    'overlay-background-color': string;
-    'overlay-text-color': string;
-    'overlay-font-size': number;
-    'overlay-font-weight': string;
-    'overlay-border-radius': number;
-    'overlay-padding-v': number;
-    'overlay-padding-h': number;
-}
-
-export const overlayPresets: Record<string, OverlayPresetValues> = {
-    default: {
-        'overlay-background-color': 'rgba(0, 0, 0, 0.75)',
-        'overlay-text-color': 'rgba(255, 255, 255, 1)',
-        'overlay-font-size': 48,
-        'overlay-font-weight': '700',
-        'overlay-border-radius': 16,
-        'overlay-padding-v': 24,
-        'overlay-padding-h': 48,
-    },
-    minimal: {
-        'overlay-background-color': 'rgba(0, 0, 0, 0.6)',
-        'overlay-text-color': 'rgba(255, 255, 255, 0.9)',
-        'overlay-font-size': 32,
-        'overlay-font-weight': '400',
-        'overlay-border-radius': 8,
-        'overlay-padding-v': 12,
-        'overlay-padding-h': 24,
-    },
-    large: {
-        'overlay-background-color': 'rgba(0, 0, 0, 0.85)',
-        'overlay-text-color': 'rgba(255, 255, 255, 1)',
-        'overlay-font-size': 72,
-        'overlay-font-weight': '700',
-        'overlay-border-radius': 24,
-        'overlay-padding-v': 36,
-        'overlay-padding-h': 72,
-    },
-    glass: {
-        'overlay-background-color': 'rgba(255, 255, 255, 0.15)',
-        'overlay-text-color': 'rgba(255, 255, 255, 1)',
-        'overlay-font-size': 48,
-        'overlay-font-weight': '300',
-        'overlay-border-radius': 20,
-        'overlay-padding-v': 24,
-        'overlay-padding-h': 48,
-    },
-    accent: {
-        'overlay-background-color': 'rgba(53, 132, 228, 0.85)',
-        'overlay-text-color': 'rgba(255, 255, 255, 1)',
-        'overlay-font-size': 48,
-        'overlay-font-weight': '700',
-        'overlay-border-radius': 16,
-        'overlay-padding-v': 24,
-        'overlay-padding-h': 48,
-    },
 };
 
 export class BehaviorPage {
@@ -371,7 +308,11 @@ export class BehaviorPage {
                     this.window.set_visible_page_name('appearance');
                 });
                 hintGroup.add(hintRow);
-                this._connectPresetLogic(page);
+                connectOverlayPresetLogic({
+                    behaviorSettings: this._settings,
+                    appearanceSettings: this._appearanceSettings,
+                    disconnectOn: page,
+                });
             },
         });
         this.page.add(group);
@@ -419,78 +360,5 @@ export class BehaviorPage {
             },
         });
         this.page.add(group);
-    }
-
-    private _connectPresetLogic(page: Adw.PreferencesPage): void {
-        const appearanceKeys = [
-            'overlay-background-color',
-            'overlay-text-color',
-            'overlay-font-size',
-            'overlay-font-weight',
-            'overlay-border-radius',
-            'overlay-padding-v',
-            'overlay-padding-h',
-        ] as const;
-
-        let applyingPreset = false;
-
-        // When preset changes, apply preset values to appearance settings
-        const applyPreset = () => {
-            const preset = this._settings.get_string('overlay-style-preset');
-            if (!preset || preset === 'custom' || !(preset in overlayPresets)) return;
-            const values = overlayPresets[preset];
-            applyingPreset = true;
-            for (const key of appearanceKeys) {
-                const value = values[key];
-                if (typeof value === 'string') {
-                    this._appearanceSettings.set_string(key, value);
-                } else {
-                    this._appearanceSettings.set_int(key, value);
-                }
-            }
-            applyingPreset = false;
-        };
-
-        const presetChanged = this._settings.connect(
-            'changed::overlay-style-preset',
-            applyPreset,
-        );
-        page.connect('unmap', () => this._settings.disconnect(presetChanged));
-
-        // When any appearance setting changes, detect if it still matches a preset
-        const detectCustom = () => {
-            if (applyingPreset) return;
-            const currentPreset = this._settings.get_string('overlay-style-preset');
-            if (currentPreset === 'custom') return;
-            if (currentPreset && currentPreset in overlayPresets) {
-                const values = overlayPresets[currentPreset];
-                for (const key of appearanceKeys) {
-                    const expected = values[key];
-                    if (typeof expected === 'string') {
-                        if (this._appearanceSettings.get_string(key) !== expected) {
-                            this._settings.set_string('overlay-style-preset', 'custom');
-                            return;
-                        }
-                    } else {
-                        if (this._appearanceSettings.get_int(key) !== expected) {
-                            this._settings.set_string('overlay-style-preset', 'custom');
-                            return;
-                        }
-                    }
-                }
-            }
-        };
-
-        const changedIds: number[] = [];
-        for (const key of appearanceKeys) {
-            changedIds.push(
-                this._appearanceSettings.connect(`changed::${key}`, detectCustom),
-            );
-        }
-        page.connect('unmap', () => {
-            for (const id of changedIds) {
-                this._appearanceSettings.disconnect(id);
-            }
-        });
     }
 }
