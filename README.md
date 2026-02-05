@@ -14,9 +14,11 @@ comprehensive set of features to support a workspace-based workflow.
 > [!NOTE]
 > Maintenance mode
 
-The extension covers its intended features and currently no new features are planned. Migrations to
-new GNOME versions and fixing of unintended behavior still take place, but feature requests and pull
-requests with new features will generally not be addressed.
+The extension covers its intended features and currently no new features are planned. This means that:
+
+-   Migrations to new GNOME versions and fixing of unintended behavior continue to take place.
+-   Feature requests and pull requests with new features will generally not be addressed.
+-   Discussions, questions, feedback, thoughts, or contributions of any kind are always welcome!
 
 ## Features
 
