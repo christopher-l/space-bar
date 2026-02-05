@@ -9,6 +9,15 @@ Bar](https://extensions.gnome.org/extension/3851/workspaces-bar/) by
 [fthx](https://extensions.gnome.org/accounts/profile/fthx), this extension grew into a more
 comprehensive set of features to support a workspace-based workflow.
 
+## Project Status
+
+> [!NOTE]
+> Maintenance mode
+
+The extension covers its intended features and currently no new features are planned. Migrations to
+new GNOME versions and fixing of unintended behavior still take place, but feature requests and pull
+requests with new features will generally not be addressed.
+
 ## Features
 
 -   First class support for static and dynamic workspaces as well as multi-monitor setups
