@@ -98,6 +98,27 @@
         <key name="reevaluate-smart-workspace-names" type="b">
             <default>true</default>
         </key>
+        <key name="attention-indicator-enabled" type="b">
+            <default>true</default>
+            <summary>Enable workspace attention indicator</summary>
+        </key>
+        <key name="attention-indicator-style" type="s">
+            <choices>
+                <choice value="pulse"/>
+                <choice value="color-flash"/>
+                <choice value="ripple"/>
+            </choices>
+            <default>"pulse"</default>
+            <summary>Attention indicator animation style</summary>
+        </key>
+        <key name="attention-auto-focus" type="b">
+            <default>true</default>
+            <summary>Auto-focus attention window on workspace switch</summary>
+        </key>
+        <key name="attention-test-trigger" type="b">
+            <default>false</default>
+            <summary>Trigger a test animation on the workspaces bar</summary>
+        </key>
     </schema>
 
     <schema id="org.gnome.shell.extensions.space-bar.appearance" path="/org/gnome/shell/extensions/space-bar/appearance/">
@@ -272,6 +293,26 @@
         </key>
         <key name="empty-workspace-padding-v-active" type="b">
             <default>false</default>
+        </key>
+        <!-- Attention Indicator Appearance -->
+        <key name="attention-color" type="s">
+            <default>'rgba(255, 165, 0, 0.6)'</default>
+            <summary>Highlight color for color-flash animation</summary>
+        </key>
+        <key name="attention-animation-duration" type="i">
+            <range min="200" max="3000"/>
+            <default>800</default>
+            <summary>Animation cycle duration in ms</summary>
+        </key>
+        <key name="attention-pulse-opacity" type="i">
+            <range min="0" max="255"/>
+            <default>80</default>
+            <summary>Minimum opacity for pulse animation (0-255)</summary>
+        </key>
+        <key name="attention-flash-interval" type="i">
+            <range min="200" max="3000"/>
+            <default>600</default>
+            <summary>Toggle interval for color-flash animation in ms</summary>
         </key>
         <key name="application-styles" type="s">
             <default>''</default>

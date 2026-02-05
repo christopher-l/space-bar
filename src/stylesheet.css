@@ -8,6 +8,11 @@
     transition: margin-left 0.5s, margin-right 0.5s;
 }
 
+.space-bar-workspace-label.attention {
+    transition-property: background-color;
+    transition-duration: 300ms;
+}
+
 .space-bar-menu .space-bar-menu-heading {
     margin-left: 8px;
     margin-right: 8px;

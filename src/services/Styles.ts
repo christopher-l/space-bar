@@ -86,7 +86,8 @@ export class Styles {
         let content = `.space-bar {\n${this._getWorkspacesBarStyle()}}\n\n`;
         content += `.space-bar-workspace-label.active {\n${this._getActiveWorkspaceStyle()}}\n\n`;
         content += `.space-bar-workspace-label.inactive {\n${this._getInactiveWorkspaceStyle()}}\n\n`;
-        content += `.space-bar-workspace-label.inactive.empty {\n${this._getEmptyWorkspaceStyle()}}`;
+        content += `.space-bar-workspace-label.inactive.empty {\n${this._getEmptyWorkspaceStyle()}}\n\n`;
+        content += `.space-bar-workspace-label.attention.attention-flash {\n${this._getAttentionFlashStyle()}}`;
         return content;
     }
 
@@ -154,6 +155,12 @@ export class Styles {
             this._settings.emptyWorkspacePaddingH,
             this._settings.emptyWorkspacePaddingV,
         ].forEach((setting) =>
+            setting.subscribe(() => {
+                this._updateStyleSheet();
+                this._workspaceUpdateNotifier.notify();
+            }),
+        );
+        [this._settings.attentionColor].forEach((setting) =>
             setting.subscribe(() => {
                 this._updateStyleSheet();
                 this._workspaceUpdateNotifier.notify();
@@ -230,6 +237,12 @@ export class Styles {
             inactiveWorkspaceStyle += `  font-size: ${fontSize}pt;\n`;
         }
         return inactiveWorkspaceStyle;
+    }
+
+    /** Style for the attention-flash animation state. */
+    private _getAttentionFlashStyle(): string {
+        const color = this._settings.attentionColor.value;
+        return `  background-color: ${color};\n`;
     }
 
     /** Updated style for empty and inactive workspaces labels. */

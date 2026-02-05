@@ -1,4 +1,5 @@
 import Clutter from 'gi://Clutter';
+import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import type Meta from 'gi://Meta';
 import St from 'gi://St';
@@ -63,6 +64,10 @@ export class WorkspacesBar {
     private _wsBar?: St.BoxLayout;
     private readonly _dragHandler = new WorkspacesBarDragHandler(() => this._updateWorkspaces());
     private readonly _touchTimeout = new Timeout();
+    private _attentionLabels: St.Label[] = [];
+    private _attentionTimerId: number | null = null;
+    private _attentionPhase = false;
+    private _rippleActors: Clutter.Actor[] = [];
 
     constructor(private _extension: any) {}
 
@@ -79,9 +84,18 @@ export class WorkspacesBar {
         this._settings.indicatorStyle.subscribe(() => this._refreshTopBarConfiguration());
         this._settings.position.subscribe(() => this._refreshTopBarConfiguration());
         this._settings.positionIndex.subscribe(() => this._refreshTopBarConfiguration());
+        this._settings.attentionIndicatorEnabled.subscribe(() => this._updateWorkspaces());
+        this._settings.attentionIndicatorStyle.subscribe(() => this._updateWorkspaces());
+        this._settings.attentionAnimationDuration.subscribe(() => this._updateWorkspaces());
+        this._settings.attentionPulseOpacity.subscribe(() => this._updateWorkspaces());
+        this._settings.attentionFlashInterval.subscribe(() => this._updateWorkspaces());
+        this._settings.attentionTestTrigger.subscribe((value) => {
+            if (value) this._runTestAnimation();
+        });
     }
 
     destroy(): void {
+        this._clearAttentionTimer();
         this._button.destroy();
         this._menu.destroy();
         this._dragHandler.destroy();
@@ -174,6 +188,8 @@ export class WorkspacesBar {
 
     private _updateWorkspacesBar() {
         // destroy old workspaces bar buttons
+        this._clearAttentionTimer();
+        this._attentionLabels = [];
         this._wsBar!.destroy_all_children();
         this._dragHandler.wsBoxes = [];
         // display all current workspaces buttons
@@ -183,8 +199,16 @@ export class WorkspacesBar {
                 const wsBox = this._createWsBox(workspace);
                 this._wsBar!.add_child(wsBox);
                 this._dragHandler.wsBoxes.push({ workspace, wsBox });
+                if (
+                    workspace.hasAttention &&
+                    this._settings.attentionIndicatorEnabled.value
+                ) {
+                    const label = wsBox.get_child() as St.Label;
+                    this._attentionLabels.push(label);
+                }
             }
         }
+        this._startAttentionAnimations();
     }
 
     private _createWsBox(workspace: WorkspaceState): St.Bin {
@@ -273,12 +297,172 @@ export class WorkspacesBar {
         } else {
             label.styleClass += ' empty';
         }
+        if (workspace.hasAttention && this._settings.attentionIndicatorEnabled.value) {
+            label.styleClass += ' attention';
+        }
         const text = this._ws.getDisplayName(workspace);
         label.set_text(text);
         if (text.trim() === '') {
             label.styleClass += ' no-text';
         }
         return label;
+    }
+
+    private _startAttentionAnimations(): void {
+        if (this._attentionLabels.length === 0) {
+            return;
+        }
+        const style = this._settings.attentionIndicatorStyle.value;
+        if (style === 'pulse') {
+            this._startPulseAnimation(this._attentionLabels);
+        } else if (style === 'color-flash') {
+            this._startColorFlashAnimation(this._attentionLabels);
+        } else if (style === 'ripple') {
+            this._startRippleAnimation(this._attentionLabels);
+        }
+    }
+
+    private _startPulseAnimation(
+        labels: St.Label[],
+        cycles = -1,
+        onDone?: (label: St.Label) => void,
+    ): void {
+        const duration = this._settings.attentionAnimationDuration.value;
+        const minOpacity = this._settings.attentionPulseOpacity.value;
+        for (const label of labels) {
+            const easeParams: any = {
+                opacity: minOpacity,
+                duration,
+                mode: Clutter.AnimationMode.EASE_IN_OUT_SINE,
+                repeatCount: cycles < 0 ? -1 : cycles * 2 - 1,
+                autoReverse: true,
+            };
+            if (cycles >= 0 && onDone) {
+                easeParams.onComplete = () => {
+                    label.set_opacity(255);
+                    onDone(label);
+                };
+            }
+            (label as any).ease(easeParams);
+        }
+    }
+
+    private _startColorFlashAnimation(
+        labels: St.Label[],
+        cycles = -1,
+        onDone?: (label: St.Label) => void,
+    ): void {
+        const interval = this._settings.attentionFlashInterval.value;
+        this._attentionPhase = false;
+        let count = 0;
+        this._attentionTimerId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, interval, () => {
+            count++;
+            this._attentionPhase = !this._attentionPhase;
+            for (const label of labels) {
+                if (this._attentionPhase) {
+                    label.add_style_class_name('attention-flash');
+                } else {
+                    label.remove_style_class_name('attention-flash');
+                }
+            }
+            if (cycles >= 0 && count >= cycles * 2) {
+                for (const label of labels) {
+                    label.remove_style_class_name('attention-flash');
+                    onDone?.(label);
+                }
+                this._attentionTimerId = null;
+                return GLib.SOURCE_REMOVE;
+            }
+            return GLib.SOURCE_CONTINUE;
+        });
+    }
+
+    private _startRippleAnimation(
+        labels: St.Label[],
+        cycles = -1,
+        onDone?: (label: St.Label) => void,
+    ): void {
+        for (const label of labels) {
+            this._spawnRipple(label);
+        }
+        let count = 1;
+        const interval = this._settings.attentionFlashInterval.value;
+        this._attentionTimerId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, interval, () => {
+            count++;
+            const isLast = cycles >= 0 && count >= cycles;
+            for (const label of labels) {
+                this._spawnRipple(label, isLast ? onDone : undefined);
+            }
+            if (isLast) {
+                this._attentionTimerId = null;
+                return GLib.SOURCE_REMOVE;
+            }
+            return GLib.SOURCE_CONTINUE;
+        });
+    }
+
+    private _spawnRipple(label: St.Label, onDone?: (label: St.Label) => void): void {
+        const [x, y] = label.get_transformed_position();
+        const [w, h] = label.get_transformed_size();
+        const color = this._settings.attentionColor.value;
+        const borderRadius = this._settings.inactiveWorkspaceBorderRadius.value;
+        const wave = new St.Widget({
+            reactive: false,
+            x, y, width: w, height: h,
+            opacity: 200,
+            style: `border: 2px solid ${color}; border-radius: ${borderRadius}px;`,
+        });
+        wave.set_pivot_point(0.5, 0.5);
+        global.stage.add_child(wave);
+        this._rippleActors.push(wave);
+        const duration = this._settings.attentionAnimationDuration.value;
+        (wave as any).ease({
+            scaleX: 2.0,
+            scaleY: 2.0,
+            opacity: 0,
+            duration,
+            mode: Clutter.AnimationMode.EASE_OUT_QUAD,
+            onComplete: () => {
+                wave.destroy();
+                const idx = this._rippleActors.indexOf(wave);
+                if (idx >= 0) this._rippleActors.splice(idx, 1);
+                onDone?.(label);
+            },
+        });
+    }
+
+    private _clearAttentionTimer(): void {
+        if (this._attentionTimerId !== null) {
+            GLib.Source.remove(this._attentionTimerId);
+            this._attentionTimerId = null;
+        }
+        for (const actor of this._rippleActors) {
+            actor.destroy();
+        }
+        this._rippleActors = [];
+    }
+
+    private _runTestAnimation(): void {
+        this._settings.attentionTestTrigger.value = false;
+        if (!this._wsBar) return;
+        const labels: St.Label[] = [];
+        for (const child of this._wsBar.get_children()) {
+            const label = (child as St.Bin).get_child() as St.Label;
+            if (label?.styleClass?.includes('inactive')) {
+                label.add_style_class_name('attention');
+                labels.push(label);
+            }
+        }
+        if (labels.length === 0) return;
+        const style = this._settings.attentionIndicatorStyle.value;
+        const onDone = (label: St.Label) => label.remove_style_class_name('attention');
+        if (style === 'pulse') {
+            this._startPulseAnimation(labels, 5, onDone);
+        } else if (style === 'color-flash') {
+            this._startColorFlashAnimation(labels, 5, onDone);
+        } else if (style === 'ripple') {
+            this._startRippleAnimation(labels, 5, onDone);
+        }
     }
 }
 

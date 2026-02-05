@@ -13,7 +13,7 @@ function getWindows(workspace: Meta.Workspace): Meta.Window[] {
     const windows = global.display.get_tab_list(Meta.TabList.NORMAL_ALL, workspace);
     return windows
         .map((w) => (w.is_attached_dialog() ? w.get_transient_for()! : w))
-        .filter((w, i, a) => !w.skipTaskbar && a.indexOf(w) === i);
+        .filter((w, i, a) => !w.skip_taskbar && a.indexOf(w) === i);
 }
 
 export interface WorkspaceState {
@@ -23,6 +23,7 @@ export interface WorkspaceState {
     index: number;
     name?: string | null;
     hasWindows: boolean;
+    hasAttention: boolean;
 }
 
 export type UpdateReason =
@@ -74,6 +75,9 @@ export class Workspaces {
      * tracking.
      */
     private _windowChangedListeners: { workspace: Meta.Workspace; listener: number }[] = [];
+    private _attentionSignals: number[] = [];
+    private _acknowledgedUrgentWindows = new Set<Window>();
+    private _attentionWindowSignals = new Map<Window, number[]>();
 
     init() {
         this._wsNames = WorkspaceNames.init(this);
@@ -92,6 +96,7 @@ export class Workspaces {
                     'active-workspace-changed',
                     'workspace_manager active-workspace-changed',
                 );
+                this._focusAttentionWindow();
                 // We need to update names in case we moved away from the last dynamic workspace.
                 this._smartNamesNotifier.notify();
             },
@@ -104,6 +109,18 @@ export class Workspaces {
                 this._update('windows-changed', 'WindowTracker tracked-windows-changed');
                 this._smartNamesNotifier.notify();
             },
+        );
+        this._attentionSignals.push(
+            global.display.connect_after('window-demands-attention', (_display: any, window: Window) => {
+                this._acknowledgedUrgentWindows.delete(window);
+                this._watchAttentionWindow(window);
+                this._update('windows-changed', 'window-demands-attention');
+            }),
+            global.display.connect_after('window-marked-urgent', (_display: any, window: Window) => {
+                this._acknowledgedUrgentWindows.delete(window);
+                this._watchAttentionWindow(window);
+                this._update('windows-changed', 'window-marked-urgent');
+            }),
         );
         this._settings.dynamicWorkspaces.subscribe(() =>
             this._update('workspaces-changed', 'settings dynamicWorkspaces'),
@@ -121,6 +138,7 @@ export class Workspaces {
                 this._wsNames?.insert(pos);
             }
         });
+        this._snapshotExistingAttentionWindows();
         this._update('init', 'init');
         this._settings.smartWorkspaceNames.subscribe(
             (value) => value && this._clearEmptyWorkspaceNames(),
@@ -149,6 +167,12 @@ export class Workspaces {
         if (this._windows_changed) {
             Shell.WindowTracker.get_default().disconnect(this._windows_changed);
         }
+        for (const id of this._attentionSignals) {
+            global.display.disconnect(id);
+        }
+        this._attentionSignals = [];
+        this._acknowledgedUrgentWindows.clear();
+        this._unwatchAllAttentionWindows();
         this._updateNotifier.destroy();
         this._smartNamesNotifier.destroy();
         this._windowChangedListeners.forEach((entry) => entry.workspace.disconnect(entry.listener));
@@ -364,6 +388,7 @@ export class Workspaces {
      */
     private _update(reason: UpdateReason, source: string): void {
         // log('_update', reason, source);
+        this._cleanupAcknowledgedWindows();
         this.numberOfEnabledWorkspaces = global.workspace_manager.get_n_workspaces();
         this.currentIndex = global.workspace_manager.get_active_workspace_index();
         if (
@@ -533,14 +558,111 @@ export class Workspaces {
         }
     }
 
+    private _focusAttentionWindow(): void {
+        if (!this._settings.attentionIndicatorEnabled.value) {
+            return;
+        }
+        const workspace = global.workspace_manager.get_workspace_by_index(this.currentIndex);
+        if (!workspace) return;
+        const attentionWindow = getFirstAttentionWindow(workspace, this._acknowledgedUrgentWindows);
+        if (attentionWindow) {
+            if (this._settings.attentionAutoFocus.value) {
+                attentionWindow.activate(global.get_current_time());
+            }
+            // activate() clears demands_attention but not urgent (client-set X11 property).
+            // Track windows whose urgency we've acknowledged so we don't re-trigger.
+            if (attentionWindow.urgent) {
+                this._acknowledgedUrgentWindows.add(attentionWindow);
+            }
+        }
+    }
+
+    /**
+     * On init, treat all windows that already have demands_attention or urgent
+     * as acknowledged so stale flags from a shell restart don't trigger the indicator.
+     */
+    private _snapshotExistingAttentionWindows(): void {
+        const nWorkspaces = global.workspace_manager.get_n_workspaces();
+        for (let i = 0; i < nWorkspaces; i++) {
+            const workspace = global.workspace_manager.get_workspace_by_index(i);
+            if (!workspace) continue;
+            const windows: Window[] = workspace.list_windows();
+            for (const w of windows) {
+                if (w.demands_attention || w.urgent) {
+                    this._acknowledgedUrgentWindows.add(w);
+                }
+            }
+        }
+    }
+
+    /**
+     * Removes windows from the acknowledged set if their attention flags have cleared,
+     * so a new attention signal will trigger the indicator again.
+     */
+    private _cleanupAcknowledgedWindows(): void {
+        for (const w of this._acknowledgedUrgentWindows) {
+            if (!w.demands_attention && !w.urgent) {
+                this._acknowledgedUrgentWindows.delete(w);
+            }
+        }
+    }
+
+    /**
+     * Watches a window's attention properties for changes so the indicator clears immediately
+     * when Mutter clears demands_attention or the client clears urgent.
+     */
+    private _watchAttentionWindow(window: Window): void {
+        if (this._attentionWindowSignals.has(window)) return;
+        const onChanged = () => {
+            this._update('windows-changed', 'attention-window-property-changed');
+            if (!window.demands_attention && !window.urgent) {
+                this._unwatchAttentionWindow(window);
+            }
+        };
+        const ids = [
+            window.connect('notify::demands-attention', onChanged),
+            window.connect('notify::urgent', onChanged),
+            window.connect('focus', () => {
+                this._update('windows-changed', 'attention-window-focused');
+                this._unwatchAttentionWindow(window);
+            }),
+            window.connect('unmanaged', () => {
+                this._unwatchAttentionWindow(window);
+            }),
+        ];
+        this._attentionWindowSignals.set(window, ids);
+    }
+
+    private _unwatchAttentionWindow(window: Window): void {
+        const ids = this._attentionWindowSignals.get(window);
+        if (ids) {
+            for (const id of ids) {
+                window.disconnect(id);
+            }
+            this._attentionWindowSignals.delete(window);
+        }
+    }
+
+    private _unwatchAllAttentionWindows(): void {
+        for (const [window, ids] of this._attentionWindowSignals) {
+            for (const id of ids) {
+                window.disconnect(id);
+            }
+        }
+        this._attentionWindowSignals.clear();
+    }
+
     private _getWorkspaceState(index: number): WorkspaceState {
         if (index < this.numberOfEnabledWorkspaces) {
             const workspace = global.workspace_manager.get_workspace_by_index(index);
             const hasWindows = getNumberOfWindows(workspace) > 0;
+            const hasAttention =
+                index !== this.currentIndex && hasAttentionWindows(workspace, this._acknowledgedUrgentWindows);
             return {
                 isEnabled: true,
                 isVisible: hasWindows || this._getIsEmptyButVisible(index),
                 hasWindows,
+                hasAttention,
                 index,
                 name: this._settings.workspaceNames.value[index],
             };
@@ -549,6 +671,7 @@ export class Workspaces {
                 isEnabled: false,
                 isVisible: false,
                 hasWindows: false,
+                hasAttention: false,
                 index,
                 name: this._settings.workspaceNames.value[index],
             };
@@ -580,4 +703,28 @@ export class Workspaces {
 function getNumberOfWindows(workspace: Workspace) {
     const windows: Window[] = workspace.list_windows();
     return windows.filter((window) => !window.is_on_all_workspaces()).length;
+}
+
+/**
+ * Returns whether any window on the workspace demands attention or is marked urgent.
+ */
+function isAttentionWindow(w: Window, acknowledged: Set<Window>): boolean {
+    if (w.is_on_all_workspaces()) return false;
+    if (w.skip_taskbar) return false;
+    if (acknowledged.has(w)) return false;
+    if (w.demands_attention) return true;
+    if (w.urgent) return true;
+    return false;
+}
+
+function hasAttentionWindows(workspace: Workspace, acknowledged: Set<Window>): boolean {
+    if (!workspace) return false;
+    const windows: Window[] = workspace.list_windows();
+    return windows.some((w: Window) => isAttentionWindow(w, acknowledged));
+}
+
+function getFirstAttentionWindow(workspace: Workspace, acknowledged: Set<Window>): Window | null {
+    if (!workspace) return null;
+    const windows: Window[] = workspace.list_windows();
+    return windows.find((w: Window) => isAttentionWindow(w, acknowledged)) ?? null;
 }
