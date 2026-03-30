@@ -6,7 +6,7 @@
         "module": "ESNext",
         "moduleResolution": "bundler",
         "lib": ["ES2021"],
-        // "skipLibCheck": true,
+        "skipLibCheck": true,
         "paths": {
             "gnome-shell/*": ["./src/gnome-shell/*"],
         },
