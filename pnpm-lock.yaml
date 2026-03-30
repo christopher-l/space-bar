@@ -20,6 +20,9 @@ importers:
       '@girs/gjs':
         specifier: 4.0.0-beta.43
         version: 4.0.0-beta.43
+      '@girs/glib-2.0':
+        specifier: 2.88.0-4.0.0-beta.43
+        version: 2.88.0-4.0.0-beta.43
       '@girs/gnome-shell':
         specifier: ^49.1.0
         version: 49.1.0

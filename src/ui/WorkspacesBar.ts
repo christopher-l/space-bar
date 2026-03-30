@@ -1,17 +1,16 @@
 import Clutter from 'gi://Clutter';
 import GObject from 'gi://GObject';
-import type Meta from 'gi://Meta';
 import St from 'gi://St';
 import * as DND from 'resource:///org/gnome/shell/ui/dnd.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
-import { WindowPreview } from 'resource:///org/gnome/shell/ui/windowPreview.js';
 import { Settings } from '../services/Settings';
 import { Styles } from '../services/Styles';
 import { WorkspaceState, Workspaces } from '../services/Workspaces';
 import { Subject } from '../utils/Subject';
 import { Timeout } from '../utils/Timeout';
 import { WorkspacesBarMenu } from './WorkspacesBarMenu';
+import { WindowPreview } from 'resource:///org/gnome/shell/ui/windowPreview.js';
 
 interface DragEvent {
     x: number;
@@ -315,13 +314,16 @@ class WorkspacesBarDragHandler {
         draggable.connect('drag-begin', () => {
             this._onDragStart(wsBox, workspace);
             hooks.onDragStart();
+            return undefined;
         });
         draggable.connect('drag-cancelled', () => {
             this._updateDragPlaceholder(this._initialDropPosition!);
             this._onDragFinished(wsBox);
+            return undefined;
         });
         draggable.connect('drag-end', () => {
             this._updateWorkspaces();
+            return undefined;
         });
     }
 
@@ -378,7 +380,7 @@ class WorkspacesBarDragHandler {
         }
     }
 
-    private _onDragMotion(dragEvent: DragEvent): void {
+    private _onDragMotion(dragEvent: DragEvent): DND.DragMotionResult {
         this._updateDragPlaceholder(this._initialDropPosition!);
         return DND.DragMotionResult.CONTINUE;
     }
@@ -482,10 +484,7 @@ class WorkspaceBoxDragHandler {
 
     acceptDrop(source: any) {
         if (source instanceof WindowPreview) {
-            (source.metaWindow as Meta.Window).change_workspace_by_index(
-                this._workspace.index,
-                false,
-            );
+            source.metaWindow.change_workspace_by_index(this._workspace.index, false);
         }
     }
 

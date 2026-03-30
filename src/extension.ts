@@ -1,4 +1,4 @@
-import '@girs/shell-16';
+import '@girs/shell-17';
 
 import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 import { KeyBindings } from './services/KeyBindings';

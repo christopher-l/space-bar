@@ -1,5 +1,5 @@
-interface IPrototype {
-    prototype: any;
+interface IPrototype<T> {
+    prototype: T;
 }
 
 let _destroyFunctions: (() => void)[] = [];
@@ -11,24 +11,25 @@ export function hook<
     F extends string,
     Args extends any[],
     R extends any,
-    C extends { [f in F]: (...args: Args) => R } & IPrototype,
+    O extends { [f in F]: (...args: Args) => R },
+    C extends IPrototype<O>,
 >(
     classObject: C,
     functionName: F,
     pos: 'before' | 'after',
-    callback: (self: C, ...args: Args) => void,
+    callback: (self: O, ...args: Args) => void,
 ) {
     const _originalFunction = classObject.prototype[functionName];
     if (pos === 'before') {
-        classObject.prototype[functionName] = function (...args: Args) {
+        classObject.prototype[functionName] = function (this: O, ...args: Args) {
             callback(this, ...args);
             _originalFunction.apply(this, args);
-        };
+        } as O[F];
     } else {
-        classObject.prototype[functionName] = function (...args: Args) {
+        classObject.prototype[functionName] = function (this: O, ...args: Args) {
             _originalFunction.apply(this, args);
             callback(this, ...args);
-        };
+        } as O[F];
     }
     _destroyFunctions.push(() => {
         classObject.prototype[functionName] = _originalFunction;

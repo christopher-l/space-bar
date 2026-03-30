@@ -16,7 +16,10 @@ export class WorkspacesBarMenu {
     private _hiddenWorkspacesSection = new PopupMenu.PopupMenuSection();
     private _manageWorkspaceSection = new PopupMenu.PopupMenuSection();
 
-    constructor(private readonly _extension: any, private readonly _menu: any) {}
+    constructor(
+        private readonly _extension: any,
+        private readonly _menu: any,
+    ) {}
 
     init(): void {
         this._menu.box.add_style_class_name('space-bar-menu');
@@ -170,6 +173,7 @@ export class WorkspacesBarMenu {
 
 const PopupMenuItemEntry = GObject.registerClass(
     class PopupMenuItem extends PopupMenu.PopupBaseMenuItem {
+        entry!: St.Entry;
         _init(params: any) {
             super._init(params);
             this.entry = new St.Entry({

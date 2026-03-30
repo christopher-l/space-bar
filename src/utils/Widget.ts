@@ -1,4 +1,4 @@
-import '@girs/st-16';
+import '@girs/st-17';
 
 import St from 'gi://St';
 import { Subject } from './Subject';

@@ -7,7 +7,7 @@ import { BehaviorPage } from './preferences/BehaviorPage';
 import { ShortcutsPage } from './preferences/ShortcutsPage';
 
 export default class SpaceBarExtensionPreferences extends ExtensionPreferences {
-    fillPreferencesWindow(window: Adw.PreferencesWindow) {
+    async fillPreferencesWindow(window: Adw.PreferencesWindow) {
         [new BehaviorPage(this), new AppearancePage(this), new ShortcutsPage(this)].forEach(
             (pageObject) => {
                 pageObject.window = window;

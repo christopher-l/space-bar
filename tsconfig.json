@@ -5,11 +5,11 @@
         "outDir": "./target",
         "module": "ESNext",
         "moduleResolution": "bundler",
-        "lib": ["ES2021", "DOM"],
+        "lib": ["ES2021"],
+        // "skipLibCheck": true,
         "paths": {
-            "resource:///org/gnome/shell/*": ["./src/types/dummy/shell/*"],
-            "resource:///org/gnome/Shell/Extensions/js/*": ["./src/types/dummy/shell/*"]
-        }
+            "gnome-shell/*": ["./src/gnome-shell/*"],
+        },
     },
-    "include": ["src/**/*.ts"]
+    "include": ["src"],
 }

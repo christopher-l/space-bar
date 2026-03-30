@@ -1,5 +1,6 @@
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import { Settings } from './Settings';
+import type { Panel } from '../gnome-shell/ui/panel';
 
 export class TopBarAdjustments {
     private static _instance: TopBarAdjustments | null;
@@ -35,7 +36,7 @@ export class TopBarAdjustments {
     }
 
     private _hideSystemWorkspaceIndicator(): void {
-        const activitiesButton = Main.panel.statusArea['activities'];
+        const activitiesButton = (Main.panel as unknown as Panel).statusArea['activities'];
         if (activitiesButton && !Main.sessionMode.isLocked && activitiesButton.is_visible()) {
             activitiesButton.hide();
             this._didHideActivitiesButton = true;
@@ -43,7 +44,7 @@ export class TopBarAdjustments {
     }
 
     private _restoreSystemWorkspaceIndicator(): void {
-        const activitiesButton = Main.panel.statusArea['activities'];
+        const activitiesButton = (Main.panel as unknown as Panel).statusArea['activities'];
         if (activitiesButton && this._didHideActivitiesButton) {
             activitiesButton.show();
             this._didHideActivitiesButton = false;
