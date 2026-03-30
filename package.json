@@ -1,13 +1,14 @@
 {
     "devDependencies": {
         "@girs/adw-1": "1.10.0-4.0.0-beta.43",
-        "@girs/clutter-16": "16.0.0-4.0.0-beta.43",
+        "@girs/clutter-17": "17.0.0-4.0.0-beta.43",
         "@girs/gio-2.0": "2.88.0-4.0.0-beta.43",
         "@girs/gjs": "4.0.0-beta.43",
+        "@girs/gnome-shell": "^49.1.0",
         "@girs/gobject-2.0": "2.88.0-4.0.0-beta.43",
         "@girs/gtk-4.0": "4.22.1-4.0.0-beta.43",
-        "@girs/meta-16": "16.0.0-4.0.0-beta.43",
-        "@girs/shell-16": "16.0.0-4.0.0-beta.43",
-        "@girs/st-16": "16.0.0-4.0.0-beta.43"
+        "@girs/meta-17": "17.0.0-4.0.0-beta.43",
+        "@girs/shell-17": "17.0.0-4.0.0-beta.43",
+        "@girs/st-17": "17.0.0-4.0.0-beta.43"
     }
 }
