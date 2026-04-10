@@ -4,13 +4,13 @@ import St from 'gi://St';
 import * as DND from 'resource:///org/gnome/shell/ui/dnd.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
+import { WindowPreview } from 'resource:///org/gnome/shell/ui/windowPreview.js';
 import { Settings } from '../services/Settings';
 import { Styles } from '../services/Styles';
 import { WorkspaceState, Workspaces } from '../services/Workspaces';
 import { Subject } from '../utils/Subject';
 import { Timeout } from '../utils/Timeout';
 import { WorkspacesBarMenu } from './WorkspacesBarMenu';
-import { WindowPreview } from 'resource:///org/gnome/shell/ui/windowPreview.js';
 
 interface DragEvent {
     x: number;
@@ -131,6 +131,7 @@ export class WorkspacesBar {
             yAlign: Clutter.ActorAlign.CENTER,
         });
         this._button.add_child(this._wsLabel);
+        this._button._clickGesture.set_enabled(false);
         this._button.connect('button-press-event', (actor: any, event: Clutter.Event) => {
             switch (event.get_button()) {
                 case 1:
@@ -149,6 +150,7 @@ export class WorkspacesBar {
     }
 
     private _initWorkspacesBar() {
+        this._button._clickGesture.set_enabled(false);
         this._button._delegate = this._dragHandler;
         this._button.trackHover = false;
         this._wsBar = new St.BoxLayout({});
@@ -205,7 +207,7 @@ export class WorkspacesBar {
                     break;
                 case 3:
                     this._button.menu.toggle();
-                    break;
+                    return Clutter.EVENT_STOP;
             }
             return Clutter.EVENT_PROPAGATE;
         });
@@ -217,12 +219,12 @@ export class WorkspacesBar {
                 case 1:
                     if (lastButton1PressEvent) {
                         const timeDelta = event.get_time() - lastButton1PressEvent.get_time();
+                        lastButton1PressEvent = null;
                         if (timeDelta <= MAX_CLICK_TIME_DELTA) {
                             this._ws.switchTo(workspace.index, 'click-on-label');
+                            return Clutter.EVENT_STOP;
                         }
-                        lastButton1PressEvent = null;
                     }
-                    break;
             }
             return Clutter.EVENT_PROPAGATE;
         });
