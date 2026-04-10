@@ -203,10 +203,10 @@ export class WorkspacesBar {
             switch (event.get_button()) {
                 case 1:
                     lastButton1PressEvent = event;
-                    break;
+                    return Clutter.EVENT_STOP;
                 case 3:
                     this._button.menu.toggle();
-                    break;
+                    return Clutter.EVENT_STOP;
             }
             return Clutter.EVENT_PROPAGATE;
         });
@@ -223,7 +223,7 @@ export class WorkspacesBar {
                         }
                         lastButton1PressEvent = null;
                     }
-                    break;
+                    return Clutter.EVENT_STOP;
             }
             return Clutter.EVENT_PROPAGATE;
         });
