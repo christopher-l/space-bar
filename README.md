@@ -16,19 +16,19 @@ comprehensive set of features to support a workspace-based workflow.
 
 The extension covers its intended features and currently no new features are planned. This means that:
 
--   Migrations to new GNOME versions and fixing of unintended behavior continue to take place.
--   Feature requests and pull requests with new features will generally not be addressed.
--   Discussions, questions, feedback, thoughts, or contributions of any kind are always welcome!
+- Migrations to new GNOME versions and fixing of unintended behavior continue to take place.
+- Feature requests and pull requests with new features will generally not be addressed.
+- Discussions, questions, feedback, thoughts, or contributions of any kind are always welcome!
 
 ## Features
 
--   First class support for static and dynamic workspaces as well as multi-monitor setups
--   Add, remove, and rename workspaces
--   Rearrange workspaces via drag and drop
--   Automatically assign workspace names based on started applications
--   Keyboard shortcuts extend and refine system shortcuts
--   Scroll through workspaces by mouse wheel over the panel
--   Customize the appearance
+- First class support for static and dynamic workspaces as well as multi-monitor setups
+- Add, remove, and rename workspaces
+- Rearrange workspaces via drag and drop
+- Automatically assign workspace names based on started applications
+- Keyboard shortcuts extend and refine system shortcuts
+- Scroll through workspaces by mouse wheel over the panel
+- Customize the appearance
 
 ## Build
 
@@ -68,7 +68,7 @@ Choose "All" and "Yes" for everything.
 Run a GNOME shell instance in a window:
 
 ```sh
-dbus-run-session -- gnome-shell --nested --wayland
+dbus-run-session gnome-shell --devkit --wayland
 ```
 
 View logs:
