@@ -185,8 +185,6 @@ export class Workspaces {
     activate(index: number) {
         const workspace = global.workspace_manager.get_workspace_by_index(index);
         if (workspace) {
-            workspace.activate(global.get_current_time());
-            this.focusMostRecentWindowOnWorkspace(workspace);
             if (
                 !Main.overview.visible &&
                 !this.workspaces[index].hasWindows &&
@@ -194,6 +192,8 @@ export class Workspaces {
             ) {
                 Main.overview.show();
             }
+            workspace.activate(global.get_current_time());
+            this.focusMostRecentWindowOnWorkspace(workspace);
         }
     }
 
