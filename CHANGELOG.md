@@ -1,6 +1,7 @@
 ## v36
 
 - Chore: Separate schema files
+- Chore: Remove unused code
 
 ## v35
 
