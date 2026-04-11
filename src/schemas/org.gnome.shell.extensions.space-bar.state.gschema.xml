@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schemalist>
+    <schema
+        id="org.gnome.shell.extensions.space-bar.state"
+        path="/org/gnome/shell/extensions/space-bar/state/"
+    >
+        <key name="version" type="i">
+            <default>0</default>
+        </key>
+        <key name="workspace-names-map" type="s">
+            <default><![CDATA['{}']]></default>
+        </key>
+    </schema>
+</schemalist>

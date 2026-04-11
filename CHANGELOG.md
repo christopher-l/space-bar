@@ -1,3 +1,7 @@
+## v36
+
+- Chore: Separate schema files
+
 ## v35
 
 - Feature: Add support for GNOME 50

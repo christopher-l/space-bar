@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schemalist>
+    <schema
+        id="org.gnome.shell.extensions.space-bar.shortcuts"
+        path="/org/gnome/shell/extensions/space-bar/shortcuts/"
+    >
+        <key name="enable-activate-workspace-shortcuts" type="b">
+            <default>true</default>
+        </key>
+        <key name="back-and-forth" type="b">
+            <default>false</default>
+        </key>
+        <key name="enable-move-to-workspace-shortcuts" type="b">
+            <default>false</default>
+        </key>
+
+        <key name="move-workspace-left" type="as">
+            <default><![CDATA[['<Control><Alt><Super>Left']]]></default>
+        </key>
+        <key name="move-workspace-right" type="as">
+            <default><![CDATA[['<Control><Alt><Super>Right']]]></default>
+        </key>
+        <key name="activate-previous-key" type="as">
+            <default><![CDATA[['<Super>grave']]]></default>
+            <!-- <default><![CDATA[['<Super>Above_Tab']]]></default> -->
+            <summary>Keybinding to activate the previous workspace.</summary>
+        </key>
+        <key name="activate-empty-key" type="as">
+            <default><![CDATA[['<Super>n']]]></default>
+            <summary>Switch to empty workspace.</summary>
+        </key>
+        <key name="open-menu" type="as">
+            <default><![CDATA[['<Super>W']]]></default>
+            <summary>Keybinding to open the workspaces bar menu.</summary>
+        </key>
+
+        <key name="activate-1-key" type="as">
+            <default><![CDATA[['<Super>1']]]></default>
+            <summary>Keybinding to activate workspace 1.</summary>
+        </key>
+        <key name="activate-2-key" type="as">
+            <default><![CDATA[['<Super>2']]]></default>
+            <summary>Keybinding to activate workspace 2.</summary>
+        </key>
+        <key name="activate-3-key" type="as">
+            <default><![CDATA[['<Super>3']]]></default>
+            <summary>Keybinding to activate workspace 3.</summary>
+        </key>
+        <key name="activate-4-key" type="as">
+            <default><![CDATA[['<Super>4']]]></default>
+            <summary>Keybinding to activate workspace 4.</summary>
+        </key>
+        <key name="activate-5-key" type="as">
+            <default><![CDATA[['<Super>5']]]></default>
+            <summary>Keybinding to activate workspace 5.</summary>
+        </key>
+        <key name="activate-6-key" type="as">
+            <default><![CDATA[['<Super>6']]]></default>
+            <summary>Keybinding to activate workspace 6.</summary>
+        </key>
+        <key name="activate-7-key" type="as">
+            <default><![CDATA[['<Super>7']]]></default>
+            <summary>Keybinding to activate workspace 7.</summary>
+        </key>
+        <key name="activate-8-key" type="as">
+            <default><![CDATA[['<Super>8']]]></default>
+            <summary>Keybinding to activate workspace 8.</summary>
+        </key>
+        <key name="activate-9-key" type="as">
+            <default><![CDATA[['<Super>9']]]></default>
+            <summary>Keybinding to activate workspace 9.</summary>
+        </key>
+        <key name="activate-10-key" type="as">
+            <default><![CDATA[['<Super>0']]]></default>
+            <summary>Keybinding to activate workspace 10.</summary>
+        </key>
+    </schema>
+</schemalist>
