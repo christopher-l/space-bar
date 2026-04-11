@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "rootDir": "src",
         "target": "ES2021",
         "strict": true,
         "outDir": "./target",
@@ -11,5 +12,4 @@
             "gnome-shell/*": ["./src/gnome-shell/*"],
         },
     },
-    "include": ["src"],
 }
