@@ -173,9 +173,9 @@ export class WorkspacesBarMenu {
 
 const PopupMenuItemEntry = GObject.registerClass(
     class PopupMenuItem extends PopupMenu.PopupBaseMenuItem {
-        entry!: St.Entry;
-        _init(params: any) {
-            super._init(params);
+        entry: St.Entry;
+        constructor(params = {}) {
+            super(params);
             this.entry = new St.Entry({
                 xExpand: true,
             });
