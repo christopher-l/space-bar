@@ -1,16 +1,17 @@
 import Clutter from 'gi://Clutter';
 import GObject from 'gi://GObject';
 import St from 'gi://St';
+import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as DND from 'resource:///org/gnome/shell/ui/dnd.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 import { WindowPreview } from 'resource:///org/gnome/shell/ui/windowPreview.js';
-import { Settings } from '../services/Settings';
-import { Styles } from '../services/Styles';
-import { WorkspaceState, Workspaces } from '../services/Workspaces';
-import { Subject } from '../utils/Subject';
-import { Timeout } from '../utils/Timeout';
-import { WorkspacesBarMenu } from './WorkspacesBarMenu';
+import { Settings } from '../services/Settings.js';
+import { Styles } from '../services/Styles.js';
+import { WorkspaceState, Workspaces } from '../services/Workspaces.js';
+import { Subject } from '../utils/Subject.js';
+import { Timeout } from '../utils/Timeout.js';
+import { WorkspacesBarMenu } from './WorkspacesBarMenu.js';
 
 interface DragEvent {
     x: number;
@@ -49,7 +50,7 @@ const MAX_CLICK_TIME_DELTA = 300;
 const LONG_PRESS_DURATION = 500;
 
 export class WorkspacesBar {
-    private readonly _name = `${this._extension.metadata.name}`;
+    private readonly _name: string;
     private readonly _settings = Settings.getInstance();
     private readonly _styles = Styles.getInstance();
     private readonly _ws = Workspaces.getInstance();
@@ -63,7 +64,9 @@ export class WorkspacesBar {
     private readonly _dragHandler = new WorkspacesBarDragHandler(() => this._updateWorkspaces());
     private readonly _touchTimeout = new Timeout();
 
-    constructor(private _extension: any) {}
+    constructor(private _extension: Extension) {
+        this._name = `${this._extension.metadata.name}`;
+    }
 
     init(): void {
         this._initButton();

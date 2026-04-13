@@ -1,6 +1,6 @@
 import type Meta from 'gi://Meta';
-import { Settings } from './Settings';
-import type { WorkspaceState, Workspaces } from './Workspaces';
+import { Settings } from './Settings.js';
+import type { WorkspaceState, Workspaces } from './Workspaces.js';
 type Window = Meta.Window;
 
 export class WorkspaceNames {

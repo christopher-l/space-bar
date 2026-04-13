@@ -4,7 +4,7 @@ import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
-import { DropDownChoice, DropDownChoiceClass } from './DropDownChoice';
+import { DropDownChoice, DropDownChoiceClass } from './DropDownChoice.js';
 
 interface EnableCondition {
     key: string;

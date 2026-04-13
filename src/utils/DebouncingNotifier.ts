@@ -1,5 +1,5 @@
 import GLib from 'gi://GLib';
-import { Subject } from './Subject';
+import { Subject } from './Subject.js';
 
 /**
  * A subscribe/notify mechanism that debounces multiple subsequent notify calls.

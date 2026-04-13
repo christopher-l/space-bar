@@ -1,6 +1,6 @@
 import Adw from 'gi://Adw';
 import Gio from 'gi://Gio';
-import { addKeyboardShortcut, addToggle } from './common';
+import { addKeyboardShortcut, addToggle } from './common.js';
 
 export class ShortcutsPage {
     window!: Adw.PreferencesWindow;

@@ -1,13 +1,11 @@
-import '@girs/adw-1';
-
-import type Adw from 'gi://Adw';
+import Adw from 'gi://Adw';
 import { ExtensionPreferences } from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
-import { AppearancePage } from './preferences/AppearancePage';
-import { BehaviorPage } from './preferences/BehaviorPage';
-import { ShortcutsPage } from './preferences/ShortcutsPage';
+import { AppearancePage } from './preferences/AppearancePage.js';
+import { BehaviorPage } from './preferences/BehaviorPage.js';
+import { ShortcutsPage } from './preferences/ShortcutsPage.js';
 
 export default class SpaceBarExtensionPreferences extends ExtensionPreferences {
-    async fillPreferencesWindow(window: Adw.PreferencesWindow) {
+    async fillPreferencesWindow(window: Adw.PreferencesWindow): Promise<void> {
         [new BehaviorPage(this), new AppearancePage(this), new ShortcutsPage(this)].forEach(
             (pageObject) => {
                 pageObject.window = window;

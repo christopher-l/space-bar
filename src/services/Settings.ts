@@ -1,16 +1,19 @@
 import Gio from 'gi://Gio';
-import { fontWeightOptions } from '../preferences/AppearancePage';
+import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
+import { fontWeightOptions } from '../preferences/AppearancePage.js';
 import {
     indicatorStyleOptions,
     positionOptions,
     scrollWheelDirectionOptions,
     scrollWheelOptions,
-} from '../preferences/BehaviorPage';
+} from '../preferences/BehaviorPage.js';
 
 export class Settings {
     private static _instance: Settings | null;
-    static init(extension: any) {
-        Settings._instance = new Settings(extension);
+    private static _extension: Extension;
+    static init(extension: Extension) {
+        Settings._extension = extension;
+        Settings._instance = new Settings();
         Settings._instance.init();
     }
     static destroy() {
@@ -21,19 +24,17 @@ export class Settings {
         return Settings._instance as Settings;
     }
 
-    constructor(private _extension: any) {}
-
-    readonly state = this._extension.getSettings(
-        `${this._extension.metadata['settings-schema']}.state`,
+    readonly state = Settings._extension.getSettings(
+        `${Settings._extension.metadata['settings-schema']}.state`,
     );
-    readonly behaviorSettings = this._extension.getSettings(
-        `${this._extension.metadata['settings-schema']}.behavior`,
+    readonly behaviorSettings = Settings._extension.getSettings(
+        `${Settings._extension.metadata['settings-schema']}.behavior`,
     );
-    readonly appearanceSettings = this._extension.getSettings(
-        `${this._extension.metadata['settings-schema']}.appearance`,
+    readonly appearanceSettings = Settings._extension.getSettings(
+        `${Settings._extension.metadata['settings-schema']}.appearance`,
     );
-    readonly shortcutsSettings = this._extension.getSettings(
-        `${this._extension.metadata['settings-schema']}.shortcuts`,
+    readonly shortcutsSettings = Settings._extension.getSettings(
+        `${Settings._extension.metadata['settings-schema']}.shortcuts`,
     );
     readonly mutterSettings = new Gio.Settings({ schema: 'org.gnome.mutter' });
     readonly wmPreferencesSettings = new Gio.Settings({
@@ -285,7 +286,7 @@ export class Settings {
                 this.indicatorStyle.value = 'current-workspace';
             }
         }
-        this._version.value = this._extension.metadata['version'];
+        this._version.value = Settings._extension.metadata['version'];
     }
 }
 

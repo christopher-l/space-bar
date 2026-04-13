@@ -2,10 +2,10 @@ import Clutter from 'gi://Clutter';
 import GObject from 'gi://GObject';
 import St from 'gi://St';
 import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
-import { KeyBindings } from '../services/KeyBindings';
-import { Settings } from '../services/Settings';
-import { WorkspaceNames } from '../services/WorkspaceNames';
-import { WorkspaceState, Workspaces } from '../services/Workspaces';
+import { KeyBindings } from '../services/KeyBindings.js';
+import { Settings } from '../services/Settings.js';
+import { WorkspaceNames } from '../services/WorkspaceNames.js';
+import { WorkspaceState, Workspaces } from '../services/Workspaces.js';
 
 export class WorkspacesBarMenu {
     private readonly _keyBindings = KeyBindings.getInstance();

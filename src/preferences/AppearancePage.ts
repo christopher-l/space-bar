@@ -1,7 +1,7 @@
 import Adw from 'gi://Adw';
 import Gio from 'gi://Gio';
-import { addColorButton, addCombo, addSpinButton } from './common';
-import { addCustomCssDialogButton } from './custom-styles';
+import { addColorButton, addCombo, addSpinButton } from './common.js';
+import { addCustomCssDialogButton } from './custom-styles.js';
 
 export const fontWeightOptions = {
     '100': 'Thin',

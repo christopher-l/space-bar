@@ -1,15 +1,17 @@
 {
     "compilerOptions": {
-        "rootDir": "src",
-        "target": "ES2021",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "rootDir": "./src",
+        "outDir": "./dist",
         "strict": true,
-        "outDir": "./target",
-        "module": "ESNext",
-        "moduleResolution": "bundler",
-        "lib": ["ES2021"],
         "skipLibCheck": true,
+        "target": "ES2023",
+        "lib": ["ES2023"],
         "paths": {
-            "gnome-shell/*": ["./src/gnome-shell/*"],
+            "types/*": ["./src/types/*"],
         },
     },
+    "include": ["src/types/ambient.d.ts"],
+    "files": ["src/prefs.ts", "src/extension.ts"],
 }

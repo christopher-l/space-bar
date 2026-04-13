@@ -1,4 +1,3 @@
-@types
-target
-space-bar@luchrioh.shell-extension.zip
-node_modules
+/node_modules
+/dist
+/space-bar@luchrioh.shell-extension.zip
