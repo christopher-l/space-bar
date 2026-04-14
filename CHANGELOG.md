@@ -1,3 +1,10 @@
+## v37
+
+- Fix: Deprecated usage of GObject when creating PopupMenuItem
+- Chore: Migrate to GJS usage as suggested by GNOME resources
+- Chore: Use Zip for packing
+- Docs: Update Readme
+
 ## v36
 
 - Chore: Separate schema files

@@ -36,6 +36,7 @@ The source code of this extension is written in TypeScript. The following comman
 extension and package it to a zip file.
 
 ```sh
+pnpm install
 ./scripts/build.sh
 ```
 
@@ -46,22 +47,6 @@ The following command will build the extension and install it locally.
 ```sh
 ./scripts/build.sh -i
 ```
-
-## Generate types
-
-For development with TypeScript, you can get type support in IDEs like VSCode by building and
-installing type information for used libraries. Generating types is optional and not required for
-building the extension. (For that, we use a different configuration that stubs type information with
-dummy types.)
-
-To generate types, run
-
-```sh
-npm install
-npm run build:types
-```
-
-Choose "All" and "Yes" for everything.
 
 ## Debug
 
