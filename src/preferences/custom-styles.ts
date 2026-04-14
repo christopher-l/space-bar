@@ -158,7 +158,7 @@ function buildHeaderBar({
         active: settings.get_boolean('custom-styles-enabled'),
         marginStart: 12,
     });
-    settings.bind('custom-styles-enabled', enabledToggle, 'active', Gio.SettingsBindFlags.DEFAULT);
+    settings.bind('custom-styles-enabled', enabledToggle as any, 'active', Gio.SettingsBindFlags.DEFAULT);
     headerBar.pack_start(enabledToggle);
     const applyButton = new Gtk.Button({
         label: 'Apply',

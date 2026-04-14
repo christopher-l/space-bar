@@ -10,6 +10,13 @@ function clear() (
 	fi
 )
 
+function install_deps() (
+	if [ ! -d node_modules ]; then
+		echo "Installing dependencies..."
+		npm install
+	fi
+)
+
 function compile() (
 	tsc
 )
@@ -36,13 +43,19 @@ function copyAdditionalFiles() (
 			cp "$file" "../target/$file"
 		done
 	)
+
+	# Compile GSettings schemas
+	if [ -d target/schemas ]; then
+		glib-compile-schemas target/schemas
+	fi
 )
 
 function pack() (
-	gnome-extensions pack target --force $(
-		cd target
-		for file in *; do echo "--extra-source=$file"; done
-	)
+	# Use zip to create a proper extension bundle with all files
+	rm -f "$PACK_FILE"
+	cd target
+	zip -r "../$PACK_FILE" .
+	cd ..
 	echo "Packed $PACK_FILE"
 )
 
@@ -53,6 +66,7 @@ function install() (
 
 function main() (
 	cd "$(dirname ${BASH_SOURCE[0]})/.."
+	install_deps
 	clear
 	compile
 	fixupJavaScript

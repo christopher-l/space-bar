@@ -227,7 +227,7 @@ export function addToggle({
         active: settings.get_boolean(key),
         valign: Gtk.Align.CENTER,
     });
-    settings.bind(key, toggle, 'active', Gio.SettingsBindFlags.DEFAULT);
+    settings.bind(key, toggle as any, 'active', Gio.SettingsBindFlags.DEFAULT);
 
     row.add_suffix(toggle);
     row.activatableWidget = toggle;
@@ -324,14 +324,14 @@ export function addCombo({
     const row = new Adw.ComboRow({
         title,
         subtitle: subtitle as string | undefined,
-        model,
+        model: model as any,
         expression: Gtk.PropertyExpression.new(DropDownChoice, null, 'title'),
     });
     group.add(row);
     row.connect('notify::selected-item', () => {
         // This may trigger without user interaction, so we only update the value when it differs
         // from the the default value or a user value has been set before.
-        const value = (row.selectedItem as DropDownChoiceClass).id;
+        const value = (row.selectedItem as unknown as DropDownChoiceClass).id;
         if (settings.get_user_value(key) !== null || settings.get_string(key) !== value) {
             settings.set_string(key, value);
         }
@@ -389,7 +389,7 @@ export function addSpinButton({
         halign: Gtk.Align.CENTER,
     });
 
-    settings.bind(key, spinner, 'value', Gio.SettingsBindFlags.DEFAULT);
+    settings.bind(key, spinner as any, 'value', Gio.SettingsBindFlags.DEFAULT);
 
     row.add_suffix(spinner);
     row.activatableWidget = spinner;

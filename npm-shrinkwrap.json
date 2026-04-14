@@ -1,0 +1,3131 @@
+{
+    "name": "space-bar",
+    "lockfileVersion": 3,
+    "requires": true,
+    "packages": {
+        "": {
+            "name": "space-bar",
+            "devDependencies": {
+                "@girs/adw-1": "^1.10.0-4.0.0-rc.2",
+                "@girs/clutter-17": "^17.0.0-4.0.0-rc.2",
+                "@girs/gio-2.0": "^2.88.0-4.0.0-rc.2",
+                "@girs/gjs": "^4.0.0-rc.2",
+                "@girs/glib-2.0": "^2.88.0-4.0.0-rc.2",
+                "@girs/gnome-shell": "^49.1.0",
+                "@girs/gobject-2.0": "^2.88.0-4.0.0-rc.2",
+                "@girs/gtk-4.0": "^4.23.0-4.0.0-rc.2",
+                "@girs/meta-17": "^17.0.0-4.0.0-rc.2",
+                "@girs/shell-17": "^17.0.0-4.0.0-rc.2",
+                "@girs/st-17": "^17.0.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/accountsservice-1.0": {
+            "version": "1.0.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/accountsservice-1.0/-/accountsservice-1.0-1.0.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-6QzytM5dztmMynF2bxN73EuNK9ArMFxkP2L8wUC7IH45zBeBOfYcqL85BFh2PmkGmqRk+Rli5EFR8dAkx3Ig5Q==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gio-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/accountsservice-1.0/node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-VJa0vw9teZjCydDzWIcbNBwT37MSej52rqwBuQ/ir7+72+7dpzeudkNOOif1nDIulGu+RLAy4cgWbguQhsUH/Q==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/accountsservice-1.0/node_modules/@girs/gio-2.0": {
+            "version": "2.86.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.86.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-hKCyDEqSIgqcZeFf63KNrUnrYtAuJ0yfIypbdLgNEMbJBPQ/e3ZiwzWa7i3OPCh52Cnl9qYRdj8MSbZndpyZiQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/accountsservice-1.0/node_modules/@girs/gjs": {
+            "version": "4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-beta.38.tgz",
+            "integrity": "sha512-eI/9lfI1mQpXN8RsKiNRFWJso6LgQe9Eb+YxLAdKarD5fccvIRx3chsyIyhw5tYH7VvgaZkqm1c4GX7pDDokBQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-beta.38",
+                "@girs/gio-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/accountsservice-1.0/node_modules/@girs/glib-2.0": {
+            "version": "2.86.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.86.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-TFbrh5+Y3pb61synbhi37VrRzh0e+JQaRCzfGbe7oewUq0v7Sb8eSi2Fmj98r5tCizaRYptqgt6bxG7G5cFzVg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/accountsservice-1.0/node_modules/@girs/gmodule-2.0": {
+            "version": "2.0.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/gmodule-2.0/-/gmodule-2.0-2.0.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-BmspJtwdBSfCJRZQMxn3gx6H9FNcoqCebFXK2UKknq18DIo8U2q4iN/jQBWPoLh2siK9LhCdL2egoyXteTy1NA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/accountsservice-1.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.86.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.86.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-oYrm6Gb/tCQosMkN8Beu5jqGRkJ7LED4O1H1dKYOI4SnP1Ojb66A9ECy78yTO8piBtMopsbRODV81yKniVtKKA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/adw-1": {
+            "version": "1.10.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/adw-1/-/adw-1-1.10.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-9VFEjsFc4+jCHSob2TSw0dIGQ8ZSR32CIQBOm9L/7feqWQWRCzN8hEr7kt+s8vRBYJy3MqOoryLbnwE34NFHEQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gdk-4.0": "4.0.0-4.0.0-rc.3",
+                "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/graphene-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/gsk-4.0": "4.0.0-4.0.0-rc.3",
+                "@girs/gtk-4.0": "4.23.0-4.0.0-rc.3",
+                "@girs/harfbuzz-0.0": "13.2.1-4.0.0-rc.3",
+                "@girs/pango-1.0": "1.57.1-4.0.0-rc.3",
+                "@girs/pangocairo-1.0": "1.0.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/adw-1/node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-k/yDmgmzn811QDQYkqsA3sgmvXqystLQBEcTaT46XXX42z14rVybimqlXylsoCTTaC61SIOelFLolzWP7z8ZEg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/adw-1/node_modules/@girs/freetype2-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/freetype2-2.0/-/freetype2-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-xYbmRZmMYrfyNWoOfmoQ3MNerBU2XLm9fXdlY883aE/yUX1HxXlvj5XRpA6yXStZVjs9keqwDLCklKYQHRCv9A==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/adw-1/node_modules/@girs/gdkpixbuf-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gdkpixbuf-2.0/-/gdkpixbuf-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-0w/oIjxcN2SPskI7TTKTl3UuhndhcVDnBVAwX9iehOeI+mGROhQXqT795qJYPfsPe9lfBKBU0mJuZNLHs27xUg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/adw-1/node_modules/@girs/gio-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-yMccXSGk0/3+pdH6O2KVyPrltdQkfV/PVO2Pbsqa1nxQIQwCp+r9LnPbskYqD7hm9Rxtws44xZuHxmykCL79iA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/adw-1/node_modules/@girs/gjs": {
+            "version": "4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-rc.3.tgz",
+            "integrity": "sha512-0+Dtzoz0cx2Wxv8TwaZIM4uhowK5j5hsw37yQSNuP07xK/X4nil/0oXMqJEsMVnPeNeGqlyksWToP4sCOzXTAQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/adw-1/node_modules/@girs/glib-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-P0A2sg0YuRJDzE8n+PYeMCSoS1gIuQgQRWHPhgtfZ0Bee01XG63Izbzo9mIyLRB+Xqpv96tppGyfi8/cr34t8w==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/adw-1/node_modules/@girs/gmodule-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gmodule-2.0/-/gmodule-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-TvvjgbsQ/rdotrKRejdoZvf9MunjWYVgMjq0ZhHnuoNZ7xr2jcJbPf5tm58Qzq8FAmVjIgcG4Z4S+nNWRFktSg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/adw-1/node_modules/@girs/gobject-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-cZ2aMK42rlG0nVQ1oJD5vUlgA6/TPtscC7LRQ/kJVciG2EtfnUNso3csMvAPRGnDWadlQ7K+E723nkSDr3SNwA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/adw-1/node_modules/@girs/graphene-1.0": {
+            "version": "1.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/graphene-1.0/-/graphene-1.0-1.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-WWmH5PJDdtTYjOSnIaMnJuJ4SP4kQtd4tr1tvCwzbdD2Y6QSQYesVvPCQQ7G6J5QuxJktoP8Xfif4IXgyjpWRg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/adw-1/node_modules/@girs/harfbuzz-0.0": {
+            "version": "13.2.1-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/harfbuzz-0.0/-/harfbuzz-0.0-13.2.1-4.0.0-rc.3.tgz",
+            "integrity": "sha512-B2EcirQd2bQqo1DEpxiacpN8tIhJbwGFD2rCFOw4LpLNuyWeRh16yevhntefc4Ub73/QfChO+CLCay/i6VhbZQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/adw-1/node_modules/@girs/pango-1.0": {
+            "version": "1.57.1-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/pango-1.0/-/pango-1.0-1.57.1-4.0.0-rc.3.tgz",
+            "integrity": "sha512-WVVtMGP63QgufQEvpfVwJPscMmomyqRSkg+Ax4V4xlF/TA3joBTgc688wZSrko0fDJnZ5MaQoZloA9PjAYMuhw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/harfbuzz-0.0": "13.2.1-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/atk-1.0": {
+            "version": "2.60.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/atk-1.0/-/atk-1.0-2.60.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-o+Z5mKOWOApNFWc+35ApxmK+HGhfNMzG/KAq9Ro2g18hiwauEZ4/uAoYMBTw6T+mJqfKZwjw4EpbPnc//nNHQQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-Cn/+jLIjgBMoGJoGBhWB63KuyyKglSIhvfAz2KJHRW0GNsvLdjt8Gl7C8aUjaQHmp82UjQLIPV59Uzquh20Saw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/clutter-17": {
+            "version": "17.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/clutter-17/-/clutter-17-17.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-9OTIP/bTi7cfni7Em+RxAcgf87nQ7yPh9NuV4kcXrdbxvyAl3AU4bZSvuqPzo+HmxH4bJuaFrPCfaRqjcBtd8Q==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/atk-1.0": "2.60.0-4.0.0-rc.2",
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.2",
+                "@girs/cogl-17": "17.0.0-4.0.0-rc.2",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/gl-1.0": "1.0.0-4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/graphene-1.0": "1.0.0-4.0.0-rc.2",
+                "@girs/harfbuzz-0.0": "13.2.1-4.0.0-rc.2",
+                "@girs/mtk-17": "17.0.0-4.0.0-rc.2",
+                "@girs/pango-1.0": "1.57.1-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/cogl-17": {
+            "version": "17.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/cogl-17/-/cogl-17-17.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-GcRe7djPv97k+iYHCkOkSHePqZG69eyiM3SuQk1uyqXKPn6uDPtPdbWQRUWJ/Tks6nAP22zbOf8EzcMb1717+w==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/gl-1.0": "1.0.0-4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/graphene-1.0": "1.0.0-4.0.0-rc.2",
+                "@girs/mtk-17": "17.0.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/cogl-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/cogl-2.0/-/cogl-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-66E9MepSJLFjbq1DbE+3zUf2OVr9xoOx7K/q+8BwAe59ulH2foV+Y0DNTi+Ovs04Gc5cVPYeKCoQTHDny8Z3BQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gl-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/cogl-2.0/node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-k/yDmgmzn811QDQYkqsA3sgmvXqystLQBEcTaT46XXX42z14rVybimqlXylsoCTTaC61SIOelFLolzWP7z8ZEg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/cogl-2.0/node_modules/@girs/gio-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-yMccXSGk0/3+pdH6O2KVyPrltdQkfV/PVO2Pbsqa1nxQIQwCp+r9LnPbskYqD7hm9Rxtws44xZuHxmykCL79iA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/cogl-2.0/node_modules/@girs/gjs": {
+            "version": "4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-rc.3.tgz",
+            "integrity": "sha512-0+Dtzoz0cx2Wxv8TwaZIM4uhowK5j5hsw37yQSNuP07xK/X4nil/0oXMqJEsMVnPeNeGqlyksWToP4sCOzXTAQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/cogl-2.0/node_modules/@girs/gl-1.0": {
+            "version": "1.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gl-1.0/-/gl-1.0-1.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-DnXV9g28exsLxGaA/uBLFxRoF4oT0axyIB+puYp83GqKxAZRlrlt1g+8h/J/1ffsmTd6aROsrvb99Gqk4I2ibg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/cogl-2.0/node_modules/@girs/glib-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-P0A2sg0YuRJDzE8n+PYeMCSoS1gIuQgQRWHPhgtfZ0Bee01XG63Izbzo9mIyLRB+Xqpv96tppGyfi8/cr34t8w==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/cogl-2.0/node_modules/@girs/gmodule-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gmodule-2.0/-/gmodule-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-TvvjgbsQ/rdotrKRejdoZvf9MunjWYVgMjq0ZhHnuoNZ7xr2jcJbPf5tm58Qzq8FAmVjIgcG4Z4S+nNWRFktSg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/cogl-2.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-cZ2aMK42rlG0nVQ1oJD5vUlgA6/TPtscC7LRQ/kJVciG2EtfnUNso3csMvAPRGnDWadlQ7K+E723nkSDr3SNwA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/freetype2-2.0": {
+            "version": "2.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/freetype2-2.0/-/freetype2-2.0-2.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-C7CeMOFnmCnlquzuCM0bxTGGVqUIw7BZ0xn8dMf0QwJviCznJLTGfG+WZojU1FBF2luSrtUzPVUMBhiv75ylxw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/gck-2": {
+            "version": "4.4.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/gck-2/-/gck-2-4.4.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-eMRurXgJElzk6BCWoDk4l2Ak1Rzp0d6NpaBWxMEHyb4Pf2kYo0CT+DjXX8YEiP9ntXs+3flSh3yJ0C5SPEZM+A==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/gcr-4": {
+            "version": "4.4.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/gcr-4/-/gcr-4-4.4.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-n52FsZUMPx5LmPLGLB1LWb9vESvLqKosvF5Pj9koqJhj986PryCZUkHwwsEYE5NGk+PR+fKOrTn+oLjTaqyFsQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gck-2": "4.4.0-4.0.0-rc.2",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/gdesktopenums-3.0": {
+            "version": "3.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gdesktopenums-3.0/-/gdesktopenums-3.0-3.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-2ZVxa0j8M8HRjQHLUa8gdAIngrDSHdk9giKFZBkcn5MZ3OgwfDAyTVSzJ+fyavKJVjSwxeJUJOEyZyaErAlr3Q==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdesktopenums-3.0/node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-k/yDmgmzn811QDQYkqsA3sgmvXqystLQBEcTaT46XXX42z14rVybimqlXylsoCTTaC61SIOelFLolzWP7z8ZEg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdesktopenums-3.0/node_modules/@girs/gio-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-yMccXSGk0/3+pdH6O2KVyPrltdQkfV/PVO2Pbsqa1nxQIQwCp+r9LnPbskYqD7hm9Rxtws44xZuHxmykCL79iA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdesktopenums-3.0/node_modules/@girs/gjs": {
+            "version": "4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-rc.3.tgz",
+            "integrity": "sha512-0+Dtzoz0cx2Wxv8TwaZIM4uhowK5j5hsw37yQSNuP07xK/X4nil/0oXMqJEsMVnPeNeGqlyksWToP4sCOzXTAQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdesktopenums-3.0/node_modules/@girs/glib-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-P0A2sg0YuRJDzE8n+PYeMCSoS1gIuQgQRWHPhgtfZ0Bee01XG63Izbzo9mIyLRB+Xqpv96tppGyfi8/cr34t8w==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdesktopenums-3.0/node_modules/@girs/gmodule-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gmodule-2.0/-/gmodule-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-TvvjgbsQ/rdotrKRejdoZvf9MunjWYVgMjq0ZhHnuoNZ7xr2jcJbPf5tm58Qzq8FAmVjIgcG4Z4S+nNWRFktSg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdesktopenums-3.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-cZ2aMK42rlG0nVQ1oJD5vUlgA6/TPtscC7LRQ/kJVciG2EtfnUNso3csMvAPRGnDWadlQ7K+E723nkSDr3SNwA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdk-4.0": {
+            "version": "4.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gdk-4.0/-/gdk-4.0-4.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-mpNhH4EohF1d+wC8cAgKnPPvnhYt4Pb6QlqOO2alLRvwlcA79pw9ZfbH6tFVsNnsylyDmQCjOEs2yOwEgxToSQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/harfbuzz-0.0": "13.2.1-4.0.0-rc.3",
+                "@girs/pango-1.0": "1.57.1-4.0.0-rc.3",
+                "@girs/pangocairo-1.0": "1.0.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdk-4.0/node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-k/yDmgmzn811QDQYkqsA3sgmvXqystLQBEcTaT46XXX42z14rVybimqlXylsoCTTaC61SIOelFLolzWP7z8ZEg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdk-4.0/node_modules/@girs/freetype2-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/freetype2-2.0/-/freetype2-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-xYbmRZmMYrfyNWoOfmoQ3MNerBU2XLm9fXdlY883aE/yUX1HxXlvj5XRpA6yXStZVjs9keqwDLCklKYQHRCv9A==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdk-4.0/node_modules/@girs/gdkpixbuf-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gdkpixbuf-2.0/-/gdkpixbuf-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-0w/oIjxcN2SPskI7TTKTl3UuhndhcVDnBVAwX9iehOeI+mGROhQXqT795qJYPfsPe9lfBKBU0mJuZNLHs27xUg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdk-4.0/node_modules/@girs/gio-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-yMccXSGk0/3+pdH6O2KVyPrltdQkfV/PVO2Pbsqa1nxQIQwCp+r9LnPbskYqD7hm9Rxtws44xZuHxmykCL79iA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdk-4.0/node_modules/@girs/gjs": {
+            "version": "4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-rc.3.tgz",
+            "integrity": "sha512-0+Dtzoz0cx2Wxv8TwaZIM4uhowK5j5hsw37yQSNuP07xK/X4nil/0oXMqJEsMVnPeNeGqlyksWToP4sCOzXTAQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdk-4.0/node_modules/@girs/glib-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-P0A2sg0YuRJDzE8n+PYeMCSoS1gIuQgQRWHPhgtfZ0Bee01XG63Izbzo9mIyLRB+Xqpv96tppGyfi8/cr34t8w==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdk-4.0/node_modules/@girs/gmodule-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gmodule-2.0/-/gmodule-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-TvvjgbsQ/rdotrKRejdoZvf9MunjWYVgMjq0ZhHnuoNZ7xr2jcJbPf5tm58Qzq8FAmVjIgcG4Z4S+nNWRFktSg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdk-4.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-cZ2aMK42rlG0nVQ1oJD5vUlgA6/TPtscC7LRQ/kJVciG2EtfnUNso3csMvAPRGnDWadlQ7K+E723nkSDr3SNwA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdk-4.0/node_modules/@girs/harfbuzz-0.0": {
+            "version": "13.2.1-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/harfbuzz-0.0/-/harfbuzz-0.0-13.2.1-4.0.0-rc.3.tgz",
+            "integrity": "sha512-B2EcirQd2bQqo1DEpxiacpN8tIhJbwGFD2rCFOw4LpLNuyWeRh16yevhntefc4Ub73/QfChO+CLCay/i6VhbZQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdk-4.0/node_modules/@girs/pango-1.0": {
+            "version": "1.57.1-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/pango-1.0/-/pango-1.0-1.57.1-4.0.0-rc.3.tgz",
+            "integrity": "sha512-WVVtMGP63QgufQEvpfVwJPscMmomyqRSkg+Ax4V4xlF/TA3joBTgc688wZSrko0fDJnZ5MaQoZloA9PjAYMuhw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/harfbuzz-0.0": "13.2.1-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdkpixbuf-2.0": {
+            "version": "2.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/gdkpixbuf-2.0/-/gdkpixbuf-2.0-2.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-UqYE6KMuMQOT/uARNA09bDgtHYTmzcRjnhv737DzLsgLPGs+90X3g3HguamBbaG4/YlZCxQqaMxRfaTXWHp6lQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/gdm-1.0": {
+            "version": "1.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gdm-1.0/-/gdm-1.0-1.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-hisc6qQ42jMsaJAMc3qNM9tVff15D8VJVQsDe5mWr4RXARC2xb45ADKSNcvoN7LV2oELtD/nWTnpty7tXpz5kQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdm-1.0/node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-k/yDmgmzn811QDQYkqsA3sgmvXqystLQBEcTaT46XXX42z14rVybimqlXylsoCTTaC61SIOelFLolzWP7z8ZEg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdm-1.0/node_modules/@girs/gio-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-yMccXSGk0/3+pdH6O2KVyPrltdQkfV/PVO2Pbsqa1nxQIQwCp+r9LnPbskYqD7hm9Rxtws44xZuHxmykCL79iA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdm-1.0/node_modules/@girs/gjs": {
+            "version": "4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-rc.3.tgz",
+            "integrity": "sha512-0+Dtzoz0cx2Wxv8TwaZIM4uhowK5j5hsw37yQSNuP07xK/X4nil/0oXMqJEsMVnPeNeGqlyksWToP4sCOzXTAQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdm-1.0/node_modules/@girs/glib-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-P0A2sg0YuRJDzE8n+PYeMCSoS1gIuQgQRWHPhgtfZ0Bee01XG63Izbzo9mIyLRB+Xqpv96tppGyfi8/cr34t8w==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdm-1.0/node_modules/@girs/gmodule-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gmodule-2.0/-/gmodule-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-TvvjgbsQ/rdotrKRejdoZvf9MunjWYVgMjq0ZhHnuoNZ7xr2jcJbPf5tm58Qzq8FAmVjIgcG4Z4S+nNWRFktSg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gdm-1.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-cZ2aMK42rlG0nVQ1oJD5vUlgA6/TPtscC7LRQ/kJVciG2EtfnUNso3csMvAPRGnDWadlQ7K+E723nkSDr3SNwA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gio-2.0": {
+            "version": "2.88.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.88.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-iksSWjhNoKoRO6S036awWGMVhO7VhnmvtC0aSn7lawvm1VzBh/Swz5Z8uQ8AHrNN5m5IC9SOCnnclGV02Cf85Q==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/giounix-2.0": {
+            "version": "2.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/giounix-2.0/-/giounix-2.0-2.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-Dpmh47AmbxhAsBuk0fR4TLuaAjV8amgp7npHl961RbnkiPimkbhuoNClYDPDa8VxrbNinNg+yq9nVztsFu+f3Q==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/gjs": {
+            "version": "4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-rc.2.tgz",
+            "integrity": "sha512-5700Ac+kPFnPzTxbFC9mKLdFZzLSN1TApsX62T6lRIaqeG3OuVH5qU70wvksj/53LbdLnwIe7scO6O3xaK9aGQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.2",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/gl-1.0": {
+            "version": "1.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/gl-1.0/-/gl-1.0-1.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-ZzBlbhobZXXXGZo/MlfVJp5We8y8SkUTzDEnahPT79x+NkxB1dQibE8AF6avGYS6+7vz7w8cbUh0qPUm1cUq8w==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/glib-2.0": {
+            "version": "2.88.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.88.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-r0AYsjbk1KfDooMggPovJ4OuZG+zxOEqFYh4qJUv47+qSYKSdoLSgR/HsYzgTOaga6REOiKZ+HjPiT+klwTUrg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/gmodule-2.0": {
+            "version": "2.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/gmodule-2.0/-/gmodule-2.0-2.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-g5XFI+ilyh3ofoVUtccD+cCPQ+os49v4jc6Asx5dYJ9d73O7DAdGdBR1RMZL8v5Wxj+KBEqSAigDDrYCpIHlZA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/gnome-shell": {
+            "version": "49.1.0",
+            "resolved": "https://registry.npmjs.org/@girs/gnome-shell/-/gnome-shell-49.1.0.tgz",
+            "integrity": "sha512-14Re6+DIrozWOErzW9fqvTAn0o9/1rMZuSDQ7BPIC+MYxmNmIlqzjo0kecbkXMN4ZY1zRpgfahbkiFwjJYZmfQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/accountsservice-1.0": "1.0.0-4.0.0-beta.38",
+                "@girs/adw-1": "^1.9.0-4.0.0-beta.38",
+                "@girs/atk-1.0": "^2.58.0-4.0.0-beta.38",
+                "@girs/clutter-17": "^17.0.0-4.0.0-beta.38",
+                "@girs/cogl-2.0": "^2.0.0-4.0.0-beta.38",
+                "@girs/gcr-4": "^4.4.0-4.0.0-beta.38",
+                "@girs/gdm-1.0": "^1.0.0-4.0.0-beta.38",
+                "@girs/gio-2.0": "^2.86.0-4.0.0-beta.38",
+                "@girs/giounix-2.0": "^2.0.0-4.0.0-beta.38",
+                "@girs/gjs": "^4.0.0-beta.38",
+                "@girs/glib-2.0": "^2.86.0-4.0.0-beta.38",
+                "@girs/gnomebg-4.0": "^4.0.0-4.0.0-beta.38",
+                "@girs/gnomebluetooth-3.0": "^3.0.0-4.0.0-beta.38",
+                "@girs/gnomedesktop-4.0": "^4.0.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "^2.86.0-4.0.0-beta.38",
+                "@girs/gtk-4.0": "^4.20.1-4.0.0-beta.38",
+                "@girs/gvc-1.0": "^1.0.0-4.0.0-beta.38",
+                "@girs/meta-17": "^17.0.0-4.0.0-beta.38",
+                "@girs/mtk-17": "^17.0.0-4.0.0-beta.38",
+                "@girs/polkit-1.0": "^1.0.0-4.0.0-beta.38",
+                "@girs/shell-17": "^17.0.0-4.0.0-beta.38",
+                "@girs/shew-0": "^0.0.0-4.0.0-beta.38",
+                "@girs/st-17": "^17.0.0-4.0.0-beta.38",
+                "@girs/upowerglib-1.0": "^0.99.1-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/adw-1": {
+            "version": "1.9.0-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/adw-1/-/adw-1-1.9.0-4.0.0-beta.40.tgz",
+            "integrity": "sha512-AaP8nDnUQkB7AUiOvOXXyXbjFC/L8Uh8MwqDD/NZKpIGKYwgE8hfuLyPW1d/K10wabLq4pgO19QJiTpr6hKyhg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-beta.40",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gdk-4.0": "4.0.0-4.0.0-beta.40",
+                "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gio-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/graphene-1.0": "1.0.0-4.0.0-beta.40",
+                "@girs/gsk-4.0": "4.0.0-4.0.0-beta.40",
+                "@girs/gtk-4.0": "4.20.3-4.0.0-beta.40",
+                "@girs/harfbuzz-0.0": "11.5.1-4.0.0-beta.40",
+                "@girs/pango-1.0": "1.57.0-4.0.0-beta.40",
+                "@girs/pangocairo-1.0": "1.0.0-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/adw-1/node_modules/@girs/gio-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-TTAEE/2nCAkx01hID4n8f0ByiFJ0QwGJcY8QYmom19QXmlIWCLF/GWLeXi/7ZyKJOtChSFk8IJglS0O6zC1spw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/adw-1/node_modules/@girs/glib-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-DTvRmZlTVpYW+JI0zMN/dybhzoqJ/I3bx3txftSQgcxXl3mKnrSI6Qzv15VTyxQSpcnD3CBxpnfYT/+QrzU9QQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/adw-1/node_modules/@girs/gobject-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-coS5607duUekhRfl2GDC9Gt3WcgAtTNEDL0efrRBBOuORjvBrIGiGJJXB9cX4jYQ7c9FITUMVLTd+a0MMRAaXA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/adw-1/node_modules/@girs/gtk-4.0": {
+            "version": "4.20.3-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gtk-4.0/-/gtk-4.0-4.20.3-4.0.0-beta.40.tgz",
+            "integrity": "sha512-rdAkZpt6IvyF8dvNsvC1cU8beQl1LesH0ZzpYArF0kg5KnKGDOqVGAAFjcz4QOHQ3LRiWJ47S5VT4n/TkCG76w==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-beta.40",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gdk-4.0": "4.0.0-4.0.0-beta.40",
+                "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gio-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/graphene-1.0": "1.0.0-4.0.0-beta.40",
+                "@girs/gsk-4.0": "4.0.0-4.0.0-beta.40",
+                "@girs/harfbuzz-0.0": "11.5.1-4.0.0-beta.40",
+                "@girs/pango-1.0": "1.57.0-4.0.0-beta.40",
+                "@girs/pangocairo-1.0": "1.0.0-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/atk-1.0": {
+            "version": "2.58.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/atk-1.0/-/atk-1.0-2.58.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-rfLlLlAecHE1uAqK81DHZT27E1nVwN/pAHtgbgDUcu70UdHoCYAsQymLjk/tuDcTX0Lwp6U9x6w+GHG1sbYlQA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/atk-1.0/node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-VJa0vw9teZjCydDzWIcbNBwT37MSej52rqwBuQ/ir7+72+7dpzeudkNOOif1nDIulGu+RLAy4cgWbguQhsUH/Q==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/atk-1.0/node_modules/@girs/gjs": {
+            "version": "4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-beta.38.tgz",
+            "integrity": "sha512-eI/9lfI1mQpXN8RsKiNRFWJso6LgQe9Eb+YxLAdKarD5fccvIRx3chsyIyhw5tYH7VvgaZkqm1c4GX7pDDokBQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-beta.38",
+                "@girs/gio-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-beta.40.tgz",
+            "integrity": "sha512-luqUsMf2cPphDc4lb8IHcw0bX8eGa4g0aQypZJypAeIs9eyHfEDHWKhLgp4I0HaQvaevbd3QBosaH7UhkArL1A==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/cairo-1.0/node_modules/@girs/glib-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-DTvRmZlTVpYW+JI0zMN/dybhzoqJ/I3bx3txftSQgcxXl3mKnrSI6Qzv15VTyxQSpcnD3CBxpnfYT/+QrzU9QQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/cairo-1.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-coS5607duUekhRfl2GDC9Gt3WcgAtTNEDL0efrRBBOuORjvBrIGiGJJXB9cX4jYQ7c9FITUMVLTd+a0MMRAaXA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/freetype2-2.0": {
+            "version": "2.0.0-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/freetype2-2.0/-/freetype2-2.0-2.0.0-4.0.0-beta.40.tgz",
+            "integrity": "sha512-vS+etsSesMQZNH8Sei81fmkWcgYzjLDbddSPIZaCw2nJ1TIu8eC/CTW46bBk0JGgOaQwL3DxuE0V+BdyhQwIyQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/freetype2-2.0/node_modules/@girs/glib-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-DTvRmZlTVpYW+JI0zMN/dybhzoqJ/I3bx3txftSQgcxXl3mKnrSI6Qzv15VTyxQSpcnD3CBxpnfYT/+QrzU9QQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/freetype2-2.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-coS5607duUekhRfl2GDC9Gt3WcgAtTNEDL0efrRBBOuORjvBrIGiGJJXB9cX4jYQ7c9FITUMVLTd+a0MMRAaXA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gdk-4.0": {
+            "version": "4.0.0-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gdk-4.0/-/gdk-4.0-4.0.0-4.0.0-beta.40.tgz",
+            "integrity": "sha512-4O5Yqk1QSKUqaRn7402XtkGFwg/7SMoGof0Xe/JiqnjF7oDav2giRUoDKx4uXKnfQm+6NA69b0meGEXr8yJJYA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-beta.40",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gio-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/harfbuzz-0.0": "11.5.1-4.0.0-beta.40",
+                "@girs/pango-1.0": "1.57.0-4.0.0-beta.40",
+                "@girs/pangocairo-1.0": "1.0.0-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gdk-4.0/node_modules/@girs/gio-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-TTAEE/2nCAkx01hID4n8f0ByiFJ0QwGJcY8QYmom19QXmlIWCLF/GWLeXi/7ZyKJOtChSFk8IJglS0O6zC1spw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gdk-4.0/node_modules/@girs/glib-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-DTvRmZlTVpYW+JI0zMN/dybhzoqJ/I3bx3txftSQgcxXl3mKnrSI6Qzv15VTyxQSpcnD3CBxpnfYT/+QrzU9QQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gdk-4.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-coS5607duUekhRfl2GDC9Gt3WcgAtTNEDL0efrRBBOuORjvBrIGiGJJXB9cX4jYQ7c9FITUMVLTd+a0MMRAaXA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gdkpixbuf-2.0": {
+            "version": "2.0.0-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gdkpixbuf-2.0/-/gdkpixbuf-2.0-2.0.0-4.0.0-beta.40.tgz",
+            "integrity": "sha512-ImVsfgs4OdJnWqZm1ugB+WcpySf2wNtY99nUBm+/YpCLeIyrl+NRbft+ymom6CTim83f3XzwaOCDEwE5azj42w==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gio-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gdkpixbuf-2.0/node_modules/@girs/gio-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-TTAEE/2nCAkx01hID4n8f0ByiFJ0QwGJcY8QYmom19QXmlIWCLF/GWLeXi/7ZyKJOtChSFk8IJglS0O6zC1spw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gdkpixbuf-2.0/node_modules/@girs/glib-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-DTvRmZlTVpYW+JI0zMN/dybhzoqJ/I3bx3txftSQgcxXl3mKnrSI6Qzv15VTyxQSpcnD3CBxpnfYT/+QrzU9QQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gdkpixbuf-2.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-coS5607duUekhRfl2GDC9Gt3WcgAtTNEDL0efrRBBOuORjvBrIGiGJJXB9cX4jYQ7c9FITUMVLTd+a0MMRAaXA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gio-2.0": {
+            "version": "2.86.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.86.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-hKCyDEqSIgqcZeFf63KNrUnrYtAuJ0yfIypbdLgNEMbJBPQ/e3ZiwzWa7i3OPCh52Cnl9qYRdj8MSbZndpyZiQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gio-2.0/node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-VJa0vw9teZjCydDzWIcbNBwT37MSej52rqwBuQ/ir7+72+7dpzeudkNOOif1nDIulGu+RLAy4cgWbguQhsUH/Q==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gio-2.0/node_modules/@girs/gjs": {
+            "version": "4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-beta.38.tgz",
+            "integrity": "sha512-eI/9lfI1mQpXN8RsKiNRFWJso6LgQe9Eb+YxLAdKarD5fccvIRx3chsyIyhw5tYH7VvgaZkqm1c4GX7pDDokBQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-beta.38",
+                "@girs/gio-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gio-2.0/node_modules/@girs/gmodule-2.0": {
+            "version": "2.0.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/gmodule-2.0/-/gmodule-2.0-2.0.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-BmspJtwdBSfCJRZQMxn3gx6H9FNcoqCebFXK2UKknq18DIo8U2q4iN/jQBWPoLh2siK9LhCdL2egoyXteTy1NA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gjs": {
+            "version": "4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-beta.40.tgz",
+            "integrity": "sha512-+gHGA5PJvEExpiPkpc3+DSjhWGmxHDb482h52FO64eo2EmHuLoeOKCoUJIY0PS80xOJWFRSO2dNFxZdD1bV6XA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-beta.40",
+                "@girs/gio-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gjs/node_modules/@girs/gio-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-TTAEE/2nCAkx01hID4n8f0ByiFJ0QwGJcY8QYmom19QXmlIWCLF/GWLeXi/7ZyKJOtChSFk8IJglS0O6zC1spw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gjs/node_modules/@girs/glib-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-DTvRmZlTVpYW+JI0zMN/dybhzoqJ/I3bx3txftSQgcxXl3mKnrSI6Qzv15VTyxQSpcnD3CBxpnfYT/+QrzU9QQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gjs/node_modules/@girs/gobject-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-coS5607duUekhRfl2GDC9Gt3WcgAtTNEDL0efrRBBOuORjvBrIGiGJJXB9cX4jYQ7c9FITUMVLTd+a0MMRAaXA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/glib-2.0": {
+            "version": "2.86.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.86.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-TFbrh5+Y3pb61synbhi37VrRzh0e+JQaRCzfGbe7oewUq0v7Sb8eSi2Fmj98r5tCizaRYptqgt6bxG7G5cFzVg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/glib-2.0/node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-VJa0vw9teZjCydDzWIcbNBwT37MSej52rqwBuQ/ir7+72+7dpzeudkNOOif1nDIulGu+RLAy4cgWbguQhsUH/Q==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/glib-2.0/node_modules/@girs/gjs": {
+            "version": "4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-beta.38.tgz",
+            "integrity": "sha512-eI/9lfI1mQpXN8RsKiNRFWJso6LgQe9Eb+YxLAdKarD5fccvIRx3chsyIyhw5tYH7VvgaZkqm1c4GX7pDDokBQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-beta.38",
+                "@girs/gio-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gmodule-2.0": {
+            "version": "2.0.0-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gmodule-2.0/-/gmodule-2.0-2.0.0-4.0.0-beta.40.tgz",
+            "integrity": "sha512-srPSbc/uespMNHR2o2Gg6OYeCprW42gADIXCujpMMWl5OfJzKU0mA+R8Z/D713tDq0xp1Lz2P7hprVznf1uF3A==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gmodule-2.0/node_modules/@girs/glib-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-DTvRmZlTVpYW+JI0zMN/dybhzoqJ/I3bx3txftSQgcxXl3mKnrSI6Qzv15VTyxQSpcnD3CBxpnfYT/+QrzU9QQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gmodule-2.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-coS5607duUekhRfl2GDC9Gt3WcgAtTNEDL0efrRBBOuORjvBrIGiGJJXB9cX4jYQ7c9FITUMVLTd+a0MMRAaXA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gobject-2.0": {
+            "version": "2.86.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.86.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-oYrm6Gb/tCQosMkN8Beu5jqGRkJ7LED4O1H1dKYOI4SnP1Ojb66A9ECy78yTO8piBtMopsbRODV81yKniVtKKA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gobject-2.0/node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-VJa0vw9teZjCydDzWIcbNBwT37MSej52rqwBuQ/ir7+72+7dpzeudkNOOif1nDIulGu+RLAy4cgWbguQhsUH/Q==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gobject-2.0/node_modules/@girs/gjs": {
+            "version": "4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-beta.38.tgz",
+            "integrity": "sha512-eI/9lfI1mQpXN8RsKiNRFWJso6LgQe9Eb+YxLAdKarD5fccvIRx3chsyIyhw5tYH7VvgaZkqm1c4GX7pDDokBQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-beta.38",
+                "@girs/gio-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/graphene-1.0": {
+            "version": "1.0.0-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/graphene-1.0/-/graphene-1.0-1.0.0-4.0.0-beta.40.tgz",
+            "integrity": "sha512-0ReJbd31inyIE7Q96I4ED1uj6ssmfl1iB4xc6eakac95FZK/uZSC6uBtBLfA/tmnkgRb7ChQgK/ZGbb8sx4tHQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/graphene-1.0/node_modules/@girs/glib-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-DTvRmZlTVpYW+JI0zMN/dybhzoqJ/I3bx3txftSQgcxXl3mKnrSI6Qzv15VTyxQSpcnD3CBxpnfYT/+QrzU9QQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/graphene-1.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-coS5607duUekhRfl2GDC9Gt3WcgAtTNEDL0efrRBBOuORjvBrIGiGJJXB9cX4jYQ7c9FITUMVLTd+a0MMRAaXA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gsk-4.0": {
+            "version": "4.0.0-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gsk-4.0/-/gsk-4.0-4.0.0-4.0.0-beta.40.tgz",
+            "integrity": "sha512-hSNHG+E6O736vLgGtMcG50iiSoK/tRIVdsJ55H/AqyRCL2HzCzUIAQ7VTqsCgDGGs0N2P8i6Oq0FAZ7+4j/3IQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-beta.40",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gdk-4.0": "4.0.0-4.0.0-beta.40",
+                "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gio-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/graphene-1.0": "1.0.0-4.0.0-beta.40",
+                "@girs/harfbuzz-0.0": "11.5.1-4.0.0-beta.40",
+                "@girs/pango-1.0": "1.57.0-4.0.0-beta.40",
+                "@girs/pangocairo-1.0": "1.0.0-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gsk-4.0/node_modules/@girs/gio-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-TTAEE/2nCAkx01hID4n8f0ByiFJ0QwGJcY8QYmom19QXmlIWCLF/GWLeXi/7ZyKJOtChSFk8IJglS0O6zC1spw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gsk-4.0/node_modules/@girs/glib-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-DTvRmZlTVpYW+JI0zMN/dybhzoqJ/I3bx3txftSQgcxXl3mKnrSI6Qzv15VTyxQSpcnD3CBxpnfYT/+QrzU9QQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gsk-4.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-coS5607duUekhRfl2GDC9Gt3WcgAtTNEDL0efrRBBOuORjvBrIGiGJJXB9cX4jYQ7c9FITUMVLTd+a0MMRAaXA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gtk-4.0": {
+            "version": "4.20.1-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/gtk-4.0/-/gtk-4.0-4.20.1-4.0.0-beta.38.tgz",
+            "integrity": "sha512-lNujJDta1YK3/9Inp5HrtF/JOMN5EmD+3U7diRTyWNzc2KdaN2jO2mk90taaGK28xhoCC+VESkFkQAgFTwZXWw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-beta.38",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.38",
+                "@girs/gdk-4.0": "4.0.0-4.0.0-beta.38",
+                "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-beta.38",
+                "@girs/gio-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/graphene-1.0": "1.0.0-4.0.0-beta.38",
+                "@girs/gsk-4.0": "4.0.0-4.0.0-beta.38",
+                "@girs/harfbuzz-0.0": "11.5.0-4.0.0-beta.38",
+                "@girs/pango-1.0": "1.57.0-4.0.0-beta.38",
+                "@girs/pangocairo-1.0": "1.0.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gtk-4.0/node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-VJa0vw9teZjCydDzWIcbNBwT37MSej52rqwBuQ/ir7+72+7dpzeudkNOOif1nDIulGu+RLAy4cgWbguQhsUH/Q==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gtk-4.0/node_modules/@girs/freetype2-2.0": {
+            "version": "2.0.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/freetype2-2.0/-/freetype2-2.0-2.0.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-543dlQheKHSVWIatqHNBiLceIWYzIJDXvofR3PfgarKMMi0IRkn1TndzxUxsLC4Eu24KgOKGZYjU1YPUMVGbgg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gtk-4.0/node_modules/@girs/gdk-4.0": {
+            "version": "4.0.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/gdk-4.0/-/gdk-4.0-4.0.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-hk6SG4pCcezKp2VNxJc0TC1gkZe3C8shD8sRQ3bUGyWl/9581WM2/8UU+W6fOf3SwXA1hquN6d3SjKbqkFNRKg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-beta.38",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.38",
+                "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-beta.38",
+                "@girs/gio-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/harfbuzz-0.0": "11.5.0-4.0.0-beta.38",
+                "@girs/pango-1.0": "1.57.0-4.0.0-beta.38",
+                "@girs/pangocairo-1.0": "1.0.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gtk-4.0/node_modules/@girs/gdkpixbuf-2.0": {
+            "version": "2.0.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/gdkpixbuf-2.0/-/gdkpixbuf-2.0-2.0.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-L8NE18rhj100lRGMnf7lNUdr6pHw2co1UtExxDnglba5lNee4NoyF/u8g4Mk3toPU0fAu+ug91HJ4o2mIJd7MQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gio-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gtk-4.0/node_modules/@girs/gjs": {
+            "version": "4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-beta.38.tgz",
+            "integrity": "sha512-eI/9lfI1mQpXN8RsKiNRFWJso6LgQe9Eb+YxLAdKarD5fccvIRx3chsyIyhw5tYH7VvgaZkqm1c4GX7pDDokBQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-beta.38",
+                "@girs/gio-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gtk-4.0/node_modules/@girs/gmodule-2.0": {
+            "version": "2.0.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/gmodule-2.0/-/gmodule-2.0-2.0.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-BmspJtwdBSfCJRZQMxn3gx6H9FNcoqCebFXK2UKknq18DIo8U2q4iN/jQBWPoLh2siK9LhCdL2egoyXteTy1NA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gtk-4.0/node_modules/@girs/graphene-1.0": {
+            "version": "1.0.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/graphene-1.0/-/graphene-1.0-1.0.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-zqCyLXFqsOJtCnwUR6lI6HBVdaJ6aKsA25y+6xK2dFO/NChOjH0hmBuVyTQiyLe+4jGW700o+uYIYlrpEXT/7Q==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gtk-4.0/node_modules/@girs/gsk-4.0": {
+            "version": "4.0.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/gsk-4.0/-/gsk-4.0-4.0.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-BfYpVfmKjD7Tq58W5p9fcU6Mvg3QcNRjJ1oQn05d/Xk1rjQmsk6tkcTkK3i/KIOhA9eVadQsMlFFWuN0KBE5Dw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-beta.38",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.38",
+                "@girs/gdk-4.0": "4.0.0-4.0.0-beta.38",
+                "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-beta.38",
+                "@girs/gio-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/graphene-1.0": "1.0.0-4.0.0-beta.38",
+                "@girs/harfbuzz-0.0": "11.5.0-4.0.0-beta.38",
+                "@girs/pango-1.0": "1.57.0-4.0.0-beta.38",
+                "@girs/pangocairo-1.0": "1.0.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gtk-4.0/node_modules/@girs/harfbuzz-0.0": {
+            "version": "11.5.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/harfbuzz-0.0/-/harfbuzz-0.0-11.5.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-XRf/neZYpEkinNZ8SCRKIao3RNVJzMeYcjuO1b1tbqVCrN7uVZ+MIaDW5NjWKi0K6IQSyZWdDgkzrtOrIN4CWQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.38",
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gtk-4.0/node_modules/@girs/pango-1.0": {
+            "version": "1.57.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/pango-1.0/-/pango-1.0-1.57.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-fnTzVVhKb4XjGrnuqk9X++KDe2bk84Hg5472O2UrtIT1A6dzMS6gWhSvaw0ULZH/Ypj9WN12B0oceWynR6unLw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-beta.38",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.38",
+                "@girs/gio-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/harfbuzz-0.0": "11.5.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/gtk-4.0/node_modules/@girs/pangocairo-1.0": {
+            "version": "1.0.0-4.0.0-beta.38",
+            "resolved": "https://registry.npmjs.org/@girs/pangocairo-1.0/-/pangocairo-1.0-1.0.0-4.0.0-beta.38.tgz",
+            "integrity": "sha512-BY4rEgQW0H1c/24v+FGBjSZgZ6rk2Y4+ka9/WldUs74N1ZOh6nS4lHKUyy0antylQ7x0Fnw5UHgN0PbpdjkGuQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-beta.38",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.38",
+                "@girs/gio-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gjs": "4.0.0-beta.38",
+                "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.38",
+                "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38",
+                "@girs/harfbuzz-0.0": "11.5.0-4.0.0-beta.38",
+                "@girs/pango-1.0": "1.57.0-4.0.0-beta.38"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/harfbuzz-0.0": {
+            "version": "11.5.1-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/harfbuzz-0.0/-/harfbuzz-0.0-11.5.1-4.0.0-beta.40.tgz",
+            "integrity": "sha512-cwR4WHJ9LtnvvXFUnkiFtWdInKvhlQUr3bQHmHiJxCjloQHHMNVA7CsrMDL/tRD9WoU77rQF6dB+uqSlRKT1zQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/harfbuzz-0.0/node_modules/@girs/glib-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-DTvRmZlTVpYW+JI0zMN/dybhzoqJ/I3bx3txftSQgcxXl3mKnrSI6Qzv15VTyxQSpcnD3CBxpnfYT/+QrzU9QQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/harfbuzz-0.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-coS5607duUekhRfl2GDC9Gt3WcgAtTNEDL0efrRBBOuORjvBrIGiGJJXB9cX4jYQ7c9FITUMVLTd+a0MMRAaXA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/pango-1.0": {
+            "version": "1.57.0-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/pango-1.0/-/pango-1.0-1.57.0-4.0.0-beta.40.tgz",
+            "integrity": "sha512-H8COoSffShFRilpCh9JQ6Lafd/WG+hPRKNkruvfmLAEcnIDnPDIS79BO3OOJz6E+QWqY9mwQIjqjjPwFcasuzA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-beta.40",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gio-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/harfbuzz-0.0": "11.5.1-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/pango-1.0/node_modules/@girs/gio-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-TTAEE/2nCAkx01hID4n8f0ByiFJ0QwGJcY8QYmom19QXmlIWCLF/GWLeXi/7ZyKJOtChSFk8IJglS0O6zC1spw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/pango-1.0/node_modules/@girs/glib-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-DTvRmZlTVpYW+JI0zMN/dybhzoqJ/I3bx3txftSQgcxXl3mKnrSI6Qzv15VTyxQSpcnD3CBxpnfYT/+QrzU9QQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/pango-1.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-coS5607duUekhRfl2GDC9Gt3WcgAtTNEDL0efrRBBOuORjvBrIGiGJJXB9cX4jYQ7c9FITUMVLTd+a0MMRAaXA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/pangocairo-1.0": {
+            "version": "1.0.0-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/pangocairo-1.0/-/pangocairo-1.0-1.0.0-4.0.0-beta.40.tgz",
+            "integrity": "sha512-CFvAGWXWN/Ui469met+Q39Tmyn910Y6g+pBxWC60q5T1F9jck7qjehn1/Jo6D7R/n2Bh1FVyjYK3JhIwIMGOyw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-beta.40",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gio-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/harfbuzz-0.0": "11.5.1-4.0.0-beta.40",
+                "@girs/pango-1.0": "1.57.0-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/pangocairo-1.0/node_modules/@girs/gio-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-TTAEE/2nCAkx01hID4n8f0ByiFJ0QwGJcY8QYmom19QXmlIWCLF/GWLeXi/7ZyKJOtChSFk8IJglS0O6zC1spw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/pangocairo-1.0/node_modules/@girs/glib-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-DTvRmZlTVpYW+JI0zMN/dybhzoqJ/I3bx3txftSQgcxXl3mKnrSI6Qzv15VTyxQSpcnD3CBxpnfYT/+QrzU9QQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnome-shell/node_modules/@girs/pangocairo-1.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-coS5607duUekhRfl2GDC9Gt3WcgAtTNEDL0efrRBBOuORjvBrIGiGJJXB9cX4jYQ7c9FITUMVLTd+a0MMRAaXA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/gnomebg-4.0": {
+            "version": "4.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gnomebg-4.0/-/gnomebg-4.0-4.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-5VZS89/+s3ALcJjR+HfTqg2WAF7mR+761QJGPE3H2CQOmo2QsymjXzgmqQoSUu20gKiX6V0/LebsEWjt6b/QPA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gdesktopenums-3.0": "3.0.0-4.0.0-rc.3",
+                "@girs/gdk-4.0": "4.0.0-4.0.0-rc.3",
+                "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gnomedesktop-4.0": "4.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/harfbuzz-0.0": "13.2.1-4.0.0-rc.3",
+                "@girs/pango-1.0": "1.57.1-4.0.0-rc.3",
+                "@girs/pangocairo-1.0": "1.0.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomebg-4.0/node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-k/yDmgmzn811QDQYkqsA3sgmvXqystLQBEcTaT46XXX42z14rVybimqlXylsoCTTaC61SIOelFLolzWP7z8ZEg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomebg-4.0/node_modules/@girs/freetype2-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/freetype2-2.0/-/freetype2-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-xYbmRZmMYrfyNWoOfmoQ3MNerBU2XLm9fXdlY883aE/yUX1HxXlvj5XRpA6yXStZVjs9keqwDLCklKYQHRCv9A==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomebg-4.0/node_modules/@girs/gdkpixbuf-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gdkpixbuf-2.0/-/gdkpixbuf-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-0w/oIjxcN2SPskI7TTKTl3UuhndhcVDnBVAwX9iehOeI+mGROhQXqT795qJYPfsPe9lfBKBU0mJuZNLHs27xUg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomebg-4.0/node_modules/@girs/gio-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-yMccXSGk0/3+pdH6O2KVyPrltdQkfV/PVO2Pbsqa1nxQIQwCp+r9LnPbskYqD7hm9Rxtws44xZuHxmykCL79iA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomebg-4.0/node_modules/@girs/gjs": {
+            "version": "4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-rc.3.tgz",
+            "integrity": "sha512-0+Dtzoz0cx2Wxv8TwaZIM4uhowK5j5hsw37yQSNuP07xK/X4nil/0oXMqJEsMVnPeNeGqlyksWToP4sCOzXTAQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomebg-4.0/node_modules/@girs/glib-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-P0A2sg0YuRJDzE8n+PYeMCSoS1gIuQgQRWHPhgtfZ0Bee01XG63Izbzo9mIyLRB+Xqpv96tppGyfi8/cr34t8w==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomebg-4.0/node_modules/@girs/gmodule-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gmodule-2.0/-/gmodule-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-TvvjgbsQ/rdotrKRejdoZvf9MunjWYVgMjq0ZhHnuoNZ7xr2jcJbPf5tm58Qzq8FAmVjIgcG4Z4S+nNWRFktSg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomebg-4.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-cZ2aMK42rlG0nVQ1oJD5vUlgA6/TPtscC7LRQ/kJVciG2EtfnUNso3csMvAPRGnDWadlQ7K+E723nkSDr3SNwA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomebg-4.0/node_modules/@girs/harfbuzz-0.0": {
+            "version": "13.2.1-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/harfbuzz-0.0/-/harfbuzz-0.0-13.2.1-4.0.0-rc.3.tgz",
+            "integrity": "sha512-B2EcirQd2bQqo1DEpxiacpN8tIhJbwGFD2rCFOw4LpLNuyWeRh16yevhntefc4Ub73/QfChO+CLCay/i6VhbZQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomebg-4.0/node_modules/@girs/pango-1.0": {
+            "version": "1.57.1-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/pango-1.0/-/pango-1.0-1.57.1-4.0.0-rc.3.tgz",
+            "integrity": "sha512-WVVtMGP63QgufQEvpfVwJPscMmomyqRSkg+Ax4V4xlF/TA3joBTgc688wZSrko0fDJnZ5MaQoZloA9PjAYMuhw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/harfbuzz-0.0": "13.2.1-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomebluetooth-3.0": {
+            "version": "3.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gnomebluetooth-3.0/-/gnomebluetooth-3.0-3.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-Lif2zkKsP68MBzmkH142KXYm2BivvIwKoOAsQuKmnp3oBGfDPh7mo4CG8005E6hNrV+oiLNRcnQFw7naJWudrw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomebluetooth-3.0/node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-k/yDmgmzn811QDQYkqsA3sgmvXqystLQBEcTaT46XXX42z14rVybimqlXylsoCTTaC61SIOelFLolzWP7z8ZEg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomebluetooth-3.0/node_modules/@girs/gio-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-yMccXSGk0/3+pdH6O2KVyPrltdQkfV/PVO2Pbsqa1nxQIQwCp+r9LnPbskYqD7hm9Rxtws44xZuHxmykCL79iA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomebluetooth-3.0/node_modules/@girs/gjs": {
+            "version": "4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-rc.3.tgz",
+            "integrity": "sha512-0+Dtzoz0cx2Wxv8TwaZIM4uhowK5j5hsw37yQSNuP07xK/X4nil/0oXMqJEsMVnPeNeGqlyksWToP4sCOzXTAQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomebluetooth-3.0/node_modules/@girs/glib-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-P0A2sg0YuRJDzE8n+PYeMCSoS1gIuQgQRWHPhgtfZ0Bee01XG63Izbzo9mIyLRB+Xqpv96tppGyfi8/cr34t8w==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomebluetooth-3.0/node_modules/@girs/gmodule-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gmodule-2.0/-/gmodule-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-TvvjgbsQ/rdotrKRejdoZvf9MunjWYVgMjq0ZhHnuoNZ7xr2jcJbPf5tm58Qzq8FAmVjIgcG4Z4S+nNWRFktSg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomebluetooth-3.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-cZ2aMK42rlG0nVQ1oJD5vUlgA6/TPtscC7LRQ/kJVciG2EtfnUNso3csMvAPRGnDWadlQ7K+E723nkSDr3SNwA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomedesktop-4.0": {
+            "version": "4.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gnomedesktop-4.0/-/gnomedesktop-4.0-4.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-PzJAK7Oy8nYOGRyN9sQjeheRnf256ydeTFwjDpAbbQEw9JccTTQXIzq2qOmwgok5xye7aBNVMF+CFpeJxMYfWg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gdesktopenums-3.0": "3.0.0-4.0.0-rc.3",
+                "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomedesktop-4.0/node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-k/yDmgmzn811QDQYkqsA3sgmvXqystLQBEcTaT46XXX42z14rVybimqlXylsoCTTaC61SIOelFLolzWP7z8ZEg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomedesktop-4.0/node_modules/@girs/gdkpixbuf-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gdkpixbuf-2.0/-/gdkpixbuf-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-0w/oIjxcN2SPskI7TTKTl3UuhndhcVDnBVAwX9iehOeI+mGROhQXqT795qJYPfsPe9lfBKBU0mJuZNLHs27xUg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomedesktop-4.0/node_modules/@girs/gio-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-yMccXSGk0/3+pdH6O2KVyPrltdQkfV/PVO2Pbsqa1nxQIQwCp+r9LnPbskYqD7hm9Rxtws44xZuHxmykCL79iA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomedesktop-4.0/node_modules/@girs/gjs": {
+            "version": "4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-rc.3.tgz",
+            "integrity": "sha512-0+Dtzoz0cx2Wxv8TwaZIM4uhowK5j5hsw37yQSNuP07xK/X4nil/0oXMqJEsMVnPeNeGqlyksWToP4sCOzXTAQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomedesktop-4.0/node_modules/@girs/glib-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-P0A2sg0YuRJDzE8n+PYeMCSoS1gIuQgQRWHPhgtfZ0Bee01XG63Izbzo9mIyLRB+Xqpv96tppGyfi8/cr34t8w==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomedesktop-4.0/node_modules/@girs/gmodule-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gmodule-2.0/-/gmodule-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-TvvjgbsQ/rdotrKRejdoZvf9MunjWYVgMjq0ZhHnuoNZ7xr2jcJbPf5tm58Qzq8FAmVjIgcG4Z4S+nNWRFktSg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gnomedesktop-4.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-cZ2aMK42rlG0nVQ1oJD5vUlgA6/TPtscC7LRQ/kJVciG2EtfnUNso3csMvAPRGnDWadlQ7K+E723nkSDr3SNwA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gobject-2.0": {
+            "version": "2.88.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.88.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-MDbsW5iWUDV+xPqChcg2R83te1D8sEl2AJtR+/fjYFDha8hGwSJrTisRNUswHLXgue+Ppn/j8QTPwLV/3+V7lg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/graphene-1.0": {
+            "version": "1.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/graphene-1.0/-/graphene-1.0-1.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-y41p5B7EVmZ8+t2TToOS4x4lnD1ya/ZNYo1JPv273iGth3/8nQobHA/eD174n79UExwPyPM8i30BXXM1XBVRFg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/gsk-4.0": {
+            "version": "4.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gsk-4.0/-/gsk-4.0-4.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-t81A+2ZOsGS7Ube0rmd2kzLvbBGU+QxQPY7yjQWvTqO1Xn+CWcmztTF42hIJyGoHouOlSOvkL0Iq6UI61/ezlg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gdk-4.0": "4.0.0-4.0.0-rc.3",
+                "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/graphene-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/harfbuzz-0.0": "13.2.1-4.0.0-rc.3",
+                "@girs/pango-1.0": "1.57.1-4.0.0-rc.3",
+                "@girs/pangocairo-1.0": "1.0.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gsk-4.0/node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-k/yDmgmzn811QDQYkqsA3sgmvXqystLQBEcTaT46XXX42z14rVybimqlXylsoCTTaC61SIOelFLolzWP7z8ZEg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gsk-4.0/node_modules/@girs/freetype2-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/freetype2-2.0/-/freetype2-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-xYbmRZmMYrfyNWoOfmoQ3MNerBU2XLm9fXdlY883aE/yUX1HxXlvj5XRpA6yXStZVjs9keqwDLCklKYQHRCv9A==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gsk-4.0/node_modules/@girs/gdkpixbuf-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gdkpixbuf-2.0/-/gdkpixbuf-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-0w/oIjxcN2SPskI7TTKTl3UuhndhcVDnBVAwX9iehOeI+mGROhQXqT795qJYPfsPe9lfBKBU0mJuZNLHs27xUg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gsk-4.0/node_modules/@girs/gio-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-yMccXSGk0/3+pdH6O2KVyPrltdQkfV/PVO2Pbsqa1nxQIQwCp+r9LnPbskYqD7hm9Rxtws44xZuHxmykCL79iA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gsk-4.0/node_modules/@girs/gjs": {
+            "version": "4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-rc.3.tgz",
+            "integrity": "sha512-0+Dtzoz0cx2Wxv8TwaZIM4uhowK5j5hsw37yQSNuP07xK/X4nil/0oXMqJEsMVnPeNeGqlyksWToP4sCOzXTAQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gsk-4.0/node_modules/@girs/glib-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-P0A2sg0YuRJDzE8n+PYeMCSoS1gIuQgQRWHPhgtfZ0Bee01XG63Izbzo9mIyLRB+Xqpv96tppGyfi8/cr34t8w==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gsk-4.0/node_modules/@girs/gmodule-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gmodule-2.0/-/gmodule-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-TvvjgbsQ/rdotrKRejdoZvf9MunjWYVgMjq0ZhHnuoNZ7xr2jcJbPf5tm58Qzq8FAmVjIgcG4Z4S+nNWRFktSg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gsk-4.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-cZ2aMK42rlG0nVQ1oJD5vUlgA6/TPtscC7LRQ/kJVciG2EtfnUNso3csMvAPRGnDWadlQ7K+E723nkSDr3SNwA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gsk-4.0/node_modules/@girs/graphene-1.0": {
+            "version": "1.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/graphene-1.0/-/graphene-1.0-1.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-WWmH5PJDdtTYjOSnIaMnJuJ4SP4kQtd4tr1tvCwzbdD2Y6QSQYesVvPCQQ7G6J5QuxJktoP8Xfif4IXgyjpWRg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gsk-4.0/node_modules/@girs/harfbuzz-0.0": {
+            "version": "13.2.1-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/harfbuzz-0.0/-/harfbuzz-0.0-13.2.1-4.0.0-rc.3.tgz",
+            "integrity": "sha512-B2EcirQd2bQqo1DEpxiacpN8tIhJbwGFD2rCFOw4LpLNuyWeRh16yevhntefc4Ub73/QfChO+CLCay/i6VhbZQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gsk-4.0/node_modules/@girs/pango-1.0": {
+            "version": "1.57.1-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/pango-1.0/-/pango-1.0-1.57.1-4.0.0-rc.3.tgz",
+            "integrity": "sha512-WVVtMGP63QgufQEvpfVwJPscMmomyqRSkg+Ax4V4xlF/TA3joBTgc688wZSrko0fDJnZ5MaQoZloA9PjAYMuhw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/harfbuzz-0.0": "13.2.1-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gtk-4.0": {
+            "version": "4.23.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gtk-4.0/-/gtk-4.0-4.23.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-Sxp2rrSUOOIfzjPIm2dyEf5/2fQQcQCclN7zqFKXdLYuCt/+sG+AE5JpZUunlgECqjfkd5s7i9cXJl3L93LWRA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gdk-4.0": "4.0.0-4.0.0-rc.3",
+                "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/graphene-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/gsk-4.0": "4.0.0-4.0.0-rc.3",
+                "@girs/harfbuzz-0.0": "13.2.1-4.0.0-rc.3",
+                "@girs/pango-1.0": "1.57.1-4.0.0-rc.3",
+                "@girs/pangocairo-1.0": "1.0.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gtk-4.0/node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-k/yDmgmzn811QDQYkqsA3sgmvXqystLQBEcTaT46XXX42z14rVybimqlXylsoCTTaC61SIOelFLolzWP7z8ZEg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gtk-4.0/node_modules/@girs/freetype2-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/freetype2-2.0/-/freetype2-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-xYbmRZmMYrfyNWoOfmoQ3MNerBU2XLm9fXdlY883aE/yUX1HxXlvj5XRpA6yXStZVjs9keqwDLCklKYQHRCv9A==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gtk-4.0/node_modules/@girs/gdkpixbuf-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gdkpixbuf-2.0/-/gdkpixbuf-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-0w/oIjxcN2SPskI7TTKTl3UuhndhcVDnBVAwX9iehOeI+mGROhQXqT795qJYPfsPe9lfBKBU0mJuZNLHs27xUg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gtk-4.0/node_modules/@girs/gio-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-yMccXSGk0/3+pdH6O2KVyPrltdQkfV/PVO2Pbsqa1nxQIQwCp+r9LnPbskYqD7hm9Rxtws44xZuHxmykCL79iA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gtk-4.0/node_modules/@girs/gjs": {
+            "version": "4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-rc.3.tgz",
+            "integrity": "sha512-0+Dtzoz0cx2Wxv8TwaZIM4uhowK5j5hsw37yQSNuP07xK/X4nil/0oXMqJEsMVnPeNeGqlyksWToP4sCOzXTAQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gtk-4.0/node_modules/@girs/glib-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-P0A2sg0YuRJDzE8n+PYeMCSoS1gIuQgQRWHPhgtfZ0Bee01XG63Izbzo9mIyLRB+Xqpv96tppGyfi8/cr34t8w==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gtk-4.0/node_modules/@girs/gmodule-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gmodule-2.0/-/gmodule-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-TvvjgbsQ/rdotrKRejdoZvf9MunjWYVgMjq0ZhHnuoNZ7xr2jcJbPf5tm58Qzq8FAmVjIgcG4Z4S+nNWRFktSg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gtk-4.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-cZ2aMK42rlG0nVQ1oJD5vUlgA6/TPtscC7LRQ/kJVciG2EtfnUNso3csMvAPRGnDWadlQ7K+E723nkSDr3SNwA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gtk-4.0/node_modules/@girs/graphene-1.0": {
+            "version": "1.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/graphene-1.0/-/graphene-1.0-1.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-WWmH5PJDdtTYjOSnIaMnJuJ4SP4kQtd4tr1tvCwzbdD2Y6QSQYesVvPCQQ7G6J5QuxJktoP8Xfif4IXgyjpWRg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gtk-4.0/node_modules/@girs/harfbuzz-0.0": {
+            "version": "13.2.1-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/harfbuzz-0.0/-/harfbuzz-0.0-13.2.1-4.0.0-rc.3.tgz",
+            "integrity": "sha512-B2EcirQd2bQqo1DEpxiacpN8tIhJbwGFD2rCFOw4LpLNuyWeRh16yevhntefc4Ub73/QfChO+CLCay/i6VhbZQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gtk-4.0/node_modules/@girs/pango-1.0": {
+            "version": "1.57.1-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/pango-1.0/-/pango-1.0-1.57.1-4.0.0-rc.3.tgz",
+            "integrity": "sha512-WVVtMGP63QgufQEvpfVwJPscMmomyqRSkg+Ax4V4xlF/TA3joBTgc688wZSrko0fDJnZ5MaQoZloA9PjAYMuhw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/harfbuzz-0.0": "13.2.1-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/gvc-1.0": {
+            "version": "1.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/gvc-1.0/-/gvc-1.0-1.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-FonLa8SVkrMbNz8Nuj5MzHkDhlEW7LM38g10vA9qKq3creBshNe22Jk0N8u9rBqN5XEdW+T59wzYfrbNnTcLuQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/harfbuzz-0.0": {
+            "version": "13.2.1-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/harfbuzz-0.0/-/harfbuzz-0.0-13.2.1-4.0.0-rc.2.tgz",
+            "integrity": "sha512-PFzCwixQDHXR0/KkH3F5E98wm34PLRhk7M9diKogsq1UFb4cehCV/ZFOIQZiMzeahsh9SNlkV1B4ZggIYXamUA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/meta-17": {
+            "version": "17.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/meta-17/-/meta-17-17.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-bXZY3NGzMxtGJxFu0J9noSCn6siHVKyMolMrCz8yAmT716HIPFU09sPmJnsQIw8sdJtuCyIZiFD4cQt4vyQxkA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/atk-1.0": "2.60.0-4.0.0-rc.2",
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.2",
+                "@girs/clutter-17": "17.0.0-4.0.0-rc.2",
+                "@girs/cogl-17": "17.0.0-4.0.0-rc.2",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gdesktopenums-3.0": "3.0.0-4.0.0-rc.2",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/gl-1.0": "1.0.0-4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/graphene-1.0": "1.0.0-4.0.0-rc.2",
+                "@girs/harfbuzz-0.0": "13.2.1-4.0.0-rc.2",
+                "@girs/mtk-17": "17.0.0-4.0.0-rc.2",
+                "@girs/pango-1.0": "1.57.1-4.0.0-rc.2",
+                "@girs/xfixes-4.0": "4.0.0-4.0.0-rc.2",
+                "@girs/xlib-2.0": "2.0.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/meta-17/node_modules/@girs/gdesktopenums-3.0": {
+            "version": "3.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/gdesktopenums-3.0/-/gdesktopenums-3.0-3.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-nKQK1hjEfx4rncHXvzyJQDWpVRMct4ssfTJjNWPQZE9ZHJV5RooFO1+ZeJhwF27c8oFKCdBUNlHHxR52R6Ej+Q==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/mtk-17": {
+            "version": "17.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/mtk-17/-/mtk-17-17.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-dCQmhpWnQPNyY+BlZb7e2lCterEmOPpHPpqEqVgJt/l4vop7JM9nL8vtQ7PYyLVBw8/1ncu/kskXqr/mciDnkA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/graphene-1.0": "1.0.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/nm-1.0": {
+            "version": "1.56.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/nm-1.0/-/nm-1.0-1.56.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-3VJlJOwwxfJlhvohcTM1usjkcUNaFY9wPc4L5vmVd7yQv/pvWyN+xMPcsakrZyVL9DlK73yAfUfdEcv+rezVZg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/pango-1.0": {
+            "version": "1.57.1-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/pango-1.0/-/pango-1.0-1.57.1-4.0.0-rc.2.tgz",
+            "integrity": "sha512-Xoi7OZxmvMm0auFsUntVSkIDmT7cZZ1WqhaFCKjF29WFcNWziap+lzlyetEmpyA8z1o0uypHTTDPv9g9h0VEng==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.2",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/harfbuzz-0.0": "13.2.1-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/pangocairo-1.0": {
+            "version": "1.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/pangocairo-1.0/-/pangocairo-1.0-1.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-eBwLrJZHDJAEVMhlVwFARcjyw4rFcfUs6VyOsfmvzWas0yeLY5aa/u6VPTYzrE6TRtjWYoYJX0QG4qjT6QuZ5Q==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/harfbuzz-0.0": "13.2.1-4.0.0-rc.3",
+                "@girs/pango-1.0": "1.57.1-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/pangocairo-1.0/node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-k/yDmgmzn811QDQYkqsA3sgmvXqystLQBEcTaT46XXX42z14rVybimqlXylsoCTTaC61SIOelFLolzWP7z8ZEg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/pangocairo-1.0/node_modules/@girs/freetype2-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/freetype2-2.0/-/freetype2-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-xYbmRZmMYrfyNWoOfmoQ3MNerBU2XLm9fXdlY883aE/yUX1HxXlvj5XRpA6yXStZVjs9keqwDLCklKYQHRCv9A==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/pangocairo-1.0/node_modules/@girs/gio-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-yMccXSGk0/3+pdH6O2KVyPrltdQkfV/PVO2Pbsqa1nxQIQwCp+r9LnPbskYqD7hm9Rxtws44xZuHxmykCL79iA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/pangocairo-1.0/node_modules/@girs/gjs": {
+            "version": "4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-rc.3.tgz",
+            "integrity": "sha512-0+Dtzoz0cx2Wxv8TwaZIM4uhowK5j5hsw37yQSNuP07xK/X4nil/0oXMqJEsMVnPeNeGqlyksWToP4sCOzXTAQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/pangocairo-1.0/node_modules/@girs/glib-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-P0A2sg0YuRJDzE8n+PYeMCSoS1gIuQgQRWHPhgtfZ0Bee01XG63Izbzo9mIyLRB+Xqpv96tppGyfi8/cr34t8w==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/pangocairo-1.0/node_modules/@girs/gmodule-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gmodule-2.0/-/gmodule-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-TvvjgbsQ/rdotrKRejdoZvf9MunjWYVgMjq0ZhHnuoNZ7xr2jcJbPf5tm58Qzq8FAmVjIgcG4Z4S+nNWRFktSg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/pangocairo-1.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-cZ2aMK42rlG0nVQ1oJD5vUlgA6/TPtscC7LRQ/kJVciG2EtfnUNso3csMvAPRGnDWadlQ7K+E723nkSDr3SNwA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/pangocairo-1.0/node_modules/@girs/harfbuzz-0.0": {
+            "version": "13.2.1-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/harfbuzz-0.0/-/harfbuzz-0.0-13.2.1-4.0.0-rc.3.tgz",
+            "integrity": "sha512-B2EcirQd2bQqo1DEpxiacpN8tIhJbwGFD2rCFOw4LpLNuyWeRh16yevhntefc4Ub73/QfChO+CLCay/i6VhbZQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/pangocairo-1.0/node_modules/@girs/pango-1.0": {
+            "version": "1.57.1-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/pango-1.0/-/pango-1.0-1.57.1-4.0.0-rc.3.tgz",
+            "integrity": "sha512-WVVtMGP63QgufQEvpfVwJPscMmomyqRSkg+Ax4V4xlF/TA3joBTgc688wZSrko0fDJnZ5MaQoZloA9PjAYMuhw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/harfbuzz-0.0": "13.2.1-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/polkit-1.0": {
+            "version": "1.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/polkit-1.0/-/polkit-1.0-1.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-HdMzNpGUtDO50GguOvlyNBiOCHQllhsGqh6XR2fAq5Q+xEWtmNRRoOGd0SFCB1t74mdEWpx/pk235H5hHvW5+w==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/polkitagent-1.0": {
+            "version": "1.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/polkitagent-1.0/-/polkitagent-1.0-1.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-+eJpXjoPYRojvJ4Aj07C2UxVN0OhljaSsopgsW08CE5A+GS6Da+WK+olN0Ctjn5uoKr5jNGfG3uNIUGEHhfhUA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/polkit-1.0": "1.0.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/shell-17": {
+            "version": "17.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/shell-17/-/shell-17-17.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-sZm4KsGTAPrsVq/2J3nyey8fxKs9gaAT7KR4Dga9tRNvVNRUEqKohwBLcimRacbAcUIqcwLU600+H96SxUIy/g==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/atk-1.0": "2.60.0-4.0.0-rc.2",
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.2",
+                "@girs/clutter-17": "17.0.0-4.0.0-rc.2",
+                "@girs/cogl-17": "17.0.0-4.0.0-rc.2",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gck-2": "4.4.0-4.0.0-rc.2",
+                "@girs/gcr-4": "4.4.0-4.0.0-rc.2",
+                "@girs/gdesktopenums-3.0": "3.0.0-4.0.0-rc.2",
+                "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/giounix-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/gl-1.0": "1.0.0-4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/graphene-1.0": "1.0.0-4.0.0-rc.2",
+                "@girs/gvc-1.0": "1.0.0-4.0.0-rc.2",
+                "@girs/harfbuzz-0.0": "13.2.1-4.0.0-rc.2",
+                "@girs/meta-17": "17.0.0-4.0.0-rc.2",
+                "@girs/mtk-17": "17.0.0-4.0.0-rc.2",
+                "@girs/nm-1.0": "1.56.0-4.0.0-rc.2",
+                "@girs/pango-1.0": "1.57.1-4.0.0-rc.2",
+                "@girs/polkit-1.0": "1.0.0-4.0.0-rc.2",
+                "@girs/polkitagent-1.0": "1.0.0-4.0.0-rc.2",
+                "@girs/st-17": "17.0.0-4.0.0-rc.2",
+                "@girs/xfixes-4.0": "4.0.0-4.0.0-rc.2",
+                "@girs/xlib-2.0": "2.0.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/shell-17/node_modules/@girs/gdesktopenums-3.0": {
+            "version": "3.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/gdesktopenums-3.0/-/gdesktopenums-3.0-3.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-nKQK1hjEfx4rncHXvzyJQDWpVRMct4ssfTJjNWPQZE9ZHJV5RooFO1+ZeJhwF27c8oFKCdBUNlHHxR52R6Ej+Q==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/shew-0": {
+            "version": "0.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/shew-0/-/shew-0-0.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-8XG4xpQwgVFBe0VPPQoP1AxwPwMMDebly37BmRnRfb4781Ii+ZO5uKBZR9481j7r+iK2NWtDsq8jfzgR/3DM3w==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gdk-4.0": "4.0.0-4.0.0-rc.3",
+                "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/graphene-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/gsk-4.0": "4.0.0-4.0.0-rc.3",
+                "@girs/gtk-4.0": "4.23.0-4.0.0-rc.3",
+                "@girs/harfbuzz-0.0": "13.2.1-4.0.0-rc.3",
+                "@girs/pango-1.0": "1.57.1-4.0.0-rc.3",
+                "@girs/pangocairo-1.0": "1.0.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/shew-0/node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-k/yDmgmzn811QDQYkqsA3sgmvXqystLQBEcTaT46XXX42z14rVybimqlXylsoCTTaC61SIOelFLolzWP7z8ZEg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/shew-0/node_modules/@girs/freetype2-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/freetype2-2.0/-/freetype2-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-xYbmRZmMYrfyNWoOfmoQ3MNerBU2XLm9fXdlY883aE/yUX1HxXlvj5XRpA6yXStZVjs9keqwDLCklKYQHRCv9A==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/shew-0/node_modules/@girs/gdkpixbuf-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gdkpixbuf-2.0/-/gdkpixbuf-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-0w/oIjxcN2SPskI7TTKTl3UuhndhcVDnBVAwX9iehOeI+mGROhQXqT795qJYPfsPe9lfBKBU0mJuZNLHs27xUg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/shew-0/node_modules/@girs/gio-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-yMccXSGk0/3+pdH6O2KVyPrltdQkfV/PVO2Pbsqa1nxQIQwCp+r9LnPbskYqD7hm9Rxtws44xZuHxmykCL79iA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/shew-0/node_modules/@girs/gjs": {
+            "version": "4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-rc.3.tgz",
+            "integrity": "sha512-0+Dtzoz0cx2Wxv8TwaZIM4uhowK5j5hsw37yQSNuP07xK/X4nil/0oXMqJEsMVnPeNeGqlyksWToP4sCOzXTAQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/shew-0/node_modules/@girs/glib-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-P0A2sg0YuRJDzE8n+PYeMCSoS1gIuQgQRWHPhgtfZ0Bee01XG63Izbzo9mIyLRB+Xqpv96tppGyfi8/cr34t8w==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/shew-0/node_modules/@girs/gmodule-2.0": {
+            "version": "2.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gmodule-2.0/-/gmodule-2.0-2.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-TvvjgbsQ/rdotrKRejdoZvf9MunjWYVgMjq0ZhHnuoNZ7xr2jcJbPf5tm58Qzq8FAmVjIgcG4Z4S+nNWRFktSg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/shew-0/node_modules/@girs/gobject-2.0": {
+            "version": "2.88.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.88.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-cZ2aMK42rlG0nVQ1oJD5vUlgA6/TPtscC7LRQ/kJVciG2EtfnUNso3csMvAPRGnDWadlQ7K+E723nkSDr3SNwA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/shew-0/node_modules/@girs/graphene-1.0": {
+            "version": "1.0.0-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/graphene-1.0/-/graphene-1.0-1.0.0-4.0.0-rc.3.tgz",
+            "integrity": "sha512-WWmH5PJDdtTYjOSnIaMnJuJ4SP4kQtd4tr1tvCwzbdD2Y6QSQYesVvPCQQ7G6J5QuxJktoP8Xfif4IXgyjpWRg==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/shew-0/node_modules/@girs/harfbuzz-0.0": {
+            "version": "13.2.1-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/harfbuzz-0.0/-/harfbuzz-0.0-13.2.1-4.0.0-rc.3.tgz",
+            "integrity": "sha512-B2EcirQd2bQqo1DEpxiacpN8tIhJbwGFD2rCFOw4LpLNuyWeRh16yevhntefc4Ub73/QfChO+CLCay/i6VhbZQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/shew-0/node_modules/@girs/pango-1.0": {
+            "version": "1.57.1-4.0.0-rc.3",
+            "resolved": "https://registry.npmjs.org/@girs/pango-1.0/-/pango-1.0-1.57.1-4.0.0-rc.3.tgz",
+            "integrity": "sha512-WVVtMGP63QgufQEvpfVwJPscMmomyqRSkg+Ax4V4xlF/TA3joBTgc688wZSrko0fDJnZ5MaQoZloA9PjAYMuhw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.3",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gjs": "4.0.0-rc.3",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.3",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.3",
+                "@girs/harfbuzz-0.0": "13.2.1-4.0.0-rc.3"
+            }
+        },
+        "node_modules/@girs/st-17": {
+            "version": "17.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/st-17/-/st-17-17.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-t4i/XQv9uSuP50CcdaBv1RBQbNt2n/DxmBUHmwZ3lMS9hmqHUfkPfOOUX/ASZTw7LwbPCZY0xMPLv8o1PJofcA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/atk-1.0": "2.60.0-4.0.0-rc.2",
+                "@girs/cairo-1.0": "1.0.0-4.0.0-rc.2",
+                "@girs/clutter-17": "17.0.0-4.0.0-rc.2",
+                "@girs/cogl-17": "17.0.0-4.0.0-rc.2",
+                "@girs/freetype2-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gdesktopenums-3.0": "3.0.0-4.0.0-rc.2",
+                "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gio-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/gl-1.0": "1.0.0-4.0.0-rc.2",
+                "@girs/glib-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2",
+                "@girs/graphene-1.0": "1.0.0-4.0.0-rc.2",
+                "@girs/harfbuzz-0.0": "13.2.1-4.0.0-rc.2",
+                "@girs/meta-17": "17.0.0-4.0.0-rc.2",
+                "@girs/mtk-17": "17.0.0-4.0.0-rc.2",
+                "@girs/pango-1.0": "1.57.1-4.0.0-rc.2",
+                "@girs/xfixes-4.0": "4.0.0-4.0.0-rc.2",
+                "@girs/xlib-2.0": "2.0.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/st-17/node_modules/@girs/gdesktopenums-3.0": {
+            "version": "3.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/gdesktopenums-3.0/-/gdesktopenums-3.0-3.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-nKQK1hjEfx4rncHXvzyJQDWpVRMct4ssfTJjNWPQZE9ZHJV5RooFO1+ZeJhwF27c8oFKCdBUNlHHxR52R6Ej+Q==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/upowerglib-1.0": {
+            "version": "0.99.1-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/upowerglib-1.0/-/upowerglib-1.0-0.99.1-4.0.0-beta.40.tgz",
+            "integrity": "sha512-J4+XAEIg1ZsGOId49KcIpAW/8ARzBudbSbFyO4FVCavA+1YZC5ENfbL+QEP4w2T1BkRSvdtIM2161zB4nL1prQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gio-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/upowerglib-1.0/node_modules/@girs/cairo-1.0": {
+            "version": "1.0.0-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/cairo-1.0/-/cairo-1.0-1.0.0-4.0.0-beta.40.tgz",
+            "integrity": "sha512-luqUsMf2cPphDc4lb8IHcw0bX8eGa4g0aQypZJypAeIs9eyHfEDHWKhLgp4I0HaQvaevbd3QBosaH7UhkArL1A==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/upowerglib-1.0/node_modules/@girs/gio-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gio-2.0/-/gio-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-TTAEE/2nCAkx01hID4n8f0ByiFJ0QwGJcY8QYmom19QXmlIWCLF/GWLeXi/7ZyKJOtChSFk8IJglS0O6zC1spw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/upowerglib-1.0/node_modules/@girs/gjs": {
+            "version": "4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gjs/-/gjs-4.0.0-beta.40.tgz",
+            "integrity": "sha512-+gHGA5PJvEExpiPkpc3+DSjhWGmxHDb482h52FO64eo2EmHuLoeOKCoUJIY0PS80xOJWFRSO2dNFxZdD1bV6XA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/cairo-1.0": "1.0.0-4.0.0-beta.40",
+                "@girs/gio-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/upowerglib-1.0/node_modules/@girs/glib-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/glib-2.0/-/glib-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-DTvRmZlTVpYW+JI0zMN/dybhzoqJ/I3bx3txftSQgcxXl3mKnrSI6Qzv15VTyxQSpcnD3CBxpnfYT/+QrzU9QQ==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/upowerglib-1.0/node_modules/@girs/gmodule-2.0": {
+            "version": "2.0.0-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gmodule-2.0/-/gmodule-2.0-2.0.0-4.0.0-beta.40.tgz",
+            "integrity": "sha512-srPSbc/uespMNHR2o2Gg6OYeCprW42gADIXCujpMMWl5OfJzKU0mA+R8Z/D713tDq0xp1Lz2P7hprVznf1uF3A==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
+                "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/upowerglib-1.0/node_modules/@girs/gobject-2.0": {
+            "version": "2.86.4-4.0.0-beta.40",
+            "resolved": "https://registry.npmjs.org/@girs/gobject-2.0/-/gobject-2.0-2.86.4-4.0.0-beta.40.tgz",
+            "integrity": "sha512-coS5607duUekhRfl2GDC9Gt3WcgAtTNEDL0efrRBBOuORjvBrIGiGJJXB9cX4jYQ7c9FITUMVLTd+a0MMRAaXA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-beta.40",
+                "@girs/glib-2.0": "2.86.4-4.0.0-beta.40"
+            }
+        },
+        "node_modules/@girs/xfixes-4.0": {
+            "version": "4.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/xfixes-4.0/-/xfixes-4.0-4.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-8mDbq12FIuvIiR/G/KJFrRyv4sVEPVm87ituxAWBtsD6ySVyaAFTLquDc2gS9VmZfQ8sjID0HMaQM6KftF77nw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        },
+        "node_modules/@girs/xlib-2.0": {
+            "version": "2.0.0-4.0.0-rc.2",
+            "resolved": "https://registry.npmjs.org/@girs/xlib-2.0/-/xlib-2.0-2.0.0-4.0.0-rc.2.tgz",
+            "integrity": "sha512-3qP6D9f7zsrPSGw8WGLB4SRTm9F5S0O6M7NDXpzrtzEsAYWWLgII8t9ev8wR6akoUsRAsz5cD7FSEkyZvtFtQw==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@girs/gjs": "4.0.0-rc.2",
+                "@girs/gobject-2.0": "2.88.0-4.0.0-rc.2"
+            }
+        }
+    }
+}
