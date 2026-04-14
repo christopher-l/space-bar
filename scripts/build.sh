@@ -6,8 +6,9 @@ PACK_FILE="space-bar@luchrioh.shell-extension.zip"
 
 function clear() (
 	if [ -d dist ]; then
-	rm -r dist
+		rm -r dist
 	fi
+	rm -f "$PACK_FILE"
 )
 
 function compile() (
@@ -30,10 +31,7 @@ function copyAdditionalFiles() (
 )
 
 function pack() (
-	gnome-extensions pack dist --force $(
-	cd dist
-		for file in *; do echo "--extra-source=$file"; done
-	)
+	(cd dist && zip -rq "../$PACK_FILE" .)
 	echo "Packed $PACK_FILE"
 )
 
