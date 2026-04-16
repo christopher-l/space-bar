@@ -2,12 +2,10 @@
 
 set -e
 
-PACK_FILE="space-bar@luchrioh.shell-extension.zip"
+PACK_FILE="space-bar@luchrioh.zip"
 
 function clear() (
-	if [ -d dist ]; then
-		rm -r dist
-	fi
+	rm -rf dist
 	rm -f "$PACK_FILE"
 )
 
@@ -16,18 +14,12 @@ function compile() (
 )
 
 function copyAdditionalFiles() (
+	cp metadata.json README.md src/stylesheet.css dist
 	cp -r src/schemas dist/schemas
+)
 
-	for file in metadata.json README.md; do
-		cp "$file" "dist/$file"
-	done
-
-	(
-		cd src
-		for file in stylesheet.css; do
-			cp "$file" "../dist/$file"
-		done
-	)
+function compileSchema() (
+	glib-compile-schemas dist/schemas
 )
 
 function pack() (
@@ -45,6 +37,7 @@ function main() (
 	clear
 	compile
 	copyAdditionalFiles
+	compileSchema
 	pack
 	while getopts i flag; do
 		case $flag in

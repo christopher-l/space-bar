@@ -3,6 +3,8 @@
 - Fix: Deprecated usage of GObject when creating PopupMenuItem
 - Chore: Migrate to GJS usage as suggested by GNOME resources
 - Chore: Use Zip for packing
+- Chore: Change name of packed file
+- Chore: Compile schemas
 - Docs: Update Readme
 
 ## v36
