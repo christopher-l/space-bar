@@ -5,6 +5,7 @@
 - Chore: Use Zip for packing
 - Chore: Change name of packed file
 - Chore: Compile schemas
+- Chore: Remove version from metadata.json
 - Docs: Update Readme
 
 ## v36
