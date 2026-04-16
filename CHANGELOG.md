@@ -6,6 +6,7 @@
 - Chore: Change name of packed file
 - Chore: Compile schemas
 - Chore: Remove version from metadata.json
+- Chore: remove .vscode settings
 - Docs: Update Readme
 
 ## v36
