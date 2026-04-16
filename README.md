@@ -33,7 +33,7 @@ The extension covers its intended features and currently no new features are pla
 ## Build
 
 The source code of this extension is written in TypeScript. The following command will build the
-extension and package it to a zip file.
+extension and package it to a zip file (requires pnpm, zip, and glib2).
 
 ```sh
 pnpm install
@@ -42,11 +42,15 @@ pnpm install
 
 ## Install
 
-The following command will build the extension and install it locally.
+The following command will build the extension and install or update it locally.
 
 ```sh
 ./scripts/build.sh -i
 ```
+
+Alternatively, just unzip the `space-bar@luchrioh.zip` to `~/.local/share/gnome-shell/extensions/space-bar@luchrioh`.
+
+Log out and back in for the installation to take effect.
 
 ## Debug
 

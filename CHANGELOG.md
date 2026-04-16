@@ -1,3 +1,8 @@
+## Next
+
+- Chore: Build using packaged TypeScript compiler
+- Docs: Update Readme
+
 ## v37
 
 - Fix: Deprecated usage of GObject when creating PopupMenuItem

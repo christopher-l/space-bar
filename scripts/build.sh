@@ -10,7 +10,7 @@ function clear() (
 )
 
 function compile() (
-	tsc
+	pnpm run build
 )
 
 function copyAdditionalFiles() (
