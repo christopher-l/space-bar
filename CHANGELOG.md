@@ -1,5 +1,6 @@
 ## Next
 
+- Fix: Remove default shortcuts that conflict with system shortcuts
 - Chore: Build using packaged TypeScript compiler
 - Docs: Update Readme
 
