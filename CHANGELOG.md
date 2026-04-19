@@ -1,6 +1,7 @@
 ## Next
 
 - Fix: Remove default shortcuts that conflict with system shortcuts
+- Fix: Disable system shortcuts that conflict with "Switch to workspace" while enabled
 - Chore: Build using packaged TypeScript compiler
 - Docs: Update Readme
 

@@ -5,6 +5,13 @@ import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import { Settings } from './Settings.js';
 import { Workspaces } from './Workspaces.js';
 
+interface SystemBinding {
+    schema: string;
+    key: string;
+    value: string[];
+    default: boolean;
+}
+
 export class KeyBindings {
     private static _instance: KeyBindings | null;
 
@@ -27,7 +34,13 @@ export class KeyBindings {
     private readonly _desktopKeybindings = new Gio.Settings({
         schema: 'org.gnome.desktop.wm.keybindings',
     });
+    private readonly _systemBindingSettings = [
+        this._desktopKeybindings,
+        new Gio.Settings({ schema: 'org.gnome.shell.keybindings' }),
+        new Gio.Settings({ schema: 'org.gnome.settings-daemon.plugins.media-keys' }),
+    ];
     private _addedKeyBindings: string[] = [];
+    private _replacedSystemBindings: { [name in string]?: SystemBinding } = {};
 
     init() {
         this._registerActivateByNumber();
@@ -41,6 +54,9 @@ export class KeyBindings {
             Main.wm.removeKeybinding(name);
         }
         this._addedKeyBindings = [];
+        for (const shortcutName in this._replacedSystemBindings) {
+            this._restoreSystemBinding(shortcutName);
+        }
     }
 
     addKeyBinding(name: string, handler: () => void) {
@@ -75,11 +91,13 @@ export class KeyBindings {
                 for (let i = 0; i < 10; i++) {
                     const name = `activate-${i + 1}-key`;
                     if (value) {
+                        this._replaceConflictingSystemBinding(name);
                         this.addKeyBinding(name, () => {
                             this._ws.switchTo(i, 'keyboard-shortcut');
                         });
                     } else {
                         this.removeKeybinding(name);
+                        this._restoreSystemBinding(name);
                     }
                 }
             },
@@ -98,5 +116,57 @@ export class KeyBindings {
                 }
             }
         });
+    }
+
+    /**
+     * Searches for system keybindings that conflict with an extension shortcut and replace it.
+     *
+     * Considers only the first shortcut binding of the extension shortcut and replaces only the
+     * first conflicting system binding found.
+     *
+     * If it replaces a system binding, it adds it to _replacedSystemBindings.
+     */
+    private _replaceConflictingSystemBinding(shortcutName: string) {
+        const binding = this._settings.shortcutsSettings.get_strv(shortcutName)[0];
+        if (!binding) {
+            return null;
+        }
+        for (const settings of this._systemBindingSettings) {
+            for (const key of settings.list_keys()) {
+                const variant = settings.get_value(key);
+                if (variant.get_type_string() === 'as') {
+                    const value = variant.get_strv();
+                    if (value.includes(binding)) {
+                        this._replacedSystemBindings[shortcutName] = {
+                            schema: settings.schema_id,
+                            key,
+                            value,
+                            default: settings.get_user_value(key) == null,
+                        };
+                        settings.set_strv(
+                            key,
+                            value.filter((v) => v !== binding),
+                        );
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Restores a system keybinding that has been replaced by this extension.
+     */
+    private _restoreSystemBinding(shortcutName: string) {
+        if (this._replacedSystemBindings[shortcutName]) {
+            const r = this._replacedSystemBindings[shortcutName];
+            const settings = new Gio.Settings({ schema_id: r.schema });
+            if (r.default) {
+                settings.reset(r.key);
+            } else {
+                settings.set_strv(r.key, r.value);
+            }
+            delete this._replacedSystemBindings[shortcutName];
+        }
     }
 }
