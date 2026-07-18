@@ -1,5 +1,7 @@
 ## Next
 
+## v38
+
 - Fix: Remove default shortcuts that conflict with system shortcuts
 - Fix: Disable system shortcuts that conflict with "Switch to workspace" while enabled
 - Fix: Crash when temporary stylesheet file is missing when disabling
