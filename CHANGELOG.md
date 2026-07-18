@@ -1,5 +1,9 @@
 ## Next
 
+## v39
+
+- Chore: Add switch to enable/disable compiling schemas
+
 ## v38
 
 - Fix: Remove default shortcuts that conflict with system shortcuts

@@ -4,6 +4,13 @@ set -e
 
 PACK_FILE="space-bar@luchrioh.zip"
 
+function printUsage() (
+    echo Usage: $0 [options...]
+    echo " -h  Print this message"
+    echo " -s  Compile schemas"
+    echo " -i  Install the extension after building"
+)
+
 function clear() (
 	rm -rf dist
 	rm -f "$PACK_FILE"
@@ -19,6 +26,7 @@ function copyAdditionalFiles() (
 )
 
 function compileSchema() (
+    echo Compiling schemas...
 	glib-compile-schemas dist/schemas
 )
 
@@ -33,17 +41,26 @@ function install() (
 )
 
 function main() (
+   	while getopts his flag; do
+		case $flag in
+		h)
+            printUsage
+            exit ;;
+		s) schemas=1 ;;
+		i) install=1 ;;
+		esac
+	done
 	cd "$(dirname ${BASH_SOURCE[0]})/.."
 	clear
 	compile
 	copyAdditionalFiles
-	compileSchema
+	if [ -n "$schemas" ]; then
+        compileSchema
+    fi
 	pack
-	while getopts i flag; do
-		case $flag in
-		i) install ;;
-		esac
-	done
+	if [ -n "$install" ]; then
+		install
+	fi
 )
 
 main "$@"
