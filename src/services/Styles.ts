@@ -32,8 +32,7 @@ export class Styles {
     /**
      * Temporary file containing dynamically loaded styles.
      *
-     * We delete the file right after usage, but we keep a reference so we can
-     * unload the styles later.
+     * We keep a reference so we can delete the file and unload the styles later.
      */
     private _dynamicStyleSheet?: Gio.File;
 
@@ -77,7 +76,11 @@ export class Styles {
         if (this._dynamicStyleSheet) {
             const themeContext = St.ThemeContext.get_for_stage(global.stage);
             themeContext.get_theme().unload_stylesheet(this._dynamicStyleSheet);
-            this._dynamicStyleSheet.delete(null);
+            try {
+                this._dynamicStyleSheet.delete(null);
+            } catch (e) {
+                console.warn('Failed to delete temporary stylesheet file:', e)
+            }
             this._dynamicStyleSheet = undefined;
         }
     }
