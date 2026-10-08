@@ -4,10 +4,10 @@
         "build": "tsc"
     },
     "devDependencies": {
-        "typescript": "^6.0.2"
+        "typescript": "^7.0.2"
     },
     "dependencies": {
-        "@girs/gnome-shell": "^49.1.0",
-        "@girs/gjs": "4.0.0-rc.3"
+        "@girs/gnome-shell": "^50.0.4",
+        "@girs/gjs": "5.5.0"
     }
 }

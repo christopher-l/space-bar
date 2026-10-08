@@ -3,6 +3,8 @@
 ## v40
 
 - Chore: Add support for GNOME 51
+- Chore: Update NPM packages
+
 ## v39
 
 - Chore: Add switch to enable/disable compiling schemas
