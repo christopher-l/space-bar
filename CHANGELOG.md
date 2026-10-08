@@ -1,5 +1,8 @@
 ## Next
 
+## v40
+
+- Chore: Add support for GNOME 51
 ## v39
 
 - Chore: Add switch to enable/disable compiling schemas
